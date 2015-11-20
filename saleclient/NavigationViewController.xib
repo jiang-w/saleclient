@@ -7,6 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NavigationViewController">
             <connections>
+                <outlet property="areaBtn" destination="sJW-Oq-rj5" id="ATV-RT-cgM"/>
+                <outlet property="caseBtn" destination="mRH-n5-suN" id="f1q-8J-C6n"/>
+                <outlet property="clientBtn" destination="Y2f-iz-hXi" id="mAS-BA-ccK"/>
+                <outlet property="homeBtn" destination="6Qd-ax-MjK" id="otL-WC-lfs"/>
+                <outlet property="productBtn" destination="WGf-BL-ePl" id="gio-zY-Cm7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,26 +27,41 @@
                             <rect key="frame" x="46" y="34" width="30" height="30"/>
                             <animations/>
                             <state key="normal" title="首页"/>
+                            <connections>
+                                <action selector="changeDisplayView:" destination="-1" eventType="touchUpInside" id="hTa-dw-eeU"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mRH-n5-suN">
                             <rect key="frame" x="104" y="34" width="60" height="30"/>
                             <animations/>
                             <state key="normal" title="装修案例"/>
+                            <connections>
+                                <action selector="changeDisplayView:" destination="-1" eventType="touchUpInside" id="oAU-Dn-bCc"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sJW-Oq-rj5">
                             <rect key="frame" x="192" y="34" width="60" height="30"/>
                             <animations/>
                             <state key="normal" title="小区楼盘"/>
+                            <connections>
+                                <action selector="changeDisplayView:" destination="-1" eventType="touchUpInside" id="SDI-zo-Oye"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2f-iz-hXi">
                             <rect key="frame" x="353" y="34" width="60" height="30"/>
                             <animations/>
                             <state key="normal" title="客户管理"/>
+                            <connections>
+                                <action selector="changeDisplayView:" destination="-1" eventType="touchUpInside" id="RrW-cd-uZd"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WGf-BL-ePl">
                             <rect key="frame" x="280" y="34" width="45" height="30"/>
                             <animations/>
                             <state key="normal" title="产品库"/>
+                            <connections>
+                                <action selector="changeDisplayView:" destination="-1" eventType="touchUpInside" id="M3g-WU-jae"/>
+                            </connections>
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pTq-SB-njP">
                             <rect key="frame" x="439" y="34" width="190" height="30"/>
