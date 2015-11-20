@@ -12,6 +12,7 @@
                 <outlet property="clientBtn" destination="Y2f-iz-hXi" id="mAS-BA-ccK"/>
                 <outlet property="homeBtn" destination="6Qd-ax-MjK" id="otL-WC-lfs"/>
                 <outlet property="productBtn" destination="WGf-BL-ePl" id="gio-zY-Cm7"/>
+                <outlet property="scrollView" destination="209-RO-V3h" id="X9d-ic-zEt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *areaBtn;
 @property (weak, nonatomic) IBOutlet UIButton *productBtn;
 @property (weak, nonatomic) IBOutlet UIButton *clientBtn;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -23,7 +24,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    self.view.backgroundColor = [UIColor redColor];
+    self.scrollView.bounces = NO;
+    self.scrollView.pagingEnabled = YES;
+    self.scrollView.delegate = self;
+    CGFloat pageWidth = CGRectGetWidth(self.scrollView.frame);
+    CGFloat pageHeight = CGRectGetHeight(self.scrollView.frame);
+    self.scrollView.contentSize = CGSizeMake(pageWidth * 4 , pageHeight);
+    [self.scrollView setShowsHorizontalScrollIndicator:NO];
 }
 
 - (void)didReceiveMemoryWarning {
