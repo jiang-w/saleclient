@@ -1,0 +1,27 @@
+//
+//  saleclient-Prefix.pch
+//  saleclient
+//
+//  Created by Frank on 15/11/19.
+//  Copyright © 2015年 oceano. All rights reserved.
+//
+
+#ifdef __OBJC__
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <AFNetworking.h>
+#import <Reachability.h>
+
+#import "OSNMacro.h"
+#import "OSNModel.h"
+
+#ifdef DEBUG
+#define debugLog(...) NSLog(__VA_ARGS__)
+#define debugMethod() NSLog(@"%s", __func__)
+#else
+#define debugLog(...)
+#define debugMethod()
+#endif
+
+#endif

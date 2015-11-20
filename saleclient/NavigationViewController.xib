@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NavigationViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qES-jd-UlL">
+                    <rect key="frame" x="0.0" y="0.0" width="1024" height="76"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Qd-ax-MjK">
+                            <rect key="frame" x="46" y="34" width="30" height="30"/>
+                            <animations/>
+                            <state key="normal" title="首页"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mRH-n5-suN">
+                            <rect key="frame" x="104" y="34" width="60" height="30"/>
+                            <animations/>
+                            <state key="normal" title="装修案例"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sJW-Oq-rj5">
+                            <rect key="frame" x="192" y="34" width="60" height="30"/>
+                            <animations/>
+                            <state key="normal" title="小区楼盘"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2f-iz-hXi">
+                            <rect key="frame" x="353" y="34" width="60" height="30"/>
+                            <animations/>
+                            <state key="normal" title="客户管理"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WGf-BL-ePl">
+                            <rect key="frame" x="280" y="34" width="45" height="30"/>
+                            <animations/>
+                            <state key="normal" title="产品库"/>
+                        </button>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pTq-SB-njP">
+                            <rect key="frame" x="439" y="34" width="190" height="30"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="190" id="Rf8-Le-oww"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sjp-wz-yej">
+                            <rect key="frame" x="747" y="25" width="37" height="51"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="51" id="6tf-Wx-ScT"/>
+                                <constraint firstAttribute="width" constant="37" id="RcW-Xa-jgl"/>
+                            </constraints>
+                            <state key="normal" image="history_ico.png"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X36-BW-0wQ">
+                            <rect key="frame" x="816" y="25" width="37" height="51"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="37" id="DX5-js-vwJ"/>
+                                <constraint firstAttribute="height" constant="51" id="Ry8-AJ-shj"/>
+                            </constraints>
+                            <state key="normal" title="Button" image="qcode_ico.png"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i24-dA-nPk">
+                            <rect key="frame" x="885" y="25" width="37" height="51"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="51" id="XVF-fj-mCC"/>
+                                <constraint firstAttribute="width" constant="37" id="vVs-6z-h9b"/>
+                            </constraints>
+                            <state key="normal" title="Button" image="shopping_ico.png"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="990-71-QRg">
+                            <rect key="frame" x="954" y="25" width="37" height="51"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="37" id="S92-69-H8D"/>
+                                <constraint firstAttribute="height" constant="51" id="bOe-oC-GZn"/>
+                            </constraints>
+                            <state key="normal" title="Button" image="historyview_ico.png"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KgT-pT-tYt">
+                            <rect key="frame" x="642" y="34" width="30" height="30"/>
+                            <animations/>
+                            <state key="normal" title="搜索"/>
+                        </button>
+                    </subviews>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="WGf-BL-ePl" firstAttribute="leading" secondItem="sJW-Oq-rj5" secondAttribute="trailing" constant="28" id="9vs-0R-GvR"/>
+                        <constraint firstAttribute="bottom" secondItem="i24-dA-nPk" secondAttribute="bottom" id="BAs-8e-O2B"/>
+                        <constraint firstItem="mRH-n5-suN" firstAttribute="leading" secondItem="6Qd-ax-MjK" secondAttribute="trailing" constant="28" id="GEp-DC-rdn"/>
+                        <constraint firstAttribute="bottom" secondItem="KgT-pT-tYt" secondAttribute="bottom" constant="12" id="LDf-Wp-xSc"/>
+                        <constraint firstAttribute="bottom" secondItem="sjp-wz-yej" secondAttribute="bottom" id="N9e-FM-cEA"/>
+                        <constraint firstItem="X36-BW-0wQ" firstAttribute="leading" secondItem="sjp-wz-yej" secondAttribute="trailing" constant="32" id="Olt-hY-cPM"/>
+                        <constraint firstItem="i24-dA-nPk" firstAttribute="leading" secondItem="X36-BW-0wQ" secondAttribute="trailing" constant="32" id="PlZ-R8-M5U"/>
+                        <constraint firstAttribute="bottom" secondItem="6Qd-ax-MjK" secondAttribute="bottom" constant="12" id="R7B-8j-guu"/>
+                        <constraint firstAttribute="bottom" secondItem="sJW-Oq-rj5" secondAttribute="bottom" constant="12" id="Sib-QS-NfY"/>
+                        <constraint firstAttribute="bottom" secondItem="990-71-QRg" secondAttribute="bottom" id="Sjv-fN-JJd"/>
+                        <constraint firstAttribute="bottom" secondItem="WGf-BL-ePl" secondAttribute="bottom" constant="12" id="UxZ-XX-0Q0"/>
+                        <constraint firstAttribute="bottom" secondItem="X36-BW-0wQ" secondAttribute="bottom" id="VEy-pa-fxV"/>
+                        <constraint firstAttribute="height" constant="76" id="Xrj-aW-BKQ"/>
+                        <constraint firstItem="990-71-QRg" firstAttribute="leading" secondItem="i24-dA-nPk" secondAttribute="trailing" constant="32" id="bAX-8j-WVE"/>
+                        <constraint firstItem="KgT-pT-tYt" firstAttribute="leading" secondItem="pTq-SB-njP" secondAttribute="trailing" constant="13" id="bIR-62-sus"/>
+                        <constraint firstAttribute="trailing" secondItem="990-71-QRg" secondAttribute="trailing" constant="33" id="kyT-XQ-7YI"/>
+                        <constraint firstAttribute="bottom" secondItem="Y2f-iz-hXi" secondAttribute="bottom" constant="12" id="lp9-gS-XQr"/>
+                        <constraint firstAttribute="bottom" secondItem="pTq-SB-njP" secondAttribute="bottom" constant="12" id="nd1-qw-o6L"/>
+                        <constraint firstItem="6Qd-ax-MjK" firstAttribute="leading" secondItem="qES-jd-UlL" secondAttribute="leading" constant="46" id="pyO-cO-gRq"/>
+                        <constraint firstItem="Y2f-iz-hXi" firstAttribute="leading" secondItem="WGf-BL-ePl" secondAttribute="trailing" constant="28" id="wKp-6Z-fTU"/>
+                        <constraint firstItem="pTq-SB-njP" firstAttribute="leading" secondItem="Y2f-iz-hXi" secondAttribute="trailing" constant="26" id="waC-rm-V85"/>
+                        <constraint firstItem="sJW-Oq-rj5" firstAttribute="leading" secondItem="mRH-n5-suN" secondAttribute="trailing" constant="28" id="woc-K1-8WT"/>
+                        <constraint firstAttribute="bottom" secondItem="mRH-n5-suN" secondAttribute="bottom" constant="12" id="ygF-iG-iU5"/>
+                    </constraints>
+                </view>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="209-RO-V3h">
+                    <rect key="frame" x="0.0" y="76" width="1024" height="692"/>
+                    <animations/>
+                </scrollView>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="qES-jd-UlL" secondAttribute="trailing" id="OkM-ZW-f1r"/>
+                <constraint firstItem="209-RO-V3h" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="X4K-8K-ZJi"/>
+                <constraint firstItem="209-RO-V3h" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="76" id="YaH-6q-bLg"/>
+                <constraint firstAttribute="trailing" secondItem="209-RO-V3h" secondAttribute="trailing" id="cat-Vc-aRz"/>
+                <constraint firstItem="qES-jd-UlL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ffT-Jn-jjs"/>
+                <constraint firstAttribute="bottom" secondItem="209-RO-V3h" secondAttribute="bottom" id="gAm-Ux-Jf3"/>
+                <constraint firstItem="qES-jd-UlL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="thP-6s-V2u"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+            <point key="canvasLocation" x="474" y="151"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="history_ico.png" width="31" height="51"/>
+        <image name="historyview_ico.png" width="37" height="51"/>
+        <image name="qcode_ico.png" width="37" height="49"/>
+        <image name="shopping_ico.png" width="37" height="53"/>
+    </resources>
+</document>
