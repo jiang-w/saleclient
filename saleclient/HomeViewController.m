@@ -22,8 +22,7 @@
     self.navigationController.navigationBarHidden = YES;
 }
 
-- (IBAction)openProductListView:(id)sender {
-    
+- (IBAction)openNavigationViewController:(id)sender {
     NavigationViewController *nav = [[NavigationViewController alloc] initWithNibName:@"NavigationViewController" bundle:nil];
     [self.navigationController pushViewController:nav animated:YES];
 }

@@ -7,6 +7,8 @@
 //
 
 #import "NavigationViewController.h"
+#import "CaseListViewController.h"
+#import "ProductListViewController.h"
 
 @interface NavigationViewController ()
 
@@ -20,17 +22,26 @@
 @end
 
 @implementation NavigationViewController
+{
+    NSArray *_btnArr;
+    NSMutableDictionary *_controllerDic;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _btnArr = @[self.caseBtn, self.areaBtn, self.productBtn, self.clientBtn];
+    _controllerDic = [NSMutableDictionary dictionary];
     
     self.scrollView.bounces = NO;
     self.scrollView.pagingEnabled = YES;
     self.scrollView.delegate = self;
     CGFloat pageWidth = CGRectGetWidth(self.scrollView.frame);
     CGFloat pageHeight = CGRectGetHeight(self.scrollView.frame);
-    self.scrollView.contentSize = CGSizeMake(pageWidth * 4 , pageHeight);
+    self.scrollView.contentSize = CGSizeMake(pageWidth * (_btnArr.count - 1) , pageHeight);
     [self.scrollView setShowsHorizontalScrollIndicator:NO];
+    
+    [self setCurrentDisplayViewWithIndex:self.currentIndex];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,6 +54,52 @@
     if (sender == self.homeBtn) {
         [self.navigationController popViewControllerAnimated:YES];
     }
+    else {
+        NSInteger index = [_btnArr indexOfObject:sender];
+        [self setCurrentDisplayViewWithIndex:index];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scroll {
+    NSInteger index = scroll.contentOffset.x / scroll.frame.size.width;
+    [self setCurrentDisplayViewWithIndex:index];
+}
+
+- (void)setCurrentDisplayViewWithIndex:(NSInteger)index {
+    self.currentIndex = index;
+    for (UIButton *btn in _btnArr) {
+        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    }
+    UIButton *btn = [_btnArr objectAtIndex:index];
+    [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    
+    if (!_controllerDic[@(index)]) {
+        [self addControllerWithIndex:index];
+    }
+    [self.scrollView scrollRectToVisible:CGRectMake(CGRectGetWidth(self.scrollView.frame) * index, 0, CGRectGetWidth(self.scrollView.frame), CGRectGetHeight(self.scrollView.frame)) animated:YES];
+}
+
+- (void)addControllerWithIndex:(NSInteger)index {
+    UIViewController *contr;
+    switch (index) {
+        case 0:
+            contr = [[CaseListViewController alloc] initWithFrame:self.scrollView.frame];
+            break;
+        case 1:
+            contr = [[ProductListViewController alloc] initWithFrame:self.scrollView.frame];
+            break;
+        case 2:
+            contr = [[CaseListViewController alloc] initWithFrame:self.scrollView.frame];
+            break;
+        case 3:
+            contr = [[ProductListViewController alloc] initWithFrame:self.scrollView.frame];
+            break;
+        default:
+            return;
+    }
+    _controllerDic[@(index)] = contr;
+    contr.view.frame = CGRectMake(index * CGRectGetWidth(self.scrollView.frame), 0, CGRectGetWidth(self.scrollView.frame), CGRectGetHeight(self.scrollView.frame));
+    [self.scrollView addSubview:contr.view];
 }
 
 @end

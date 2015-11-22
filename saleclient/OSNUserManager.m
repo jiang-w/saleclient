@@ -15,7 +15,7 @@
     OSNNetworkService *service = [OSNNetworkService sharedInstance];
     NSHTTPURLResponse *response;
     NSError *error;
-    NSData *data = [service syncPostRequest:[NSString stringWithFormat:@"%@/ipadUserLogin", BASEURL] parameters:@{@"userLoginId":userName,@"password":password} returnResponse:&response error:&error];
+    NSData *data = [service syncPostRequest:[NSString stringWithFormat:@"%@ipadUserLogin", BASEURL] parameters:@{@"userLoginId":userName,@"password":password} returnResponse:&response error:&error];
     if (data) {
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
         if ([@"10004" isEqual: dic[@"returnValue"][@"status"]]) {

@@ -28,6 +28,7 @@
 		015B2D1A1BFEBA5400821100 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 015B2D181BFEBA5400821100 /* LaunchScreen.storyboard */; };
 		015B2D251BFEBBFD00821100 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 015B2D231BFEBBFD00821100 /* SignInViewController.m */; };
 		015B2D261BFEBBFD00821100 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 015B2D241BFEBBFD00821100 /* SignInViewController.xib */; };
+		0187A0261C01A3C1001091F6 /* CaseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0187A0251C01A3C1001091F6 /* CaseListViewController.m */; settings = {ASSET_TAGS = (); }; };
 		018B09E61BFEC0BB007B69A8 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018B09E41BFEC0BB007B69A8 /* HomeViewController.m */; };
 		018B09E71BFEC0BB007B69A8 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 018B09E51BFEC0BB007B69A8 /* HomeViewController.xib */; };
 		018B09ED1BFEC206007B69A8 /* OSNUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 018B09EC1BFEC206007B69A8 /* OSNUserInfo.m */; };
@@ -64,6 +65,8 @@
 		015B2D221BFEBBFD00821100 /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
 		015B2D231BFEBBFD00821100 /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
 		015B2D241BFEBBFD00821100 /* SignInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
+		0187A0241C01A3C1001091F6 /* CaseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseListViewController.h; sourceTree = "<group>"; };
+		0187A0251C01A3C1001091F6 /* CaseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseListViewController.m; sourceTree = "<group>"; };
 		018B09E31BFEC0BB007B69A8 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		018B09E41BFEC0BB007B69A8 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		018B09E51BFEC0BB007B69A8 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
@@ -166,11 +169,13 @@
 				018B09E31BFEC0BB007B69A8 /* HomeViewController.h */,
 				018B09E41BFEC0BB007B69A8 /* HomeViewController.m */,
 				018B09E51BFEC0BB007B69A8 /* HomeViewController.xib */,
-				0113755E1BFF074100A9AB9E /* ProductListViewController.h */,
-				0113755F1BFF074100A9AB9E /* ProductListViewController.m */,
 				011375611BFF0DA400A9AB9E /* NavigationViewController.h */,
 				011375621BFF0DA400A9AB9E /* NavigationViewController.m */,
 				011375631BFF0DA400A9AB9E /* NavigationViewController.xib */,
+				0113755E1BFF074100A9AB9E /* ProductListViewController.h */,
+				0113755F1BFF074100A9AB9E /* ProductListViewController.m */,
+				0187A0241C01A3C1001091F6 /* CaseListViewController.h */,
+				0187A0251C01A3C1001091F6 /* CaseListViewController.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -332,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0187A0261C01A3C1001091F6 /* CaseListViewController.m in Sources */,
 				015B2D251BFEBBFD00821100 /* SignInViewController.m in Sources */,
 				018B09F41BFEC38B007B69A8 /* OSNNetworkService.m in Sources */,
 				011375601BFF074100A9AB9E /* ProductListViewController.m in Sources */,

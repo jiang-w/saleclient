@@ -10,4 +10,6 @@
 
 @interface NavigationViewController : UIViewController <UIScrollViewDelegate>
 
+@property(nonatomic, assign) NSInteger currentIndex;
+
 @end
