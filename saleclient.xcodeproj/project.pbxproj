@@ -22,6 +22,7 @@
 		011375601BFF074100A9AB9E /* ProductListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0113755F1BFF074100A9AB9E /* ProductListViewController.m */; };
 		011375641BFF0DA400A9AB9E /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 011375621BFF0DA400A9AB9E /* NavigationViewController.m */; };
 		011375651BFF0DA400A9AB9E /* NavigationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 011375631BFF0DA400A9AB9E /* NavigationViewController.xib */; };
+		0129AB8D1C0363D800A445FB /* OSNProductManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0129AB8C1C0363D800A445FB /* OSNProductManager.m */; settings = {ASSET_TAGS = (); }; };
 		015B2D0C1BFEBA5400821100 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 015B2D0B1BFEBA5400821100 /* main.m */; };
 		015B2D0F1BFEBA5400821100 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 015B2D0E1BFEBA5400821100 /* AppDelegate.m */; };
 		015B2D171BFEBA5400821100 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 015B2D161BFEBA5400821100 /* Assets.xcassets */; };
@@ -55,6 +56,8 @@
 		011375611BFF0DA400A9AB9E /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
 		011375621BFF0DA400A9AB9E /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
 		011375631BFF0DA400A9AB9E /* NavigationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationViewController.xib; sourceTree = "<group>"; };
+		0129AB8B1C0363D800A445FB /* OSNProductManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNProductManager.h; sourceTree = "<group>"; };
+		0129AB8C1C0363D800A445FB /* OSNProductManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNProductManager.m; sourceTree = "<group>"; };
 		015B2D071BFEBA5400821100 /* saleclient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = saleclient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		015B2D0B1BFEBA5400821100 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		015B2D0D1BFEBA5400821100 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -197,6 +200,8 @@
 				018B09F11BFEC38B007B69A8 /* OSNNetworkService.m */,
 				018B09F21BFEC38B007B69A8 /* OSNUserManager.h */,
 				018B09F31BFEC38B007B69A8 /* OSNUserManager.m */,
+				0129AB8B1C0363D800A445FB /* OSNProductManager.h */,
+				0129AB8C1C0363D800A445FB /* OSNProductManager.m */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -341,6 +346,7 @@
 				015B2D251BFEBBFD00821100 /* SignInViewController.m in Sources */,
 				018B09F41BFEC38B007B69A8 /* OSNNetworkService.m in Sources */,
 				011375601BFF074100A9AB9E /* ProductListViewController.m in Sources */,
+				0129AB8D1C0363D800A445FB /* OSNProductManager.m in Sources */,
 				015B2D0F1BFEBA5400821100 /* AppDelegate.m in Sources */,
 				018B09F51BFEC38B007B69A8 /* OSNUserManager.m in Sources */,
 				018B09ED1BFEC206007B69A8 /* OSNUserInfo.m in Sources */,

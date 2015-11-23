@@ -89,7 +89,7 @@
             contr = [[ProductListViewController alloc] initWithFrame:self.scrollView.frame];
             break;
         case 2:
-            contr = [[CaseListViewController alloc] initWithFrame:self.scrollView.frame];
+            contr = [[ProductListViewController alloc] initWithFrame:self.scrollView.frame];
             break;
         case 3:
             contr = [[ProductListViewController alloc] initWithFrame:self.scrollView.frame];

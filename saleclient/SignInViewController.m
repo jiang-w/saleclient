@@ -26,7 +26,7 @@
 - (IBAction)signin:(id)sender {
     NSString *userName = self.userNameTextBox.text;
     NSString *password = self.passwordTextBox.text;
-    BOOL isRemember = NO;
+    BOOL isRemember = YES;
     if (IS_EMPTY_STRING(userName) || IS_EMPTY_STRING(password)) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"用户名密码不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
         [alert show];

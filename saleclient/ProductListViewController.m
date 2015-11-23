@@ -7,6 +7,7 @@
 //
 
 #import "ProductListViewController.h"
+#import "OSNProductManager.h"
 
 @interface ProductListViewController ()
 
@@ -25,6 +26,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    OSNProductManager *manager = [[OSNProductManager alloc] init];
+    [manager getProductTagList];
 }
 
 

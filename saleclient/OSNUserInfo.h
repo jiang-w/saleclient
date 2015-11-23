@@ -21,5 +21,6 @@
 @property (nonatomic, strong) NSString *factoryId;
 @property (nonatomic, strong) NSString *municipalId;
 @property (nonatomic, strong) NSString *shopId;
+@property (nonatomic, strong) NSString *accessToken;
 
 @end

@@ -12,8 +12,8 @@
 
 @interface OSNUserManager : NSObject
 
-@property (nonatomic, strong) OSNUserInfo *currentUser;
-
 - (OSNUserInfo *)signiInWithUserName:(NSString *)userName andPassword:(NSString *)password isRemember:(BOOL)remember;
+
++ (OSNUserInfo *)currentUser;
 
 @end
