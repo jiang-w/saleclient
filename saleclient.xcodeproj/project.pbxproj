@@ -22,19 +22,22 @@
 		011375601BFF074100A9AB9E /* ProductListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0113755F1BFF074100A9AB9E /* ProductListViewController.m */; };
 		011375641BFF0DA400A9AB9E /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 011375621BFF0DA400A9AB9E /* NavigationViewController.m */; };
 		011375651BFF0DA400A9AB9E /* NavigationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 011375631BFF0DA400A9AB9E /* NavigationViewController.xib */; };
-		0129AB8D1C0363D800A445FB /* OSNProductManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0129AB8C1C0363D800A445FB /* OSNProductManager.m */; settings = {ASSET_TAGS = (); }; };
+		0129AB8D1C0363D800A445FB /* OSNProductManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0129AB8C1C0363D800A445FB /* OSNProductManager.m */; };
 		015B2D0C1BFEBA5400821100 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 015B2D0B1BFEBA5400821100 /* main.m */; };
 		015B2D0F1BFEBA5400821100 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 015B2D0E1BFEBA5400821100 /* AppDelegate.m */; };
 		015B2D171BFEBA5400821100 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 015B2D161BFEBA5400821100 /* Assets.xcassets */; };
 		015B2D1A1BFEBA5400821100 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 015B2D181BFEBA5400821100 /* LaunchScreen.storyboard */; };
 		015B2D251BFEBBFD00821100 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 015B2D231BFEBBFD00821100 /* SignInViewController.m */; };
 		015B2D261BFEBBFD00821100 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 015B2D241BFEBBFD00821100 /* SignInViewController.xib */; };
-		0187A0261C01A3C1001091F6 /* CaseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0187A0251C01A3C1001091F6 /* CaseListViewController.m */; settings = {ASSET_TAGS = (); }; };
+		0187A0261C01A3C1001091F6 /* CaseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0187A0251C01A3C1001091F6 /* CaseListViewController.m */; };
 		018B09E61BFEC0BB007B69A8 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018B09E41BFEC0BB007B69A8 /* HomeViewController.m */; };
 		018B09E71BFEC0BB007B69A8 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 018B09E51BFEC0BB007B69A8 /* HomeViewController.xib */; };
 		018B09ED1BFEC206007B69A8 /* OSNUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 018B09EC1BFEC206007B69A8 /* OSNUserInfo.m */; };
 		018B09F41BFEC38B007B69A8 /* OSNNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 018B09F11BFEC38B007B69A8 /* OSNNetworkService.m */; };
 		018B09F51BFEC38B007B69A8 /* OSNUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 018B09F31BFEC38B007B69A8 /* OSNUserManager.m */; };
+		01AF1F5C1C0402B00033413F /* OSNCaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F5B1C0402B00033413F /* OSNCaseManager.m */; };
+		01AF1F5F1C040D260033413F /* OSNTagItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F5E1C040D260033413F /* OSNTagItem.m */; };
+		01AF1F621C040E1B0033413F /* OSNTagGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F611C040E1B0033413F /* OSNTagGroup.m */; };
 		6ECBAA760C49A32A4783B017 /* libPods-saleclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 977BB1C584A2928D5B6CF794 /* libPods-saleclient.a */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +85,12 @@
 		018B09F11BFEC38B007B69A8 /* OSNNetworkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNNetworkService.m; sourceTree = "<group>"; };
 		018B09F21BFEC38B007B69A8 /* OSNUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNUserManager.h; sourceTree = "<group>"; };
 		018B09F31BFEC38B007B69A8 /* OSNUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNUserManager.m; sourceTree = "<group>"; };
+		01AF1F5A1C0402B00033413F /* OSNCaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNCaseManager.h; sourceTree = "<group>"; };
+		01AF1F5B1C0402B00033413F /* OSNCaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNCaseManager.m; sourceTree = "<group>"; };
+		01AF1F5D1C040D260033413F /* OSNTagItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNTagItem.h; sourceTree = "<group>"; };
+		01AF1F5E1C040D260033413F /* OSNTagItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNTagItem.m; sourceTree = "<group>"; };
+		01AF1F601C040E1B0033413F /* OSNTagGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNTagGroup.h; sourceTree = "<group>"; };
+		01AF1F611C040E1B0033413F /* OSNTagGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNTagGroup.m; sourceTree = "<group>"; };
 		085C548C4109E76C880EC2E0 /* Pods-saleclient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-saleclient.release.xcconfig"; path = "Pods/Target Support Files/Pods-saleclient/Pods-saleclient.release.xcconfig"; sourceTree = "<group>"; };
 		977BB1C584A2928D5B6CF794 /* libPods-saleclient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-saleclient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91545DC02F872E51821B588 /* Pods-saleclient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-saleclient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-saleclient/Pods-saleclient.debug.xcconfig"; sourceTree = "<group>"; };
@@ -189,6 +198,10 @@
 				018B09EE1BFEC214007B69A8 /* OSNModel.h */,
 				018B09EB1BFEC206007B69A8 /* OSNUserInfo.h */,
 				018B09EC1BFEC206007B69A8 /* OSNUserInfo.m */,
+				01AF1F5D1C040D260033413F /* OSNTagItem.h */,
+				01AF1F5E1C040D260033413F /* OSNTagItem.m */,
+				01AF1F601C040E1B0033413F /* OSNTagGroup.h */,
+				01AF1F611C040E1B0033413F /* OSNTagGroup.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -202,6 +215,8 @@
 				018B09F31BFEC38B007B69A8 /* OSNUserManager.m */,
 				0129AB8B1C0363D800A445FB /* OSNProductManager.h */,
 				0129AB8C1C0363D800A445FB /* OSNProductManager.m */,
+				01AF1F5A1C0402B00033413F /* OSNCaseManager.h */,
+				01AF1F5B1C0402B00033413F /* OSNCaseManager.m */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -344,13 +359,16 @@
 			files = (
 				0187A0261C01A3C1001091F6 /* CaseListViewController.m in Sources */,
 				015B2D251BFEBBFD00821100 /* SignInViewController.m in Sources */,
+				01AF1F5C1C0402B00033413F /* OSNCaseManager.m in Sources */,
 				018B09F41BFEC38B007B69A8 /* OSNNetworkService.m in Sources */,
 				011375601BFF074100A9AB9E /* ProductListViewController.m in Sources */,
 				0129AB8D1C0363D800A445FB /* OSNProductManager.m in Sources */,
 				015B2D0F1BFEBA5400821100 /* AppDelegate.m in Sources */,
+				01AF1F621C040E1B0033413F /* OSNTagGroup.m in Sources */,
 				018B09F51BFEC38B007B69A8 /* OSNUserManager.m in Sources */,
 				018B09ED1BFEC206007B69A8 /* OSNUserInfo.m in Sources */,
 				015B2D0C1BFEBA5400821100 /* main.m in Sources */,
+				01AF1F5F1C040D260033413F /* OSNTagItem.m in Sources */,
 				018B09E61BFEC0BB007B69A8 /* HomeViewController.m in Sources */,
 				011375641BFF0DA400A9AB9E /* NavigationViewController.m in Sources */,
 			);

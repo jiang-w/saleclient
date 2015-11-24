@@ -7,6 +7,7 @@
 //
 
 #import "CaseListViewController.h"
+#import "OSNCaseManager.h"
 
 @implementation CaseListViewController
 
@@ -21,6 +22,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    OSNCaseManager *manager = [[OSNCaseManager alloc] init];
+    [manager getCaseTagList];
 }
 
 @end
