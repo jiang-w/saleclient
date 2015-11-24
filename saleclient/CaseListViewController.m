@@ -7,7 +7,14 @@
 //
 
 #import "CaseListViewController.h"
-#import "OSNCaseManager.h"
+#import "CaseTagTableViewController.h"
+#import <Masonry.h>
+
+@interface CaseListViewController()
+
+@property(nonatomic, strong) CaseTagTableViewController *tagTableVC;
+
+@end
 
 @implementation CaseListViewController
 
@@ -23,8 +30,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    OSNCaseManager *manager = [[OSNCaseManager alloc] init];
-    [manager getCaseTagList];
+    [self.view addSubview:self.tagTableVC.tableView];
+    [self.tagTableVC.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.bottom.equalTo(self.view);
+        make.width.mas_equalTo(260);
+    }];
+}
+
+
+- (CaseTagTableViewController *)tagTableVC {
+    if (!_tagTableVC) {
+        _tagTableVC = [[CaseTagTableViewController alloc] init];
+    }
+    return _tagTableVC;
 }
 
 @end
