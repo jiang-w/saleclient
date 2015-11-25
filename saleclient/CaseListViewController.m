@@ -7,12 +7,12 @@
 //
 
 #import "CaseListViewController.h"
-#import "CaseTagTableViewController.h"
+#import "OSNCaseTagListVC.h"
 #import <Masonry.h>
 
 @interface CaseListViewController()
 
-@property(nonatomic, strong) CaseTagTableViewController *tagTableVC;
+@property(nonatomic, strong) OSNCaseTagListVC *sideViewController;
 
 @end
 
@@ -22,7 +22,6 @@
     self = [super init];
     if (self) {
         [self.view setFrame:frame];
-        self.view.backgroundColor = [UIColor blueColor];
     }
     return self;
 }
@@ -30,19 +29,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.view addSubview:self.tagTableVC.tableView];
-    [self.tagTableVC.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.view addSubview:self.sideViewController.tableView];
+    [self.sideViewController.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.bottom.equalTo(self.view);
         make.width.mas_equalTo(260);
     }];
 }
 
-
-- (CaseTagTableViewController *)tagTableVC {
-    if (!_tagTableVC) {
-        _tagTableVC = [[CaseTagTableViewController alloc] init];
+- (OSNCaseTagListVC *)sideViewController {
+    if (!_sideViewController) {
+        _sideViewController = [[OSNCaseTagListVC alloc] init];
     }
-    return _tagTableVC;
+    return _sideViewController;
 }
 
 @end

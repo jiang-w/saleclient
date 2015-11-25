@@ -29,11 +29,9 @@
 		015B2D1A1BFEBA5400821100 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 015B2D181BFEBA5400821100 /* LaunchScreen.storyboard */; };
 		015B2D251BFEBBFD00821100 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 015B2D231BFEBBFD00821100 /* SignInViewController.m */; };
 		015B2D261BFEBBFD00821100 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 015B2D241BFEBBFD00821100 /* SignInViewController.xib */; };
-		017A277C1C049E6500CB577D /* TagSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 017A277B1C049E6500CB577D /* TagSectionHeaderView.m */; settings = {ASSET_TAGS = (); }; };
-		017A277F1C049FB200CB577D /* TagSectionHeaderViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 017A277E1C049FB200CB577D /* TagSectionHeaderViewModel.m */; settings = {ASSET_TAGS = (); }; };
-		017A27821C04A46D00CB577D /* pro_lm.gif in Resources */ = {isa = PBXBuildFile; fileRef = 017A27801C04A46D00CB577D /* pro_lm.gif */; settings = {ASSET_TAGS = (); }; };
-		017A27831C04A46D00CB577D /* pro_lm1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 017A27811C04A46D00CB577D /* pro_lm1.gif */; settings = {ASSET_TAGS = (); }; };
-		017A27861C04A79C00CB577D /* CaseTagTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 017A27851C04A79C00CB577D /* CaseTagTableViewController.m */; settings = {ASSET_TAGS = (); }; };
+		017A277F1C049FB200CB577D /* TagSectionHeaderViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 017A277E1C049FB200CB577D /* TagSectionHeaderViewModel.m */; };
+		017A27821C04A46D00CB577D /* pro_lm.gif in Resources */ = {isa = PBXBuildFile; fileRef = 017A27801C04A46D00CB577D /* pro_lm.gif */; };
+		017A27831C04A46D00CB577D /* pro_lm1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 017A27811C04A46D00CB577D /* pro_lm1.gif */; };
 		0187A0261C01A3C1001091F6 /* CaseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0187A0251C01A3C1001091F6 /* CaseListViewController.m */; };
 		018B09E61BFEC0BB007B69A8 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018B09E41BFEC0BB007B69A8 /* HomeViewController.m */; };
 		018B09E71BFEC0BB007B69A8 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 018B09E51BFEC0BB007B69A8 /* HomeViewController.xib */; };
@@ -43,6 +41,8 @@
 		01AF1F5C1C0402B00033413F /* OSNCaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F5B1C0402B00033413F /* OSNCaseManager.m */; };
 		01AF1F5F1C040D260033413F /* OSNTagItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F5E1C040D260033413F /* OSNTagItem.m */; };
 		01AF1F621C040E1B0033413F /* OSNTagGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F611C040E1B0033413F /* OSNTagGroup.m */; };
+		01CA2CED1C0555F000CD0024 /* OSNCaseTagListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CA2CEC1C0555F000CD0024 /* OSNCaseTagListVC.m */; };
+		01CA2CF11C05574C00CD0024 /* OSNSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CA2CF01C05574C00CD0024 /* OSNSectionHeaderView.m */; };
 		6ECBAA760C49A32A4783B017 /* libPods-saleclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 977BB1C584A2928D5B6CF794 /* libPods-saleclient.a */; };
 /* End PBXBuildFile section */
 
@@ -76,14 +76,10 @@
 		015B2D221BFEBBFD00821100 /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
 		015B2D231BFEBBFD00821100 /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
 		015B2D241BFEBBFD00821100 /* SignInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
-		017A277A1C049E6500CB577D /* TagSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagSectionHeaderView.h; sourceTree = "<group>"; };
-		017A277B1C049E6500CB577D /* TagSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagSectionHeaderView.m; sourceTree = "<group>"; };
 		017A277D1C049FB200CB577D /* TagSectionHeaderViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagSectionHeaderViewModel.h; sourceTree = "<group>"; };
 		017A277E1C049FB200CB577D /* TagSectionHeaderViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagSectionHeaderViewModel.m; sourceTree = "<group>"; };
 		017A27801C04A46D00CB577D /* pro_lm.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = pro_lm.gif; sourceTree = "<group>"; };
 		017A27811C04A46D00CB577D /* pro_lm1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = pro_lm1.gif; sourceTree = "<group>"; };
-		017A27841C04A79C00CB577D /* CaseTagTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseTagTableViewController.h; sourceTree = "<group>"; };
-		017A27851C04A79C00CB577D /* CaseTagTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseTagTableViewController.m; sourceTree = "<group>"; };
 		0187A0241C01A3C1001091F6 /* CaseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseListViewController.h; sourceTree = "<group>"; };
 		0187A0251C01A3C1001091F6 /* CaseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseListViewController.m; sourceTree = "<group>"; };
 		018B09E31BFEC0BB007B69A8 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -104,6 +100,10 @@
 		01AF1F5E1C040D260033413F /* OSNTagItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNTagItem.m; sourceTree = "<group>"; };
 		01AF1F601C040E1B0033413F /* OSNTagGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNTagGroup.h; sourceTree = "<group>"; };
 		01AF1F611C040E1B0033413F /* OSNTagGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNTagGroup.m; sourceTree = "<group>"; };
+		01CA2CEB1C0555F000CD0024 /* OSNCaseTagListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNCaseTagListVC.h; sourceTree = "<group>"; };
+		01CA2CEC1C0555F000CD0024 /* OSNCaseTagListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNCaseTagListVC.m; sourceTree = "<group>"; };
+		01CA2CEF1C05574C00CD0024 /* OSNSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNSectionHeaderView.h; sourceTree = "<group>"; };
+		01CA2CF01C05574C00CD0024 /* OSNSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNSectionHeaderView.m; sourceTree = "<group>"; };
 		085C548C4109E76C880EC2E0 /* Pods-saleclient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-saleclient.release.xcconfig"; path = "Pods/Target Support Files/Pods-saleclient/Pods-saleclient.release.xcconfig"; sourceTree = "<group>"; };
 		977BB1C584A2928D5B6CF794 /* libPods-saleclient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-saleclient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91545DC02F872E51821B588 /* Pods-saleclient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-saleclient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-saleclient/Pods-saleclient.debug.xcconfig"; sourceTree = "<group>"; };
@@ -204,10 +204,10 @@
 				0113755F1BFF074100A9AB9E /* ProductListViewController.m */,
 				0187A0241C01A3C1001091F6 /* CaseListViewController.h */,
 				0187A0251C01A3C1001091F6 /* CaseListViewController.m */,
-				017A277A1C049E6500CB577D /* TagSectionHeaderView.h */,
-				017A277B1C049E6500CB577D /* TagSectionHeaderView.m */,
-				017A27841C04A79C00CB577D /* CaseTagTableViewController.h */,
-				017A27851C04A79C00CB577D /* CaseTagTableViewController.m */,
+				01CA2CEB1C0555F000CD0024 /* OSNCaseTagListVC.h */,
+				01CA2CEC1C0555F000CD0024 /* OSNCaseTagListVC.m */,
+				01CA2CEF1C05574C00CD0024 /* OSNSectionHeaderView.h */,
+				01CA2CF01C05574C00CD0024 /* OSNSectionHeaderView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -395,15 +395,15 @@
 				011375601BFF074100A9AB9E /* ProductListViewController.m in Sources */,
 				0129AB8D1C0363D800A445FB /* OSNProductManager.m in Sources */,
 				015B2D0F1BFEBA5400821100 /* AppDelegate.m in Sources */,
-				017A27861C04A79C00CB577D /* CaseTagTableViewController.m in Sources */,
 				01AF1F621C040E1B0033413F /* OSNTagGroup.m in Sources */,
 				018B09F51BFEC38B007B69A8 /* OSNUserManager.m in Sources */,
 				018B09ED1BFEC206007B69A8 /* OSNUserInfo.m in Sources */,
+				01CA2CF11C05574C00CD0024 /* OSNSectionHeaderView.m in Sources */,
 				015B2D0C1BFEBA5400821100 /* main.m in Sources */,
 				01AF1F5F1C040D260033413F /* OSNTagItem.m in Sources */,
 				017A277F1C049FB200CB577D /* TagSectionHeaderViewModel.m in Sources */,
 				018B09E61BFEC0BB007B69A8 /* HomeViewController.m in Sources */,
-				017A277C1C049E6500CB577D /* TagSectionHeaderView.m in Sources */,
+				01CA2CED1C0555F000CD0024 /* OSNCaseTagListVC.m in Sources */,
 				011375641BFF0DA400A9AB9E /* NavigationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
