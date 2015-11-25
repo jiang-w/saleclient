@@ -8,6 +8,7 @@
 
 #import "OSNCaseTagListVC.h"
 #import "OSNCaseManager.h"
+#import "OSNTagListCell.h"
 
 @interface OSNCaseTagListVC ()
 
@@ -23,13 +24,13 @@
     [super viewDidLoad];
     self.tableView.sectionHeaderHeight = 40;
     self.numberOfTagsInCell = 3;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     _manager = [[OSNCaseManager alloc] init];
     _sectionHeaderArray = [NSMutableArray array];
     for (OSNTagGroup *group in [_manager getCaseTagList]) {
         OSNTagListSection *section = [[OSNTagListSection alloc] initWithReuseIdentifier:@"SectionHeaderIdentifier"];
         section.group = group;
-        section.frame = CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.sectionHeaderHeight);
         section.delegate = self;
         [_sectionHeaderArray addObject:section];
     }
@@ -61,10 +62,27 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellIdentifier" forIndexPath:indexPath];
-    
-    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    OSNTagListCell *cell = (OSNTagListCell *)[tableView dequeueReusableCellWithIdentifier:@"cellIdentifier"];
+    if (!cell) {
+        cell = [[OSNTagListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellIdentifier"];
+    }
+    cell.tags = [self getTagsWithIndexPath:indexPath];
     return cell;
+}
+
+- (NSArray *)getTagsWithIndexPath:(NSIndexPath *)indexPath {
+    OSNTagListSection *section = _sectionHeaderArray[indexPath.section];
+    NSInteger tagCount = section.group.list.count;
+    NSInteger startLocation = indexPath.row * self.numberOfTagsInCell;
+    NSRange range;
+    if (tagCount - startLocation < self.numberOfTagsInCell) {
+        range = NSMakeRange(startLocation, tagCount - startLocation);
+    }
+    else {
+        range = NSMakeRange(startLocation, self.numberOfTagsInCell);
+    }
+    NSArray *tags = [section.group.list subarrayWithRange:range];
+    return tags;
 }
 
 

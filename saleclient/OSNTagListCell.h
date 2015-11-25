@@ -10,4 +10,6 @@
 
 @interface OSNTagListCell : UITableViewCell
 
+@property(nonatomic, strong) NSArray *tags;
+
 @end
