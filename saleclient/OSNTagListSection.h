@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "OSNTagGroup.h"
 
-@protocol OSNSectionHeaderViewDelegate <NSObject>
+@protocol OSNTagListSectionDelegate <NSObject>
 
 @required
 - (void)openedSectionHeaderView:(UIView *)sender;
@@ -17,10 +17,10 @@
 
 @end
 
-@interface OSNSectionHeaderView : UITableViewHeaderFooterView
+@interface OSNTagListSection : UITableViewHeaderFooterView
 
 @property(nonatomic, strong) OSNTagGroup *group;
 @property(nonatomic, assign) BOOL isOpen;
-@property(nonatomic, weak) id<OSNSectionHeaderViewDelegate> delegate;
+@property(nonatomic, weak) id<OSNTagListSectionDelegate> delegate;
 
 @end

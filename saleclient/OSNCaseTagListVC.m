@@ -21,12 +21,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView.sectionHeaderHeight = 60;
+    self.tableView.sectionHeaderHeight = 40;
+    self.numberOfTagsInCell = 3;
     
     _manager = [[OSNCaseManager alloc] init];
     _sectionHeaderArray = [NSMutableArray array];
     for (OSNTagGroup *group in [_manager getCaseTagList]) {
-        OSNSectionHeaderView *section = [[OSNSectionHeaderView alloc] initWithReuseIdentifier:@"SectionHeaderIdentifier"];
+        OSNTagListSection *section = [[OSNTagListSection alloc] initWithReuseIdentifier:@"SectionHeaderIdentifier"];
         section.group = group;
         section.frame = CGRectMake(0, 0, self.tableView.frame.size.width, self.tableView.sectionHeaderHeight);
         section.delegate = self;
@@ -46,9 +47,9 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    OSNSectionHeaderView *sectionHeader = _sectionHeaderArray[section];
+    OSNTagListSection *sectionHeader = _sectionHeaderArray[section];
     if (sectionHeader.isOpen) {
-        return floor(sectionHeader.group.list.count / 2.0);
+        return floor(sectionHeader.group.list.count * 1.0 / self.numberOfTagsInCell);
     }
     else {
         return 0;
@@ -59,7 +60,6 @@
     return _sectionHeaderArray[section];
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellIdentifier" forIndexPath:indexPath];
     
@@ -67,47 +67,13 @@
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 
 #pragma mark - OSNSectionHeaderViewDelegate
 
 - (void)openedSectionHeaderView:(UIView *)sender {
-    OSNSectionHeaderView *sectionHeader = (OSNSectionHeaderView *)sender;
+    OSNTagListSection *sectionHeader = (OSNTagListSection *)sender;
     NSInteger sectionIndex = [_sectionHeaderArray indexOfObject:sectionHeader];
-    NSInteger count = floor(sectionHeader.group.list.count / 2.0);
+    NSInteger count = floor(sectionHeader.group.list.count * 1.0 / self.numberOfTagsInCell);
     if (count > 0) {
         NSMutableArray *indexPathsToInsert = [NSMutableArray array];
         for (int i = 0; i < count; i++) {
@@ -120,7 +86,7 @@
 }
 
 - (void)closedSectionHeaderView:(UIView *)sender {
-    OSNSectionHeaderView *sectionHeader = (OSNSectionHeaderView *)sender;
+    OSNTagListSection *sectionHeader = (OSNTagListSection *)sender;
     NSInteger sectionIndex = [_sectionHeaderArray indexOfObject:sectionHeader];
     NSInteger count = [self.tableView numberOfRowsInSection:sectionIndex];
     if (count > 0) {

@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "OSNSectionHeaderView.h"
+#import "OSNTagListSection.h"
 
-@interface OSNCaseTagListVC : UITableViewController <OSNSectionHeaderViewDelegate>
+@interface OSNCaseTagListVC : UITableViewController <OSNTagListSectionDelegate>
+
+@property(nonatomic, assign) NSInteger numberOfTagsInCell;
 
 @end

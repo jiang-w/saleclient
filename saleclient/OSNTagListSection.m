@@ -6,17 +6,17 @@
 //  Copyright © 2015年 oceano. All rights reserved.
 //
 
-#import "OSNSectionHeaderView.h"
+#import "OSNTagListSection.h"
 #import <Masonry.h>
 
-@interface OSNSectionHeaderView()
+@interface OSNTagListSection()
 
 @property(nonatomic, strong) UILabel *titleLabel;
 @property(nonatomic, strong) UIButton *expandButton;
 
 @end
 
-@implementation OSNSectionHeaderView
+@implementation OSNTagListSection
 
 - (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithReuseIdentifier:reuseIdentifier];

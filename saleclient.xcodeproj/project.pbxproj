@@ -42,7 +42,8 @@
 		01AF1F5F1C040D260033413F /* OSNTagItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F5E1C040D260033413F /* OSNTagItem.m */; };
 		01AF1F621C040E1B0033413F /* OSNTagGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F611C040E1B0033413F /* OSNTagGroup.m */; };
 		01CA2CED1C0555F000CD0024 /* OSNCaseTagListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CA2CEC1C0555F000CD0024 /* OSNCaseTagListVC.m */; };
-		01CA2CF11C05574C00CD0024 /* OSNSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CA2CF01C05574C00CD0024 /* OSNSectionHeaderView.m */; };
+		01CA2CF11C05574C00CD0024 /* OSNTagListSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CA2CF01C05574C00CD0024 /* OSNTagListSection.m */; };
+		01CDB8181C059A4300463F97 /* OSNTagListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CDB8171C059A4300463F97 /* OSNTagListCell.m */; };
 		6ECBAA760C49A32A4783B017 /* libPods-saleclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 977BB1C584A2928D5B6CF794 /* libPods-saleclient.a */; };
 /* End PBXBuildFile section */
 
@@ -102,8 +103,10 @@
 		01AF1F611C040E1B0033413F /* OSNTagGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNTagGroup.m; sourceTree = "<group>"; };
 		01CA2CEB1C0555F000CD0024 /* OSNCaseTagListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNCaseTagListVC.h; sourceTree = "<group>"; };
 		01CA2CEC1C0555F000CD0024 /* OSNCaseTagListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNCaseTagListVC.m; sourceTree = "<group>"; };
-		01CA2CEF1C05574C00CD0024 /* OSNSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNSectionHeaderView.h; sourceTree = "<group>"; };
-		01CA2CF01C05574C00CD0024 /* OSNSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNSectionHeaderView.m; sourceTree = "<group>"; };
+		01CA2CEF1C05574C00CD0024 /* OSNTagListSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNTagListSection.h; sourceTree = "<group>"; };
+		01CA2CF01C05574C00CD0024 /* OSNTagListSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNTagListSection.m; sourceTree = "<group>"; };
+		01CDB8161C059A4300463F97 /* OSNTagListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNTagListCell.h; sourceTree = "<group>"; };
+		01CDB8171C059A4300463F97 /* OSNTagListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNTagListCell.m; sourceTree = "<group>"; };
 		085C548C4109E76C880EC2E0 /* Pods-saleclient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-saleclient.release.xcconfig"; path = "Pods/Target Support Files/Pods-saleclient/Pods-saleclient.release.xcconfig"; sourceTree = "<group>"; };
 		977BB1C584A2928D5B6CF794 /* libPods-saleclient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-saleclient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91545DC02F872E51821B588 /* Pods-saleclient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-saleclient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-saleclient/Pods-saleclient.debug.xcconfig"; sourceTree = "<group>"; };
@@ -206,8 +209,10 @@
 				0187A0251C01A3C1001091F6 /* CaseListViewController.m */,
 				01CA2CEB1C0555F000CD0024 /* OSNCaseTagListVC.h */,
 				01CA2CEC1C0555F000CD0024 /* OSNCaseTagListVC.m */,
-				01CA2CEF1C05574C00CD0024 /* OSNSectionHeaderView.h */,
-				01CA2CF01C05574C00CD0024 /* OSNSectionHeaderView.m */,
+				01CA2CEF1C05574C00CD0024 /* OSNTagListSection.h */,
+				01CA2CF01C05574C00CD0024 /* OSNTagListSection.m */,
+				01CDB8161C059A4300463F97 /* OSNTagListCell.h */,
+				01CDB8171C059A4300463F97 /* OSNTagListCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -398,9 +403,10 @@
 				01AF1F621C040E1B0033413F /* OSNTagGroup.m in Sources */,
 				018B09F51BFEC38B007B69A8 /* OSNUserManager.m in Sources */,
 				018B09ED1BFEC206007B69A8 /* OSNUserInfo.m in Sources */,
-				01CA2CF11C05574C00CD0024 /* OSNSectionHeaderView.m in Sources */,
+				01CA2CF11C05574C00CD0024 /* OSNTagListSection.m in Sources */,
 				015B2D0C1BFEBA5400821100 /* main.m in Sources */,
 				01AF1F5F1C040D260033413F /* OSNTagItem.m in Sources */,
+				01CDB8181C059A4300463F97 /* OSNTagListCell.m in Sources */,
 				017A277F1C049FB200CB577D /* TagSectionHeaderViewModel.m in Sources */,
 				018B09E61BFEC0BB007B69A8 /* HomeViewController.m in Sources */,
 				01CA2CED1C0555F000CD0024 /* OSNCaseTagListVC.m in Sources */,
