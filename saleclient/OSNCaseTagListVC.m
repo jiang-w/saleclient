@@ -16,7 +16,6 @@
 
 @implementation OSNCaseTagListVC
 {
-    OSNCaseManager *_manager;
     NSMutableArray *_sectionHeaderArray;
 }
 
@@ -26,9 +25,9 @@
     self.numberOfTagsInCell = 3;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    _manager = [[OSNCaseManager alloc] init];
     _sectionHeaderArray = [NSMutableArray array];
-    for (OSNTagGroup *group in [_manager getCaseTagList]) {
+    NSArray *groups = [[[OSNCaseManager alloc] init] getCaseTagList];
+    for (OSNTagGroup *group in groups) {
         OSNTagListSection *section = [[OSNTagListSection alloc] initWithReuseIdentifier:@"SectionHeaderIdentifier"];
         section.group = group;
         section.delegate = self;

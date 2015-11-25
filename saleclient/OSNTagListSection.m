@@ -29,7 +29,7 @@
             make.right.equalTo(self.contentView).offset(-60);
         }];
         self.titleLabel.userInteractionEnabled = NO;
-        self.titleLabel.font = [UIFont systemFontOfSize:15];
+        self.titleLabel.font = [UIFont systemFontOfSize:16];
         
         self.expandButton = [[UIButton alloc] init];
         [self.expandButton setImage:[UIImage imageNamed:@"pro_lm1.gif"] forState:UIControlStateNormal];
