@@ -25,8 +25,9 @@
                     <rect key="frame" x="0.0" y="0.0" width="1024" height="76"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Qd-ax-MjK">
-                            <rect key="frame" x="46" y="34" width="30" height="30"/>
+                            <rect key="frame" x="26" y="32" width="36" height="34"/>
                             <animations/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <state key="normal" title="首页">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -35,8 +36,9 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mRH-n5-suN">
-                            <rect key="frame" x="104" y="34" width="60" height="30"/>
+                            <rect key="frame" x="90" y="32" width="72" height="34"/>
                             <animations/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <state key="normal" title="装修案例">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -45,8 +47,9 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sJW-Oq-rj5">
-                            <rect key="frame" x="192" y="34" width="60" height="30"/>
+                            <rect key="frame" x="190" y="32" width="72" height="34"/>
                             <animations/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <state key="normal" title="小区楼盘">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -55,8 +58,9 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2f-iz-hXi">
-                            <rect key="frame" x="353" y="34" width="60" height="30"/>
+                            <rect key="frame" x="372" y="32" width="72" height="34"/>
                             <animations/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <state key="normal" title="客户管理">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -65,8 +69,9 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WGf-BL-ePl">
-                            <rect key="frame" x="280" y="34" width="45" height="30"/>
+                            <rect key="frame" x="290" y="32" width="54" height="34"/>
                             <animations/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <state key="normal" title="产品库">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -75,7 +80,7 @@
                             </connections>
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pTq-SB-njP">
-                            <rect key="frame" x="439" y="34" width="190" height="30"/>
+                            <rect key="frame" x="490" y="34" width="190" height="30"/>
                             <animations/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="190" id="Rf8-Le-oww"/>
@@ -120,8 +125,9 @@
                             <state key="normal" title="Button" image="historyview_ico.png"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KgT-pT-tYt">
-                            <rect key="frame" x="642" y="34" width="30" height="30"/>
+                            <rect key="frame" x="690" y="32" width="36" height="34"/>
                             <animations/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <state key="normal" title="搜索">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -133,26 +139,26 @@
                         <constraint firstItem="WGf-BL-ePl" firstAttribute="leading" secondItem="sJW-Oq-rj5" secondAttribute="trailing" constant="28" id="9vs-0R-GvR"/>
                         <constraint firstAttribute="bottom" secondItem="i24-dA-nPk" secondAttribute="bottom" id="BAs-8e-O2B"/>
                         <constraint firstItem="mRH-n5-suN" firstAttribute="leading" secondItem="6Qd-ax-MjK" secondAttribute="trailing" constant="28" id="GEp-DC-rdn"/>
-                        <constraint firstAttribute="bottom" secondItem="KgT-pT-tYt" secondAttribute="bottom" constant="12" id="LDf-Wp-xSc"/>
+                        <constraint firstAttribute="bottom" secondItem="KgT-pT-tYt" secondAttribute="bottom" constant="10" id="LDf-Wp-xSc"/>
                         <constraint firstAttribute="bottom" secondItem="sjp-wz-yej" secondAttribute="bottom" id="N9e-FM-cEA"/>
                         <constraint firstItem="X36-BW-0wQ" firstAttribute="leading" secondItem="sjp-wz-yej" secondAttribute="trailing" constant="32" id="Olt-hY-cPM"/>
                         <constraint firstItem="i24-dA-nPk" firstAttribute="leading" secondItem="X36-BW-0wQ" secondAttribute="trailing" constant="32" id="PlZ-R8-M5U"/>
-                        <constraint firstAttribute="bottom" secondItem="6Qd-ax-MjK" secondAttribute="bottom" constant="12" id="R7B-8j-guu"/>
-                        <constraint firstAttribute="bottom" secondItem="sJW-Oq-rj5" secondAttribute="bottom" constant="12" id="Sib-QS-NfY"/>
+                        <constraint firstAttribute="bottom" secondItem="6Qd-ax-MjK" secondAttribute="bottom" constant="10" id="R7B-8j-guu"/>
+                        <constraint firstAttribute="bottom" secondItem="sJW-Oq-rj5" secondAttribute="bottom" constant="10" id="Sib-QS-NfY"/>
                         <constraint firstAttribute="bottom" secondItem="990-71-QRg" secondAttribute="bottom" id="Sjv-fN-JJd"/>
-                        <constraint firstAttribute="bottom" secondItem="WGf-BL-ePl" secondAttribute="bottom" constant="12" id="UxZ-XX-0Q0"/>
+                        <constraint firstAttribute="bottom" secondItem="WGf-BL-ePl" secondAttribute="bottom" constant="10" id="UxZ-XX-0Q0"/>
                         <constraint firstAttribute="bottom" secondItem="X36-BW-0wQ" secondAttribute="bottom" id="VEy-pa-fxV"/>
                         <constraint firstAttribute="height" constant="76" id="Xrj-aW-BKQ"/>
                         <constraint firstItem="990-71-QRg" firstAttribute="leading" secondItem="i24-dA-nPk" secondAttribute="trailing" constant="32" id="bAX-8j-WVE"/>
-                        <constraint firstItem="KgT-pT-tYt" firstAttribute="leading" secondItem="pTq-SB-njP" secondAttribute="trailing" constant="13" id="bIR-62-sus"/>
+                        <constraint firstItem="KgT-pT-tYt" firstAttribute="leading" secondItem="pTq-SB-njP" secondAttribute="trailing" constant="10" id="bIR-62-sus"/>
                         <constraint firstAttribute="trailing" secondItem="990-71-QRg" secondAttribute="trailing" constant="33" id="kyT-XQ-7YI"/>
-                        <constraint firstAttribute="bottom" secondItem="Y2f-iz-hXi" secondAttribute="bottom" constant="12" id="lp9-gS-XQr"/>
+                        <constraint firstAttribute="bottom" secondItem="Y2f-iz-hXi" secondAttribute="bottom" constant="10" id="lp9-gS-XQr"/>
                         <constraint firstAttribute="bottom" secondItem="pTq-SB-njP" secondAttribute="bottom" constant="12" id="nd1-qw-o6L"/>
-                        <constraint firstItem="6Qd-ax-MjK" firstAttribute="leading" secondItem="qES-jd-UlL" secondAttribute="leading" constant="46" id="pyO-cO-gRq"/>
+                        <constraint firstItem="6Qd-ax-MjK" firstAttribute="leading" secondItem="qES-jd-UlL" secondAttribute="leading" constant="26" id="pyO-cO-gRq"/>
                         <constraint firstItem="Y2f-iz-hXi" firstAttribute="leading" secondItem="WGf-BL-ePl" secondAttribute="trailing" constant="28" id="wKp-6Z-fTU"/>
-                        <constraint firstItem="pTq-SB-njP" firstAttribute="leading" secondItem="Y2f-iz-hXi" secondAttribute="trailing" constant="26" id="waC-rm-V85"/>
+                        <constraint firstItem="pTq-SB-njP" firstAttribute="leading" secondItem="Y2f-iz-hXi" secondAttribute="trailing" constant="46" id="waC-rm-V85"/>
                         <constraint firstItem="sJW-Oq-rj5" firstAttribute="leading" secondItem="mRH-n5-suN" secondAttribute="trailing" constant="28" id="woc-K1-8WT"/>
-                        <constraint firstAttribute="bottom" secondItem="mRH-n5-suN" secondAttribute="bottom" constant="12" id="ygF-iG-iU5"/>
+                        <constraint firstAttribute="bottom" secondItem="mRH-n5-suN" secondAttribute="bottom" constant="10" id="ygF-iG-iU5"/>
                     </constraints>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="209-RO-V3h">
