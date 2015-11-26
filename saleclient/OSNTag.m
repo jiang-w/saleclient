@@ -6,8 +6,8 @@
 //  Copyright © 2015年 oceano. All rights reserved.
 //
 
-#import "OSNTagItem.h"
+#import "OSNTag.h"
 
-@implementation OSNTagItem
+@implementation OSNTag
 
 @end

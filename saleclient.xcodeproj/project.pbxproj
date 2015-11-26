@@ -23,7 +23,6 @@
 		011375641BFF0DA400A9AB9E /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 011375621BFF0DA400A9AB9E /* NavigationViewController.m */; };
 		011375651BFF0DA400A9AB9E /* NavigationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 011375631BFF0DA400A9AB9E /* NavigationViewController.xib */; };
 		0129AB8D1C0363D800A445FB /* OSNProductManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0129AB8C1C0363D800A445FB /* OSNProductManager.m */; };
-		014664E81C06ED4C00FD2E96 /* OSNTagViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 014664E71C06ED4C00FD2E96 /* OSNTagViewModel.m */; };
 		014664EB1C06F0CF00FD2E96 /* OSNTagButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 014664EA1C06F0CF00FD2E96 /* OSNTagButton.m */; };
 		014664EE1C07056700FD2E96 /* OSNTagPadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 014664ED1C07056700FD2E96 /* OSNTagPadView.m */; };
 		015B2D0C1BFEBA5400821100 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 015B2D0B1BFEBA5400821100 /* main.m */; };
@@ -42,7 +41,7 @@
 		018B09F41BFEC38B007B69A8 /* OSNNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 018B09F11BFEC38B007B69A8 /* OSNNetworkService.m */; };
 		018B09F51BFEC38B007B69A8 /* OSNUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 018B09F31BFEC38B007B69A8 /* OSNUserManager.m */; };
 		01AF1F5C1C0402B00033413F /* OSNCaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F5B1C0402B00033413F /* OSNCaseManager.m */; };
-		01AF1F5F1C040D260033413F /* OSNTagItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F5E1C040D260033413F /* OSNTagItem.m */; };
+		01AF1F5F1C040D260033413F /* OSNTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F5E1C040D260033413F /* OSNTag.m */; };
 		01AF1F621C040E1B0033413F /* OSNTagGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F611C040E1B0033413F /* OSNTagGroup.m */; };
 		01CA2CED1C0555F000CD0024 /* OSNCaseTagListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CA2CEC1C0555F000CD0024 /* OSNCaseTagListVC.m */; };
 		01CA2CF11C05574C00CD0024 /* OSNTagListSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CA2CF01C05574C00CD0024 /* OSNTagListSection.m */; };
@@ -70,8 +69,6 @@
 		011375631BFF0DA400A9AB9E /* NavigationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationViewController.xib; sourceTree = "<group>"; };
 		0129AB8B1C0363D800A445FB /* OSNProductManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNProductManager.h; sourceTree = "<group>"; };
 		0129AB8C1C0363D800A445FB /* OSNProductManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNProductManager.m; sourceTree = "<group>"; };
-		014664E61C06ED4C00FD2E96 /* OSNTagViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNTagViewModel.h; sourceTree = "<group>"; };
-		014664E71C06ED4C00FD2E96 /* OSNTagViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNTagViewModel.m; sourceTree = "<group>"; };
 		014664E91C06F0CF00FD2E96 /* OSNTagButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNTagButton.h; sourceTree = "<group>"; };
 		014664EA1C06F0CF00FD2E96 /* OSNTagButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNTagButton.m; sourceTree = "<group>"; };
 		014664EC1C07056700FD2E96 /* OSNTagPadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNTagPadView.h; sourceTree = "<group>"; };
@@ -106,8 +103,8 @@
 		018B09F31BFEC38B007B69A8 /* OSNUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNUserManager.m; sourceTree = "<group>"; };
 		01AF1F5A1C0402B00033413F /* OSNCaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNCaseManager.h; sourceTree = "<group>"; };
 		01AF1F5B1C0402B00033413F /* OSNCaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNCaseManager.m; sourceTree = "<group>"; };
-		01AF1F5D1C040D260033413F /* OSNTagItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNTagItem.h; sourceTree = "<group>"; };
-		01AF1F5E1C040D260033413F /* OSNTagItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNTagItem.m; sourceTree = "<group>"; };
+		01AF1F5D1C040D260033413F /* OSNTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNTag.h; sourceTree = "<group>"; };
+		01AF1F5E1C040D260033413F /* OSNTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNTag.m; sourceTree = "<group>"; };
 		01AF1F601C040E1B0033413F /* OSNTagGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNTagGroup.h; sourceTree = "<group>"; };
 		01AF1F611C040E1B0033413F /* OSNTagGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNTagGroup.m; sourceTree = "<group>"; };
 		01CA2CEB1C0555F000CD0024 /* OSNCaseTagListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNCaseTagListVC.h; sourceTree = "<group>"; };
@@ -157,8 +154,6 @@
 		014664E51C06ED1C00FD2E96 /* TagVIew */ = {
 			isa = PBXGroup;
 			children = (
-				014664E61C06ED4C00FD2E96 /* OSNTagViewModel.h */,
-				014664E71C06ED4C00FD2E96 /* OSNTagViewModel.m */,
 				014664E91C06F0CF00FD2E96 /* OSNTagButton.h */,
 				014664EA1C06F0CF00FD2E96 /* OSNTagButton.m */,
 				014664EC1C07056700FD2E96 /* OSNTagPadView.h */,
@@ -255,8 +250,8 @@
 				018B09EE1BFEC214007B69A8 /* OSNModel.h */,
 				018B09EB1BFEC206007B69A8 /* OSNUserInfo.h */,
 				018B09EC1BFEC206007B69A8 /* OSNUserInfo.m */,
-				01AF1F5D1C040D260033413F /* OSNTagItem.h */,
-				01AF1F5E1C040D260033413F /* OSNTagItem.m */,
+				01AF1F5D1C040D260033413F /* OSNTag.h */,
+				01AF1F5E1C040D260033413F /* OSNTag.m */,
 				01AF1F601C040E1B0033413F /* OSNTagGroup.h */,
 				01AF1F611C040E1B0033413F /* OSNTagGroup.m */,
 			);
@@ -418,7 +413,6 @@
 			files = (
 				0187A0261C01A3C1001091F6 /* CaseListViewController.m in Sources */,
 				014664EB1C06F0CF00FD2E96 /* OSNTagButton.m in Sources */,
-				014664E81C06ED4C00FD2E96 /* OSNTagViewModel.m in Sources */,
 				015B2D251BFEBBFD00821100 /* SignInViewController.m in Sources */,
 				01AF1F5C1C0402B00033413F /* OSNCaseManager.m in Sources */,
 				018B09F41BFEC38B007B69A8 /* OSNNetworkService.m in Sources */,
@@ -431,7 +425,7 @@
 				01CA2CF11C05574C00CD0024 /* OSNTagListSection.m in Sources */,
 				014664EE1C07056700FD2E96 /* OSNTagPadView.m in Sources */,
 				015B2D0C1BFEBA5400821100 /* main.m in Sources */,
-				01AF1F5F1C040D260033413F /* OSNTagItem.m in Sources */,
+				01AF1F5F1C040D260033413F /* OSNTag.m in Sources */,
 				01CDB8181C059A4300463F97 /* OSNTagListCell.m in Sources */,
 				017A277F1C049FB200CB577D /* TagSectionHeaderViewModel.m in Sources */,
 				018B09E61BFEC0BB007B69A8 /* HomeViewController.m in Sources */,

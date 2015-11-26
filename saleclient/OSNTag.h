@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OSNTagItem : NSObject
+@interface OSNTag : NSObject
 
 @property (nonatomic, strong) NSString *enumId;
 @property (nonatomic, strong) NSString *enumTypeId;

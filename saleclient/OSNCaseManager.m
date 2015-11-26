@@ -30,7 +30,7 @@
                 group.name = groupDic[@"name"];
                 NSMutableArray *list = [NSMutableArray array];
                 for (NSDictionary *itemDic in groupDic[[NSString stringWithFormat:@"%@List", group.type]]) {
-                    OSNTagItem *item = [[OSNTagItem alloc] init];
+                    OSNTag *item = [[OSNTag alloc] init];
                     item.enumId = itemDic[@"enumId"];
                     item.enumTypeId = itemDic[@"enumTypeId"];
                     if (itemDic[@"enumCode"] != [NSNull null]) {
@@ -40,7 +40,7 @@
                     item.name = itemDic[@"description"];
                     [list addObject:item];
                 }
-                OSNTagItem *allTag = [[OSNTagItem alloc] init];
+                OSNTag *allTag = [[OSNTag alloc] init];
                 allTag.enumId = @"all";
                 allTag.sequenceId = @"0";
                 allTag.name = @"全部";

@@ -26,6 +26,7 @@ static NSString * const cellReuseIdentifier = @"cellIdentifier";
     self.tableView.sectionHeaderHeight = 40;
     self.numberOfTagsInCell = 3;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.bounces = NO;
     
     _sectionHeaderArray = [NSMutableArray array];
     NSArray *groups = [[[OSNCaseManager alloc] init] getCaseTagList];

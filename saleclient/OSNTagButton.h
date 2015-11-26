@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "OSNTagViewModel.h"
 
 @interface OSNTagButton : UIButton
 
-+ (instancetype)buttonWithTagViewModel:(OSNTagViewModel *)viewModel;
+@property(nonatomic, strong) OSNTag *tagObject;
+
++ (instancetype)buttonWithTag:(OSNTag *)tag;
 
 @end

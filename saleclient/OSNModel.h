@@ -7,5 +7,5 @@
 //
 
 #import "OSNUserInfo.h"
-#import "OSNTagItem.h"
+#import "OSNTag.h"
 #import "OSNTagGroup.h"

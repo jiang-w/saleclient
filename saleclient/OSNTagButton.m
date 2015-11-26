@@ -10,33 +10,25 @@
 
 @implementation OSNTagButton
 
-+ (instancetype)buttonWithTagViewModel:(OSNTagViewModel *)viewModel {
++ (instancetype)buttonWithTag:(OSNTag *)tag {
     OSNTagButton *tagBtn = [super buttonWithType:UIButtonTypeCustom];
-    if (viewModel.attributedText) {
-        [tagBtn setAttributedTitle:viewModel.attributedText forState:UIControlStateNormal];
-    }
-    else {
-        [tagBtn setTitle:viewModel.text forState:UIControlStateNormal];
-        [tagBtn setTitleColor:viewModel.textColor forState:UIControlStateNormal];
-        tagBtn.titleLabel.font = viewModel.font ?: [UIFont systemFontOfSize:viewModel.fontSize];
-    }
-    tagBtn.backgroundColor = viewModel.backgroundColor;
-    tagBtn.contentEdgeInsets = viewModel.padding;
-    tagBtn.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-    
-    if (viewModel.backgroundImage) {
-        [tagBtn setBackgroundImage:viewModel.backgroundImage forState:UIControlStateNormal];
-    }
-    if (viewModel.borderColor) {
-        tagBtn.layer.borderColor = viewModel.borderColor.CGColor;
-    }
-    if (viewModel.borderWidth) {
-        tagBtn.layer.borderWidth = viewModel.borderWidth;
-    }
-    tagBtn.layer.cornerRadius = viewModel.cornerRadius;
-    tagBtn.layer.masksToBounds = YES;
-    tagBtn.userInteractionEnabled = viewModel.enable;
+    tagBtn.tagObject = tag;
+    [tagBtn setDefaultStyle];
     return tagBtn;
+}
+
+- (void)setDefaultStyle {
+    [self setTitle:self.tagObject.name forState:UIControlStateNormal];
+    [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.titleLabel.font = [UIFont systemFontOfSize:14];
+    self.backgroundColor = [UIColor whiteColor];
+    self.contentEdgeInsets = UIEdgeInsetsMake(1, 1, 1, 1);
+    self.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    self.layer.borderColor = [UIColor blackColor].CGColor;
+    self.layer.borderWidth = 1;
+    self.layer.cornerRadius = 5;
+    self.layer.masksToBounds = YES;
+    self.userInteractionEnabled = YES;
 }
 
 @end
