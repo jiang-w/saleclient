@@ -7,6 +7,8 @@
 //
 
 #import "OSNTagListCell.h"
+#import "OSNTagViewModel.h"
+#import "OSNTagButton.h"
 #import <Masonry.h>
 
 @implementation OSNTagListCell
@@ -31,12 +33,20 @@
     
     for (int i = 0; i < self.tags.count; i++) {
         OSNTagItem *tag = self.tags[i];
-        UIButton *tagBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//        UIButton *tagBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//        tagBtn.frame = CGRectMake(80 * i, 0, 60, 30);
+//        [tagBtn setTitle:tag.name forState:UIControlStateNormal];
+//        [tagBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//        tagBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+//        [tagBtn addTarget:self action:@selector(tapTagButton:) forControlEvents:UIControlEventTouchUpInside];
+        
+        OSNTagViewModel *tagVM = [[OSNTagViewModel alloc] initWithText:tag.name];
+        tagVM.fontSize = 14;
+        tagVM.borderColor = [UIColor blackColor];
+        tagVM.borderWidth = 1;
+        tagVM.cornerRadius = 5;
+        OSNTagButton *tagBtn = [OSNTagButton buttonWithTagViewModel:tagVM];
         tagBtn.frame = CGRectMake(80 * i, 0, 60, 30);
-        [tagBtn setTitle:tag.name forState:UIControlStateNormal];
-        [tagBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        tagBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-        [tagBtn addTarget:self action:@selector(tapTagButton:) forControlEvents:UIControlEventTouchUpInside];
         
         [self.contentView addSubview:tagBtn];
         [_tagsButtonArray addObject:tagBtn];
