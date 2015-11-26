@@ -10,6 +10,8 @@
 #import "OSNCaseManager.h"
 #import "OSNTagListCell.h"
 
+static NSString * const cellReuseIdentifier = @"cellIdentifier";
+
 @interface OSNCaseTagListVC ()
 
 @end
@@ -57,9 +59,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    OSNTagListCell *cell = (OSNTagListCell *)[tableView dequeueReusableCellWithIdentifier:@"cellIdentifier"];
+    OSNTagListCell *cell = (OSNTagListCell *)[tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
     if (!cell) {
-        cell = [[OSNTagListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellIdentifier"];
+        cell = [[OSNTagListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellReuseIdentifier];
     }
     cell.tags = [self getTagsWithIndexPath:indexPath];
     return cell;
