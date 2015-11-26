@@ -25,6 +25,7 @@
 		0129AB8D1C0363D800A445FB /* OSNProductManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0129AB8C1C0363D800A445FB /* OSNProductManager.m */; };
 		014664E81C06ED4C00FD2E96 /* OSNTagViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 014664E71C06ED4C00FD2E96 /* OSNTagViewModel.m */; };
 		014664EB1C06F0CF00FD2E96 /* OSNTagButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 014664EA1C06F0CF00FD2E96 /* OSNTagButton.m */; };
+		014664EE1C07056700FD2E96 /* OSNTagPadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 014664ED1C07056700FD2E96 /* OSNTagPadView.m */; };
 		015B2D0C1BFEBA5400821100 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 015B2D0B1BFEBA5400821100 /* main.m */; };
 		015B2D0F1BFEBA5400821100 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 015B2D0E1BFEBA5400821100 /* AppDelegate.m */; };
 		015B2D171BFEBA5400821100 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 015B2D161BFEBA5400821100 /* Assets.xcassets */; };
@@ -73,6 +74,8 @@
 		014664E71C06ED4C00FD2E96 /* OSNTagViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNTagViewModel.m; sourceTree = "<group>"; };
 		014664E91C06F0CF00FD2E96 /* OSNTagButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNTagButton.h; sourceTree = "<group>"; };
 		014664EA1C06F0CF00FD2E96 /* OSNTagButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNTagButton.m; sourceTree = "<group>"; };
+		014664EC1C07056700FD2E96 /* OSNTagPadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNTagPadView.h; sourceTree = "<group>"; };
+		014664ED1C07056700FD2E96 /* OSNTagPadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNTagPadView.m; sourceTree = "<group>"; };
 		015B2D071BFEBA5400821100 /* saleclient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = saleclient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		015B2D0B1BFEBA5400821100 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		015B2D0D1BFEBA5400821100 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -158,6 +161,8 @@
 				014664E71C06ED4C00FD2E96 /* OSNTagViewModel.m */,
 				014664E91C06F0CF00FD2E96 /* OSNTagButton.h */,
 				014664EA1C06F0CF00FD2E96 /* OSNTagButton.m */,
+				014664EC1C07056700FD2E96 /* OSNTagPadView.h */,
+				014664ED1C07056700FD2E96 /* OSNTagPadView.m */,
 			);
 			name = TagVIew;
 			sourceTree = "<group>";
@@ -424,6 +429,7 @@
 				018B09F51BFEC38B007B69A8 /* OSNUserManager.m in Sources */,
 				018B09ED1BFEC206007B69A8 /* OSNUserInfo.m in Sources */,
 				01CA2CF11C05574C00CD0024 /* OSNTagListSection.m in Sources */,
+				014664EE1C07056700FD2E96 /* OSNTagPadView.m in Sources */,
 				015B2D0C1BFEBA5400821100 /* main.m in Sources */,
 				01AF1F5F1C040D260033413F /* OSNTagItem.m in Sources */,
 				01CDB8181C059A4300463F97 /* OSNTagListCell.m in Sources */,
