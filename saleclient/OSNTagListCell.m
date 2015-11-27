@@ -11,41 +11,30 @@
 #import <Masonry.h>
 
 @implementation OSNTagListCell
-{
-    NSMutableArray *_tagsButtonArray;
-}
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        _tagsButtonArray = [NSMutableArray array];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
 }
 
-- (void)resetTagsView {
-    for (UIView *tag in _tagsButtonArray) {
-        [tag removeFromSuperview];
-    }
-    [_tagsButtonArray removeAllObjects];
-    
-    for (int i = 0; i < self.tags.count; i++) {
-        OSNTagButton *tagBtn = [OSNTagButton buttonWithTag:self.tags[i]];
-        tagBtn.frame = CGRectMake(80 * i + 10, 0, 76, 30);
+- (OSNTagPadView *)tagPadView {
+    if (!_tagPadView) {
+        _tagPadView = [[OSNTagPadView alloc] init];
+        _tagPadView.padding = UIEdgeInsetsMake(10, 20, 10, 20);
+        _tagPadView.lineSpace = 10;
+        _tagPadView.tagSpace = 8;
+        _tagPadView.maxLayoutWidth = 260;
+        _tagPadView.fixTagSize =CGSizeMake(70, 30);
         
-        [self.contentView addSubview:tagBtn];
-        [_tagsButtonArray addObject:tagBtn];
+        [self.contentView addSubview:_tagPadView];
+        [_tagPadView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.top.bottom.equalTo(self.contentView);
+        }];
     }
-}
-
-- (void)tapTagButton:(UIButton *)sender {
-
-}
-
-- (void)setTags:(NSArray *)tags {
-    _tags = tags;
-    [self resetTagsView];
+    return _tagPadView;
 }
 
 @end

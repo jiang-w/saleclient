@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OSNTagPadView.h"
 
 @interface OSNTagListCell : UITableViewCell
 
-@property(nonatomic, strong) NSArray *tags;
+@property(nonatomic, strong) OSNTagPadView *tagPadView;
 
 @end

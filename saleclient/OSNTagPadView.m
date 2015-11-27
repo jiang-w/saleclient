@@ -193,12 +193,17 @@
                  }];
             }
             
+            [tag mas_makeConstraints:^(MASConstraintMaker *make) {
+                SAVE_CONTRAINT(make.width.mas_equalTo(tagSize.width));
+                SAVE_CONTRAINT(make.height.mas_equalTo(tagSize.height));
+            }];
+            
             prevTag = tag;
         }
     }
     
     [prevTag mas_makeConstraints:^(MASConstraintMaker *make) {
-        SAVE_CONTRAINT(make.bottom.equalTo(superView).offset(-bottomOffset));
+        SAVE_CONTRAINT(make.bottom.lessThanOrEqualTo(superView).offset(-bottomOffset));
     }];
     
     [super updateConstraints];

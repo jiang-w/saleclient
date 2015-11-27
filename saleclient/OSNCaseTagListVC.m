@@ -9,8 +9,11 @@
 #import "OSNCaseTagListVC.h"
 #import "OSNCaseManager.h"
 #import "OSNTagListCell.h"
+#import "OSNTagButton.h"
+#import "OSNTagPadView.h"
 
 static NSString * const cellReuseIdentifier = @"cellIdentifier";
+static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
 
 @interface OSNCaseTagListVC ()
 
@@ -19,19 +22,20 @@ static NSString * const cellReuseIdentifier = @"cellIdentifier";
 @implementation OSNCaseTagListVC
 {
     NSMutableArray *_sectionHeaderArray;
+    OSNTagListCell *_sampleCell;
+    OSNTagPadView *_tagPadView;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.sectionHeaderHeight = 40;
-    self.numberOfTagsInCell = 3;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.bounces = NO;
     
     _sectionHeaderArray = [NSMutableArray array];
     NSArray *groups = [[[OSNCaseManager alloc] init] getCaseTagList];
     for (OSNTagGroup *group in groups) {
-        OSNTagListSection *section = [[OSNTagListSection alloc] initWithReuseIdentifier:@"SectionHeaderIdentifier"];
+        OSNTagListSection *section = [[OSNTagListSection alloc] initWithReuseIdentifier:sectionReuseIdentifier];
         section.group = group;
         section.delegate = self;
         [_sectionHeaderArray addObject:section];
@@ -47,8 +51,8 @@ static NSString * const cellReuseIdentifier = @"cellIdentifier";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     OSNTagListSection *sectionHeader = _sectionHeaderArray[section];
-    if (sectionHeader.isOpen) {
-        return floor(sectionHeader.group.list.count * 1.0 / self.numberOfTagsInCell);
+    if (sectionHeader.isOpen && sectionHeader.group.list.count > 0) {
+        return 1;
     }
     else {
         return 0;
@@ -64,23 +68,53 @@ static NSString * const cellReuseIdentifier = @"cellIdentifier";
     if (!cell) {
         cell = [[OSNTagListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellReuseIdentifier];
     }
-    cell.tags = [self getTagsWithIndexPath:indexPath];
+    [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
 
-- (NSArray *)getTagsWithIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    OSNTagListCell *cell = (OSNTagListCell *)[tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
+//    if (!cell) {
+//        cell = [[OSNTagListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellReuseIdentifier];
+//    }
+//    
+//    [self configureCell:cell atIndexPath:indexPath];
+//    CGFloat cellHeight = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height + 1;
+//    NSLog(@"Cell Height: %f", cellHeight);
+//    return cellHeight;
+    
+    
+    if (!_tagPadView) {
+        _tagPadView = [[OSNTagPadView alloc] init];
+        _tagPadView.padding = UIEdgeInsetsMake(10, 20, 10, 20);
+        _tagPadView.lineSpace = 10;
+        _tagPadView.tagSpace = 8;
+        _tagPadView.maxLayoutWidth = 260;
+        _tagPadView.fixTagSize =CGSizeMake(70, 30);
+    }
+    NSLog(@"Cell Height(1): %f", _tagPadView.intrinsicContentSize.height);
+    [_tagPadView removeAllTags];
+    NSLog(@"Cell Height(2): %f", _tagPadView.intrinsicContentSize.height);
     OSNTagListSection *section = _sectionHeaderArray[indexPath.section];
-    NSInteger tagCount = section.group.list.count;
-    NSInteger startLocation = indexPath.row * self.numberOfTagsInCell;
-    NSRange range;
-    if (tagCount - startLocation < self.numberOfTagsInCell) {
-        range = NSMakeRange(startLocation, tagCount - startLocation);
-    }
-    else {
-        range = NSMakeRange(startLocation, self.numberOfTagsInCell);
-    }
-    NSArray *tags = [section.group.list subarrayWithRange:range];
-    return tags;
+    NSArray *tags = section.group.list;
+    [tags enumerateObjectsUsingBlock:^(OSNTag *tag, NSUInteger idx, BOOL *stop) {
+        OSNTagButton *tagBtn = [OSNTagButton buttonWithTag:tag];
+        [_tagPadView addTagButton:tagBtn];
+    }];
+    CGFloat cellHeight = _tagPadView.intrinsicContentSize.height;
+    NSLog(@"Cell Height(3): %f", cellHeight);
+    return cellHeight;
+}
+
+
+- (void)configureCell:(OSNTagListCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    [cell.tagPadView removeAllTags];
+    OSNTagListSection *section = _sectionHeaderArray[indexPath.section];
+    NSArray *tags = section.group.list;
+    [tags enumerateObjectsUsingBlock:^(OSNTag *tag, NSUInteger idx, BOOL *stop) {
+        OSNTagButton *tagBtn = [OSNTagButton buttonWithTag:tag];
+        [cell.tagPadView addTagButton:tagBtn];
+    }];
 }
 
 
@@ -89,31 +123,21 @@ static NSString * const cellReuseIdentifier = @"cellIdentifier";
 - (void)openedSectionHeaderView:(UIView *)sender {
     OSNTagListSection *sectionHeader = (OSNTagListSection *)sender;
     NSInteger sectionIndex = [_sectionHeaderArray indexOfObject:sectionHeader];
-    NSInteger count = floor(sectionHeader.group.list.count * 1.0 / self.numberOfTagsInCell);
-    if (count > 0) {
-        NSMutableArray *indexPathsToInsert = [NSMutableArray array];
-        for (int i = 0; i < count; i++) {
-            [indexPathsToInsert addObject:[NSIndexPath indexPathForRow:i inSection:sectionIndex]];
-        }
-        [self.tableView beginUpdates];
-        [self.tableView insertRowsAtIndexPaths:indexPathsToInsert withRowAnimation:UITableViewRowAnimationNone];
-        [self.tableView endUpdates];
-    }
+    NSMutableArray *indexPathsToInsert = [NSMutableArray array];
+    [indexPathsToInsert addObject:[NSIndexPath indexPathForRow:0 inSection:sectionIndex]];
+    [self.tableView beginUpdates];
+    [self.tableView insertRowsAtIndexPaths:indexPathsToInsert withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView endUpdates];
 }
 
 - (void)closedSectionHeaderView:(UIView *)sender {
     OSNTagListSection *sectionHeader = (OSNTagListSection *)sender;
     NSInteger sectionIndex = [_sectionHeaderArray indexOfObject:sectionHeader];
-    NSInteger count = [self.tableView numberOfRowsInSection:sectionIndex];
-    if (count > 0) {
-        NSMutableArray *indexPathsToDelete = [NSMutableArray array];
-        for (int i = 0; i < count; i++) {
-            [indexPathsToDelete addObject:[NSIndexPath indexPathForRow:i inSection:sectionIndex]];
-        }
-        [self.tableView beginUpdates];
-        [self.tableView deleteRowsAtIndexPaths:indexPathsToDelete withRowAnimation:UITableViewRowAnimationNone];
-        [self.tableView endUpdates];
-    }
+    NSMutableArray *indexPathsToDelete = [NSMutableArray array];
+    [indexPathsToDelete addObject:[NSIndexPath indexPathForRow:0 inSection:sectionIndex]];
+    [self.tableView beginUpdates];
+    [self.tableView deleteRowsAtIndexPaths:indexPathsToDelete withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView endUpdates];
 }
 
 @end

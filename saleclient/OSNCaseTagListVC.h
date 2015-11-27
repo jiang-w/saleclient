@@ -11,6 +11,4 @@
 
 @interface OSNCaseTagListVC : UITableViewController <OSNTagListSectionDelegate>
 
-@property(nonatomic, assign) NSInteger numberOfTagsInCell;
-
 @end
