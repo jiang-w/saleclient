@@ -23,7 +23,7 @@
 - (OSNTagPadView *)tagPadView {
     if (!_tagPadView) {
         _tagPadView = [[OSNTagPadView alloc] init];
-        _tagPadView.padding = UIEdgeInsetsMake(10, 20, 10, 20);
+        _tagPadView.padding = UIEdgeInsetsMake(10, 10, 10, 10);
         _tagPadView.lineSpace = 10;
         _tagPadView.tagSpace = 8;
         _tagPadView.maxLayoutWidth = 260;

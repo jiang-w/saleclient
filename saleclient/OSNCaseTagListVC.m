@@ -73,39 +73,19 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    OSNTagListCell *cell = (OSNTagListCell *)[tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
-//    if (!cell) {
-//        cell = [[OSNTagListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellReuseIdentifier];
-//    }
-//    
-//    [self configureCell:cell atIndexPath:indexPath];
-//    CGFloat cellHeight = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height + 1;
-//    NSLog(@"Cell Height: %f", cellHeight);
-//    return cellHeight;
-    
-    
-    if (!_tagPadView) {
-        _tagPadView = [[OSNTagPadView alloc] init];
-        _tagPadView.padding = UIEdgeInsetsMake(10, 20, 10, 20);
-        _tagPadView.lineSpace = 10;
-        _tagPadView.tagSpace = 8;
-        _tagPadView.maxLayoutWidth = 260;
-        _tagPadView.fixTagSize =CGSizeMake(70, 30);
+    if (!_sampleCell) {
+        _sampleCell = [[OSNTagListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellReuseIdentifier];
     }
-    NSLog(@"Cell Height(1): %f", _tagPadView.intrinsicContentSize.height);
-    [_tagPadView removeAllTags];
-    NSLog(@"Cell Height(2): %f", _tagPadView.intrinsicContentSize.height);
-    OSNTagListSection *section = _sectionHeaderArray[indexPath.section];
-    NSArray *tags = section.group.list;
-    [tags enumerateObjectsUsingBlock:^(OSNTag *tag, NSUInteger idx, BOOL *stop) {
-        OSNTagButton *tagBtn = [OSNTagButton buttonWithTag:tag];
-        [_tagPadView addTagButton:tagBtn];
-    }];
-    CGFloat cellHeight = _tagPadView.intrinsicContentSize.height;
-    NSLog(@"Cell Height(3): %f", cellHeight);
+    
+    [self configureCell:_sampleCell atIndexPath:indexPath];
+    CGFloat cellHeight = [_sampleCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height + 1;
+    NSLog(@"Cell Height: %f", cellHeight);
     return cellHeight;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 200;
+}
 
 - (void)configureCell:(OSNTagListCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     [cell.tagPadView removeAllTags];

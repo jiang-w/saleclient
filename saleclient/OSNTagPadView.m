@@ -134,6 +134,7 @@
             }];
             
             if (prevTag) {
+                currentX += self.tagSpace;
                 if ([self isEnableInsertTagWithWidth:tagSize.width atCurrentLocation:currentX]) {
                     [tag mas_makeConstraints:^(MASConstraintMaker *make) {
                         SAVE_CONTRAINT(make.left.equalTo(prevTag.mas_right).offset(tagSpace));
