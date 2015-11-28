@@ -13,88 +13,84 @@
 
 @interface OSNTagPadView()
 
-@property(nonatomic, strong) NSMutableArray *tags;
-@property(nonatomic, strong) NSMutableArray *tagsConstraints;
+@property(nonatomic, strong) NSMutableArray *tagSubviews;
+@property(nonatomic, strong) NSMutableArray *tagConstraints;
 
 @end
 
 @implementation OSNTagPadView
 
 - (CGSize)intrinsicContentSize {
-    if (!self.tags.count) {
+    if (!self.tagSubviews.count) {
         return CGSizeZero;
     }
     
     CGFloat intrinsicWidth = 0;
     CGFloat intrinsicHeight = 0;
-    CGFloat currentX = self.padding.left;
-    UIView *prevTag = nil;
     
     if (!self.isSingleLine && self.maxLayoutWidth > 0) {
-        NSInteger lineCount = 0;
-        for (UIView *tag in self.tags) {
-            CGSize tagSize;
-            if (CGSizeEqualToSize(self.fixTagSize, CGSizeZero)) {
-                tagSize = tag.intrinsicContentSize;
-            }
-            else {
-                tagSize = self.fixTagSize;
-            }
+        CGFloat lineWidth = 0;
+        CGFloat lineHeight = 0;
+        for (OSNTagButton *btn in self.tagSubviews) {
+            CGSize tagSize = [self getSizeOfTagButton:btn];
             
-            if (prevTag) {
-                currentX += self.tagSpace;
-                if ([self isEnableInsertTagWithWidth:tagSize.width atCurrentLocation:currentX]) {
-                    currentX += tagSize.width;
+            if ([self isHeadTagButoon:btn]) {
+                intrinsicWidth = MAX(intrinsicWidth, lineWidth);
+                if (intrinsicHeight == 0) {
+                    intrinsicHeight = lineHeight;
                 }
                 else {
-                    // new line
-                    lineCount++;
-                    currentX = self.padding.left + tagSize.width;
-                    intrinsicHeight += tagSize.height + self.lineSpace;
+                    intrinsicHeight += self.lineSpace + lineHeight;
                 }
+                
+                lineWidth = tagSize.width;
+                lineHeight = tagSize.height;
             }
             else {
-                // first tag
-                lineCount++;
-                intrinsicHeight += tagSize.height;
-                currentX += tagSize.width;
+                lineWidth += self.tagSpace + tagSize.width;
+                lineHeight = MAX(lineHeight, tagSize.height);
             }
-            prevTag = tag;
-            intrinsicWidth = MAX(currentX + self.padding.right, intrinsicWidth);
+        }
+        
+        intrinsicWidth = MAX(intrinsicWidth, lineWidth);
+        intrinsicWidth += self.padding.left + self.padding.right;
+        
+        if (intrinsicHeight == 0) {
+            intrinsicHeight = lineHeight;
+        }
+        else {
+            intrinsicHeight += self.lineSpace + lineHeight;
         }
         intrinsicHeight += self.padding.top + self.padding.bottom;
     }
     else {
-        for (UIView *tag in self.tags) {
-            CGSize tagSize;
-            if (CGSizeEqualToSize(self.fixTagSize, CGSizeZero)) {
-                tagSize = tag.intrinsicContentSize;
+        for (OSNTagButton *btn in self.tagSubviews) {
+            CGSize tagSize = [self getSizeOfTagButton:btn];
+            
+            if (intrinsicWidth == 0) {
+                intrinsicWidth = tagSize.width;
             }
             else {
-                tagSize = self.fixTagSize;
+                intrinsicWidth += self.tagSpace + tagSize.width;
             }
-
-            if (prevTag) {
-                currentX += self.tagSpace + tagSize.width;
-            }
-            else {
-                currentX += tagSize.width;
-                intrinsicHeight = self.padding.top + tagSize.height + self.padding.bottom;
-            }
+            
+            intrinsicHeight = MAX(intrinsicHeight, tagSize.height);
         }
-        intrinsicWidth += currentX + self.padding.right;
+        intrinsicWidth += self.padding.left + self.padding.right;
+        intrinsicHeight += self.padding.top + self.padding.bottom;
     }
     
+//    NSLog(@"TagPadView ContentSize: (width: %.2f, height: %.2f)", intrinsicWidth, intrinsicHeight);
     return CGSizeMake(intrinsicWidth, intrinsicHeight);
 }
 
 - (void)updateConstraints {
-    if (!self.tags.count) {
+    if (!self.tagSubviews.count) {
         return;
     }
     
     // remove old constraints
-    for (id obj in self.tagsConstraints) {
+    for (id obj in self.tagConstraints) {
         if ([obj isKindOfClass:MASConstraint.class]) {
             [(MASConstraint *)obj uninstall];
         }
@@ -107,7 +103,7 @@
             NSAssert(NO, @"Error:unknown class type: %@", obj);
         }
     }
-    [self.tagsConstraints removeAllObjects];
+    [self.tagConstraints removeAllObjects];
     
     UIView *superView = self;
     CGFloat leftOffset = self.padding.left;
@@ -120,7 +116,7 @@
     
     UIView *prevTag = nil;
     if (!self.isSingleLine && self.maxLayoutWidth > 0) {
-        for (UIView *tag in self.tags) {
+        for (UIView *tag in self.tagSubviews) {
             CGSize tagSize;
             if (CGSizeEqualToSize(self.fixTagSize, CGSizeZero)) {
                 tagSize = tag.intrinsicContentSize;
@@ -170,7 +166,7 @@
         }
     }
     else {
-        for (UIView *tag in self.tags) {
+        for (UIView *tag in self.tagSubviews) {
             CGSize tagSize;
             if (CGSizeEqualToSize(self.fixTagSize, CGSizeZero)) {
                 tagSize = tag.intrinsicContentSize;
@@ -220,19 +216,19 @@
 
 #pragma mark - Property
 
-- (NSMutableArray *)tags {
-    if(!_tags) {
-        _tags = [NSMutableArray array];
+- (NSMutableArray *)tagSubviews {
+    if(!_tagSubviews) {
+        _tagSubviews = [NSMutableArray array];
     }
-    return _tags;
+    return _tagSubviews;
 }
 
 - (NSMutableArray *)tagsContraints
 {
-    if(!_tagsConstraints) {
-        _tagsConstraints = [NSMutableArray array];
+    if(!_tagConstraints) {
+        _tagConstraints = [NSMutableArray array];
     }
-    return _tagsConstraints;
+    return _tagConstraints;
 }
 
 - (void)setMaxLayoutWidth:(CGFloat)maxLayoutWidth {
@@ -247,16 +243,16 @@
 - (void)addTagButton:(OSNTagButton *)button {
     [button addTarget:self action:@selector(tapTagHandle:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:button];
-    [self.tags addObject:button];
+    [self.tagSubviews addObject:button];
     
     [self invalidateIntrinsicContentSize];
 }
 
 - (void)insertTagButton:(OSNTagButton *)button atIndex:(NSUInteger)index {
-    if (index < self.tags.count) {
+    if (index < self.tagSubviews.count) {
         [button addTarget:self action:@selector(tapTagHandle:) forControlEvents:UIControlEventTouchUpInside];
         [self insertSubview:button atIndex:index];
-        [self.tags insertObject:button atIndex:index];
+        [self.tagSubviews insertObject:button atIndex:index];
         
         [self invalidateIntrinsicContentSize];
     }
@@ -266,32 +262,32 @@
 }
 
 - (void)removeTagButton:(OSNTagButton *)button {
-    NSUInteger index = [self.tags indexOfObject:button];
+    NSUInteger index = [self.tagSubviews indexOfObject:button];
     if (NSNotFound == index) {
         return;
     }
     else {
-        [self.tags[index] removeFromSuperview];
-        [self.tags removeObjectAtIndex:index];
+        [self.tagSubviews[index] removeFromSuperview];
+        [self.tagSubviews removeObjectAtIndex:index];
         
         [self invalidateIntrinsicContentSize];
     }
 }
 
 - (void)removeTagAtIndex:(NSUInteger)index {
-    if (index < self.tags.count) {
-        [self.tags[index] removeFromSuperview];
-        [self.tags removeObjectAtIndex:index];
+    if (index < self.tagSubviews.count) {
+        [self.tagSubviews[index] removeFromSuperview];
+        [self.tagSubviews removeObjectAtIndex:index];
         
         [self invalidateIntrinsicContentSize];
     }
 }
 
 - (void)removeAllTags {
-    for (UIView *tag in self.tags) {
+    for (UIView *tag in self.tagSubviews) {
         [tag removeFromSuperview];
     }
-    [self.tags removeAllObjects];
+    [self.tagSubviews removeAllObjects];
     
     [self invalidateIntrinsicContentSize];
 }
@@ -305,5 +301,74 @@
 - (BOOL)isEnableInsertTagWithWidth:(CGFloat)width atCurrentLocation:(CGFloat)xOffset {
     return (xOffset + width + self.padding.right <= self.maxLayoutWidth);
 }
+
+- (CGSize)getSizeOfTagButton:(OSNTagButton *)tagButton {
+    if (CGSizeEqualToSize(self.fixTagSize, CGSizeZero)) {
+        return tagButton.intrinsicContentSize;
+    }
+    else {
+        return self.fixTagSize;
+    }
+}
+
+- (BOOL)isHeadTagButoon:(OSNTagButton *)tagButton {
+    NSUInteger index = [self.tagSubviews indexOfObject:tagButton];
+    if (index == 0) {
+        return YES;
+    }
+    
+    BOOL isHead = NO;
+    CGFloat xOffset = self.padding.left;
+    for (int i = 0; i <= index; i++) {
+        CGSize tagSize = [self getSizeOfTagButton:self.subviews[i]];
+        
+        if (xOffset == self.padding.left) {
+            xOffset += tagSize.width;
+        }
+        else {
+            xOffset += self.tagSpace + tagSize.width;
+        }
+        
+        if (xOffset + self.padding.right > self.maxLayoutWidth) {
+            xOffset = self.padding.left + tagSize.width;
+            isHead = YES;
+        }
+        else {
+            isHead = NO;
+        }
+    }
+    return isHead;
+}
+
+- (void)setConstraintOfTagButton:(OSNTagButton *)tagButton {
+    CGSize tagSize = [self getSizeOfTagButton:tagButton];
+    NSUInteger index = [self.tagSubviews indexOfObject:tagButton];
+    
+    UIView *superView = self;
+    CGFloat leftOffset = self.padding.left;
+    CGFloat rightOffset = self.padding.right;
+    CGFloat topOffset = self.padding.top;
+    CGFloat bottomOffset = self.padding.bottom;
+    CGFloat tagSpace = self.tagSpace;
+    CGFloat lineSpace = self.lineSpace;
+    
+    [tagButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        SAVE_CONTRAINT(make.width.mas_equalTo(tagSize.width));
+        SAVE_CONTRAINT(make.height.mas_equalTo(tagSize.height));
+    }];
+    
+    if (index == 0) {
+        // first tag
+        [tagButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            SAVE_CONTRAINT( make.left.greaterThanOrEqualTo(superView).offset(leftOffset));
+            SAVE_CONTRAINT(make.top.equalTo(superView).offset(topOffset));
+        }];
+    }
+    else {
+        OSNTagButton *prevTag = self.tagSubviews[index - 1];
+
+    }
+}
+
 
 @end
