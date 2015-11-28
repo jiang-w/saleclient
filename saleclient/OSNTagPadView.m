@@ -80,7 +80,7 @@
         intrinsicHeight += self.padding.top + self.padding.bottom;
     }
     
-//    NSLog(@"TagPadView ContentSize: (width: %.2f, height: %.2f)", intrinsicWidth, intrinsicHeight);
+    NSLog(@"TagPadView ContentSize: (width: %.2f, height: %.2f)", intrinsicWidth, intrinsicHeight);
     return CGSizeMake(intrinsicWidth, intrinsicHeight);
 }
 
@@ -89,119 +89,10 @@
         return;
     }
     
-    // remove old constraints
-    for (id obj in self.tagConstraints) {
-        if ([obj isKindOfClass:MASConstraint.class]) {
-            [(MASConstraint *)obj uninstall];
-        }
-        else if([obj isKindOfClass:NSArray.class]) {
-            for (MASConstraint * constraint in (NSArray *)obj) {
-                [constraint uninstall];
-            }
-        }
-        else {
-            NSAssert(NO, @"Error:unknown class type: %@", obj);
-        }
+    [self removeAllConstraints];
+    for (OSNTagButton *btn in self.tagSubviews) {
+        [self setConstraintOfTagButton:btn];
     }
-    [self.tagConstraints removeAllObjects];
-    
-    UIView *superView = self;
-    CGFloat leftOffset = self.padding.left;
-    CGFloat rightOffset = self.padding.right;
-    CGFloat topPadding = self.padding.top;
-    CGFloat bottomOffset = self.padding.bottom;
-    CGFloat tagSpace = self.tagSpace;
-    CGFloat lineSpace = self.lineSpace;
-    CGFloat currentX = self.padding.left;
-    
-    UIView *prevTag = nil;
-    if (!self.isSingleLine && self.maxLayoutWidth > 0) {
-        for (UIView *tag in self.tagSubviews) {
-            CGSize tagSize;
-            if (CGSizeEqualToSize(self.fixTagSize, CGSizeZero)) {
-                tagSize = tag.intrinsicContentSize;
-            }
-            else {
-                tagSize = self.fixTagSize;
-            }
-            
-            [tag mas_makeConstraints:^(MASConstraintMaker *make) {
-                SAVE_CONTRAINT(make.right.lessThanOrEqualTo(superView).offset(-rightOffset));
-            }];
-            
-            if (prevTag) {
-                currentX += self.tagSpace;
-                if ([self isEnableInsertTagWithWidth:tagSize.width atCurrentLocation:currentX]) {
-                    [tag mas_makeConstraints:^(MASConstraintMaker *make) {
-                        SAVE_CONTRAINT(make.left.equalTo(prevTag.mas_right).offset(tagSpace));
-                        SAVE_CONTRAINT(make.centerY.equalTo(prevTag));
-                    }];
-                    currentX += tagSize.width;
-                }
-                else {
-                    // new line
-                    [tag mas_makeConstraints:^(MASConstraintMaker *make) {
-                        SAVE_CONTRAINT(make.top.equalTo(prevTag.mas_bottom).offset(lineSpace));
-                        SAVE_CONTRAINT(make.left.equalTo(superView).offset(leftOffset));
-                    }];
-                    currentX = leftOffset + tagSize.width;
-                }
-            }
-            else {
-                //first one
-                [tag mas_makeConstraints:^(MASConstraintMaker *make)
-                 {
-                     SAVE_CONTRAINT(make.top.equalTo(superView).offset(topPadding));
-                     SAVE_CONTRAINT(make.left.equalTo(superView).offset(leftOffset));
-                 }];
-                currentX += tagSize.width;
-            }
-            
-            [tag mas_makeConstraints:^(MASConstraintMaker *make) {
-                SAVE_CONTRAINT(make.width.mas_equalTo(tagSize.width));
-                SAVE_CONTRAINT(make.height.mas_equalTo(tagSize.height));
-            }];
-            
-            prevTag = tag;
-        }
-    }
-    else {
-        for (UIView *tag in self.tagSubviews) {
-            CGSize tagSize;
-            if (CGSizeEqualToSize(self.fixTagSize, CGSizeZero)) {
-                tagSize = tag.intrinsicContentSize;
-            }
-            else {
-                tagSize = self.fixTagSize;
-            }
-            
-            if (prevTag) {
-                [tag mas_makeConstraints:^(MASConstraintMaker *make) {
-                    SAVE_CONTRAINT(make.left.equalTo(prevTag.mas_right).offset(tagSpace));
-                    SAVE_CONTRAINT(make.centerY.equalTo(prevTag));
-                }];
-            }
-            else {
-                //first one
-                [tag mas_makeConstraints:^(MASConstraintMaker *make)
-                 {
-                     SAVE_CONTRAINT(make.top.equalTo(superView).offset(topPadding));
-                     SAVE_CONTRAINT(make.left.equalTo(superView).offset(leftOffset));
-                 }];
-            }
-            
-            [tag mas_makeConstraints:^(MASConstraintMaker *make) {
-                SAVE_CONTRAINT(make.width.mas_equalTo(tagSize.width));
-                SAVE_CONTRAINT(make.height.mas_equalTo(tagSize.height));
-            }];
-            
-            prevTag = tag;
-        }
-    }
-    
-    [prevTag mas_makeConstraints:^(MASConstraintMaker *make) {
-        SAVE_CONTRAINT(make.bottom.lessThanOrEqualTo(superView).offset(-bottomOffset));
-    }];
     
     [super updateConstraints];
 }
@@ -234,6 +125,7 @@
 - (void)setMaxLayoutWidth:(CGFloat)maxLayoutWidth {
     if (maxLayoutWidth != _maxLayoutWidth) {
         _maxLayoutWidth = maxLayoutWidth;
+        
         [self setNeedsUpdateConstraints];
     }
 }
@@ -298,10 +190,6 @@
     
 }
 
-- (BOOL)isEnableInsertTagWithWidth:(CGFloat)width atCurrentLocation:(CGFloat)xOffset {
-    return (xOffset + width + self.padding.right <= self.maxLayoutWidth);
-}
-
 - (CGSize)getSizeOfTagButton:(OSNTagButton *)tagButton {
     if (CGSizeEqualToSize(self.fixTagSize, CGSizeZero)) {
         return tagButton.intrinsicContentSize;
@@ -346,28 +234,75 @@
     
     UIView *superView = self;
     CGFloat leftOffset = self.padding.left;
-    CGFloat rightOffset = self.padding.right;
     CGFloat topOffset = self.padding.top;
-    CGFloat bottomOffset = self.padding.bottom;
     CGFloat tagSpace = self.tagSpace;
     CGFloat lineSpace = self.lineSpace;
     
-    [tagButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        SAVE_CONTRAINT(make.width.mas_equalTo(tagSize.width));
-        SAVE_CONTRAINT(make.height.mas_equalTo(tagSize.height));
-    }];
-    
-    if (index == 0) {
-        // first tag
+    if (!self.isSingleLine && self.maxLayoutWidth > 0) {
         [tagButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            SAVE_CONTRAINT( make.left.greaterThanOrEqualTo(superView).offset(leftOffset));
-            SAVE_CONTRAINT(make.top.equalTo(superView).offset(topOffset));
+            SAVE_CONTRAINT(make.width.mas_equalTo(tagSize.width));
+            SAVE_CONTRAINT(make.height.mas_equalTo(tagSize.height));
+//        SAVE_CONTRAINT(make.bottom.lessThanOrEqualTo(superView).offset(-bottomOffset));
+//        SAVE_CONTRAINT(make.right.lessThanOrEqualTo(superView).offset(-rightOffset));
         }];
+        
+        if (index == 0) {
+            // first tag
+            [tagButton mas_makeConstraints:^(MASConstraintMaker *make) {
+                SAVE_CONTRAINT(make.left.equalTo(superView).offset(leftOffset));
+                SAVE_CONTRAINT(make.top.equalTo(superView).offset(topOffset));
+            }];
+        }
+        else {
+            OSNTagButton *prevTagBtn = self.tagSubviews[index - 1];
+            if ([self isHeadTagButoon:tagButton]) {
+                // new line
+                [tagButton mas_makeConstraints:^(MASConstraintMaker *make) {
+                    SAVE_CONTRAINT(make.left.equalTo(superView).offset(leftOffset));
+                    SAVE_CONTRAINT(make.top.equalTo(prevTagBtn.mas_bottom).offset(lineSpace));
+                }];
+            }
+            else {
+                [tagButton mas_makeConstraints:^(MASConstraintMaker *make) {
+                    SAVE_CONTRAINT(make.centerY.equalTo(prevTagBtn));
+                    SAVE_CONTRAINT(make.left.equalTo(prevTagBtn.mas_right).offset(tagSpace));
+                }];
+            }
+        }
     }
     else {
-        OSNTagButton *prevTag = self.tagSubviews[index - 1];
-
+        if (index == 0) {
+            // first tag
+            [tagButton mas_makeConstraints:^(MASConstraintMaker *make) {
+                SAVE_CONTRAINT(make.left.equalTo(superView).offset(leftOffset));
+                SAVE_CONTRAINT(make.top.equalTo(superView).offset(topOffset));
+            }];
+        }
+        else {
+            OSNTagButton *prevTagBtn = self.tagSubviews[index - 1];
+            [tagButton mas_makeConstraints:^(MASConstraintMaker *make) {
+                SAVE_CONTRAINT(make.centerY.equalTo(prevTagBtn));
+                SAVE_CONTRAINT(make.left.equalTo(prevTagBtn.mas_right).offset(tagSpace));
+            }];
+        }
     }
+}
+
+- (void)removeAllConstraints {
+    for (id obj in self.tagConstraints) {
+        if ([obj isKindOfClass:MASConstraint.class]) {
+            [(MASConstraint *)obj uninstall];
+        }
+        else if([obj isKindOfClass:NSArray.class]) {
+            for (MASConstraint * constraint in (NSArray *)obj) {
+                [constraint uninstall];
+            }
+        }
+        else {
+            NSAssert(NO, @"Error:unknown class type: %@", obj);
+        }
+    }
+    [self.tagConstraints removeAllObjects];
 }
 
 
