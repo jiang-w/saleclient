@@ -9,8 +9,6 @@
 #import "OSNCaseTagListVC.h"
 #import "OSNCaseManager.h"
 #import "OSNTagListCell.h"
-#import "OSNTagButton.h"
-#import "OSNTagPadView.h"
 
 static NSString * const cellReuseIdentifier = @"cellIdentifier";
 static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
@@ -79,7 +77,6 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
     
     [self configureCell:_sampleCell atIndexPath:indexPath];
     CGFloat cellHeight = [_sampleCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height + 1;
-    NSLog(@"Cell Height: %f", cellHeight);
     return cellHeight;
 }
 
@@ -88,13 +85,16 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
 }
 
 - (void)configureCell:(OSNTagListCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    [cell.tagPadView removeAllTags];
+    OSNTagPadView *tagView = cell.tagPadView;
+    [tagView removeAllTags];
+    
     OSNTagListSection *section = _sectionHeaderArray[indexPath.section];
-    NSArray *tags = section.group.list;
-    [tags enumerateObjectsUsingBlock:^(OSNTag *tag, NSUInteger idx, BOOL *stop) {
-        OSNTagButton *tagBtn = [OSNTagButton buttonWithTag:tag];
-        [cell.tagPadView addTagButton:tagBtn];
+    [section.group.list enumerateObjectsUsingBlock:^(OSNTag *tag, NSUInteger idx, BOOL *stop) {
+        [tagView addTag:tag];
     }];
+    
+    tagView.selectedIndex = 0;
+    tagView.delegate = self;
 }
 
 
@@ -119,5 +119,8 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
     [self.tableView deleteRowsAtIndexPaths:indexPathsToDelete withRowAnimation:UITableViewRowAnimationNone];
     [self.tableView endUpdates];
 }
+
+#pragma mark - OSNTagPadViewDelegate
+
 
 @end

@@ -20,6 +20,14 @@
 
 @implementation OSNTagPadView
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _selectedIndex = -1;
+    }
+    return self;
+}
+
 - (CGSize)intrinsicContentSize {
     if (!self.tagSubviews.count) {
         return CGSizeZero;
@@ -28,7 +36,7 @@
     CGFloat intrinsicWidth = 0;
     CGFloat intrinsicHeight = 0;
     
-    if (!self.isSingleLine && self.maxLayoutWidth > 0) {
+    if (self.maxLayoutWidth > 0) {
         CGFloat lineWidth = 0;
         CGFloat lineHeight = 0;
         for (OSNTagButton *btn in self.tagSubviews) {
@@ -63,24 +71,8 @@
         }
         intrinsicHeight += self.padding.top + self.padding.bottom;
     }
-    else {
-        for (OSNTagButton *btn in self.tagSubviews) {
-            CGSize tagSize = [self getSizeOfTagButton:btn];
-            
-            if (intrinsicWidth == 0) {
-                intrinsicWidth = tagSize.width;
-            }
-            else {
-                intrinsicWidth += self.tagSpace + tagSize.width;
-            }
-            
-            intrinsicHeight = MAX(intrinsicHeight, tagSize.height);
-        }
-        intrinsicWidth += self.padding.left + self.padding.right;
-        intrinsicHeight += self.padding.top + self.padding.bottom;
-    }
     
-    NSLog(@"TagPadView ContentSize: (width: %.2f, height: %.2f)", intrinsicWidth, intrinsicHeight);
+//    NSLog(@"TagPadView ContentSize: (width: %.2f, height: %.2f)", intrinsicWidth, intrinsicHeight);
     return CGSizeMake(intrinsicWidth, intrinsicHeight);
 }
 
@@ -98,10 +90,8 @@
 }
 
 - (void)layoutSubviews {
-    if (!self.isSingleLine) {
-        self.maxLayoutWidth = self.frame.size.width;
-    }
-    
+    self.maxLayoutWidth = self.frame.size.width;
+
     [super layoutSubviews];
 }
 
@@ -130,39 +120,40 @@
     }
 }
 
+- (void)setSelectedIndex:(NSInteger)index {
+    if (index >= 0 && index < self.tagSubviews.count) {
+        if (_selectedIndex != -1 && _selectedIndex != index) {
+            OSNTagButton *btn = self.tagSubviews[_selectedIndex];
+            btn.selected = NO;
+        }
+        OSNTagButton *selectedBtn = self.tagSubviews[index];
+        selectedBtn.selected = YES;
+        _selectedIndex = index;
+    }
+}
+
 #pragma mark - Public methods
 
-- (void)addTagButton:(OSNTagButton *)button {
-    [button addTarget:self action:@selector(tapTagHandle:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:button];
-    [self.tagSubviews addObject:button];
+- (void)addTag:(OSNTag *)tag {
+    OSNTagButton *tagButton = [OSNTagButton buttonWithTag:tag];
+    [tagButton addTarget:self action:@selector(tapTagHandle:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:tagButton];
+    [self.tagSubviews addObject:tagButton];
     
     [self invalidateIntrinsicContentSize];
 }
 
-- (void)insertTagButton:(OSNTagButton *)button atIndex:(NSUInteger)index {
+- (void)insertTag:(OSNTag *)tag atIndex:(NSUInteger)index {
     if (index < self.tagSubviews.count) {
-        [button addTarget:self action:@selector(tapTagHandle:) forControlEvents:UIControlEventTouchUpInside];
-        [self insertSubview:button atIndex:index];
-        [self.tagSubviews insertObject:button atIndex:index];
+        OSNTagButton *tagButton = [OSNTagButton buttonWithTag:tag];
+        [tagButton addTarget:self action:@selector(tapTagHandle:) forControlEvents:UIControlEventTouchUpInside];
+        [self insertSubview:tagButton atIndex:index];
+        [self.tagSubviews insertObject:tagButton atIndex:index];
         
         [self invalidateIntrinsicContentSize];
     }
     else {
-        [self addTagButton:button];
-    }
-}
-
-- (void)removeTagButton:(OSNTagButton *)button {
-    NSUInteger index = [self.tagSubviews indexOfObject:button];
-    if (NSNotFound == index) {
-        return;
-    }
-    else {
-        [self.tagSubviews[index] removeFromSuperview];
-        [self.tagSubviews removeObjectAtIndex:index];
-        
-        [self invalidateIntrinsicContentSize];
+        [self addTag:tag];
     }
 }
 
@@ -187,7 +178,8 @@
 #pragma mark - Private methods
 
 - (void)tapTagHandle:(OSNTagButton *)button {
-    
+    NSUInteger index = [self.tagSubviews indexOfObject:button];
+    self.selectedIndex = index;
 }
 
 - (CGSize)getSizeOfTagButton:(OSNTagButton *)tagButton {
@@ -238,7 +230,7 @@
     CGFloat tagSpace = self.tagSpace;
     CGFloat lineSpace = self.lineSpace;
     
-    if (!self.isSingleLine && self.maxLayoutWidth > 0) {
+    if (self.maxLayoutWidth > 0) {
         [tagButton mas_makeConstraints:^(MASConstraintMaker *make) {
             SAVE_CONTRAINT(make.width.mas_equalTo(tagSize.width));
             SAVE_CONTRAINT(make.height.mas_equalTo(tagSize.height));
@@ -270,22 +262,6 @@
             }
         }
     }
-    else {
-        if (index == 0) {
-            // first tag
-            [tagButton mas_makeConstraints:^(MASConstraintMaker *make) {
-                SAVE_CONTRAINT(make.left.equalTo(superView).offset(leftOffset));
-                SAVE_CONTRAINT(make.top.equalTo(superView).offset(topOffset));
-            }];
-        }
-        else {
-            OSNTagButton *prevTagBtn = self.tagSubviews[index - 1];
-            [tagButton mas_makeConstraints:^(MASConstraintMaker *make) {
-                SAVE_CONTRAINT(make.centerY.equalTo(prevTagBtn));
-                SAVE_CONTRAINT(make.left.equalTo(prevTagBtn.mas_right).offset(tagSpace));
-            }];
-        }
-    }
 }
 
 - (void)removeAllConstraints {
@@ -304,6 +280,5 @@
     }
     [self.tagConstraints removeAllObjects];
 }
-
 
 @end

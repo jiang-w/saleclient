@@ -32,7 +32,7 @@
     [self.view addSubview:self.sideViewController.tableView];
     [self.sideViewController.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.bottom.equalTo(self.view);
-        make.width.mas_equalTo(260);
+        make.width.mas_equalTo(280);
     }];
 }
 

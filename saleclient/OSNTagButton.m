@@ -20,6 +20,7 @@
 - (void)setDefaultStyle {
     [self setTitle:self.tagObject.name forState:UIControlStateNormal];
     [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self setTitleColor:[UIColor orangeColor] forState:UIControlStateSelected];
     self.titleLabel.font = [UIFont systemFontOfSize:14];
     self.backgroundColor = [UIColor whiteColor];
     self.contentEdgeInsets = UIEdgeInsetsMake(6, 6, 6, 6);
@@ -29,6 +30,16 @@
     self.layer.cornerRadius = 5;
     self.layer.masksToBounds = YES;
     self.userInteractionEnabled = YES;
+}
+
+- (void)setSelected:(BOOL)selected {
+    if (selected) {
+        self.layer.borderColor = [UIColor orangeColor].CGColor;
+    }
+    else {
+        self.layer.borderColor = [UIColor blackColor].CGColor;
+    }
+    super.selected = selected;
 }
 
 @end

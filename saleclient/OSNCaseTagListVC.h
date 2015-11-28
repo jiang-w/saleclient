@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "OSNTagListSection.h"
+#import "OSNTagPadView.h"
 
-@interface OSNCaseTagListVC : UITableViewController <OSNTagListSectionDelegate>
+@interface OSNCaseTagListVC : UITableViewController <OSNTagListSectionDelegate, OSNTagPadViewDelegate>
 
 @end

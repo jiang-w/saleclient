@@ -9,20 +9,26 @@
 #import <UIKit/UIKit.h>
 #import "OSNTagButton.h"
 
+@protocol OSNTagPadViewDelegate <NSObject>
+
+
+
+@end
+
 @interface OSNTagPadView : UIView
 
 @property(nonatomic, assign) UIEdgeInsets padding;
 @property(nonatomic, assign) CGFloat lineSpace;
 @property(nonatomic, assign) CGFloat tagSpace;
 @property(nonatomic, assign) CGFloat maxLayoutWidth;
-@property(nonatomic, assign) BOOL isSingleLine;
 @property(nonatomic, assign) CGSize fixTagSize;
+@property(nonatomic, assign) NSInteger selectedIndex;
 
-- (void)addTagButton:(OSNTagButton *)button;
+@property(nonatomic, weak) id<OSNTagPadViewDelegate> delegate;
 
-- (void)insertTagButton:(OSNTagButton *)button atIndex:(NSUInteger)index;
+- (void)addTag:(OSNTag *)tag;
 
-- (void)removeTagButton:(OSNTagButton *)button;
+- (void)insertTag:(OSNTag *)tag atIndex:(NSUInteger)index;
 
 - (void)removeTagAtIndex:(NSUInteger)index;
 

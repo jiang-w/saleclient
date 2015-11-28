@@ -16,17 +16,12 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-    return self;
-}
-
-- (OSNTagPadView *)tagPadView {
-    if (!_tagPadView) {
+        
         _tagPadView = [[OSNTagPadView alloc] init];
         _tagPadView.padding = UIEdgeInsetsMake(10, 10, 10, 10);
         _tagPadView.lineSpace = 10;
         _tagPadView.tagSpace = 8;
-        _tagPadView.maxLayoutWidth = 260;
+        _tagPadView.maxLayoutWidth = 280;
         _tagPadView.fixTagSize =CGSizeMake(70, 30);
         
         [self.contentView addSubview:_tagPadView];
@@ -34,7 +29,7 @@
             make.left.right.top.bottom.equalTo(self.contentView);
         }];
     }
-    return _tagPadView;
+    return self;
 }
 
 @end
