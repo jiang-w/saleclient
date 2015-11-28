@@ -79,4 +79,16 @@
     self.titleLabel.text = group.name;
 }
 
+
+#pragma mark - OSNTagPadViewDelegate
+
+- (void)tagPadView:(OSNTagPadView *)view didSelectTag:(OSNTag *)tag andIndex:(NSUInteger)index {
+    self.selectedTagIndex = index;
+    if (self.delegate) {
+        if ([self.delegate respondsToSelector:@selector(sectionHeader:didSelectTag:)]) {
+            [self.delegate sectionHeader:self didSelectTag:self.group.list[self.selectedTagIndex]];
+        }
+    }
+}
+
 @end

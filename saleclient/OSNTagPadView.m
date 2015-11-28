@@ -180,6 +180,12 @@
 - (void)tapTagHandle:(OSNTagButton *)button {
     NSUInteger index = [self.tagSubviews indexOfObject:button];
     self.selectedIndex = index;
+    
+    if (self.delegate) {
+        if ([self.delegate respondsToSelector:@selector(tagPadView:didSelectTag:andIndex:)]) {
+            [self.delegate tagPadView:self didSelectTag:button.tagObject andIndex:index];
+        }
+    }
 }
 
 - (CGSize)getSizeOfTagButton:(OSNTagButton *)tagButton {

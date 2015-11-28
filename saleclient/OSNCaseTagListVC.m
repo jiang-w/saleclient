@@ -93,8 +93,8 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
         [tagView addTag:tag];
     }];
     
-    tagView.selectedIndex = 0;
-    tagView.delegate = self;
+    tagView.selectedIndex = section.selectedTagIndex;
+    tagView.delegate = section;
 }
 
 
@@ -120,7 +120,8 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
     [self.tableView endUpdates];
 }
 
-#pragma mark - OSNTagPadViewDelegate
-
+- (void)sectionHeader:(OSNTagListSection *)section didSelectTag:(OSNTag *)tag {
+    NSLog(@"Selected Tag: %@", tag.name);
+}
 
 @end

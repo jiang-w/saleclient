@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "OSNTagButton.h"
 
+@class OSNTagPadView;
 @protocol OSNTagPadViewDelegate <NSObject>
 
-
+- (void)tagPadView:(OSNTagPadView *)view didSelectTag:(OSNTag *)tag andIndex:(NSUInteger)index;
 
 @end
 
