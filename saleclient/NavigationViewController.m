@@ -38,8 +38,12 @@
     self.scrollView.delegate = self;
     CGFloat pageWidth = CGRectGetWidth(self.scrollView.frame);
     CGFloat pageHeight = CGRectGetHeight(self.scrollView.frame);
-    self.scrollView.contentSize = CGSizeMake(pageWidth * (_btnArr.count - 1) , pageHeight);
+    self.scrollView.contentSize = CGSizeMake(pageWidth * _btnArr.count, pageHeight);
     [self.scrollView setShowsHorizontalScrollIndicator:NO];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     [self setCurrentDisplayViewWithIndex:self.currentIndex];
 }

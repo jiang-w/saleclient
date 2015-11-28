@@ -67,20 +67,20 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rFs-gH-BnV">
+                <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rFs-gH-BnV">
                     <rect key="frame" x="454" y="593" width="132" height="133"/>
                     <animations/>
                     <state key="normal" image="wc_user_ico.png"/>
                     <connections>
-                        <action selector="openNavigationViewController:" destination="-1" eventType="touchUpInside" id="9dh-j4-rN9"/>
+                        <action selector="openNavigationViewController:" destination="-1" eventType="touchUpInside" id="G7f-Ix-vdD"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sE0-KP-ypb">
+                <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sE0-KP-ypb">
                     <rect key="frame" x="614" y="580" width="147" height="148"/>
                     <animations/>
                     <state key="normal" image="wc_product_ico.png"/>
                     <connections>
-                        <action selector="openNavigationViewController:" destination="-1" eventType="touchUpInside" id="Dj9-S0-lwU"/>
+                        <action selector="openNavigationViewController:" destination="-1" eventType="touchUpInside" id="fx1-yY-WyU"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d8k-3C-KhK">
@@ -93,15 +93,15 @@
                     <animations/>
                     <state key="normal" image="wc_case_ico.png"/>
                     <connections>
-                        <action selector="openNavigationViewController:" destination="-1" eventType="touchUpInside" id="2Mi-F7-Bd6"/>
+                        <action selector="openNavigationViewController:" destination="-1" eventType="touchUpInside" id="GAZ-fT-Hr1"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lb9-1L-Ebs">
+                <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lb9-1L-Ebs">
                     <rect key="frame" x="876" y="175" width="132" height="133"/>
                     <animations/>
                     <state key="normal" image="wc_loupan_ico.png"/>
                     <connections>
-                        <action selector="openNavigationViewController:" destination="-1" eventType="touchUpInside" id="d43-Eb-Fz6"/>
+                        <action selector="openNavigationViewController:" destination="-1" eventType="touchUpInside" id="5od-D9-Ev9"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="客户管理" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwX-Ak-beJ">

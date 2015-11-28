@@ -12,6 +12,8 @@
 
 @interface HomeViewController ()
 
+@property(nonatomic, strong) NavigationViewController *nav;
+
 @end
 
 @implementation HomeViewController
@@ -20,11 +22,13 @@
     [super viewDidLoad];
     
     self.navigationController.navigationBarHidden = YES;
+    self.nav = [[NavigationViewController alloc] initWithNibName:@"NavigationViewController" bundle:nil];
 }
 
 - (IBAction)openNavigationViewController:(id)sender {
-    NavigationViewController *nav = [[NavigationViewController alloc] initWithNibName:@"NavigationViewController" bundle:nil];
-    [self.navigationController pushViewController:nav animated:YES];
+    UIButton *btn = (UIButton *)sender;
+    self.nav.currentIndex = btn.tag;
+    [self.navigationController pushViewController:self.nav animated:YES];
 }
 
 @end

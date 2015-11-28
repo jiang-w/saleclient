@@ -211,6 +211,7 @@
 		015B2D211BFEBBB900821100 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				01A35D3C1C09B08D00341F45 /* Case */,
 				014664E51C06ED1C00FD2E96 /* TagVIew */,
 				015B2D221BFEBBFD00821100 /* SignInViewController.h */,
 				015B2D231BFEBBFD00821100 /* SignInViewController.m */,
@@ -223,14 +224,6 @@
 				011375631BFF0DA400A9AB9E /* NavigationViewController.xib */,
 				0113755E1BFF074100A9AB9E /* ProductListViewController.h */,
 				0113755F1BFF074100A9AB9E /* ProductListViewController.m */,
-				0187A0241C01A3C1001091F6 /* CaseListViewController.h */,
-				0187A0251C01A3C1001091F6 /* CaseListViewController.m */,
-				01CA2CEB1C0555F000CD0024 /* OSNCaseTagListVC.h */,
-				01CA2CEC1C0555F000CD0024 /* OSNCaseTagListVC.m */,
-				01CA2CEF1C05574C00CD0024 /* OSNTagListSection.h */,
-				01CA2CF01C05574C00CD0024 /* OSNTagListSection.m */,
-				01CDB8161C059A4300463F97 /* OSNTagListCell.h */,
-				01CDB8171C059A4300463F97 /* OSNTagListCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -271,6 +264,21 @@
 				01AF1F5B1C0402B00033413F /* OSNCaseManager.m */,
 			);
 			name = Service;
+			sourceTree = "<group>";
+		};
+		01A35D3C1C09B08D00341F45 /* Case */ = {
+			isa = PBXGroup;
+			children = (
+				0187A0241C01A3C1001091F6 /* CaseListViewController.h */,
+				0187A0251C01A3C1001091F6 /* CaseListViewController.m */,
+				01CA2CEB1C0555F000CD0024 /* OSNCaseTagListVC.h */,
+				01CA2CEC1C0555F000CD0024 /* OSNCaseTagListVC.m */,
+				01CA2CEF1C05574C00CD0024 /* OSNTagListSection.h */,
+				01CA2CF01C05574C00CD0024 /* OSNTagListSection.m */,
+				01CDB8161C059A4300463F97 /* OSNTagListCell.h */,
+				01CDB8171C059A4300463F97 /* OSNTagListCell.m */,
+			);
+			name = Case;
 			sourceTree = "<group>";
 		};
 		5848A951BEB05BD01F3E6171 /* Frameworks */ = {
