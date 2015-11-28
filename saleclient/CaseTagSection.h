@@ -10,23 +10,23 @@
 #import "OSNTagGroup.h"
 #import "OSNTagPadView.h"
 
-@class OSNTagListSection;
-@protocol OSNTagListSectionDelegate <NSObject>
+@class CaseTagSection;
+@protocol CaseTagSectionDelegate <NSObject>
 
 @required
 - (void)openedSectionHeaderView:(UIView *)sender;
 - (void)closedSectionHeaderView:(UIView *)sender;
 
 @optional
-- (void)sectionHeader:(OSNTagListSection *)section didSelectTag:(OSNTag *)tag;
+- (void)sectionHeader:(CaseTagSection *)section didSelectTag:(OSNTag *)tag;
 
 @end
 
-@interface OSNTagListSection : UITableViewHeaderFooterView <OSNTagPadViewDelegate>
+@interface CaseTagSection : UITableViewHeaderFooterView <OSNTagPadViewDelegate>
 
 @property(nonatomic, strong) OSNTagGroup *group;
 @property(nonatomic, assign) NSUInteger selectedTagIndex;
 @property(nonatomic, assign) BOOL isOpen;
-@property(nonatomic, weak) id<OSNTagListSectionDelegate> delegate;
+@property(nonatomic, weak) id<CaseTagSectionDelegate> delegate;
 
 @end

@@ -7,12 +7,12 @@
 //
 
 #import "CaseListViewController.h"
-#import "OSNCaseTagListVC.h"
+#import "CaseTagTable.h"
 #import <Masonry.h>
 
 @interface CaseListViewController()
 
-@property(nonatomic, strong) OSNCaseTagListVC *sideViewController;
+@property(nonatomic, strong) CaseTagTable *sideViewController;
 
 @end
 
@@ -36,9 +36,9 @@
     }];
 }
 
-- (OSNCaseTagListVC *)sideViewController {
+- (CaseTagTable *)sideViewController {
     if (!_sideViewController) {
-        _sideViewController = [[OSNCaseTagListVC alloc] init];
+        _sideViewController = [[CaseTagTable alloc] init];
     }
     return _sideViewController;
 }

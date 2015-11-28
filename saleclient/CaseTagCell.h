@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "OSNTagPadView.h"
 
-@interface OSNTagListCell : UITableViewCell
+@interface CaseTagCell : UITableViewCell
 
 @property(nonatomic, strong) OSNTagPadView *tagPadView;
 

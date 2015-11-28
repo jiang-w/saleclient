@@ -10,6 +10,6 @@
 
 @interface OSNProductManager : NSObject
 
-- (void)getProductTagList;
+- (NSArray *)getProductTagList;
 
 @end

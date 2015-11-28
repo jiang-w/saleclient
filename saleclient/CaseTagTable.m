@@ -6,21 +6,21 @@
 //  Copyright © 2015年 oceano. All rights reserved.
 //
 
-#import "OSNCaseTagListVC.h"
+#import "CaseTagTable.h"
 #import "OSNCaseManager.h"
-#import "OSNTagListCell.h"
+#import "CaseTagCell.h"
 
 static NSString * const cellReuseIdentifier = @"cellIdentifier";
 static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
 
-@interface OSNCaseTagListVC ()
+@interface CaseTagTable ()
 
 @end
 
-@implementation OSNCaseTagListVC
+@implementation CaseTagTable
 {
     NSMutableArray *_sectionHeaderArray;
-    OSNTagListCell *_sampleCell;
+    CaseTagCell *_sampleCell;
     OSNTagPadView *_tagPadView;
 }
 
@@ -33,7 +33,7 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
     _sectionHeaderArray = [NSMutableArray array];
     NSArray *groups = [[[OSNCaseManager alloc] init] getCaseTagList];
     for (OSNTagGroup *group in groups) {
-        OSNTagListSection *section = [[OSNTagListSection alloc] initWithReuseIdentifier:sectionReuseIdentifier];
+        CaseTagSection *section = [[CaseTagSection alloc] initWithReuseIdentifier:sectionReuseIdentifier];
         section.group = group;
         section.delegate = self;
         [_sectionHeaderArray addObject:section];
@@ -48,7 +48,7 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    OSNTagListSection *sectionHeader = _sectionHeaderArray[section];
+    CaseTagSection *sectionHeader = _sectionHeaderArray[section];
     if (sectionHeader.isOpen && sectionHeader.group.list.count > 0) {
         return 1;
     }
@@ -62,9 +62,9 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    OSNTagListCell *cell = (OSNTagListCell *)[tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
+    CaseTagCell *cell = (CaseTagCell *)[tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
     if (!cell) {
-        cell = [[OSNTagListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellReuseIdentifier];
+        cell = [[CaseTagCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellReuseIdentifier];
     }
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
@@ -72,7 +72,7 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (!_sampleCell) {
-        _sampleCell = [[OSNTagListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellReuseIdentifier];
+        _sampleCell = [[CaseTagCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellReuseIdentifier];
     }
     
     [self configureCell:_sampleCell atIndexPath:indexPath];
@@ -84,11 +84,11 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
     return 200;
 }
 
-- (void)configureCell:(OSNTagListCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+- (void)configureCell:(CaseTagCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     OSNTagPadView *tagView = cell.tagPadView;
     [tagView removeAllTags];
     
-    OSNTagListSection *section = _sectionHeaderArray[indexPath.section];
+    CaseTagSection *section = _sectionHeaderArray[indexPath.section];
     [section.group.list enumerateObjectsUsingBlock:^(OSNTag *tag, NSUInteger idx, BOOL *stop) {
         [tagView addTag:tag];
     }];
@@ -101,7 +101,7 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
 #pragma mark - OSNSectionHeaderViewDelegate
 
 - (void)openedSectionHeaderView:(UIView *)sender {
-    OSNTagListSection *sectionHeader = (OSNTagListSection *)sender;
+    CaseTagSection *sectionHeader = (CaseTagSection *)sender;
     NSInteger sectionIndex = [_sectionHeaderArray indexOfObject:sectionHeader];
     NSMutableArray *indexPathsToInsert = [NSMutableArray array];
     [indexPathsToInsert addObject:[NSIndexPath indexPathForRow:0 inSection:sectionIndex]];
@@ -111,7 +111,7 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
 }
 
 - (void)closedSectionHeaderView:(UIView *)sender {
-    OSNTagListSection *sectionHeader = (OSNTagListSection *)sender;
+    CaseTagSection *sectionHeader = (CaseTagSection *)sender;
     NSInteger sectionIndex = [_sectionHeaderArray indexOfObject:sectionHeader];
     NSMutableArray *indexPathsToDelete = [NSMutableArray array];
     [indexPathsToDelete addObject:[NSIndexPath indexPathForRow:0 inSection:sectionIndex]];
@@ -120,7 +120,7 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
     [self.tableView endUpdates];
 }
 
-- (void)sectionHeader:(OSNTagListSection *)section didSelectTag:(OSNTag *)tag {
+- (void)sectionHeader:(CaseTagSection *)section didSelectTag:(OSNTag *)tag {
     NSLog(@"Selected Tag: %@", tag.name);
 }
 

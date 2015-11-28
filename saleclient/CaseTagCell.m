@@ -6,11 +6,11 @@
 //  Copyright © 2015年 oceano. All rights reserved.
 //
 
-#import "OSNTagListCell.h"
+#import "CaseTagCell.h"
 #import "OSNTagButton.h"
 #import <Masonry.h>
 
-@implementation OSNTagListCell
+@implementation CaseTagCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
