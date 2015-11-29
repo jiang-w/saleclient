@@ -9,3 +9,4 @@
 #import "OSNUserInfo.h"
 #import "OSNTag.h"
 #import "OSNTagGroup.h"
+#import "OSNCaseEntity.h"

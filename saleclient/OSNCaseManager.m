@@ -55,7 +55,7 @@
     return nil;
 }
 
-- (void)getCaseListWithParameters:(NSDictionary *)parameters {
+- (NSArray *)getCaseListWithParameters:(NSDictionary *)parameters {
     OSNUserInfo *userinfo = [OSNUserManager currentUser];
     OSNNetworkService *service = [OSNNetworkService sharedInstance];
     NSHTTPURLResponse *response;
@@ -66,9 +66,50 @@
     
     NSData *data = [service syncPostRequest:[NSString stringWithFormat:@"%@ipadDcCaseListData", BASEURL] parameters:paramDic returnResponse:&response error:&error];
     if (data) {
-        NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//        NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+        NSArray *dataArr = dic[@"returnValue"][@"data"];
+        if (dataArr && dataArr.count > 0) {
+            NSMutableArray *list = [NSMutableArray array];
+            NSDictionary *dataDic = [dataArr firstObject];
+            NSUInteger listCount = [dataDic[@"listSize"] integerValue];
+            for (NSDictionary *item in dataDic[@"list"]) {
+                OSNCaseEntity *entity = [[OSNCaseEntity alloc] init];
+                entity.exhibitionId = item[@"exhibitionId"];
+                entity.exhibitionTypeId = item[@"exhibitionTypeId"];
+                entity.exhibitionName = item[@"exhibitionName"];
+                entity.displayedId = item[@"displayedId"];
+                entity.createDate = item[@"createDate"];
+                entity.styleId = item[@"styleId"];
+                entity.roomId = item[@"roomId"];
+                entity.houseTypeId = item[@"houseTypeId"];
+                entity.crowdId = item[@"crowdId"];
+                entity.exhibitionPrice = item[@"exhibitionPrice"];
+                entity.designerId = item[@"designerId"];
+                entity.collectCount = item[@"collectCount"];
+                entity.praiseCount = item[@"praiseCount"];
+                entity.isPush = item[@"isPush"];
+                entity.buildingId = item[@"buildingId"];
+                entity.modelId = item[@"modelId"];
+                entity.twoDMaxPath = item[@"twoDMaxPath"];
+                entity.factoryId = item[@"factoryId"];
+                entity.municipalId = item[@"municipalId"];
+                entity.shopId = item[@"shopId"];
+                entity.descriptionInof = item[@"description"];
+                entity.unityThreeDPath = item[@"unityThreeDPath"];
+                entity.personId = item[@"personId"];
+                entity.personName = item[@"personName"];
+                entity.personImagePath = item[@"personImagePath"];
+                entity.defaultImage = item[@"defaultImage"];
+                entity.exhibitionImageTypeId = item[@"exhibitionImageTypeId"];
+                entity.imagePath = item[@"imagePath"];
+                
+                [list addObject:entity];
+            }
+            return list;
+        }
     }
+    return nil;
 }
 
 @end

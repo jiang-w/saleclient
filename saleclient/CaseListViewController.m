@@ -15,6 +15,7 @@
 @property(nonatomic, strong) CaseTagTable *sideViewController;
 @property(nonatomic, assign) NSUInteger viewSize;
 @property(nonatomic, assign) NSUInteger viewIndex;
+@property(nonatomic, strong) NSMutableArray *caseList;
 
 @end
 
@@ -30,6 +31,7 @@
         _manager = [[OSNCaseManager alloc] init];
         _viewSize = 6;
         _viewIndex = 1;
+        _caseList = [NSMutableArray array];
     }
     return self;
 }
@@ -59,14 +61,21 @@
     paramDic[@"styleId"] = selectedResult[@"style"];
     paramDic[@"houseTypeId"] = selectedResult[@"houseType"];
     paramDic[@"viewSize"] = [NSString stringWithFormat:@"%lu", self.viewSize];
-    paramDic[@"viewIndex"] = @"1";
-    
-    [_manager getCaseListWithParameters:paramDic];
+    paramDic[@"viewIndex"] = [NSString stringWithFormat:@"%lu", self.viewIndex];
+    NSArray *list = [_manager getCaseListWithParameters:paramDic];
+    [self.caseList addObjectsFromArray:list];
+}
+
+- (void)loadMoreCaseList {
+    self.viewIndex++;
+    [self loadCaseListView];
 }
 
 #pragma mark - CaseTagTableDelegate
 
 -(void)didChangeSelectedTags {
+    [self.caseList removeAllObjects];
+    self.viewIndex = 1;
     [self loadCaseListView];
 }
 
