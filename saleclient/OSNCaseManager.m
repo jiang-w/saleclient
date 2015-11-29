@@ -13,17 +13,25 @@
 @implementation OSNCaseManager
 
 - (NSArray *)getCaseTagList {
-    OSNUserInfo *userinfo = [OSNUserManager currentUser];
-    OSNNetworkService *service = [OSNNetworkService sharedInstance];
-    NSHTTPURLResponse *response;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *json = [defaults objectForKey:@"caseTagJson"];
     NSError *error;
-    NSData *data = [service syncPostRequest:[NSString stringWithFormat:@"%@ipadDcCaseTagSelectData", BASEURL] parameters:@{@"userLoginId":userinfo.userLoginId,@"accessToken":userinfo.accessToken} returnResponse:&response error:&error];
-    if (data) {
-//        NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+    if (!json) {
+        OSNUserInfo *userinfo = [OSNUserManager currentUser];
+        OSNNetworkService *service = [OSNNetworkService sharedInstance];
+        NSHTTPURLResponse *response;
+        NSData *data = [service syncPostRequest:[NSString stringWithFormat:@"%@ipadDcCaseTagSelectData", BASEURL] parameters:@{@"userLoginId":userinfo.userLoginId,@"accessToken":userinfo.accessToken} returnResponse:&response error:&error];
+        if (data) {
+            json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            [defaults setObject:json forKey:@"caseTagJson"];
+        }
+    }
+    
+    NSMutableArray *groups = [NSMutableArray array];
+    if (json) {
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[json dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableLeaves error:&error];
         NSArray *dataArr = dic[@"returnValue"][@"data"];
         if (dataArr) {
-            NSMutableArray *groups = [NSMutableArray array];
             for (NSDictionary *groupDic in dataArr) {
                 OSNTagGroup *group = [[OSNTagGroup alloc] init];
                 group.type = groupDic[@"type"];
@@ -49,10 +57,10 @@
                 
                 [groups addObject:group];
             }
-            return groups;
         }
     }
-    return nil;
+    
+    return groups;
 }
 
 - (NSArray *)getCaseListWithParameters:(NSDictionary *)parameters {
