@@ -45,7 +45,7 @@
     [bgView addSubview:self.name];
     [self.name mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(bgView);
-        make.left.equalTo(bgView).offset(40);
+        make.left.lessThanOrEqualTo(bgView).offset(40);
     }];
     
     [bgView addSubview:self.favorite];
@@ -53,6 +53,7 @@
         make.centerY.equalTo(bgView);
         make.right.equalTo(bgView).offset(-40);
         make.width.height.mas_offset(20);
+        make.left.greaterThanOrEqualTo(self.name.mas_right).offset(2);
     }];
 }
 

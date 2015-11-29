@@ -21,4 +21,7 @@
 // 判断字符串是否为空
 #define IS_EMPTY_STRING(str) (str == nil || str.length == 0)
 
+// 获取当前系统的版本号
+#define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
+
 #define OSNMainDelegate [UIApplication sharedApplication].delegate

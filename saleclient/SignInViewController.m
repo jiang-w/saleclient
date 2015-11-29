@@ -21,9 +21,63 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.userNameTextBox.delegate = self;
+    self.passwordTextBox.delegate = self;
+    
+    // 点击背景消失键盘
+//    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleBackgroundTap:)];
+//    tapRecognizer.cancelsTouchesInView = NO;
+//    [self.view addGestureRecognizer:tapRecognizer];
 }
 
+- (void) handleBackgroundTap:(UITapGestureRecognizer*)sender
+{
+    // 取消输入框第一响应
+    [self.userNameTextBox resignFirstResponder];
+    [self.passwordTextBox resignFirstResponder];
+}
+
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];   //点击Return后键盘消失
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    CGRect frame = textField.frame;
+    CGFloat yOffset = self.view.frame.size.height - frame.origin.y - frame.size.height - 520;
+    if (yOffset < 0) {
+        [UIView beginAnimations:@"ResizeForKeyBoard" context:nil];
+        [UIView setAnimationDuration:0.3];
+        float width = self.view.frame.size.width;
+        float height = self.view.frame.size.height;
+        CGRect rect = CGRectMake(0, yOffset, width, height);
+        self.view.frame = rect;
+        [UIView commitAnimations];
+    }
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [UIView beginAnimations:@"ResizeForKeyBoard" context:nil];
+    [UIView setAnimationDuration:0.3];
+    float width = self.view.frame.size.width;
+    float height = self.view.frame.size.height;
+    CGRect rect = CGRectMake(0, 0, width, height);
+    self.view.frame = rect;
+    [UIView commitAnimations];
+}
+
+
+#pragma mark - event
+
 - (IBAction)signin:(id)sender {
+    // 取消输入框第一响应
+    [self.userNameTextBox resignFirstResponder];
+    [self.passwordTextBox resignFirstResponder];
+    
     NSString *userName = self.userNameTextBox.text;
     NSString *password = self.passwordTextBox.text;
     BOOL isRemember = YES;

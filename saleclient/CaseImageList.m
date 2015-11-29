@@ -9,6 +9,7 @@
 #import "CaseImageList.h"
 #import "CaseImageCell.h"
 #import "OSNCaseManager.h"
+#import <MJRefresh.h>
 
 @interface CaseImageList ()
 
@@ -37,7 +38,7 @@ static NSString * const reuseIdentifier = @"caseImageCell";
     layout.minimumLineSpacing = 10;
     self = [super initWithCollectionViewLayout:layout];
     if (self) {
-        _viewSize = 6;
+        _viewSize = 10;
         _viewIndex = 1;
         _caseList = [NSMutableArray array];
         _manager = [[OSNCaseManager alloc] init];
@@ -49,9 +50,16 @@ static NSString * const reuseIdentifier = @"caseImageCell";
     [super viewDidLoad];
     
     self.collectionView.backgroundColor = RGB(244, 244, 244);
+    self.collectionView.alwaysBounceVertical = YES;
+    
     // Register cell classes
     [self.collectionView registerClass:[CaseImageCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    
+    // 上拉刷新
+    __weak __typeof__(self) weakSelf = self;
+    self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [weakSelf loadMoreCaseList];
+    }];
+    // 加载数据
     [self loadCaseList];
 }
 
@@ -78,52 +86,56 @@ static NSString * const reuseIdentifier = @"caseImageCell";
 
 #pragma mark <UICollectionViewDelegate>
 
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
 }
 
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
 
 #pragma mark - CaseTagTableDelegate
 
--(void)caseTagTable:(CaseTagTable *)table didChangeSelectedTags:(NSDictionary *)rusult {
+- (void)caseTagTable:(CaseTagTable *)table didChangeSelectedTags:(NSDictionary *)rusult {
     self.roomId = rusult[@"room"];
     self.styleId = rusult[@"style"];
     self.houseTypeId = rusult[@"houseType"];
-    [self.caseList removeAllObjects];
-    self.viewIndex = 1;
-    [self loadCaseList];
     
-    [self.collectionView reloadData];
+    [self loadCaseList];
 }
 
 
 #pragma mark - private method
 
 - (void)loadCaseList {
+    self.viewIndex = 1;
+    __weak __typeof__(self) weakSelf = self;
+    dispatch_queue_t queue = dispatch_queue_create("updateCaseList", nil);
+    dispatch_async(queue, ^{
+        NSArray *list = [weakSelf requestCaseList];
+        [weakSelf.caseList removeAllObjects];
+        [weakSelf.caseList addObjectsFromArray:list];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf.collectionView reloadData];
+            [weakSelf.collectionView.mj_footer endRefreshing];
+        });
+    });
+}
+
+- (void)loadMoreCaseList {
+    self.viewIndex++;
+    __weak __typeof__(self) weakSelf = self;
+    dispatch_queue_t queue = dispatch_queue_create("updateCaseList", nil);
+    dispatch_async(queue, ^{
+        NSArray *list = [weakSelf requestCaseList];
+        [weakSelf.caseList addObjectsFromArray:list];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf.collectionView reloadData];
+            [weakSelf.collectionView.mj_footer endRefreshing];
+        });
+    });
+}
+
+- (NSArray *)requestCaseList {
     NSMutableDictionary *paramDic = [NSMutableDictionary dictionary];
     paramDic[@"roomId"] = self.roomId;
     paramDic[@"styleId"] = self.styleId;
@@ -131,13 +143,7 @@ static NSString * const reuseIdentifier = @"caseImageCell";
     paramDic[@"viewSize"] = [NSString stringWithFormat:@"%lu", self.viewSize];
     paramDic[@"viewIndex"] = [NSString stringWithFormat:@"%lu", self.viewIndex];
     NSArray *list = [_manager getCaseListWithParameters:paramDic];
-    [self.caseList addObjectsFromArray:list];
+    return list;
 }
-
-- (void)loadMoreCaseList {
-    self.viewIndex++;
-    [self loadCaseList];
-}
-
 
 @end

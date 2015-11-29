@@ -21,16 +21,19 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - Masonry (0.6.3)
+  - MJRefresh (3.0.6)
   - Reachability (3.2)
 
 DEPENDENCIES:
   - AFNetworking
   - Masonry
+  - MJRefresh
   - Reachability
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   Masonry: ff105a956abcd19a618b2028b121cb638d7a8e2f
+  MJRefresh: df419e2393f9020bcd340c552e8f0cf700073f32
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0
