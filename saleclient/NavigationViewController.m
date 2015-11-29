@@ -87,16 +87,16 @@
     UIViewController *contr;
     switch (index) {
         case 0:
-            contr = [[CaseListViewController alloc] initWithFrame:self.scrollView.frame];
+            contr = [[CaseListViewController alloc] init];
             break;
         case 1:
-            contr = [[ProductListViewController alloc] initWithFrame:self.scrollView.frame];
+            contr = [[ProductListViewController alloc] init];
             break;
         case 2:
-            contr = [[ProductListViewController alloc] initWithFrame:self.scrollView.frame];
+            contr = [[ProductListViewController alloc] init];
             break;
         case 3:
-            contr = [[ProductListViewController alloc] initWithFrame:self.scrollView.frame];
+            contr = [[ProductListViewController alloc] init];
             break;
         default:
             return;

@@ -12,10 +12,10 @@
 
 @interface CaseListViewController()
 
-@property(nonatomic, strong) CaseTagTable *sideViewController;
 @property(nonatomic, assign) NSUInteger viewSize;
 @property(nonatomic, assign) NSUInteger viewIndex;
 @property(nonatomic, strong) NSMutableArray *caseList;
+@property(nonatomic, strong) CaseTagTable *sideViewController;
 
 @end
 
@@ -24,10 +24,9 @@
     OSNCaseManager *_manager;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame {
+- (instancetype)init {
     self = [super init];
     if (self) {
-        [self.view setFrame:frame];
         _manager = [[OSNCaseManager alloc] init];
         _viewSize = 6;
         _viewIndex = 1;
@@ -35,6 +34,7 @@
     }
     return self;
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,6 +44,8 @@
         make.top.left.bottom.equalTo(self.view);
         make.width.mas_equalTo(280);
     }];
+    
+    [self loadCaseListView];
 }
 
 - (CaseTagTable *)sideViewController {

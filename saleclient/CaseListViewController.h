@@ -11,6 +11,4 @@
 
 @interface CaseListViewController : UIViewController <CaseTagTableDelegate>
 
-- (instancetype)initWithFrame:(CGRect)frame;
-
 @end

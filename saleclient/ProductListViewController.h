@@ -10,6 +10,4 @@
 
 @interface ProductListViewController : UIViewController
 
-- (instancetype)initWithFrame:(CGRect)frame;
-
 @end

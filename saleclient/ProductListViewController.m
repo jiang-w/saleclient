@@ -15,17 +15,10 @@
 
 @implementation ProductListViewController
 
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super init];
-    if (self) {
-        [self.view setFrame:frame];
-        self.view.backgroundColor = [UIColor yellowColor];
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor yellowColor];
     
     OSNProductManager *manager = [[OSNProductManager alloc] init];
     [manager getProductTagList];
