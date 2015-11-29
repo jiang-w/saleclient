@@ -1,5 +1,5 @@
 //
-//  ImageListViewController.h
+//  CaseImageList.h
 //  saleclient
 //
 //  Created by Frank on 15/11/29.
@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CaseTagTable.h"
 
-@interface ImageListViewController : UICollectionViewController
+@interface CaseImageList : UICollectionViewController <CaseTagTableDelegate>
 
 @end

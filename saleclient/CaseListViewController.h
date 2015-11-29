@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "CaseTagTable.h"
+#import "CaseImageList.h"
 
-@interface CaseListViewController : UIViewController <CaseTagTableDelegate>
+@interface CaseListViewController : UIViewController
 
 @end

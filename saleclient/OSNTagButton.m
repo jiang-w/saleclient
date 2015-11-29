@@ -23,7 +23,7 @@
     [self setTitleColor:[UIColor orangeColor] forState:UIControlStateSelected];
     self.titleLabel.font = [UIFont systemFontOfSize:14];
     self.backgroundColor = [UIColor whiteColor];
-    self.contentEdgeInsets = UIEdgeInsetsMake(6, 6, 6, 6);
+    self.contentEdgeInsets = UIEdgeInsetsMake(6, 4, 6, 4);
     self.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     self.layer.borderColor = [UIColor blackColor].CGColor;
     self.layer.borderWidth = 1;

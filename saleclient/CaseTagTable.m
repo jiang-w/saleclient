@@ -1,5 +1,5 @@
 //
-//  OSNCaseTagListVC.m
+//  CaseTagTable.m
 //  saleclient
 //
 //  Created by Frank on 15/11/25.
@@ -124,14 +124,15 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
 
 - (void)sectionHeader:(CaseTagSection *)section didSelectTag:(OSNTag *)tag {
     if (self.delegate) {
-        if ([self.delegate respondsToSelector:@selector(didChangeSelectedTags)]) {
-            [self.delegate didChangeSelectedTags];
+        if ([self.delegate respondsToSelector:@selector(caseTagTable:didChangeSelectedTags:)]) {
+            NSDictionary *selectedResult = [self getAllSelectedTagResult];
+            [self.delegate caseTagTable:self didChangeSelectedTags:selectedResult];
         }
     }
 }
 
 
-#pragma mark - public method
+#pragma mark - private method
 
 - (NSDictionary *)getAllSelectedTagResult {
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];

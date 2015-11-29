@@ -1,5 +1,5 @@
 //
-//  OSNTagListCell.m
+//  CaseTagCell.m
 //  saleclient
 //
 //  Created by Frank on 15/11/25.
@@ -21,7 +21,7 @@
         _tagPadView.padding = UIEdgeInsetsMake(10, 10, 10, 10);
         _tagPadView.lineSpace = 10;
         _tagPadView.tagSpace = 8;
-        _tagPadView.maxLayoutWidth = 280;
+        _tagPadView.maxLayoutWidth = 260;
         _tagPadView.fixTagSize =CGSizeMake(70, 30);
         
         [self.contentView addSubview:_tagPadView];
