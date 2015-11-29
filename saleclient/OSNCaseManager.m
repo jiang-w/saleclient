@@ -41,7 +41,7 @@
                     [list addObject:item];
                 }
                 OSNTag *allTag = [[OSNTag alloc] init];
-                allTag.enumId = @"all";
+                allTag.enumId = @"";
                 allTag.sequenceId = @"0";
                 allTag.name = @"全部";
                 [list insertObject:allTag atIndex:0];
@@ -53,6 +53,22 @@
         }
     }
     return nil;
+}
+
+- (void)getCaseListWithParameters:(NSDictionary *)parameters {
+    OSNUserInfo *userinfo = [OSNUserManager currentUser];
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSHTTPURLResponse *response;
+    NSError *error;
+    NSMutableDictionary *paramDic = [NSMutableDictionary dictionaryWithDictionary:parameters];
+    paramDic[@"userLoginId"] = userinfo.userLoginId;
+    paramDic[@"accessToken"] = userinfo.accessToken;
+    
+    NSData *data = [service syncPostRequest:[NSString stringWithFormat:@"%@ipadDcCaseListData", BASEURL] parameters:paramDic returnResponse:&response error:&error];
+    if (data) {
+        NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+    }
 }
 
 @end

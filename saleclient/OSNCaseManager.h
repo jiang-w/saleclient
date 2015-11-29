@@ -12,4 +12,6 @@
 
 - (NSArray *)getCaseTagList;
 
+- (void)getCaseListWithParameters:(NSDictionary *)parameters;
+
 @end

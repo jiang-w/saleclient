@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CaseTagTable.h"
 
-@interface CaseListViewController : UIViewController
+@interface CaseListViewController : UIViewController <CaseTagTableDelegate>
 
 - (instancetype)initWithFrame:(CGRect)frame;
 

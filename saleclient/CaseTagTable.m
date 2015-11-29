@@ -22,6 +22,7 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
     NSMutableArray *_sectionHeaderArray;
     CaseTagCell *_sampleCell;
     OSNTagPadView *_tagPadView;
+    OSNCaseManager *_manager;
 }
 
 - (void)viewDidLoad {
@@ -31,7 +32,8 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
     self.tableView.bounces = NO;
     
     _sectionHeaderArray = [NSMutableArray array];
-    NSArray *groups = [[[OSNCaseManager alloc] init] getCaseTagList];
+    _manager = [[OSNCaseManager alloc] init];
+    NSArray *groups = [_manager getCaseTagList];
     for (OSNTagGroup *group in groups) {
         CaseTagSection *section = [[CaseTagSection alloc] initWithReuseIdentifier:sectionReuseIdentifier];
         section.group = group;
@@ -121,7 +123,24 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
 }
 
 - (void)sectionHeader:(CaseTagSection *)section didSelectTag:(OSNTag *)tag {
-    NSLog(@"Selected Tag: %@", tag.name);
+    if (self.delegate) {
+        if ([self.delegate respondsToSelector:@selector(didChangeSelectedTags)]) {
+            [self.delegate didChangeSelectedTags];
+        }
+    }
+}
+
+
+#pragma mark - public method
+
+- (NSDictionary *)getAllSelectedTagResult {
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    for (CaseTagSection *section in _sectionHeaderArray) {
+        NSString *groupType = section.group.type;
+        OSNTag *tag = section.group.list[section.selectedTagIndex];
+        dic[groupType] = tag.enumId;
+    }
+    return dic;
 }
 
 @end

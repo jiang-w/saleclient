@@ -19,7 +19,7 @@
     NSError *error;
     NSData *data = [service syncPostRequest:[NSString stringWithFormat:@"%@ipadOcnProductQueryItemData", BASEURL] parameters:@{@"userLoginId":userinfo.userLoginId,@"accessToken":userinfo.accessToken} returnResponse:&response error:&error];
     if (data) {
-        NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//        NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
         NSArray *dataArr = dic[@"returnValue"][@"data"];
         if (dataArr) {
