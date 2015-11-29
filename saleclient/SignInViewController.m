@@ -22,6 +22,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    OSNUserInfo *userinfo = [OSNUserManager currentUser];
+    if (userinfo) {
+        self.userNameTextBox.text = userinfo.userLoginId;
+    }
+    
     self.userNameTextBox.delegate = self;
     self.passwordTextBox.delegate = self;
     

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProductTagTable.h"
 
 @interface ProductListViewController : UIViewController
 

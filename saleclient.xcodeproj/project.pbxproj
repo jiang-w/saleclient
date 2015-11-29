@@ -49,6 +49,9 @@
 		01CA2CED1C0555F000CD0024 /* CaseTagTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CA2CEC1C0555F000CD0024 /* CaseTagTable.m */; };
 		01CA2CF11C05574C00CD0024 /* CaseTagSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CA2CF01C05574C00CD0024 /* CaseTagSection.m */; };
 		01CDB8181C059A4300463F97 /* CaseTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CDB8171C059A4300463F97 /* CaseTagCell.m */; };
+		01E063991C0B6E28009448EA /* ProductTagTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E063981C0B6E28009448EA /* ProductTagTable.m */; settings = {ASSET_TAGS = (); }; };
+		01E0639C1C0B6E65009448EA /* ProductTagSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E0639B1C0B6E65009448EA /* ProductTagSection.m */; settings = {ASSET_TAGS = (); }; };
+		01E0639F1C0B6E87009448EA /* ProductTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E0639E1C0B6E87009448EA /* ProductTagCell.m */; settings = {ASSET_TAGS = (); }; };
 		6ECBAA760C49A32A4783B017 /* libPods-saleclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 977BB1C584A2928D5B6CF794 /* libPods-saleclient.a */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +124,12 @@
 		01CA2CF01C05574C00CD0024 /* CaseTagSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseTagSection.m; sourceTree = "<group>"; };
 		01CDB8161C059A4300463F97 /* CaseTagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseTagCell.h; sourceTree = "<group>"; };
 		01CDB8171C059A4300463F97 /* CaseTagCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseTagCell.m; sourceTree = "<group>"; };
+		01E063971C0B6E28009448EA /* ProductTagTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductTagTable.h; sourceTree = "<group>"; };
+		01E063981C0B6E28009448EA /* ProductTagTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductTagTable.m; sourceTree = "<group>"; };
+		01E0639A1C0B6E65009448EA /* ProductTagSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductTagSection.h; sourceTree = "<group>"; };
+		01E0639B1C0B6E65009448EA /* ProductTagSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductTagSection.m; sourceTree = "<group>"; };
+		01E0639D1C0B6E87009448EA /* ProductTagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductTagCell.h; sourceTree = "<group>"; };
+		01E0639E1C0B6E87009448EA /* ProductTagCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductTagCell.m; sourceTree = "<group>"; };
 		085C548C4109E76C880EC2E0 /* Pods-saleclient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-saleclient.release.xcconfig"; path = "Pods/Target Support Files/Pods-saleclient/Pods-saleclient.release.xcconfig"; sourceTree = "<group>"; };
 		977BB1C584A2928D5B6CF794 /* libPods-saleclient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-saleclient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91545DC02F872E51821B588 /* Pods-saleclient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-saleclient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-saleclient/Pods-saleclient.debug.xcconfig"; sourceTree = "<group>"; };
@@ -290,6 +299,12 @@
 			children = (
 				0113755E1BFF074100A9AB9E /* ProductListViewController.h */,
 				0113755F1BFF074100A9AB9E /* ProductListViewController.m */,
+				01E063971C0B6E28009448EA /* ProductTagTable.h */,
+				01E063981C0B6E28009448EA /* ProductTagTable.m */,
+				01E0639A1C0B6E65009448EA /* ProductTagSection.h */,
+				01E0639B1C0B6E65009448EA /* ProductTagSection.m */,
+				01E0639D1C0B6E87009448EA /* ProductTagCell.h */,
+				01E0639E1C0B6E87009448EA /* ProductTagCell.m */,
 			);
 			name = Product;
 			sourceTree = "<group>";
@@ -456,7 +471,9 @@
 				01AF1F5C1C0402B00033413F /* OSNCaseManager.m in Sources */,
 				018B09F41BFEC38B007B69A8 /* OSNNetworkService.m in Sources */,
 				011375601BFF074100A9AB9E /* ProductListViewController.m in Sources */,
+				01E0639F1C0B6E87009448EA /* ProductTagCell.m in Sources */,
 				0129AB8D1C0363D800A445FB /* OSNProductManager.m in Sources */,
+				01E0639C1C0B6E65009448EA /* ProductTagSection.m in Sources */,
 				015B2D0F1BFEBA5400821100 /* AppDelegate.m in Sources */,
 				01AF1F621C040E1B0033413F /* OSNTagGroup.m in Sources */,
 				018B09F51BFEC38B007B69A8 /* OSNUserManager.m in Sources */,
@@ -467,6 +484,7 @@
 				01A35D461C0AF4BA00341F45 /* CaseImageCell.m in Sources */,
 				015B2D0C1BFEBA5400821100 /* main.m in Sources */,
 				01AF1F5F1C040D260033413F /* OSNTag.m in Sources */,
+				01E063991C0B6E28009448EA /* ProductTagTable.m in Sources */,
 				01CDB8181C059A4300463F97 /* CaseTagCell.m in Sources */,
 				018B09E61BFEC0BB007B69A8 /* HomeViewController.m in Sources */,
 				01CA2CED1C0555F000CD0024 /* CaseTagTable.m in Sources */,

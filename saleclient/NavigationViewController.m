@@ -90,13 +90,13 @@
             contr = [[CaseListViewController alloc] init];
             break;
         case 1:
-            contr = [[ProductListViewController alloc] init];
+            contr = [[UIViewController alloc] init];
             break;
         case 2:
             contr = [[ProductListViewController alloc] init];
             break;
         case 3:
-            contr = [[ProductListViewController alloc] init];
+            contr = [[UIViewController alloc] init];
             break;
         default:
             return;
