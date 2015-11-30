@@ -28,6 +28,7 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
     self.tableView.sectionHeaderHeight = 40;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.bounces = NO;
+    self.tableView.showsVerticalScrollIndicator = NO;
     
     [self loadTagData];
 }

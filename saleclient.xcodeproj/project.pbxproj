@@ -39,19 +39,19 @@
 		018B09ED1BFEC206007B69A8 /* OSNUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 018B09EC1BFEC206007B69A8 /* OSNUserInfo.m */; };
 		018B09F41BFEC38B007B69A8 /* OSNNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 018B09F11BFEC38B007B69A8 /* OSNNetworkService.m */; };
 		018B09F51BFEC38B007B69A8 /* OSNUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 018B09F31BFEC38B007B69A8 /* OSNUserManager.m */; };
-		01A35D3F1C0ADD7A00341F45 /* OSNCaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A35D3E1C0ADD7A00341F45 /* OSNCaseEntity.m */; settings = {ASSET_TAGS = (); }; };
-		01A35D421C0AE77200341F45 /* CaseImageList.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A35D411C0AE77200341F45 /* CaseImageList.m */; settings = {ASSET_TAGS = (); }; };
-		01A35D461C0AF4BA00341F45 /* CaseImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A35D451C0AF4BA00341F45 /* CaseImageCell.m */; settings = {ASSET_TAGS = (); }; };
-		01A35D481C0B3C3200341F45 /* link.png in Resources */ = {isa = PBXBuildFile; fileRef = 01A35D471C0B3C3200341F45 /* link.png */; settings = {ASSET_TAGS = (); }; };
+		01A35D3F1C0ADD7A00341F45 /* OSNCaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A35D3E1C0ADD7A00341F45 /* OSNCaseEntity.m */; };
+		01A35D421C0AE77200341F45 /* CaseImageList.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A35D411C0AE77200341F45 /* CaseImageList.m */; };
+		01A35D461C0AF4BA00341F45 /* CaseImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A35D451C0AF4BA00341F45 /* CaseImageCell.m */; };
+		01A35D481C0B3C3200341F45 /* link.png in Resources */ = {isa = PBXBuildFile; fileRef = 01A35D471C0B3C3200341F45 /* link.png */; };
 		01AF1F5C1C0402B00033413F /* OSNCaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F5B1C0402B00033413F /* OSNCaseManager.m */; };
 		01AF1F5F1C040D260033413F /* OSNTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F5E1C040D260033413F /* OSNTag.m */; };
 		01AF1F621C040E1B0033413F /* OSNTagGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F611C040E1B0033413F /* OSNTagGroup.m */; };
 		01CA2CED1C0555F000CD0024 /* CaseTagTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CA2CEC1C0555F000CD0024 /* CaseTagTable.m */; };
 		01CA2CF11C05574C00CD0024 /* CaseTagSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CA2CF01C05574C00CD0024 /* CaseTagSection.m */; };
 		01CDB8181C059A4300463F97 /* CaseTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CDB8171C059A4300463F97 /* CaseTagCell.m */; };
-		01E063991C0B6E28009448EA /* ProductTagTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E063981C0B6E28009448EA /* ProductTagTable.m */; settings = {ASSET_TAGS = (); }; };
-		01E0639C1C0B6E65009448EA /* ProductTagSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E0639B1C0B6E65009448EA /* ProductTagSection.m */; settings = {ASSET_TAGS = (); }; };
-		01E0639F1C0B6E87009448EA /* ProductTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E0639E1C0B6E87009448EA /* ProductTagCell.m */; settings = {ASSET_TAGS = (); }; };
+		01E063991C0B6E28009448EA /* ProductTagTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E063981C0B6E28009448EA /* ProductTagTable.m */; };
+		01E0639C1C0B6E65009448EA /* ProductTagSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E0639B1C0B6E65009448EA /* ProductTagSection.m */; };
+		01E0639F1C0B6E87009448EA /* ProductTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E0639E1C0B6E87009448EA /* ProductTagCell.m */; };
 		6ECBAA760C49A32A4783B017 /* libPods-saleclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 977BB1C584A2928D5B6CF794 /* libPods-saleclient.a */; };
 /* End PBXBuildFile section */
 
@@ -338,7 +338,6 @@
 				015B2D041BFEBA5400821100 /* Frameworks */,
 				015B2D051BFEBA5400821100 /* Resources */,
 				91FCE35271CA81942156EBA3 /* Copy Pods Resources */,
-				3C1B9EF083960D36775965BE /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -360,6 +359,7 @@
 				TargetAttributes = {
 					015B2D061BFEBA5400821100 = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = P2CNUH8HX4;
 					};
 				};
 			};
@@ -412,21 +412,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3C1B9EF083960D36775965BE /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-saleclient/Pods-saleclient-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		81E52AE6AAEF973E4FBFCC94 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -593,12 +578,15 @@
 			baseConfigurationReference = C91545DC02F872E51821B588 /* Pods-saleclient.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/saleclient/saleclient-Prefix.pch";
 				INFOPLIST_FILE = saleclient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.com.oceano.saleclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -608,12 +596,15 @@
 			baseConfigurationReference = 085C548C4109E76C880EC2E0 /* Pods-saleclient.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/saleclient/saleclient-Prefix.pch";
 				INFOPLIST_FILE = saleclient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.com.oceano.saleclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;

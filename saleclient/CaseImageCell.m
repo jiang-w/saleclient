@@ -8,6 +8,7 @@
 
 #import "CaseImageCell.h"
 #import <Masonry.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface CaseImageCell()
 
@@ -91,9 +92,9 @@
     _entity = entity;
     if (entity) {
         self.name.text = entity.exhibitionName;
-        
-        UIImage *img = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:entity.imagePath]]];
-        [self.image setImage:img];
+//        UIImage *img = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:entity.imagePath]]];
+//        [self.image setImage:img];
+        [self.image sd_setImageWithURL:[NSURL URLWithString:entity.imagePath]];
     }
 }
 

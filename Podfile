@@ -9,6 +9,7 @@ pod 'AFNetworking'
 pod 'Reachability'
 pod 'Masonry'
 pod 'MJRefresh'
+pod 'SDWebImage'
 
 end
 
