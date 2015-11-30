@@ -8,6 +8,7 @@
 
 #import "ProductTagTable.h"
 #import "OSNProductManager.h"
+#import "OSNTagPadView.h"
 #import "ProductTagCell.h"
 
 @interface ProductTagTable ()
@@ -32,6 +33,9 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
     
     [self loadTagData];
 }
+
+
+#pragma mark - property
 
 - (NSMutableArray *)sectionHeaderArray {
     if (!_sectionHeaderArray) {
@@ -121,6 +125,8 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
 }
 
 - (void)sectionHeader:(ProductTagSection *)section didSelectTag:(OSNTag *)tag {
+    NSLog(@"点击产品标签: %@", tag.name);
+    
 //    if (self.delegate) {
 //        if ([self.delegate respondsToSelector:@selector(caseTagTable:didChangeSelectedTags:)]) {
 //            NSDictionary *selectedResult = [self getAllSelectedTagResult];

@@ -114,6 +114,11 @@ static NSString * const reuseIdentifier = @"caseImageCell";
         [weakSelf.caseList addObjectsFromArray:list];
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            // 滚动到列表顶部
+            CGFloat width = weakSelf.collectionView.frame.size.width;
+            CGFloat height = weakSelf.collectionView.frame.size.height;
+            [weakSelf.collectionView scrollRectToVisible:CGRectMake(0, 0, width, height) animated:NO];
+            // 刷新列表数据
             [weakSelf.collectionView reloadData];
             [weakSelf.collectionView.mj_footer endRefreshing];
         });
