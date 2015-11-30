@@ -55,6 +55,23 @@
                 }
                 item.sequenceId = itemDic[@"sequenceId"];
                 item.name = itemDic[@"description"];
+                NSArray *subTags = itemDic[@"subClassify"];
+                if (subTags && subTags.count > 0) {
+                    NSMutableArray *subArr = [NSMutableArray array];
+                    for (NSDictionary *sub in subTags) {
+                        OSNTag *subTag = [[OSNTag alloc] init];
+                        subTag.enumId = itemDic[@"enumId"];
+                        subTag.enumTypeId = itemDic[@"enumTypeId"];
+                        if (sub[@"enumCode"] != [NSNull null]) {
+                            subTag.enumCode = itemDic[@"enumCode"];
+                        }
+                        subTag.sequenceId = itemDic[@"sequenceId"];
+                        subTag.name = itemDic[@"description"];
+                        [subArr addObject:subTag];
+                    }
+                    item.subTags = subArr;
+                }
+                
                 [list addObject:item];
             }
             group.list = list;

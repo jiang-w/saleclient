@@ -25,7 +25,7 @@
 @interface ProductTagSection : UITableViewHeaderFooterView <OSNTagPadViewDelegate>
 
 @property(nonatomic, strong) OSNTagGroup *group;
-@property(nonatomic, assign) NSUInteger selectedTagIndex;
+@property(nonatomic, assign) NSInteger selectedTagIndex;
 @property(nonatomic, assign) BOOL isOpen;
 @property(nonatomic, weak) id<ProductTagSectionDelegate> delegate;
 

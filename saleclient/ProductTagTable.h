@@ -12,7 +12,7 @@
 @class ProductTagTable;
 @protocol ProductTagTableDelegate <NSObject>
 
-- (void)productTagTable:(ProductTagTable *)table didChangeSelectedTags:(NSDictionary *)rusult;
+- (void)productTagTable:(ProductTagTable *)table didChangeSelectedTag:(OSNTag *)tag;
 
 @end
 

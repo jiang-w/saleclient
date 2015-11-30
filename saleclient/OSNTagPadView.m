@@ -121,14 +121,20 @@
 }
 
 - (void)setSelectedIndex:(NSInteger)index {
-    if (index >= 0 && index < self.tagSubviews.count) {
-        if (_selectedIndex != -1 && _selectedIndex != index) {
+    if (_selectedIndex != index) {
+        if (_selectedIndex != -1) {
             OSNTagButton *btn = self.tagSubviews[_selectedIndex];
             btn.selected = NO;
         }
-        OSNTagButton *selectedBtn = self.tagSubviews[index];
-        selectedBtn.selected = YES;
-        _selectedIndex = index;
+        
+        if (index >= 0 && index < self.tagSubviews.count) {
+            OSNTagButton *selectedBtn = self.tagSubviews[index];
+            selectedBtn.selected = YES;
+            _selectedIndex = index;
+        }
+        else {
+            _selectedIndex = -1;
+        }
     }
 }
 

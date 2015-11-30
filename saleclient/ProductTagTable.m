@@ -90,6 +90,7 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
 
 - (void)configureCell:(ProductTagCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     OSNTagPadView *tagView = cell.tagPadView;
+    tagView.selectedIndex = -1;
     [tagView removeAllTags];
     
     ProductTagSection *section = _sectionHeaderArray[indexPath.section];
@@ -125,28 +126,24 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
 }
 
 - (void)sectionHeader:(ProductTagSection *)section didSelectTag:(OSNTag *)tag {
-    NSLog(@"点击产品标签: %@", tag.name);
+    NSLog(@"点击产品标签: %@ index: %lu", tag.name, section.selectedTagIndex);
     
-//    if (self.delegate) {
-//        if ([self.delegate respondsToSelector:@selector(caseTagTable:didChangeSelectedTags:)]) {
-//            NSDictionary *selectedResult = [self getAllSelectedTagResult];
-//            [self.delegate caseTagTable:self didChangeSelectedTags:selectedResult];
-//        }
-//    }
+    for (ProductTagSection *item in self.sectionHeaderArray) {
+        if (item != section) {
+            item.selectedTagIndex = -1;
+        }
+    }
+    [self.tableView reloadData];
+    
+    if (self.delegate) {
+        if ([self.delegate respondsToSelector:@selector(productTagTable:didChangeSelectedTag:)]) {
+            [self.delegate productTagTable:self didChangeSelectedTag:tag];
+        }
+    }
 }
 
 
 #pragma mark - private method
-
-//- (NSDictionary *)getAllSelectedTagResult {
-//    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-//    for (CaseTagSection *section in _sectionHeaderArray) {
-//        NSString *groupType = section.group.type;
-//        OSNTag *tag = section.group.list[section.selectedTagIndex];
-//        dic[groupType] = tag.enumId;
-//    }
-//    return dic;
-//}
 
 - (void)loadTagData {
     __weak __typeof__(self) weakSelf = self;
@@ -156,6 +153,7 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
         NSArray *groups = [manager getProductTagList];
         for (OSNTagGroup *group in groups) {
             ProductTagSection *section = [[ProductTagSection alloc] initWithReuseIdentifier:sectionReuseIdentifier];
+            section.selectedTagIndex = -1;
             section.group = group;
             section.delegate = weakSelf;
             [weakSelf.sectionHeaderArray addObject:section];

@@ -15,5 +15,6 @@
 @property (nonatomic, strong) NSString *enumCode;
 @property (nonatomic, strong) NSString *sequenceId;
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSArray *subTags;
 
 @end
