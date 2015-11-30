@@ -7,6 +7,7 @@
 //
 
 #import "CaseImageCell.h"
+#import "CaseDetailViewController.h"
 #import <Masonry.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -65,6 +66,10 @@
         _image = [[UIImageView alloc]init];
         [_image setBackgroundColor:[UIColor whiteColor]];
         _image.layer.masksToBounds=YES; // 隐藏边界
+        
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapCaseImage)];
+        [_image addGestureRecognizer:tapGesture];
+        _image.userInteractionEnabled = YES;
     }
     return _image;
 }
@@ -99,10 +104,16 @@
 }
 
 
-#pragma mark - private method
+#pragma mark - event
 
 - (void)didSelectFavoriteButton:(UIButton *)button {
     
+}
+
+- (void)didTapCaseImage {
+    CaseDetailViewController *detail = [[CaseDetailViewController alloc] initWithCaseEntity:self.entity];
+    UINavigationController *mainNav = (UINavigationController *)[OSNMainDelegate window].rootViewController;
+    [mainNav pushViewController:detail animated:YES];
 }
 
 @end

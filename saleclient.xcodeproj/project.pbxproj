@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0100BDE61C0C0DA80011F6D0 /* CaseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0100BDE51C0C0DA80011F6D0 /* CaseDetailViewController.m */; };
+		0100BDE81C0C12CD0011F6D0 /* navbtn_back_hov.png in Resources */ = {isa = PBXBuildFile; fileRef = 0100BDE71C0C12CD0011F6D0 /* navbtn_back_hov.png */; };
 		011375491BFEF29500A9AB9E /* login_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 011375461BFEF29500A9AB9E /* login_bg.jpg */; };
 		0113754A1BFEF29500A9AB9E /* login_btn_hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 011375471BFEF29500A9AB9E /* login_btn_hover.png */; };
 		0113754B1BFEF29500A9AB9E /* welcome_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 011375481BFEF29500A9AB9E /* welcome_bg.jpg */; };
@@ -56,6 +58,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0100BDE41C0C0DA80011F6D0 /* CaseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseDetailViewController.h; sourceTree = "<group>"; };
+		0100BDE51C0C0DA80011F6D0 /* CaseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseDetailViewController.m; sourceTree = "<group>"; };
+		0100BDE71C0C12CD0011F6D0 /* navbtn_back_hov.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navbtn_back_hov.png; sourceTree = "<group>"; };
 		011375461BFEF29500A9AB9E /* login_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login_bg.jpg; sourceTree = "<group>"; };
 		011375471BFEF29500A9AB9E /* login_btn_hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_btn_hover.png; sourceTree = "<group>"; };
 		011375481BFEF29500A9AB9E /* welcome_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = welcome_bg.jpg; sourceTree = "<group>"; };
@@ -150,6 +155,7 @@
 		011375451BFEF27300A9AB9E /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				0100BDE71C0C12CD0011F6D0 /* navbtn_back_hov.png */,
 				01A35D471C0B3C3200341F45 /* link.png */,
 				017A27801C04A46D00CB577D /* pro_lm.gif */,
 				017A27811C04A46D00CB577D /* pro_lm1.gif */,
@@ -290,6 +296,8 @@
 				01A35D411C0AE77200341F45 /* CaseImageList.m */,
 				01A35D441C0AF4BA00341F45 /* CaseImageCell.h */,
 				01A35D451C0AF4BA00341F45 /* CaseImageCell.m */,
+				0100BDE41C0C0DA80011F6D0 /* CaseDetailViewController.h */,
+				0100BDE51C0C0DA80011F6D0 /* CaseDetailViewController.m */,
 			);
 			name = Case;
 			sourceTree = "<group>";
@@ -400,6 +408,7 @@
 				015B2D1A1BFEBA5400821100 /* LaunchScreen.storyboard in Resources */,
 				015B2D171BFEBA5400821100 /* Assets.xcassets in Resources */,
 				011375491BFEF29500A9AB9E /* login_bg.jpg in Resources */,
+				0100BDE81C0C12CD0011F6D0 /* navbtn_back_hov.png in Resources */,
 				0113755B1BFEFE4D00A9AB9E /* wc_product_ico.png in Resources */,
 				011375591BFEFE4D00A9AB9E /* wc_case_ico.png in Resources */,
 				0113755A1BFEFE4D00A9AB9E /* wc_loupan_ico.png in Resources */,
@@ -458,6 +467,7 @@
 				011375601BFF074100A9AB9E /* ProductListViewController.m in Sources */,
 				01E0639F1C0B6E87009448EA /* ProductTagCell.m in Sources */,
 				0129AB8D1C0363D800A445FB /* OSNProductManager.m in Sources */,
+				0100BDE61C0C0DA80011F6D0 /* CaseDetailViewController.m in Sources */,
 				01E0639C1C0B6E65009448EA /* ProductTagSection.m in Sources */,
 				015B2D0F1BFEBA5400821100 /* AppDelegate.m in Sources */,
 				01AF1F621C040E1B0033413F /* OSNTagGroup.m in Sources */,
