@@ -124,7 +124,7 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *userLoginId = [[defaults objectForKey:@"userinfo"] objectForKey:@"userLoginId"];
-    NSString *accessToken = [[defaults objectForKey:@"userinfo"] objectForKey:@"accessToken"];
+    NSString *accessToken = [defaults objectForKey:@"accessToken"];
     
     NSHTTPURLResponse *response;
     NSError *error;
@@ -143,7 +143,10 @@
             case 10010:
                 dataArray = dataDic[@"returnValue"][@"data"];
                 break;
-                
+            case 10004:// 用户登录成功
+                dataArray = dataDic[@"returnValue"][@"data"];
+                [defaults setObject:dataDic[@"returnValue"][@"accessToken"] forKey:@"accessToken"];
+                break;
             default:
                 break;
         }
