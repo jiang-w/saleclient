@@ -2,7 +2,7 @@
 //  CaseDetailViewController.h
 //  saleclient
 //
-//  Created by Frank on 15/11/30.
+//  Created by Frank on 15/12/1.
 //  Copyright © 2015年 oceano. All rights reserved.
 //
 
@@ -10,6 +10,6 @@
 
 @interface CaseDetailViewController : UIViewController
 
-- (instancetype)initWithCaseEntity:(OSNCaseEntity *)entity;
+@property(nonatomic, strong) NSString *exhibitionId;
 
 @end

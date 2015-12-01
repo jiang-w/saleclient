@@ -85,6 +85,7 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
 
 - (void)configureCell:(CaseTagCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     OSNTagPadView *tagView = cell.tagPadView;
+    tagView.selectedIndex = -1;
     [tagView removeAllTags];
     
     CaseTagSection *section = _sectionHeaderArray[indexPath.section];

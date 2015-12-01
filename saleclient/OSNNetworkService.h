@@ -59,4 +59,15 @@
  */
 - (NSData *)syncGetRequest:(NSString *)urlString returnResponse:(NSHTTPURLResponse **)response error:(NSError **) error;
 
+
+/**
+ *  欧神诺服务请求
+ *
+ *  @param serviceName 服务名称
+ *  @param paramters   请求参数字典
+ *
+ *  @return 返回请求的数据
+ */
+- (NSArray *)requestDataWithServiceName:(NSString *)serviceName andParamterDictionary:(NSDictionary *)paramters;
+
 @end

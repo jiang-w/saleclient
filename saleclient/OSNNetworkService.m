@@ -117,4 +117,39 @@
     return data;
 }
 
+
+// 欧神诺服务请求
+- (NSArray *)requestDataWithServiceName:(NSString *)serviceName andParamterDictionary:(NSDictionary *)paramters {
+    NSArray *dataArray = nil;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *userLoginId = [[defaults objectForKey:@"userinfo"] objectForKey:@"userLoginId"];
+    NSString *accessToken = [[defaults objectForKey:@"userinfo"] objectForKey:@"accessToken"];
+    
+    NSHTTPURLResponse *response;
+    NSError *error;
+    NSMutableDictionary *paramDic = [NSMutableDictionary dictionaryWithDictionary:paramters];
+    if (userLoginId && accessToken) {
+        paramDic[@"userLoginId"] = userLoginId;
+        paramDic[@"accessToken"] = accessToken;
+    }
+    
+    NSData *data = [self syncPostRequest:[BASEURL stringByAppendingString:serviceName] parameters:paramDic returnResponse:&response error:&error];
+    if (data) {
+        NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+        NSString *status = dataDic[@"returnValue"][@"status"];
+        switch ([status integerValue]) {
+            case 10010:
+                dataArray = dataDic[@"returnValue"][@"data"];
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
+    return dataArray;
+}
+
 @end

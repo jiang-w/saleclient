@@ -111,7 +111,8 @@
 }
 
 - (void)didTapCaseImage {
-    CaseDetailViewController *detail = [[CaseDetailViewController alloc] initWithCaseEntity:self.entity];
+    CaseDetailViewController *detail = [[CaseDetailViewController alloc] initWithNibName:@"CaseDetailViewController" bundle:nil];
+    detail.exhibitionId = self.entity.exhibitionId;
     UINavigationController *mainNav = (UINavigationController *)[OSNMainDelegate window].rootViewController;
     [mainNav pushViewController:detail animated:YES];
 }

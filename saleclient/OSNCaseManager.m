@@ -120,4 +120,15 @@
     return nil;
 }
 
+- (NSDictionary *)getCaseDetailWithExhibitionId:(NSString *)exhibitionId {
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSArray *dataArray = [service requestDataWithServiceName:@"ipadDcCaseDetailData" andParamterDictionary:@{@"exhibitionId": exhibitionId}];
+    if (dataArray && dataArray.count > 0) {
+        return [dataArray firstObject];
+    }
+    else {
+        return nil;
+    }
+}
+
 @end

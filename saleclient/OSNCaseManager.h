@@ -14,4 +14,6 @@
 
 - (NSArray *)getCaseListWithParameters:(NSDictionary *)parameters;
 
+- (NSDictionary *)getCaseDetailWithExhibitionId:(NSString *)exhibitionId;
+
 @end
