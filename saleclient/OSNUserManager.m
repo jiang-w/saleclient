@@ -11,6 +11,16 @@
 
 @implementation OSNUserManager
 
++ (instancetype) sharedInstance {
+    static dispatch_once_t  onceToken;
+    static OSNUserManager *sharedInstance;
+    
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[OSNUserManager alloc] init];
+    });
+    return sharedInstance;
+}
+
 - (OSNUserInfo *)signiInWithUserName:(NSString *)userName andPassword:(NSString *)password isRemember:(BOOL)remember {
     OSNNetworkService *service = [OSNNetworkService sharedInstance];
     NSArray *dataArray = [service requestDataWithServiceName:@"ipadUserLogin" andParamterDictionary:@{@"userLoginId":userName,@"password":password}];
@@ -33,7 +43,7 @@
     return nil;
 }
 
-+ (OSNUserInfo *)currentUser {
+- (OSNUserInfo *)currentUser {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *usrDic = [defaults objectForKey:@"userinfo"];
     if (usrDic) {
@@ -52,6 +62,16 @@
         return info;
     }
     return nil;
+}
+
+- (BOOL)checkSessionIsValid {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *userLoginId = [[defaults objectForKey:@"userinfo"] objectForKey:@"userLoginId"];
+    NSString *accessToken = [defaults objectForKey:@"accessToken"];
+    
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSArray *dataArray = [service requestDataWithServiceName:@"ipadUserSessionJudge" andParamterDictionary:@{@"userLoginId": userLoginId, @"accessToken": accessToken}];
+    return NO;
 }
 
 @end

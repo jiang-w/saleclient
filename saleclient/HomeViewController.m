@@ -8,11 +8,11 @@
 
 #import "HomeViewController.h"
 #import "NavigationViewController.h"
-
+#import "OSNUserManager.h"
 
 @interface HomeViewController ()
 
-@property(nonatomic, strong) NavigationViewController *nav;
+@property(nonatomic, strong) NavigationViewController *contentNav;
 
 @end
 
@@ -20,15 +20,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.navigationController.navigationBarHidden = YES;
-    self.nav = [[NavigationViewController alloc] initWithNibName:@"NavigationViewController" bundle:nil];
+    
+    BOOL isValid = [[OSNUserManager sharedInstance] checkSessionIsValid];
+    if (!isValid) {
+        
+    }
 }
 
 - (IBAction)openNavigationViewController:(id)sender {
     UIButton *btn = (UIButton *)sender;
-    self.nav.currentIndex = btn.tag;
-    [self.navigationController pushViewController:self.nav animated:YES];
+    self.contentNav.currentIndex = btn.tag;
+    [self.navigationController pushViewController:self.contentNav animated:YES];
+}
+
+- (NavigationViewController *)contentNav {
+    if (!_contentNav) {
+        _contentNav = [[NavigationViewController alloc] initWithNibName:@"NavigationViewController" bundle:nil];
+    }
+    return _contentNav;
 }
 
 @end

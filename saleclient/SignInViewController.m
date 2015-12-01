@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    OSNUserInfo *userinfo = [OSNUserManager currentUser];
+    OSNUserInfo *userinfo = [OSNUserManager sharedInstance].currentUser;
     if (userinfo) {
         self.userNameTextBox.text = userinfo.userLoginId;
     }
