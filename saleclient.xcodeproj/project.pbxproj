@@ -21,8 +21,8 @@
 		0113755C1BFEFE4D00A9AB9E /* wc_receive_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = 011375571BFEFE4D00A9AB9E /* wc_receive_ico.png */; };
 		0113755D1BFEFE4D00A9AB9E /* wc_user_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = 011375581BFEFE4D00A9AB9E /* wc_user_ico.png */; };
 		011375601BFF074100A9AB9E /* ProductListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0113755F1BFF074100A9AB9E /* ProductListViewController.m */; };
-		011375641BFF0DA400A9AB9E /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 011375621BFF0DA400A9AB9E /* NavigationViewController.m */; };
-		011375651BFF0DA400A9AB9E /* NavigationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 011375631BFF0DA400A9AB9E /* NavigationViewController.xib */; };
+		011375641BFF0DA400A9AB9E /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 011375621BFF0DA400A9AB9E /* MasterViewController.m */; };
+		011375651BFF0DA400A9AB9E /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 011375631BFF0DA400A9AB9E /* MasterViewController.xib */; };
 		0129AB8D1C0363D800A445FB /* OSNProductManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0129AB8C1C0363D800A445FB /* OSNProductManager.m */; };
 		014664EB1C06F0CF00FD2E96 /* OSNTagButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 014664EA1C06F0CF00FD2E96 /* OSNTagButton.m */; };
 		014664EE1C07056700FD2E96 /* OSNTagPadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 014664ED1C07056700FD2E96 /* OSNTagPadView.m */; };
@@ -74,9 +74,9 @@
 		011375581BFEFE4D00A9AB9E /* wc_user_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wc_user_ico.png; sourceTree = "<group>"; };
 		0113755E1BFF074100A9AB9E /* ProductListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductListViewController.h; sourceTree = "<group>"; };
 		0113755F1BFF074100A9AB9E /* ProductListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductListViewController.m; sourceTree = "<group>"; };
-		011375611BFF0DA400A9AB9E /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
-		011375621BFF0DA400A9AB9E /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
-		011375631BFF0DA400A9AB9E /* NavigationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationViewController.xib; sourceTree = "<group>"; };
+		011375611BFF0DA400A9AB9E /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		011375621BFF0DA400A9AB9E /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		011375631BFF0DA400A9AB9E /* MasterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterViewController.xib; sourceTree = "<group>"; };
 		0129AB8B1C0363D800A445FB /* OSNProductManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNProductManager.h; sourceTree = "<group>"; };
 		0129AB8C1C0363D800A445FB /* OSNProductManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNProductManager.m; sourceTree = "<group>"; };
 		014664E91C06F0CF00FD2E96 /* OSNTagButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNTagButton.h; sourceTree = "<group>"; };
@@ -245,9 +245,9 @@
 				018B09E31BFEC0BB007B69A8 /* HomeViewController.h */,
 				018B09E41BFEC0BB007B69A8 /* HomeViewController.m */,
 				018B09E51BFEC0BB007B69A8 /* HomeViewController.xib */,
-				011375611BFF0DA400A9AB9E /* NavigationViewController.h */,
-				011375621BFF0DA400A9AB9E /* NavigationViewController.m */,
-				011375631BFF0DA400A9AB9E /* NavigationViewController.xib */,
+				011375611BFF0DA400A9AB9E /* MasterViewController.h */,
+				011375621BFF0DA400A9AB9E /* MasterViewController.m */,
+				011375631BFF0DA400A9AB9E /* MasterViewController.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -416,7 +416,7 @@
 				0113755B1BFEFE4D00A9AB9E /* wc_product_ico.png in Resources */,
 				011375591BFEFE4D00A9AB9E /* wc_case_ico.png in Resources */,
 				0113755A1BFEFE4D00A9AB9E /* wc_loupan_ico.png in Resources */,
-				011375651BFF0DA400A9AB9E /* NavigationViewController.xib in Resources */,
+				011375651BFF0DA400A9AB9E /* MasterViewController.xib in Resources */,
 				011375501BFEFC5000A9AB9E /* history_ico.png in Resources */,
 				018B09E71BFEC0BB007B69A8 /* HomeViewController.xib in Resources */,
 			);
@@ -487,7 +487,7 @@
 				01CDB8181C059A4300463F97 /* CaseTagCell.m in Sources */,
 				018B09E61BFEC0BB007B69A8 /* HomeViewController.m in Sources */,
 				01CA2CED1C0555F000CD0024 /* CaseTagTable.m in Sources */,
-				011375641BFF0DA400A9AB9E /* NavigationViewController.m in Sources */,
+				011375641BFF0DA400A9AB9E /* MasterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

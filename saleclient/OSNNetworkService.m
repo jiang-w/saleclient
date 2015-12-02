@@ -136,7 +136,7 @@
     
     NSData *data = [self syncPostRequest:[BASEURL stringByAppendingString:serviceName] parameters:paramDic returnResponse:&response error:&error];
     if (data) {
-//        NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
         NSString *status = jsonDic[@"returnValue"][@"status"];
         switch ([status integerValue]) {

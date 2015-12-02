@@ -7,13 +7,13 @@
 //
 
 #import "HomeViewController.h"
-#import "NavigationViewController.h"
+#import "MasterViewController.h"
 #import "OSNUserManager.h"
 #import "AppDelegate.h"
 
 @interface HomeViewController ()
 
-@property(nonatomic, strong) NavigationViewController *contentNav;
+@property(nonatomic, strong) MasterViewController *contentNav;
 
 @end
 
@@ -37,9 +37,9 @@
 
 #pragma mark - property
 
-- (NavigationViewController *)contentNav {
+- (MasterViewController *)contentNav {
     if (!_contentNav) {
-        _contentNav = [[NavigationViewController alloc] initWithNibName:@"NavigationViewController" bundle:nil];
+        _contentNav = [[MasterViewController alloc] initWithNibName:@"MasterViewController" bundle:nil];
     }
     return _contentNav;
 }

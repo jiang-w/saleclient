@@ -1,16 +1,16 @@
 //
-//  NavigationViewController.m
+//  MasterViewController.m
 //  saleclient
 //
 //  Created by Frank on 15/11/20.
 //  Copyright © 2015年 oceano. All rights reserved.
 //
 
-#import "NavigationViewController.h"
+#import "MasterViewController.h"
 #import "CaseListViewController.h"
 #import "ProductListViewController.h"
 
-@interface NavigationViewController ()
+@interface MasterViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *homeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *caseBtn;
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation NavigationViewController
+@implementation MasterViewController
 {
     NSArray *_btnArr;
     NSMutableDictionary *_controllerDic;

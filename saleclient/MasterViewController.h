@@ -1,5 +1,5 @@
 //
-//  NavigationViewController.h
+//  MasterViewController.h
 //  saleclient
 //
 //  Created by Frank on 15/11/20.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NavigationViewController : UIViewController <UIScrollViewDelegate>
+@interface MasterViewController : UIViewController <UIScrollViewDelegate>
 
 @property(nonatomic, assign) NSInteger currentIndex;
 
