@@ -131,7 +131,7 @@
     NSMutableDictionary *paramDic = [NSMutableDictionary dictionaryWithDictionary:paramters];
     if (userLoginId && accessToken) {
         paramDic[@"userLoginId"] = userLoginId;
-//        paramDic[@"accessToken"] = accessToken;
+        paramDic[@"accessToken"] = accessToken;
     }
     
     NSData *data = [self syncPostRequest:[BASEURL stringByAppendingString:serviceName] parameters:paramDic returnResponse:&response error:&error];
