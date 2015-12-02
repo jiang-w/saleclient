@@ -68,6 +68,6 @@
  *
  *  @return 返回请求的数据
  */
-- (NSArray *)requestDataWithServiceName:(NSString *)serviceName andParamterDictionary:(NSDictionary *)paramters;
+- (NSDictionary *)requestDataWithServiceName:(NSString *)serviceName andParamterDictionary:(NSDictionary *)paramters;
 
 @end

@@ -20,14 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    if (NO) {
-        HomeViewController *home = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
-        self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:home];
-    }
-    else {
-        SignInViewController *signinVC = [[SignInViewController alloc] initWithNibName:@"SignInViewController" bundle:nil];
-        self.window.rootViewController = signinVC;
-    }
+    self.window.rootViewController = self.mainNav;
     
     [self.window makeKeyAndVisible];
     return YES;
@@ -53,6 +46,24 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+#pragma mark - property
+
+- (UINavigationController *)mainNav {
+    if (!_mainNav) {
+        HomeViewController *home = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+        _mainNav = [[UINavigationController alloc] initWithRootViewController:home];
+    }
+    return _mainNav;
+}
+
+- (SignInViewController *)signInViewController {
+    if (!_signInViewController) {
+        _signInViewController = [[SignInViewController alloc] init];
+    }
+    return _signInViewController;
 }
 
 @end

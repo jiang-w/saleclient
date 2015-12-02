@@ -14,7 +14,8 @@
 
 - (NSArray *)getProductTagList {
     OSNNetworkService *service = [OSNNetworkService sharedInstance];
-    NSArray *dataArr = [service requestDataWithServiceName:@"ipadOcnProductQueryItemData" andParamterDictionary:nil];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadOcnProductQueryItemData" andParamterDictionary:nil];
+    NSArray *dataArr = dataDic[@"data"];
     NSMutableArray *groups = [NSMutableArray array];
     
     if (dataArr) {

@@ -9,29 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "saleclient/OSNUserManager.m"
-            timestampString = "470676893.17748"
+            filePath = "saleclient/HomeViewController.m"
+            timestampString = "470732198.808071"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "-checkSessionIsValid"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "saleclient/OSNNetworkService.m"
-            timestampString = "470676923.452178"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
-            landmarkName = "-requestDataWithServiceName:andParamterDictionary:"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "-observeServiceResponse:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

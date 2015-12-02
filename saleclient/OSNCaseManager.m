@@ -14,8 +14,10 @@
 
 - (NSArray *)getCaseTagList {
     OSNNetworkService *service = [OSNNetworkService sharedInstance];
-    NSArray *dataArr = [service requestDataWithServiceName:@"ipadDcCaseTagSelectData" andParamterDictionary:nil];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadDcCaseTagSelectData" andParamterDictionary:nil];
+    NSArray *dataArr = dataDic[@"data"];
     NSMutableArray *groups = [NSMutableArray array];
+    
     if (dataArr) {
         for (NSDictionary *groupDic in dataArr) {
             OSNTagGroup *group = [[OSNTagGroup alloc] init];
@@ -48,8 +50,10 @@
 
 - (NSArray *)getCaseListWithParameters:(NSDictionary *)parameters {
     OSNNetworkService *service = [OSNNetworkService sharedInstance];
-    NSArray *dataArr = [service requestDataWithServiceName:@"ipadDcCaseListData" andParamterDictionary:parameters];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadDcCaseListData" andParamterDictionary:parameters];
+    NSArray *dataArr = dataDic[@"data"];
     NSMutableArray *list = [NSMutableArray array];
+    
     if (dataArr && dataArr.count > 0) {
         NSDictionary *dataDic = [dataArr firstObject];
         NSUInteger listCount = [dataDic[@"listSize"] integerValue];
@@ -92,9 +96,11 @@
 
 - (NSDictionary *)getCaseDetailWithExhibitionId:(NSString *)exhibitionId {
     OSNNetworkService *service = [OSNNetworkService sharedInstance];
-    NSArray *dataArray = [service requestDataWithServiceName:@"ipadDcCaseDetailData" andParamterDictionary:@{@"exhibitionId": exhibitionId}];
-    if (dataArray && dataArray.count > 0) {
-        return [dataArray firstObject];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadDcCaseDetailData" andParamterDictionary:@{@"exhibitionId": exhibitionId}];
+    NSArray *dataArr = dataDic[@"data"];
+    
+    if (dataArr && dataArr.count > 0) {
+        return [dataArr firstObject];
     }
     else {
         return nil;

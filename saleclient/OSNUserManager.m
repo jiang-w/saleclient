@@ -23,8 +23,8 @@
 
 - (OSNUserInfo *)signiInWithUserName:(NSString *)userName andPassword:(NSString *)password isRemember:(BOOL)remember {
     OSNNetworkService *service = [OSNNetworkService sharedInstance];
-    NSArray *dataArray = [service requestDataWithServiceName:@"ipadUserLogin" andParamterDictionary:@{@"userLoginId":userName,@"password":password}];
-    NSDictionary *usrDic = [dataArray firstObject];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadUserLogin" andParamterDictionary:@{@"userLoginId":userName,@"password":password}];
+    NSDictionary *usrDic = [dataDic[@"data"] firstObject];
     if (usrDic) {
         OSNUserInfo *info = [[OSNUserInfo alloc] init];
         info.userLoginId = usrDic[@"userLoginId"];
@@ -65,13 +65,15 @@
 }
 
 - (BOOL)checkSessionIsValid {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *userLoginId = [[defaults objectForKey:@"userinfo"] objectForKey:@"userLoginId"];
-    NSString *accessToken = [defaults objectForKey:@"accessToken"];
-    
     OSNNetworkService *service = [OSNNetworkService sharedInstance];
-    NSArray *dataArray = [service requestDataWithServiceName:@"ipadUserSessionJudge" andParamterDictionary:@{@"userLoginId": userLoginId, @"accessToken": accessToken}];
-    return NO;
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadUserSessionJudge" andParamterDictionary:nil];
+    NSString *status = dataDic[@"status"];
+    if ([status isEqualToString:@"10007"]) {
+        return YES;
+    }
+    else {
+        return NO;
+    }
 }
 
 @end

@@ -119,8 +119,8 @@
 
 
 // 欧神诺服务请求
-- (NSArray *)requestDataWithServiceName:(NSString *)serviceName andParamterDictionary:(NSDictionary *)paramters {
-    NSArray *dataArray = nil;
+- (NSDictionary *)requestDataWithServiceName:(NSString *)serviceName andParamterDictionary:(NSDictionary *)paramters {
+    NSDictionary *dataDic = nil;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *userLoginId = [[defaults objectForKey:@"userinfo"] objectForKey:@"userLoginId"];
@@ -131,28 +131,32 @@
     NSMutableDictionary *paramDic = [NSMutableDictionary dictionaryWithDictionary:paramters];
     if (userLoginId && accessToken) {
         paramDic[@"userLoginId"] = userLoginId;
-        paramDic[@"accessToken"] = accessToken;
+//        paramDic[@"accessToken"] = accessToken;
     }
     
     NSData *data = [self syncPostRequest:[BASEURL stringByAppendingString:serviceName] parameters:paramDic returnResponse:&response error:&error];
     if (data) {
-        NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
-        NSString *status = dataDic[@"returnValue"][@"status"];
+//        NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+        NSString *status = jsonDic[@"returnValue"][@"status"];
         switch ([status integerValue]) {
-            case 10010:
-                dataArray = dataDic[@"returnValue"][@"data"];
-                break;
             case 10004:// 用户登录成功
-                dataArray = dataDic[@"returnValue"][@"data"];
-                [defaults setObject:dataDic[@"returnValue"][@"accessToken"] forKey:@"accessToken"];
+                dataDic = jsonDic[@"returnValue"];
+                [defaults setObject:jsonDic[@"returnValue"][@"accessToken"] forKey:@"accessToken"];
+                break;
+            case 10003:// 用户没有权限
+                [[NSNotificationCenter defaultCenter] postNotificationName:RESPONSE_STATUS_NOTIFICATION object:nil userInfo:@{@"status": status}];
+                break;
+            case 10008:// 令牌失效
+                [[NSNotificationCenter defaultCenter] postNotificationName:RESPONSE_STATUS_NOTIFICATION object:nil userInfo:@{@"status": status}];
                 break;
             default:
+                dataDic = jsonDic[@"returnValue"];
                 break;
         }
     }
     
-    return dataArray;
+    return dataDic;
 }
 
 @end

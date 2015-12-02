@@ -9,6 +9,7 @@
 #import "SignInViewController.h"
 #import "HomeViewController.h"
 #import "OSNUserManager.h"
+#import "AppDelegate.h"
 
 @interface SignInViewController ()
 
@@ -31,9 +32,9 @@
     self.passwordTextBox.delegate = self;
     
     // 点击背景消失键盘
-//    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleBackgroundTap:)];
-//    tapRecognizer.cancelsTouchesInView = NO;
-//    [self.view addGestureRecognizer:tapRecognizer];
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleBackgroundTap:)];
+    tapRecognizer.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:tapRecognizer];
 }
 
 - (void) handleBackgroundTap:(UITapGestureRecognizer*)sender
@@ -91,14 +92,13 @@
         [alert show];
     }
     else {
-        OSNUserManager *manager = [[OSNUserManager alloc] init];
-        OSNUserInfo *user = [manager signiInWithUserName:userName andPassword:password isRemember:isRemember];
+        OSNUserInfo *user = [[OSNUserManager sharedInstance] signiInWithUserName:userName andPassword:password isRemember:isRemember];
         if (user) {
             if (isRemember) {
                 
             }
-            HomeViewController *home = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
-            [OSNMainDelegate window].rootViewController = [[UINavigationController alloc] initWithRootViewController:home];
+            AppDelegate *appDelegate = OSNMainDelegate;
+            appDelegate.window.rootViewController = appDelegate.mainNav;
         }
         else {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"用户名密码错误" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
