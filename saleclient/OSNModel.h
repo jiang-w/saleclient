@@ -10,3 +10,4 @@
 #import "OSNTag.h"
 #import "OSNTagGroup.h"
 #import "OSNCaseEntity.h"
+#import "OSNProductEntity.h"

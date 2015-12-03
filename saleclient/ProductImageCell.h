@@ -10,4 +10,6 @@
 
 @interface ProductImageCell : UICollectionViewCell
 
+@property(nonatomic, strong) OSNProductEntity *entity;
+
 @end

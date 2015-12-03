@@ -128,10 +128,32 @@
 - (NSArray *)getProductListWithParameters:(NSDictionary *)parameters {
     OSNNetworkService *service = [OSNNetworkService sharedInstance];
     NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadOcnProductListData" andParamterDictionary:parameters];
-    NSArray *dataArr = dataDic[@"data"];
+    NSArray *dataArr = [dataDic[@"data"] firstObject][@"list"];
     NSMutableArray *list = [NSMutableArray array];
     
     if (dataArr && dataArr.count > 0) {
+        for (NSDictionary *item in dataArr) {
+            OSNProductEntity *entity = [[OSNProductEntity alloc] init];
+            entity.columnId = item[@"columnId"];
+            entity.productId = item[@"productId"];
+            entity.lastUpdatedStamp = item[@"lastUpdatedStamp"];
+            entity.typeId = item[@"typeId"];
+            entity.ocnProductId = item[@"ocnProductId"];
+            entity.ocnProductCode = item[@"ocnProductCode"];
+            entity.ocnProductName = item[@"ocnProductName"];
+            entity.ocnClassification = item[@"ocnClassification"];
+            entity.ocnClassificationName = item[@"ocnClassificationName"];
+            entity.ocnGenerationId = item[@"ocnGenerationId"];
+            entity.imagePath = item[@"imagePath"];
+            entity.isPush = item[@"isPush"];
+            entity.factoryId = item[@"factoryId"];
+            entity.municipalId = item[@"municipalId"];
+            entity.shopId = item[@"shopId"];
+            entity.productTypeId = item[@"productTypeId"];
+            entity.columnType = item[@"columnType"];
+            
+            [list addObject:entity];
+        }
     }
     
     return list;

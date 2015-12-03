@@ -52,6 +52,7 @@
 		01AF1F621C040E1B0033413F /* OSNTagGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F611C040E1B0033413F /* OSNTagGroup.m */; };
 		01BECEFD1C0D943E007A2E10 /* CaseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BECEFB1C0D943E007A2E10 /* CaseDetailViewController.m */; };
 		01BECEFE1C0D943E007A2E10 /* CaseDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01BECEFC1C0D943E007A2E10 /* CaseDetailViewController.xib */; };
+		01C7673E1C10733400875C1C /* OSNProductEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C7673D1C10733400875C1C /* OSNProductEntity.m */; settings = {ASSET_TAGS = (); }; };
 		01CA2CED1C0555F000CD0024 /* CaseTagTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CA2CEC1C0555F000CD0024 /* CaseTagTable.m */; };
 		01CA2CF11C05574C00CD0024 /* CaseTagSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CA2CF01C05574C00CD0024 /* CaseTagSection.m */; };
 		01CDB8181C059A4300463F97 /* CaseTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CDB8171C059A4300463F97 /* CaseTagCell.m */; };
@@ -134,6 +135,8 @@
 		01BECEFA1C0D943E007A2E10 /* CaseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseDetailViewController.h; sourceTree = "<group>"; };
 		01BECEFB1C0D943E007A2E10 /* CaseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseDetailViewController.m; sourceTree = "<group>"; };
 		01BECEFC1C0D943E007A2E10 /* CaseDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CaseDetailViewController.xib; sourceTree = "<group>"; };
+		01C7673C1C10733400875C1C /* OSNProductEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNProductEntity.h; sourceTree = "<group>"; };
+		01C7673D1C10733400875C1C /* OSNProductEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNProductEntity.m; sourceTree = "<group>"; };
 		01CA2CEB1C0555F000CD0024 /* CaseTagTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseTagTable.h; sourceTree = "<group>"; };
 		01CA2CEC1C0555F000CD0024 /* CaseTagTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseTagTable.m; sourceTree = "<group>"; };
 		01CA2CEF1C05574C00CD0024 /* CaseTagSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseTagSection.h; sourceTree = "<group>"; };
@@ -275,6 +278,8 @@
 				01AF1F611C040E1B0033413F /* OSNTagGroup.m */,
 				01A35D3D1C0ADD7A00341F45 /* OSNCaseEntity.h */,
 				01A35D3E1C0ADD7A00341F45 /* OSNCaseEntity.m */,
+				01C7673C1C10733400875C1C /* OSNProductEntity.h */,
+				01C7673D1C10733400875C1C /* OSNProductEntity.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -502,6 +507,7 @@
 				01E063991C0B6E28009448EA /* ProductTagTable.m in Sources */,
 				01CDB8181C059A4300463F97 /* CaseTagCell.m in Sources */,
 				014060ED1C0FDABB0001804E /* OSNMainNavigation.m in Sources */,
+				01C7673E1C10733400875C1C /* OSNProductEntity.m in Sources */,
 				018B09E61BFEC0BB007B69A8 /* HomeViewController.m in Sources */,
 				014060F01C0FEB540001804E /* ProductImageList.m in Sources */,
 				01CA2CED1C0555F000CD0024 /* CaseTagTable.m in Sources */,

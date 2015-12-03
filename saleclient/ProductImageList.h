@@ -10,6 +10,6 @@
 #import "OSNTagPadView.h"
 #import "ProductTagTable.h"
 
-@interface ProductImageList : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, ProductTagTableDelegate>
+@interface ProductImageList : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, ProductTagTableDelegate, OSNTagPadViewDelegate>
 
 @end

@@ -84,14 +84,8 @@ static NSString * const reuseIdentifier = @"caseImageCell";
     return cell;
 }
 
-#pragma mark <UICollectionViewDelegate>
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-}
-
-
-#pragma mark - CaseTagTableDelegate
+#pragma mark - <CaseTagTableDelegate>
 
 - (void)caseTagTable:(CaseTagTable *)table didChangeSelectedTags:(NSDictionary *)rusult {
     self.roomId = rusult[@"room"];

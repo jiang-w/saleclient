@@ -90,7 +90,6 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
 
 - (void)configureCell:(ProductTagCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     OSNTagPadView *tagView = cell.tagPadView;
-    tagView.selectedIndex = -1;
     [tagView removeAllTags];
     
     ProductTagSection *section = _sectionHeaderArray[indexPath.section];
@@ -126,7 +125,7 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
 }
 
 - (void)sectionHeader:(ProductTagSection *)section didSelectTag:(OSNTag *)tag {
-    NSLog(@"点击产品标签: %@ index: %lu", tag.name, section.selectedTagIndex);
+    NSLog(@"点击产品标签: %@ index: %lu ", tag.name, section.selectedTagIndex);
     
     for (ProductTagSection *item in self.sectionHeaderArray) {
         if (item != section) {
@@ -153,7 +152,12 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
         NSArray *groups = [manager getProductTagList];
         for (OSNTagGroup *group in groups) {
             ProductTagSection *section = [[ProductTagSection alloc] initWithReuseIdentifier:sectionReuseIdentifier];
-            section.selectedTagIndex = -1;
+            if (weakSelf.sectionHeaderArray.count == 0) {
+                section.selectedTagIndex = 0;
+            }
+            else {
+                section.selectedTagIndex = -1;
+            }
             section.group = group;
             section.delegate = weakSelf;
             [weakSelf.sectionHeaderArray addObject:section];

@@ -10,16 +10,16 @@
 #import "ProductImageCell.h"
 #import "OSNProductManager.h"
 #import <Masonry.h>
+#import <MJRefresh.h>
 
 @interface ProductImageList ()
 
 @property(nonatomic, strong) UICollectionView *imageList;
 @property(nonatomic, strong) OSNTagPadView *subTagView;
-
-@property(nonatomic, assign) NSUInteger viewSize;
-@property(nonatomic, assign) NSUInteger viewIndex;
 @property(nonatomic, strong) NSMutableDictionary *paramters;
 @property(nonatomic, strong) NSMutableArray *productList;
+@property(nonatomic, assign) NSUInteger viewSize;
+@property(nonatomic, assign) NSUInteger viewIndex;
 
 @end
 
@@ -31,9 +31,9 @@ static NSString * const reuseIdentifier = @"productImageCell";
     [super viewDidLoad];
     self.view.backgroundColor = RGB(244, 244, 244);
     
-    self.viewSize = 10;
     self.viewIndex = 1;
-    self.paramters = [NSMutableDictionary dictionary];
+    self.viewSize = 20;
+    self.paramters = [NSMutableDictionary dictionaryWithDictionary:@{@"recommendId": @"10000", @"type": @"recommend"}];
     self.productList = [NSMutableArray array];
     [self.imageList registerClass:[ProductImageCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
@@ -41,6 +41,14 @@ static NSString * const reuseIdentifier = @"productImageCell";
     [self.imageList mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+    
+    // 上拉刷新
+    __weak __typeof__(self) weakSelf = self;
+    self.imageList.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [weakSelf loadMoreProductList];
+    }];
+    // 加载数据
+    [self loadProductList];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,11 +60,12 @@ static NSString * const reuseIdentifier = @"productImageCell";
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 0;
+    return self.productList.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     ProductImageCell *cell = (ProductImageCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    cell.entity = self.productList[indexPath.row];
     return cell;
 }
 
@@ -66,11 +75,13 @@ static NSString * const reuseIdentifier = @"productImageCell";
 - (UICollectionView *)imageList {
     if (!_imageList) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        layout.itemSize = CGSizeMake(358, 285);
+        layout.itemSize = CGSizeMake(168, 200);
         layout.sectionInset = UIEdgeInsetsMake(26, 18, 26, 18);
         layout.minimumInteritemSpacing = 10;
-        layout.minimumLineSpacing = 10;
+        layout.minimumLineSpacing = 24;
         _imageList = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+        _imageList.backgroundColor = [UIColor whiteColor];
+        _imageList.dataSource = self;
     }
     return _imageList;
 }
@@ -80,29 +91,29 @@ static NSString * const reuseIdentifier = @"productImageCell";
         _subTagView = [[OSNTagPadView alloc] init];
         _subTagView.padding = UIEdgeInsetsMake(10, 10, 10, 10);
         _subTagView.lineSpace = 10;
-        _subTagView.tagSpace = 8;
+        _subTagView.tagSpace = 10;
         _subTagView.maxLayoutWidth = self.view.frame.size.width;
         _subTagView.backgroundColor = [UIColor whiteColor];
+        _subTagView.delegate = self;
     }
     return _subTagView;
 }
 
 
-#pragma mark - ProductTagTableDelegate
+#pragma mark - <ProductTagTableDelegate>
 
 - (void)productTagTable:(ProductTagTable *)table didChangeSelectedTag:(OSNTag *)tag {
     [self setViewLayoutWithSectionSelectedTag:tag];
     [self setParamterDictionaryWithSectionSelectedTag:tag];
-    
-    __weak __typeof__(self) weakSelf = self;
-    dispatch_queue_t queue = dispatch_queue_create("loadProudctList", nil);
-    dispatch_async(queue, ^{
-        OSNProductManager *manager = [[OSNProductManager alloc] init];
-        NSArray *list = [manager getProductListWithParameters:weakSelf.paramters];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-        });
-    });
+    [self loadProductList];
+}
+
+
+#pragma mark - <OSNTagPadViewDelegate>
+
+- (void)tagPadView:(OSNTagPadView *)view didSelectTag:(OSNTag *)tag andIndex:(NSUInteger)index {
+    self.paramters[@"subClassifyId"] = tag.enumId;
+    [self loadProductList];
 }
 
 
@@ -141,9 +152,6 @@ static NSString * const reuseIdentifier = @"productImageCell";
 }
 
 - (void)setParamterDictionaryWithSectionSelectedTag:(OSNTag *)tag {
-    _paramters[@"viewSize"] = [NSString stringWithFormat:@"%lu", self.viewSize];
-    _paramters[@"viewIndex"] = [NSString stringWithFormat:@"%lu", self.viewIndex];
-    
     if ([tag.enumTypeId isEqualToString:@"WORKPLACE_TYPE"]) {
         _paramters[@"recommendId"] = tag.enumId;
         _paramters[@"type"] = @"recommend";
@@ -168,6 +176,51 @@ static NSString * const reuseIdentifier = @"productImageCell";
         _paramters[@"type"] = @"standard";
         _paramters[@"standardId"] = tag.enumId;
     }
+}
+
+
+- (void)loadProductList {
+    self.viewIndex = 1;
+    self.paramters[@"viewIndex"] = [NSString stringWithFormat:@"%lu", self.viewIndex];
+    self.paramters[@"viewSize"] = [NSString stringWithFormat:@"%lu", self.viewSize];
+    
+    __weak __typeof__(self) weakSelf = self;
+    dispatch_queue_t queue = dispatch_queue_create("updateProductList", nil);
+    dispatch_async(queue, ^{
+        OSNProductManager *manager = [[OSNProductManager alloc] init];
+        NSArray *list = [manager getProductListWithParameters:weakSelf.paramters];
+        
+        [weakSelf.productList removeAllObjects];
+        [weakSelf.productList addObjectsFromArray:list];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // 滚动到列表顶部
+            CGFloat width = weakSelf.imageList.frame.size.width;
+            CGFloat height = weakSelf.imageList.frame.size.height;
+            [weakSelf.imageList scrollRectToVisible:CGRectMake(0, 0, width, height) animated:NO];
+            // 刷新列表数据
+            [weakSelf.imageList reloadData];
+        });
+    });
+}
+
+- (void)loadMoreProductList {
+    self.viewIndex++;
+    self.paramters[@"viewIndex"] = [NSString stringWithFormat:@"%lu", self.viewIndex];
+    self.paramters[@"viewSize"] = [NSString stringWithFormat:@"%lu", self.viewSize];
+    
+    __weak __typeof__(self) weakSelf = self;
+    dispatch_queue_t queue = dispatch_queue_create("updateCaseList", nil);
+    dispatch_async(queue, ^{
+        OSNProductManager *manager = [[OSNProductManager alloc] init];
+        NSArray *list = [manager getProductListWithParameters:weakSelf.paramters];
+        [weakSelf.productList addObjectsFromArray:list];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf.imageList reloadData];
+            [weakSelf.imageList.mj_footer endRefreshing];
+        });
+    });
 }
 
 @end

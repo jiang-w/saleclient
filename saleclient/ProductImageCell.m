@@ -14,7 +14,6 @@
 
 @property(nonatomic, strong) UIImageView *image;
 @property(nonatomic, strong) UILabel *name;
-@property(nonatomic, strong) UIButton *favorite;
 
 @end
 
@@ -45,16 +44,7 @@
     
     [bgView addSubview:self.name];
     [self.name mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(bgView);
-        make.left.lessThanOrEqualTo(bgView).offset(40);
-    }];
-    
-    [bgView addSubview:self.favorite];
-    [self.favorite mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(bgView);
-        make.right.equalTo(bgView).offset(-40);
-        make.width.height.mas_offset(20);
-        make.left.greaterThanOrEqualTo(self.name.mas_right).offset(2);
+        make.center.equalTo(bgView);
     }];
 }
 
@@ -77,30 +67,18 @@
     if (!_name) {
         _name = [[UILabel alloc] init];
         _name.textColor = [UIColor blackColor];
-        _name.font = [UIFont systemFontOfSize:16];
+        _name.font = [UIFont systemFontOfSize:14];
     }
     return _name;
 }
 
-- (UIButton *)favorite {
-    if (!_favorite) {
-        _favorite = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_favorite setImage:[UIImage imageNamed:@"link.png"] forState:UIControlStateNormal];
-        [_favorite setImage:[UIImage imageNamed:@"link.png"] forState:UIControlStateSelected];
-        [_favorite addTarget:self action:@selector(didSelectFavoriteButton:) forControlEvents:UIControlEventTouchUpInside];
+- (void)setEntity:(OSNProductEntity *)entity {
+    _entity = entity;
+    if (entity) {
+        self.name.text = [NSString stringWithFormat:@"%@ %@", entity.ocnProductCode, entity.ocnProductName];
+        [self.image sd_setImageWithURL:[NSURL URLWithString:entity.imagePath]];
     }
-    return _favorite;
 }
-
-//- (void)setEntity:(OSNCaseEntity *)entity {
-//    _entity = entity;
-//    if (entity) {
-//        self.name.text = entity.exhibitionName;
-//        //        UIImage *img = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:entity.imagePath]]];
-//        //        [self.image setImage:img];
-//        [self.image sd_setImageWithURL:[NSURL URLWithString:entity.imagePath]];
-//    }
-//}
 
 
 #pragma mark - event

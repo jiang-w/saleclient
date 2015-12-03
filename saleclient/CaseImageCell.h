@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "OSNCaseEntity.h"
 
 @interface CaseImageCell : UICollectionViewCell
 
