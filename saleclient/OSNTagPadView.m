@@ -122,11 +122,9 @@
 
 - (void)setSelectedIndex:(NSInteger)index {
     if (_selectedIndex != index) {
-        if (_selectedIndex != -1) {
-            OSNTagButton *btn = self.tagSubviews[_selectedIndex];
+        for (OSNTagButton *btn in self.tagSubviews) {
             btn.selected = NO;
         }
-        
         if (index >= 0 && index < self.tagSubviews.count) {
             OSNTagButton *selectedBtn = self.tagSubviews[index];
             selectedBtn.selected = YES;
@@ -156,6 +154,10 @@
         [self insertSubview:tagButton atIndex:index];
         [self.tagSubviews insertObject:tagButton atIndex:index];
         
+        if (self.selectedIndex >= index) {
+            self.selectedIndex++;
+        }
+        
         [self invalidateIntrinsicContentSize];
     }
     else {
@@ -168,6 +170,10 @@
         [self.tagSubviews[index] removeFromSuperview];
         [self.tagSubviews removeObjectAtIndex:index];
         
+        if (self.selectedIndex >= index) {
+            self.selectedIndex--;
+        }
+        
         [self invalidateIntrinsicContentSize];
     }
 }
@@ -177,6 +183,8 @@
         [tag removeFromSuperview];
     }
     [self.tagSubviews removeAllObjects];
+    
+    self.selectedIndex = -1;
     
     [self invalidateIntrinsicContentSize];
 }

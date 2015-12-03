@@ -7,12 +7,13 @@
 //
 
 #import "ProductListViewController.h"
+#import "ProductImageList.h"
 #import <Masonry.h>
 
 @interface ProductListViewController ()
 
 @property(nonatomic, strong) ProductTagTable *sideViewController;
-//@property(nonatomic, strong) CaseImageList *imageListViewController;
+@property(nonatomic, strong) ProductImageList *imageListViewController;
 
 @end
 
@@ -27,27 +28,27 @@
         make.width.mas_equalTo(260);
     }];
     
-//    [self.view addSubview:self.imageListViewController.view];
-//    [self.imageListViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.right.bottom.equalTo(self.view);
-//        make.left.equalTo(self.sideViewController.tableView.mas_right);
-//    }];
+    [self.view addSubview:self.imageListViewController.view];
+    [self.imageListViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.right.bottom.equalTo(self.view);
+        make.left.equalTo(self.sideViewController.tableView.mas_right);
+    }];
 }
 
 
 - (ProductTagTable *)sideViewController {
     if (!_sideViewController) {
         _sideViewController = [[ProductTagTable alloc] init];
-//        _sideViewController.delegate = self.imageListViewController;
+        _sideViewController.delegate = self.imageListViewController;
     }
     return _sideViewController;
 }
 
-//- (CaseImageList *)imageListViewController {
-//    if (!_imageListViewController) {
-//        _imageListViewController = [[CaseImageList alloc] init];
-//    }
-//    return _imageListViewController;
-//}
+- (ProductImageList *)imageListViewController {
+    if (!_imageListViewController) {
+        _imageListViewController = [[ProductImageList alloc] init];
+    }
+    return _imageListViewController;
+}
 
 @end
