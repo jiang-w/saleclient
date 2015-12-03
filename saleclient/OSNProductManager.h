@@ -12,4 +12,6 @@
 
 - (NSArray *)getProductTagList;
 
+- (NSArray *)getProductListWithParameters:(NSDictionary *)parameters;
+
 @end

@@ -8,12 +8,18 @@
 
 #import "ProductImageList.h"
 #import "ProductImageCell.h"
+#import "OSNProductManager.h"
 #import <Masonry.h>
 
 @interface ProductImageList ()
 
 @property(nonatomic, strong) UICollectionView *imageList;
 @property(nonatomic, strong) OSNTagPadView *subTagView;
+
+@property(nonatomic, assign) NSUInteger viewSize;
+@property(nonatomic, assign) NSUInteger viewIndex;
+@property(nonatomic, strong) NSMutableDictionary *paramters;
+@property(nonatomic, strong) NSMutableArray *productList;
 
 @end
 
@@ -25,6 +31,10 @@ static NSString * const reuseIdentifier = @"productImageCell";
     [super viewDidLoad];
     self.view.backgroundColor = RGB(244, 244, 244);
     
+    self.viewSize = 10;
+    self.viewIndex = 1;
+    self.paramters = [NSMutableDictionary dictionary];
+    self.productList = [NSMutableArray array];
     [self.imageList registerClass:[ProductImageCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     [self.view addSubview:self.imageList];
@@ -81,6 +91,24 @@ static NSString * const reuseIdentifier = @"productImageCell";
 #pragma mark - ProductTagTableDelegate
 
 - (void)productTagTable:(ProductTagTable *)table didChangeSelectedTag:(OSNTag *)tag {
+    [self setViewLayoutWithSectionSelectedTag:tag];
+    [self setParamterDictionaryWithSectionSelectedTag:tag];
+    
+    __weak __typeof__(self) weakSelf = self;
+    dispatch_queue_t queue = dispatch_queue_create("loadProudctList", nil);
+    dispatch_async(queue, ^{
+        OSNProductManager *manager = [[OSNProductManager alloc] init];
+        NSArray *list = [manager getProductListWithParameters:weakSelf.paramters];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+        });
+    });
+}
+
+
+#pragma mark - private method
+
+- (void)setViewLayoutWithSectionSelectedTag:(OSNTag *)tag {
     if (tag.subTags && tag.subTags.count > 0) {
         [self configureTagViewWithSubTags:tag.subTags];
         
@@ -110,6 +138,36 @@ static NSString * const reuseIdentifier = @"productImageCell";
         [self.subTagView addTag:tag];
     }];
     self.subTagView.selectedIndex = 0;
+}
+
+- (void)setParamterDictionaryWithSectionSelectedTag:(OSNTag *)tag {
+    _paramters[@"viewSize"] = [NSString stringWithFormat:@"%lu", self.viewSize];
+    _paramters[@"viewIndex"] = [NSString stringWithFormat:@"%lu", self.viewIndex];
+    
+    if ([tag.enumTypeId isEqualToString:@"WORKPLACE_TYPE"]) {
+        _paramters[@"recommendId"] = tag.enumId;
+        _paramters[@"type"] = @"recommend";
+    }
+    if ([tag.enumTypeId isEqualToString:@"WEBSITE_OCN_CLASS"]) {
+        _paramters[@"classifyId"] = tag.enumId;
+        _paramters[@"type"] = @"classify";
+        if (tag.subTags.count > 0) {
+            OSNTag *selSubTag = tag.subTags[self.subTagView.selectedIndex];
+            _paramters[@"subClassifyId"] = selSubTag.enumId;
+        }
+    }
+    if ([tag.enumTypeId isEqualToString:@"WEBSITE_ROOM_SPACE"]) {
+        _paramters[@"type"] = @"room";
+        _paramters[@"roomId"] = tag.enumId;
+    }
+    if ([tag.enumTypeId isEqualToString:@"WEBSITE_HOME_STYLE"]) {
+        _paramters[@"type"] = @"style";
+        _paramters[@"styleId"] = tag.enumId;
+    }
+    if ([tag.enumTypeId isEqualToString:@"WEBSITE_OCN_SPCFCTN"]) {
+        _paramters[@"type"] = @"standard";
+        _paramters[@"standardId"] = tag.enumId;
+    }
 }
 
 @end

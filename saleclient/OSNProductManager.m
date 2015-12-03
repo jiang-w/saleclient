@@ -25,8 +25,8 @@
         NSMutableArray *list = [NSMutableArray array];
         for (NSDictionary *itemDic in groupDic[@"productColumnList"]) {
             OSNTag *item = [[OSNTag alloc] init];
-            item.enumId = itemDic[@"enumId"];
-            item.enumTypeId = itemDic[@"enumTypeId"];
+            item.enumId = itemDic[@"columnId"];
+            item.enumTypeId = itemDic[@"columnType"];
             if (itemDic[@"enumCode"] != [NSNull null]) {
                 item.enumCode = itemDic[@"enumCode"];
             }
@@ -54,10 +54,10 @@
                 NSMutableArray *subArr = [NSMutableArray array];
                 for (NSDictionary *sub in subTags) {
                     OSNTag *subTag = [[OSNTag alloc] init];
-                    subTag.enumId = sub[@"enumId"];
-                    subTag.enumTypeId = sub[@"enumTypeId"];
-                    if (sub[@"enumCode"] != [NSNull null]) {
-                        subTag.enumCode = sub[@"enumCode"];
+                    subTag.enumId = sub[@"enumItemId"];
+                    subTag.enumTypeId = sub[@"enumId"];
+                    if (sub[@"enumItemCode"] != [NSNull null]) {
+                        subTag.enumCode = sub[@"enumItemCode"];
                     }
                     subTag.sequenceId = sub[@"sequenceId"];
                     subTag.name = sub[@"description"];
@@ -123,6 +123,18 @@
         [groups addObject:group];
     }
     return groups;
+}
+
+- (NSArray *)getProductListWithParameters:(NSDictionary *)parameters {
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadOcnProductListData" andParamterDictionary:parameters];
+    NSArray *dataArr = dataDic[@"data"];
+    NSMutableArray *list = [NSMutableArray array];
+    
+    if (dataArr && dataArr.count > 0) {
+    }
+    
+    return list;
 }
 
 @end
