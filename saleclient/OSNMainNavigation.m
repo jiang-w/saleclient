@@ -34,10 +34,6 @@
         case 10008:
         case 10009:
         {
-            while (self.viewControllers.count > 1) {
-                [self popViewControllerAnimated:NO];
-            }
-            
             AppDelegate *appDelegate = OSNMainDelegate;
             appDelegate.window.rootViewController = appDelegate.signInViewController;
             break;

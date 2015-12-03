@@ -132,6 +132,7 @@
     if (userLoginId && accessToken) {
         paramDic[@"userLoginId"] = userLoginId;
         paramDic[@"accessToken"] = accessToken;
+//        NSLog(@"accessToken: %@", accessToken);
     }
     
     NSData *data = [self syncPostRequest:[BASEURL stringByAppendingString:serviceName] parameters:paramDic returnResponse:&response error:&error];

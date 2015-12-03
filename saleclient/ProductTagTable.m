@@ -125,8 +125,6 @@ static NSString * const sectionReuseIdentifier = @"sectionIdentifier";
 }
 
 - (void)sectionHeader:(ProductTagSection *)section didSelectTag:(OSNTag *)tag {
-    NSLog(@"点击产品标签: %@ index: %lu ", tag.name, section.selectedTagIndex);
-    
     for (ProductTagSection *item in self.sectionHeaderArray) {
         if (item != section) {
             item.selectedTagIndex = -1;
