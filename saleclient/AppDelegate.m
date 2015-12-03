@@ -51,10 +51,10 @@
 
 #pragma mark - property
 
-- (UINavigationController *)mainNav {
+- (OSNMainNavigation *)mainNav {
     if (!_mainNav) {
         HomeViewController *home = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
-        _mainNav = [[UINavigationController alloc] initWithRootViewController:home];
+        _mainNav = [[OSNMainNavigation alloc] initWithRootViewController:home];
     }
     return _mainNav;
 }

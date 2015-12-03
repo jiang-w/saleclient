@@ -145,9 +145,8 @@
                 [defaults setObject:jsonDic[@"returnValue"][@"accessToken"] forKey:@"accessToken"];
                 break;
             case 10003:// 用户没有权限
-                [[NSNotificationCenter defaultCenter] postNotificationName:RESPONSE_STATUS_NOTIFICATION object:nil userInfo:@{@"status": status}];
-                break;
-            case 10008:// 令牌失效
+            case 10008:
+            case 10009:// 令牌失效
                 [[NSNotificationCenter defaultCenter] postNotificationName:RESPONSE_STATUS_NOTIFICATION object:nil userInfo:@{@"status": status}];
                 break;
             default:
