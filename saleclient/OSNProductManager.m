@@ -54,13 +54,13 @@
                 NSMutableArray *subArr = [NSMutableArray array];
                 for (NSDictionary *sub in subTags) {
                     OSNTag *subTag = [[OSNTag alloc] init];
-                    subTag.enumId = itemDic[@"enumId"];
-                    subTag.enumTypeId = itemDic[@"enumTypeId"];
+                    subTag.enumId = sub[@"enumId"];
+                    subTag.enumTypeId = sub[@"enumTypeId"];
                     if (sub[@"enumCode"] != [NSNull null]) {
-                        subTag.enumCode = itemDic[@"enumCode"];
+                        subTag.enumCode = sub[@"enumCode"];
                     }
-                    subTag.sequenceId = itemDic[@"sequenceId"];
-                    subTag.name = itemDic[@"description"];
+                    subTag.sequenceId = sub[@"sequenceId"];
+                    subTag.name = sub[@"description"];
                     [subArr addObject:subTag];
                 }
                 item.subTags = subArr;

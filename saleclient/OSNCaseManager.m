@@ -56,7 +56,6 @@
     
     if (dataArr && dataArr.count > 0) {
         NSDictionary *dataDic = [dataArr firstObject];
-        NSUInteger listCount = [dataDic[@"listSize"] integerValue];
         for (NSDictionary *item in dataDic[@"list"]) {
             OSNCaseEntity *entity = [[OSNCaseEntity alloc] init];
             entity.exhibitionId = item[@"exhibitionId"];

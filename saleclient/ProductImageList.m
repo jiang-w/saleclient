@@ -15,8 +15,6 @@
 @property(nonatomic, strong) UICollectionView *imageList;
 @property(nonatomic, strong) OSNTagPadView *subTagView;
 
-@property(nonatomic, strong) UIView *testView;
-
 @end
 
 @implementation ProductImageList
@@ -33,11 +31,6 @@ static NSString * const reuseIdentifier = @"productImageCell";
     [self.imageList mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
-    
-//    [self.testView addSubview:self.subTagView];
-//    [self.subTagView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.equalTo(self.testView);
-//    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,7 +61,6 @@ static NSString * const reuseIdentifier = @"productImageCell";
         layout.minimumInteritemSpacing = 10;
         layout.minimumLineSpacing = 10;
         _imageList = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-        _imageList.backgroundColor = [UIColor redColor];
     }
     return _imageList;
 }
@@ -80,37 +72,30 @@ static NSString * const reuseIdentifier = @"productImageCell";
         _subTagView.lineSpace = 10;
         _subTagView.tagSpace = 8;
         _subTagView.maxLayoutWidth = self.view.frame.size.width;
-        _subTagView.fixTagSize =CGSizeMake(105, 30);
-        _subTagView.backgroundColor = [UIColor yellowColor];
+        _subTagView.backgroundColor = [UIColor whiteColor];
     }
     return _subTagView;
 }
 
-- (UIView *)testView {
-    if (!_testView) {
-        _testView = [[UIView alloc] init];
-        _testView.backgroundColor = [UIColor yellowColor ];
-    }
-    return _testView;
-}
 
+#pragma mark - ProductTagTableDelegate
 
 - (void)productTagTable:(ProductTagTable *)table didChangeSelectedTag:(OSNTag *)tag {
     if (tag.subTags && tag.subTags.count > 0) {
+        [self configureTagViewWithSubTags:tag.subTags];
         
-        [self.view addSubview:self.testView];
-        [self.testView mas_updateConstraints:^(MASConstraintMaker *make) {
+        [self.view addSubview:self.subTagView];
+        [self.subTagView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.left.top.right.equalTo(self.view);
-            make.height.mas_equalTo(100);
         }];
         
         [self.imageList  mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.testView.mas_bottom);
+            make.top.equalTo(self.subTagView.mas_bottom);
             make.left.bottom.right.equalTo(self.view);
         }];
     }
     else {
-        [self.testView removeFromSuperview];
+        [self.subTagView removeFromSuperview];
         
         [self.imageList mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.view);
@@ -119,14 +104,12 @@ static NSString * const reuseIdentifier = @"productImageCell";
 }
 
 - (void)configureTagViewWithSubTags:(NSArray *)tags {
-    OSNTagPadView *tagView = self.subTagView;
-//    tagView.selectedIndex = -1;
-    [tagView removeAllTags];
+    [self.subTagView removeAllTags];
     
     [tags enumerateObjectsUsingBlock:^(OSNTag *tag, NSUInteger idx, BOOL *stop) {
-        [tagView addTag:tag];
+        [self.subTagView addTag:tag];
     }];
-    tagView.selectedIndex = 0;
+    self.subTagView.selectedIndex = 0;
 }
 
 @end
