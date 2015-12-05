@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0100BDE81C0C12CD0011F6D0 /* navbtn_back_hov.png in Resources */ = {isa = PBXBuildFile; fileRef = 0100BDE71C0C12CD0011F6D0 /* navbtn_back_hov.png */; };
+		010578191C1312BA00C8F7CC /* OSNAreaEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 010578181C1312BA00C8F7CC /* OSNAreaEntity.m */; settings = {ASSET_TAGS = (); }; };
+		0105781C1C1313D300C8F7CC /* AutoLayoutTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0105781B1C1313D300C8F7CC /* AutoLayoutTagView.m */; settings = {ASSET_TAGS = (); }; };
 		011375491BFEF29500A9AB9E /* login_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 011375461BFEF29500A9AB9E /* login_bg.jpg */; };
 		0113754A1BFEF29500A9AB9E /* login_btn_hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 011375471BFEF29500A9AB9E /* login_btn_hover.png */; };
 		0113754B1BFEF29500A9AB9E /* welcome_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 011375481BFEF29500A9AB9E /* welcome_bg.jpg */; };
@@ -50,6 +52,9 @@
 		01AF1F5C1C0402B00033413F /* OSNCaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F5B1C0402B00033413F /* OSNCaseManager.m */; };
 		01AF1F5F1C040D260033413F /* OSNTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F5E1C040D260033413F /* OSNTag.m */; };
 		01AF1F621C040E1B0033413F /* OSNTagGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F611C040E1B0033413F /* OSNTagGroup.m */; };
+		01B754DE1C13362B000FA9BE /* OSNBuildingEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B754DD1C13362B000FA9BE /* OSNBuildingEntity.m */; settings = {ASSET_TAGS = (); }; };
+		01B754E21C133E73000FA9BE /* BuildingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B754E01C133E73000FA9BE /* BuildingDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
+		01B754E31C133E73000FA9BE /* BuildingDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01B754E11C133E73000FA9BE /* BuildingDetailViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		01BECEFD1C0D943E007A2E10 /* CaseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BECEFB1C0D943E007A2E10 /* CaseDetailViewController.m */; };
 		01BECEFE1C0D943E007A2E10 /* CaseDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01BECEFC1C0D943E007A2E10 /* CaseDetailViewController.xib */; };
 		01C7673E1C10733400875C1C /* OSNProductEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C7673D1C10733400875C1C /* OSNProductEntity.m */; settings = {ASSET_TAGS = (); }; };
@@ -71,6 +76,10 @@
 
 /* Begin PBXFileReference section */
 		0100BDE71C0C12CD0011F6D0 /* navbtn_back_hov.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navbtn_back_hov.png; sourceTree = "<group>"; };
+		010578171C1312BA00C8F7CC /* OSNAreaEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNAreaEntity.h; sourceTree = "<group>"; };
+		010578181C1312BA00C8F7CC /* OSNAreaEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNAreaEntity.m; sourceTree = "<group>"; };
+		0105781A1C1313D300C8F7CC /* AutoLayoutTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoLayoutTagView.h; sourceTree = "<group>"; };
+		0105781B1C1313D300C8F7CC /* AutoLayoutTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoLayoutTagView.m; sourceTree = "<group>"; };
 		011375461BFEF29500A9AB9E /* login_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login_bg.jpg; sourceTree = "<group>"; };
 		011375471BFEF29500A9AB9E /* login_btn_hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_btn_hover.png; sourceTree = "<group>"; };
 		011375481BFEF29500A9AB9E /* welcome_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = welcome_bg.jpg; sourceTree = "<group>"; };
@@ -139,6 +148,11 @@
 		01AF1F5E1C040D260033413F /* OSNTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNTag.m; sourceTree = "<group>"; };
 		01AF1F601C040E1B0033413F /* OSNTagGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNTagGroup.h; sourceTree = "<group>"; };
 		01AF1F611C040E1B0033413F /* OSNTagGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNTagGroup.m; sourceTree = "<group>"; };
+		01B754DC1C13362B000FA9BE /* OSNBuildingEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNBuildingEntity.h; sourceTree = "<group>"; };
+		01B754DD1C13362B000FA9BE /* OSNBuildingEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNBuildingEntity.m; sourceTree = "<group>"; };
+		01B754DF1C133E73000FA9BE /* BuildingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingDetailViewController.h; sourceTree = "<group>"; };
+		01B754E01C133E73000FA9BE /* BuildingDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildingDetailViewController.m; sourceTree = "<group>"; };
+		01B754E11C133E73000FA9BE /* BuildingDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuildingDetailViewController.xib; sourceTree = "<group>"; };
 		01BECEFA1C0D943E007A2E10 /* CaseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseDetailViewController.h; sourceTree = "<group>"; };
 		01BECEFB1C0D943E007A2E10 /* CaseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseDetailViewController.m; sourceTree = "<group>"; };
 		01BECEFC1C0D943E007A2E10 /* CaseDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CaseDetailViewController.xib; sourceTree = "<group>"; };
@@ -212,6 +226,8 @@
 		014664E51C06ED1C00FD2E96 /* TagVIew */ = {
 			isa = PBXGroup;
 			children = (
+				0105781A1C1313D300C8F7CC /* AutoLayoutTagView.h */,
+				0105781B1C1313D300C8F7CC /* AutoLayoutTagView.m */,
 				014664E91C06F0CF00FD2E96 /* OSNTagButton.h */,
 				014664EA1C06F0CF00FD2E96 /* OSNTagButton.m */,
 				014664EC1C07056700FD2E96 /* OSNTagPadView.h */,
@@ -301,6 +317,10 @@
 				01A35D3E1C0ADD7A00341F45 /* OSNCaseEntity.m */,
 				01C7673C1C10733400875C1C /* OSNProductEntity.h */,
 				01C7673D1C10733400875C1C /* OSNProductEntity.m */,
+				010578171C1312BA00C8F7CC /* OSNAreaEntity.h */,
+				010578181C1312BA00C8F7CC /* OSNAreaEntity.m */,
+				01B754DC1C13362B000FA9BE /* OSNBuildingEntity.h */,
+				01B754DD1C13362B000FA9BE /* OSNBuildingEntity.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -377,6 +397,9 @@
 				01E23ABC1C12D4BC006D6A9E /* BuildingImageList.m */,
 				01E23ABE1C12D858006D6A9E /* BuildingImageCell.h */,
 				01E23ABF1C12D858006D6A9E /* BuildingImageCell.m */,
+				01B754DF1C133E73000FA9BE /* BuildingDetailViewController.h */,
+				01B754E01C133E73000FA9BE /* BuildingDetailViewController.m */,
+				01B754E11C133E73000FA9BE /* BuildingDetailViewController.xib */,
 			);
 			name = Building;
 			sourceTree = "<group>";
@@ -460,6 +483,7 @@
 			files = (
 				0113754A1BFEF29500A9AB9E /* login_btn_hover.png in Resources */,
 				01A35D481C0B3C3200341F45 /* link.png in Resources */,
+				01B754E31C133E73000FA9BE /* BuildingDetailViewController.xib in Resources */,
 				011375531BFEFC5000A9AB9E /* shopping_ico.png in Resources */,
 				011375511BFEFC5000A9AB9E /* historyview_ico.png in Resources */,
 				0113754B1BFEF29500A9AB9E /* welcome_bg.jpg in Resources */,
@@ -541,7 +565,9 @@
 				018B09F51BFEC38B007B69A8 /* OSNUserManager.m in Sources */,
 				014060F31C0FEFC80001804E /* ProductImageCell.m in Sources */,
 				018B09ED1BFEC206007B69A8 /* OSNUserInfo.m in Sources */,
+				01B754E21C133E73000FA9BE /* BuildingDetailViewController.m in Sources */,
 				01A35D421C0AE77200341F45 /* CaseImageList.m in Sources */,
+				0105781C1C1313D300C8F7CC /* AutoLayoutTagView.m in Sources */,
 				01CA2CF11C05574C00CD0024 /* CaseTagSection.m in Sources */,
 				01E23AC01C12D858006D6A9E /* BuildingImageCell.m in Sources */,
 				014664EE1C07056700FD2E96 /* OSNTagPadView.m in Sources */,
@@ -549,10 +575,12 @@
 				015B2D0C1BFEBA5400821100 /* main.m in Sources */,
 				01AF1F5F1C040D260033413F /* OSNTag.m in Sources */,
 				01E063991C0B6E28009448EA /* ProductTagTable.m in Sources */,
+				010578191C1312BA00C8F7CC /* OSNAreaEntity.m in Sources */,
 				01CDB8181C059A4300463F97 /* CaseTagCell.m in Sources */,
 				01E23ABA1C12D46B006D6A9E /* BuildingLeftSider.m in Sources */,
 				014060ED1C0FDABB0001804E /* OSNMainNavigation.m in Sources */,
 				01E23AC31C12DDC5006D6A9E /* OSNBuildingManager.m in Sources */,
+				01B754DE1C13362B000FA9BE /* OSNBuildingEntity.m in Sources */,
 				01C7673E1C10733400875C1C /* OSNProductEntity.m in Sources */,
 				018B09E61BFEC0BB007B69A8 /* HomeViewController.m in Sources */,
 				01E23ABD1C12D4BC006D6A9E /* BuildingImageList.m in Sources */,

@@ -11,3 +11,5 @@
 #import "OSNTagGroup.h"
 #import "OSNCaseEntity.h"
 #import "OSNProductEntity.h"
+#import "OSNAreaEntity.h"
+#import "OSNBuildingEntity.h"

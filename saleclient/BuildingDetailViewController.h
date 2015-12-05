@@ -1,5 +1,5 @@
 //
-//  BuildingImageCell.h
+//  BuildingDetailViewController.h
 //  saleclient
 //
 //  Created by Frank on 15/12/5.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BuildingImageCell : UICollectionViewCell
-
-@property(nonatomic, strong) OSNBuildingEntity *entity;
+@interface BuildingDetailViewController : UIViewController
 
 @end

@@ -45,6 +45,7 @@
 - (BuildingLeftSider *)sideViewController {
     if (!_sideViewController) {
         _sideViewController = [[BuildingLeftSider alloc] init];
+        _sideViewController.delegate = self.imageListViewController;
     }
     return _sideViewController;
 }

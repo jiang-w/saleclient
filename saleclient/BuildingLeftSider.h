@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AutoLayoutTagView.h"
 
-@interface BuildingLeftSider : UIViewController
+@protocol BuildingLeftSiderDelegate <NSObject>
+
+- (void)didSelectArea:(OSNAreaEntity *)area andKeyword:(NSString *)keyword;
+
+@end
+
+@interface BuildingLeftSider : UIViewController <AutoLayoutTagViewDelegate>
+
+@property(nonatomic, weak) id<BuildingLeftSiderDelegate> delegate;
 
 @end

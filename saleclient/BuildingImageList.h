@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BuildingLeftSider.h"
 
-@interface BuildingImageList : UICollectionViewController
+@interface BuildingImageList : UICollectionViewController <BuildingLeftSiderDelegate>
 
 @end

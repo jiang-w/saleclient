@@ -10,6 +10,8 @@
 
 @interface OSNBuildingManager : NSObject
 
+- (NSArray *)getCityAreaList;
 
+- (NSArray *)getBuildingListWithParameters:(NSDictionary *)parameters;
 
 @end
