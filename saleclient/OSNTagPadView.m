@@ -20,10 +20,11 @@
 
 @implementation OSNTagPadView
 
-- (instancetype)init {
-    self = [super init];
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
     if (self) {
         _selectedIndex = -1;
+        _maxLayoutWidth = frame.size.width;
     }
     return self;
 }
@@ -77,21 +78,21 @@
 }
 
 - (void)updateConstraints {
-    if (!self.tagSubviews.count) {
-        return;
-    }
-    
-    [self removeAllConstraints];
-    for (OSNTagButton *btn in self.tagSubviews) {
-        [self setConstraintOfTagButton:btn];
+    if (self.tagSubviews.count > 0) {
+        [self removeAllConstraints];
+        for (OSNTagButton *btn in self.tagSubviews) {
+            [self setConstraintOfTagButton:btn];
+        }
     }
     
     [super updateConstraints];
 }
 
 - (void)layoutSubviews {
-    self.maxLayoutWidth = self.frame.size.width;
-
+    if (_maxLayoutWidth != self.frame.size.width) {
+        self.maxLayoutWidth = self.frame.size.width;
+    }
+    
     [super layoutSubviews];
 }
 
@@ -116,7 +117,7 @@
     if (maxLayoutWidth != _maxLayoutWidth) {
         _maxLayoutWidth = maxLayoutWidth;
         
-        [self setNeedsUpdateConstraints];
+        [self invalidateIntrinsicContentSize];
     }
 }
 
@@ -148,7 +149,7 @@
 }
 
 - (void)insertTag:(OSNTag *)tag atIndex:(NSUInteger)index {
-    if (index < self.tagSubviews.count) {
+    if (index <= self.tagSubviews.count) {
         OSNTagButton *tagButton = [OSNTagButton buttonWithTag:tag];
         [tagButton addTarget:self action:@selector(tapTagHandle:) forControlEvents:UIControlEventTouchUpInside];
         [self insertSubview:tagButton atIndex:index];

@@ -98,6 +98,8 @@
                 
             }
             AppDelegate *appDelegate = OSNMainDelegate;
+            HomeViewController *home = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+            appDelegate.mainNav = [[OSNMainNavigation alloc] initWithRootViewController:home];
             appDelegate.window.rootViewController = appDelegate.mainNav;
         }
         else {

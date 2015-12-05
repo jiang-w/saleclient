@@ -9,6 +9,7 @@
 #import "MasterViewController.h"
 #import "CaseListViewController.h"
 #import "ProductListViewController.h"
+#import "BuildingListViewController.h"
 
 @interface MasterViewController ()
 
@@ -90,7 +91,7 @@
             contr = [[CaseListViewController alloc] init];
             break;
         case 1:
-            contr = [[UIViewController alloc] init];
+            contr = [[BuildingListViewController alloc] init];
             break;
         case 2:
             contr = [[ProductListViewController alloc] init];

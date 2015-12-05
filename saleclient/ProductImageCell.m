@@ -7,6 +7,7 @@
 //
 
 #import "ProductImageCell.h"
+#import "ProductDetailViewController.h"
 #import <Masonry.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -56,7 +57,7 @@
         [_image setBackgroundColor:[UIColor whiteColor]];
         _image.layer.masksToBounds=YES; // 隐藏边界
         
-        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapCaseImage)];
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapProductImage)];
         [_image addGestureRecognizer:tapGesture];
         _image.userInteractionEnabled = YES;
     }
@@ -83,15 +84,11 @@
 
 #pragma mark - event
 
-- (void)didSelectFavoriteButton:(UIButton *)button {
-    
-}
-
-- (void)didTapCaseImage {
-//    CaseDetailViewController *detail = [[CaseDetailViewController alloc] initWithNibName:@"CaseDetailViewController" bundle:nil];
+- (void)didTapProductImage {
+    ProductDetailViewController *detail = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];
 //    detail.exhibitionId = self.entity.exhibitionId;
-//    UINavigationController *mainNav = (UINavigationController *)[OSNMainDelegate window].rootViewController;
-//    [mainNav pushViewController:detail animated:YES];
+    UINavigationController *mainNav = (UINavigationController *)[OSNMainDelegate window].rootViewController;
+    [mainNav pushViewController:detail animated:YES];
 }
 
 @end
