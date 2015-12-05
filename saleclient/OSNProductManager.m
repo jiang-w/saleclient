@@ -159,4 +159,17 @@
     return list;
 }
 
+- (NSDictionary *)getProductDetailWithId:(NSString *)productId {
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadOcnProductDetailData" andParamterDictionary:@{@"ocnProductId": productId}];
+    NSArray *dataArr = dataDic[@"data"];
+    
+    if (dataArr && dataArr.count > 0) {
+        return [dataArr firstObject];
+    }
+    else {
+        return nil;
+    }
+}
+
 @end

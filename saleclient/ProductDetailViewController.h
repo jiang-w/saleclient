@@ -10,4 +10,6 @@
 
 @interface ProductDetailViewController : UIViewController
 
+@property(nonatomic, strong) NSString *productId;
+
 @end

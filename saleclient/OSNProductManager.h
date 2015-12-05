@@ -14,4 +14,6 @@
 
 - (NSArray *)getProductListWithParameters:(NSDictionary *)parameters;
 
+- (NSDictionary *)getProductDetailWithId:(NSString *)productId;
+
 @end

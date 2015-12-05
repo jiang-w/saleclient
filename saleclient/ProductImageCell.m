@@ -86,7 +86,7 @@
 
 - (void)didTapProductImage {
     ProductDetailViewController *detail = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];
-//    detail.exhibitionId = self.entity.exhibitionId;
+    detail.productId = self.entity.productId;
     UINavigationController *mainNav = (UINavigationController *)[OSNMainDelegate window].rootViewController;
     [mainNav pushViewController:detail animated:YES];
 }
