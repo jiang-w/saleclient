@@ -26,6 +26,9 @@
     if (![OSNUserManager sharedInstance].currentUser) {
         [self openSignInWindow];
     }
+    else {
+        [[OSNUserManager sharedInstance] checkSessionIsValid];
+    }
 }
 
 - (IBAction)openNavigationViewController:(id)sender {

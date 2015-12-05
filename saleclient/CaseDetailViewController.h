@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CaseDetailViewController : UIViewController
+@interface CaseDetailViewController : UIViewController <UITableViewDataSource>
 
 @property(nonatomic, strong) NSString *exhibitionId;
 

@@ -55,6 +55,7 @@
 		01B754DE1C13362B000FA9BE /* OSNBuildingEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B754DD1C13362B000FA9BE /* OSNBuildingEntity.m */; settings = {ASSET_TAGS = (); }; };
 		01B754E21C133E73000FA9BE /* BuildingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B754E01C133E73000FA9BE /* BuildingDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
 		01B754E31C133E73000FA9BE /* BuildingDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01B754E11C133E73000FA9BE /* BuildingDetailViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		01B754E61C134A70000FA9BE /* CaseDetailProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B754E51C134A70000FA9BE /* CaseDetailProductCell.m */; settings = {ASSET_TAGS = (); }; };
 		01BECEFD1C0D943E007A2E10 /* CaseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BECEFB1C0D943E007A2E10 /* CaseDetailViewController.m */; };
 		01BECEFE1C0D943E007A2E10 /* CaseDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01BECEFC1C0D943E007A2E10 /* CaseDetailViewController.xib */; };
 		01C7673E1C10733400875C1C /* OSNProductEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C7673D1C10733400875C1C /* OSNProductEntity.m */; settings = {ASSET_TAGS = (); }; };
@@ -153,6 +154,8 @@
 		01B754DF1C133E73000FA9BE /* BuildingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingDetailViewController.h; sourceTree = "<group>"; };
 		01B754E01C133E73000FA9BE /* BuildingDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildingDetailViewController.m; sourceTree = "<group>"; };
 		01B754E11C133E73000FA9BE /* BuildingDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuildingDetailViewController.xib; sourceTree = "<group>"; };
+		01B754E41C134A70000FA9BE /* CaseDetailProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseDetailProductCell.h; sourceTree = "<group>"; };
+		01B754E51C134A70000FA9BE /* CaseDetailProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseDetailProductCell.m; sourceTree = "<group>"; };
 		01BECEFA1C0D943E007A2E10 /* CaseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseDetailViewController.h; sourceTree = "<group>"; };
 		01BECEFB1C0D943E007A2E10 /* CaseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseDetailViewController.m; sourceTree = "<group>"; };
 		01BECEFC1C0D943E007A2E10 /* CaseDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CaseDetailViewController.xib; sourceTree = "<group>"; };
@@ -360,6 +363,8 @@
 				01BECEFA1C0D943E007A2E10 /* CaseDetailViewController.h */,
 				01BECEFB1C0D943E007A2E10 /* CaseDetailViewController.m */,
 				01BECEFC1C0D943E007A2E10 /* CaseDetailViewController.xib */,
+				01B754E41C134A70000FA9BE /* CaseDetailProductCell.h */,
+				01B754E51C134A70000FA9BE /* CaseDetailProductCell.m */,
 			);
 			name = Case;
 			sourceTree = "<group>";
@@ -548,6 +553,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01B754E61C134A70000FA9BE /* CaseDetailProductCell.m in Sources */,
 				01E23AB41C12D349006D6A9E /* BuildingListViewController.m in Sources */,
 				0187A0261C01A3C1001091F6 /* CaseListViewController.m in Sources */,
 				014664EB1C06F0CF00FD2E96 /* OSNTagButton.m in Sources */,
