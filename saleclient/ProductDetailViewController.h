@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProductDetailViewController : UIViewController
+@interface ProductDetailViewController : UIViewController <UICollectionViewDataSource>
 
 @property(nonatomic, strong) NSString *productId;
 

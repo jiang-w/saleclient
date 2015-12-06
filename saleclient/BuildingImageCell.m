@@ -86,7 +86,7 @@
 
 - (void)didTapBuildingImage {
     BuildingDetailViewController *detail = [[BuildingDetailViewController alloc] initWithNibName:@"BuildingDetailViewController" bundle:nil];
-    //    detail.exhibitionId = self.entity.exhibitionId;
+    detail.buildingId = self.entity.buildingId;
     UINavigationController *mainNav = (UINavigationController *)[OSNMainDelegate window].rootViewController;
     [mainNav pushViewController:detail animated:YES];
 }

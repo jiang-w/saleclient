@@ -7,31 +7,92 @@
 //
 
 #import "BuildingDetailViewController.h"
+#import "BuildingDetailCell.h"
+#import "OSNBuildingManager.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface BuildingDetailViewController ()
+
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (weak, nonatomic) IBOutlet UILabel *time;
+@property (weak, nonatomic) IBOutlet UILabel *area;
+@property (weak, nonatomic) IBOutlet UILabel *address;
+@property (weak, nonatomic) IBOutlet UILabel *business;
+@property (weak, nonatomic) IBOutlet UILabel *enterTime;
+@property (weak, nonatomic) IBOutlet UILabel *buildingArea;
+@property (weak, nonatomic) IBOutlet UILabel *name;
+@property (weak, nonatomic) IBOutlet UIImageView *image;
+@property (weak, nonatomic) IBOutlet UICollectionView *buildingModelView;
+
+@property (nonatomic, strong) NSMutableArray *buildingModelList;
 
 @end
 
 @implementation BuildingDetailViewController
 
+static NSString * const reuseIdentifier = @"buildingDetailCell";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    [self setSubviewLayoutAndStyle];
+    
+     [self.buildingModelView registerClass:[BuildingDetailCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    self.buildingModelView.dataSource = self;
+    
+    self.buildingModelList = [NSMutableArray array];
+    [self loadBuildingDetailData];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setSubviewLayoutAndStyle {
+    self.backButton.contentEdgeInsets = UIEdgeInsetsMake(4, 16, 4, 16);
+    [self.backButton setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    self.backButton.layer.borderColor = [UIColor orangeColor].CGColor;
+    self.backButton.layer.borderWidth = 1;
+    self.backButton.layer.cornerRadius = 5;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)loadBuildingDetailData {
+    if (self.buildingId) {
+        dispatch_queue_t queue = dispatch_queue_create("loadCaseDetail", nil);
+        dispatch_async(queue, ^{
+            OSNBuildingManager *manager = [[OSNBuildingManager alloc] init];
+            NSDictionary *dic = [manager getBuildingDetailWithId:self.buildingId];
+            if (dic) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSString *imageUrl = dic[@"buildingEntity"][@"imagePath"];
+                    [self.image sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
+                    self.name.text = [NSString stringWithFormat:@"【%@】", dic[@"buildingEntity"][@"buildingName"]];
+                    self.time.text = dic[@"buildingEntity"][@"openingTime"];
+                    self.area.text = dic[@"buildingEntity"][@"constructionArea"];
+                    self.address.text = dic[@"buildingEntity"][@"salesAddress"];
+                    self.business.text = dic[@"buildingEntity"][@"developersName"];
+                    self.enterTime.text = dic[@"buildingEntity"][@"buildingDate"];
+                    self.buildingArea.text = dic[@"buildingEntity"][@"buildingArea"];
+                    
+                    [self.buildingModelList removeAllObjects];
+                    [self.buildingModelList addObjectsFromArray:dic[@"buildingModelList"]];
+                    [self.buildingModelView reloadData];
+                });
+            }
+        });
+    }
 }
-*/
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.buildingModelList.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    BuildingDetailCell *cell = (BuildingDetailCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    NSDictionary *dic = self.buildingModelList[indexPath.row];
+    cell.name.text = [NSString stringWithFormat:@"%@ %@", dic[@"modelName"], dic[@"modelTypeName"]];
+    [cell.image sd_setImageWithURL:[NSURL URLWithString:dic[@"imagePath"]]];
+    return cell;
+}
+
+- (IBAction)clickBackButton:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 @end

@@ -14,4 +14,6 @@
 
 - (NSArray *)getBuildingListWithParameters:(NSDictionary *)parameters;
 
+- (NSDictionary *)getBuildingDetailWithId:(NSString *)buildingId;
+
 @end

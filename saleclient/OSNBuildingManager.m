@@ -84,4 +84,17 @@
     return list;
 }
 
+- (NSDictionary *)getBuildingDetailWithId:(NSString *)buildingId {
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadBuildingModelAndCaseInfoData" andParamterDictionary:@{@"buildingId": buildingId}];
+    NSArray *dataArr = dataDic[@"data"];
+    
+    if (dataArr && dataArr.count > 0) {
+        return [dataArr firstObject];
+    }
+    else {
+        return nil;
+    }
+}
+
 @end

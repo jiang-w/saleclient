@@ -36,8 +36,16 @@ static NSString * const cellReuseIdentifier = @"productCellIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.productList = [NSMutableArray array];
+    [self setSubviewLayoutAndStyle];
     
+    self.productTable.dataSource = self;
+    [self.productTable registerClass:[CaseDetailProductCell class] forCellReuseIdentifier:cellReuseIdentifier];
+    
+    self.productList = [NSMutableArray array];
+    [self loadCaseDetailData];
+}
+
+- (void)setSubviewLayoutAndStyle {
     self.backBtn.contentEdgeInsets = UIEdgeInsetsMake(4, 16, 4, 16);
     [self.backBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
     self.backBtn.layer.borderColor = [UIColor orangeColor].CGColor;
@@ -46,10 +54,6 @@ static NSString * const cellReuseIdentifier = @"productCellIdentifier";
     
     self.productTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.productTable.bounces = NO;
-    self.productTable.dataSource = self;
-    [self.productTable registerClass:[CaseDetailProductCell class] forCellReuseIdentifier:cellReuseIdentifier];
-    
-    [self loadCaseDetailData];
 }
 
 - (void)loadCaseDetailData {
