@@ -121,7 +121,7 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
     }
     CaseDetailViewController *caseDetail = [[CaseDetailViewController alloc] init];
     caseDetail.exhibitionId = cell.exhibitionId;
-    [appDelegate.mainNav pushViewController:caseDetail animated:YES];
+    [appDelegate.mainNav pushViewController:caseDetail animated:NO];
 }
 
 @end

@@ -135,7 +135,7 @@ static NSString * const cellReuseIdentifier = @"productCellIdentifier";
     }
     ProductDetailViewController *productDetail = [[ProductDetailViewController alloc] init];
     productDetail.productId = productId;
-    [appDelegate.mainNav pushViewController:productDetail animated:YES];
+    [appDelegate.mainNav pushViewController:productDetail animated:NO];
 }
 
 @end

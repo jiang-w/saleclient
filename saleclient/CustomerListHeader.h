@@ -1,5 +1,5 @@
 //
-//  CustomerListCell.h
+//  CustomerListHeader.h
 //  saleclient
 //
 //  Created by Frank on 15/12/7.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CustomerListCell : UITableViewCell
-
-@property(nonatomic, strong) OSNCustomerListItem *customer;
+@interface CustomerListHeader : UIView
 
 @end

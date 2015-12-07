@@ -13,3 +13,4 @@
 #import "OSNProductEntity.h"
 #import "OSNAreaEntity.h"
 #import "OSNBuildingEntity.h"
+#import "OSNCustomerListItem.h"

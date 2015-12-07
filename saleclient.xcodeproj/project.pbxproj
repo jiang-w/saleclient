@@ -50,6 +50,8 @@
 		018B09F41BFEC38B007B69A8 /* OSNNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 018B09F11BFEC38B007B69A8 /* OSNNetworkService.m */; };
 		018B09F51BFEC38B007B69A8 /* OSNUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 018B09F31BFEC38B007B69A8 /* OSNUserManager.m */; };
 		0192392D1C1473D800948D04 /* CaseDependCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0192392C1C1473D800948D04 /* CaseDependCell.m */; };
+		019BE76A1C15C8DE00980556 /* OSNCustomerListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 019BE7691C15C8DE00980556 /* OSNCustomerListItem.m */; settings = {ASSET_TAGS = (); }; };
+		019BE76D1C15DD5B00980556 /* CustomerListHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 019BE76C1C15DD5B00980556 /* CustomerListHeader.m */; settings = {ASSET_TAGS = (); }; };
 		01A35D3F1C0ADD7A00341F45 /* OSNCaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A35D3E1C0ADD7A00341F45 /* OSNCaseEntity.m */; };
 		01A35D421C0AE77200341F45 /* CaseImageList.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A35D411C0AE77200341F45 /* CaseImageList.m */; };
 		01A35D461C0AF4BA00341F45 /* CaseImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A35D451C0AF4BA00341F45 /* CaseImageCell.m */; };
@@ -151,6 +153,10 @@
 		018B09F31BFEC38B007B69A8 /* OSNUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNUserManager.m; sourceTree = "<group>"; };
 		0192392B1C1473D800948D04 /* CaseDependCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseDependCell.h; sourceTree = "<group>"; };
 		0192392C1C1473D800948D04 /* CaseDependCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseDependCell.m; sourceTree = "<group>"; };
+		019BE7681C15C8DE00980556 /* OSNCustomerListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNCustomerListItem.h; sourceTree = "<group>"; };
+		019BE7691C15C8DE00980556 /* OSNCustomerListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNCustomerListItem.m; sourceTree = "<group>"; };
+		019BE76B1C15DD5B00980556 /* CustomerListHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerListHeader.h; sourceTree = "<group>"; };
+		019BE76C1C15DD5B00980556 /* CustomerListHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerListHeader.m; sourceTree = "<group>"; };
 		01A35D3D1C0ADD7A00341F45 /* OSNCaseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNCaseEntity.h; sourceTree = "<group>"; };
 		01A35D3E1C0ADD7A00341F45 /* OSNCaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNCaseEntity.m; sourceTree = "<group>"; };
 		01A35D401C0AE77200341F45 /* CaseImageList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseImageList.h; sourceTree = "<group>"; };
@@ -248,6 +254,8 @@
 				0130A17A1C158B6600D075FF /* CustomerListViewController.m */,
 				0130A17C1C15905000D075FF /* CustomerListCell.h */,
 				0130A17D1C15905000D075FF /* CustomerListCell.m */,
+				019BE76B1C15DD5B00980556 /* CustomerListHeader.h */,
+				019BE76C1C15DD5B00980556 /* CustomerListHeader.m */,
 			);
 			name = Customer;
 			sourceTree = "<group>";
@@ -351,6 +359,8 @@
 				010578181C1312BA00C8F7CC /* OSNAreaEntity.m */,
 				01B754DC1C13362B000FA9BE /* OSNBuildingEntity.h */,
 				01B754DD1C13362B000FA9BE /* OSNBuildingEntity.m */,
+				019BE7681C15C8DE00980556 /* OSNCustomerListItem.h */,
+				019BE7691C15C8DE00980556 /* OSNCustomerListItem.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -623,6 +633,8 @@
 				01E23AC31C12DDC5006D6A9E /* OSNBuildingManager.m in Sources */,
 				0130A17B1C158B6600D075FF /* CustomerListViewController.m in Sources */,
 				01B754DE1C13362B000FA9BE /* OSNBuildingEntity.m in Sources */,
+				019BE76A1C15C8DE00980556 /* OSNCustomerListItem.m in Sources */,
+				019BE76D1C15DD5B00980556 /* CustomerListHeader.m in Sources */,
 				0130A17E1C15905000D075FF /* CustomerListCell.m in Sources */,
 				01C7673E1C10733400875C1C /* OSNProductEntity.m in Sources */,
 				018B09E61BFEC0BB007B69A8 /* HomeViewController.m in Sources */,

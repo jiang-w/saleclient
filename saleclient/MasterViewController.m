@@ -75,6 +75,15 @@
 
 - (void)setCurrentDisplayViewWithIndex:(NSInteger)index {
     self.currentIndex = index;
+    if (self.currentIndex == 1) {
+        self.keywordText.hidden = YES;
+        self.searchButton.hidden = YES;
+    }
+    else {
+        self.keywordText.hidden = NO;
+        self.searchButton.hidden = NO;
+    }
+    
     for (UIButton *btn in _btnArr) {
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }
@@ -84,16 +93,8 @@
     if (!_controllerDic[@(index)]) {
         [self addControllerWithIndex:index];
     }
-    [self.scrollView scrollRectToVisible:CGRectMake(CGRectGetWidth(self.scrollView.frame) * index, 0, CGRectGetWidth(self.scrollView.frame), CGRectGetHeight(self.scrollView.frame)) animated:YES];
     
-    if (self.currentIndex == 1) {
-        self.keywordText.hidden = YES;
-        self.searchButton.hidden = YES;
-    }
-    else {
-        self.keywordText.hidden = NO;
-        self.searchButton.hidden = NO;
-    }
+    [self.scrollView scrollRectToVisible:CGRectMake(CGRectGetWidth(self.scrollView.frame) * index, 0, CGRectGetWidth(self.scrollView.frame), CGRectGetHeight(self.scrollView.frame)) animated:YES];
 }
 
 - (void)addControllerWithIndex:(NSInteger)index {
