@@ -79,6 +79,7 @@
 		01E23ABD1C12D4BC006D6A9E /* BuildingImageList.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E23ABC1C12D4BC006D6A9E /* BuildingImageList.m */; };
 		01E23AC01C12D858006D6A9E /* BuildingImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E23ABF1C12D858006D6A9E /* BuildingImageCell.m */; };
 		01E23AC31C12DDC5006D6A9E /* OSNBuildingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E23AC21C12DDC5006D6A9E /* OSNBuildingManager.m */; };
+		01F8A17A1C15EC59000A7EDB /* NavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F8A1791C15EC59000A7EDB /* NavigationBarView.m */; settings = {ASSET_TAGS = (); }; };
 		6ECBAA760C49A32A4783B017 /* libPods-saleclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 977BB1C584A2928D5B6CF794 /* libPods-saleclient.a */; };
 /* End PBXBuildFile section */
 
@@ -207,6 +208,8 @@
 		01E23ABF1C12D858006D6A9E /* BuildingImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildingImageCell.m; sourceTree = "<group>"; };
 		01E23AC11C12DDC5006D6A9E /* OSNBuildingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNBuildingManager.h; sourceTree = "<group>"; };
 		01E23AC21C12DDC5006D6A9E /* OSNBuildingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNBuildingManager.m; sourceTree = "<group>"; };
+		01F8A1781C15EC59000A7EDB /* NavigationBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBarView.h; sourceTree = "<group>"; };
+		01F8A1791C15EC59000A7EDB /* NavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarView.m; sourceTree = "<group>"; };
 		085C548C4109E76C880EC2E0 /* Pods-saleclient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-saleclient.release.xcconfig"; path = "Pods/Target Support Files/Pods-saleclient/Pods-saleclient.release.xcconfig"; sourceTree = "<group>"; };
 		977BB1C584A2928D5B6CF794 /* libPods-saleclient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-saleclient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91545DC02F872E51821B588 /* Pods-saleclient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-saleclient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-saleclient/Pods-saleclient.debug.xcconfig"; sourceTree = "<group>"; };
@@ -337,6 +340,8 @@
 				011375631BFF0DA400A9AB9E /* MasterViewController.xib */,
 				014060EB1C0FDABB0001804E /* OSNMainNavigation.h */,
 				014060EC1C0FDABB0001804E /* OSNMainNavigation.m */,
+				01F8A1781C15EC59000A7EDB /* NavigationBarView.h */,
+				01F8A1791C15EC59000A7EDB /* NavigationBarView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -623,6 +628,7 @@
 				01A35D461C0AF4BA00341F45 /* CaseImageCell.m in Sources */,
 				015B2D0C1BFEBA5400821100 /* main.m in Sources */,
 				01AF1F5F1C040D260033413F /* OSNTag.m in Sources */,
+				01F8A17A1C15EC59000A7EDB /* NavigationBarView.m in Sources */,
 				01E063991C0B6E28009448EA /* ProductTagTable.m in Sources */,
 				010578191C1312BA00C8F7CC /* OSNAreaEntity.m in Sources */,
 				01CDB8181C059A4300463F97 /* CaseTagCell.m in Sources */,
