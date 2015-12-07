@@ -10,4 +10,8 @@
 
 @interface OSNMainNavigation : UINavigationController
 
+- (BOOL)isContainViewControllerForClass:(Class)contrClass;
+
+- (void)popViewControllerForClass:(Class)contrClass;
+
 @end

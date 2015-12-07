@@ -10,6 +10,8 @@
 #import "OSNProductManager.h"
 #import "CaseDependCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "AppDelegate.h"
+#import "CaseDetailViewController.h"
 
 @interface ProductDetailViewController ()
 
@@ -40,6 +42,7 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
     
     [self.caseListView registerClass:[CaseDependCell class] forCellWithReuseIdentifier:reuseIdentifier];
     self.caseListView.dataSource = self;
+    self.caseListView.delegate = self;
     
     self.caseList = [NSMutableArray array];
     [self loadProductDetailData];
@@ -93,6 +96,7 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
     NSDictionary *dic = self.caseList[indexPath.row];
     cell.name.text = dic[@"exhibitionName"];
     [cell.image sd_setImageWithURL:[NSURL URLWithString:dic[@"imagePath"]]];
+    cell.exhibitionId = dic[@"exhibitionId"];
     return cell;
 }
 
@@ -106,6 +110,18 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
 
 - (IBAction)clickBackButton:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    CaseDependCell *cell = (CaseDependCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    AppDelegate *appDelegate = OSNMainDelegate;
+    if ([appDelegate.mainNav isContainViewControllerForClass:[CaseDetailViewController class]]) {
+        NSLog(@"Contain CaseDetailViewController");
+        [appDelegate.mainNav popViewControllerForClass:[CaseDetailViewController class]];
+    }
+    CaseDetailViewController *caseDetail = [[CaseDetailViewController alloc] init];
+    caseDetail.exhibitionId = cell.exhibitionId;
+    [appDelegate.mainNav pushViewController:caseDetail animated:YES];
 }
 
 @end

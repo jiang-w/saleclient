@@ -10,6 +10,8 @@
 #import "CaseDetailProductCell.h"
 #import "OSNCaseManager.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "AppDelegate.h"
+#import "ProductDetailViewController.h"
 
 @interface CaseDetailViewController ()
 
@@ -39,6 +41,7 @@ static NSString * const cellReuseIdentifier = @"productCellIdentifier";
     [self setSubviewLayoutAndStyle];
     
     self.productTable.dataSource = self;
+    self.productTable.delegate = self;
     [self.productTable registerClass:[CaseDetailProductCell class] forCellReuseIdentifier:cellReuseIdentifier];
     
     self.productList = [NSMutableArray array];
@@ -118,7 +121,21 @@ static NSString * const cellReuseIdentifier = @"productCellIdentifier";
     cell.name.text = [NSString stringWithFormat:@"%@ %@", dic[@"ocnProductCode"], dic[@"ocnProductName"]];
     cell.code.text = [NSString stringWithFormat:@"产品型号：%@", dic[@"ocnProductCode"]];
     cell.size.text = [NSString stringWithFormat:@"产品规格：%@", dic[@"ocnSpecificationName"]];
+    cell.productId = dic[@"productId"];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    CaseDetailProductCell *cell = (CaseDetailProductCell *)[tableView cellForRowAtIndexPath:indexPath];
+    NSString *productId = cell.productId;
+    AppDelegate *appDelegate = OSNMainDelegate;
+    if ([appDelegate.mainNav isContainViewControllerForClass:[ProductDetailViewController class]]) {
+        NSLog(@"Contain ProductDetailViewController");
+        [appDelegate.mainNav popViewControllerForClass:[ProductDetailViewController class]];
+    }
+    ProductDetailViewController *productDetail = [[ProductDetailViewController alloc] init];
+    productDetail.productId = productId;
+    [appDelegate.mainNav pushViewController:productDetail animated:YES];
 }
 
 @end

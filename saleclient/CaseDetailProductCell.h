@@ -14,5 +14,6 @@
 @property(nonatomic, strong) UILabel *name;
 @property(nonatomic, strong) UILabel *code;
 @property(nonatomic, strong) UILabel *size;
+@property(nonatomic, strong) NSString *productId;
 
 @end

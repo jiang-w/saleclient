@@ -43,4 +43,27 @@
     }
 }
 
+- (BOOL)isContainViewControllerForClass:(Class)contrClass {
+    for (UIViewController *contr in self.viewControllers) {
+        if ([contr isKindOfClass:contrClass]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+- (void)popViewControllerForClass:(Class)contrClass {
+    if ([self isContainViewControllerForClass:contrClass]) {
+        while (self.viewControllers.count > 0) {
+            if (![self.topViewController isKindOfClass:contrClass]) {
+                [self popViewControllerAnimated:NO];
+            }
+            else {
+                [self popViewControllerAnimated:NO];
+                break;
+            }
+        }
+    }
+}
+
 @end

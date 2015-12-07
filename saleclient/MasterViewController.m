@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *productBtn;
 @property (weak, nonatomic) IBOutlet UIButton *clientBtn;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UITextField *keywordText;
+@property (weak, nonatomic) IBOutlet UIButton *searchButton;
 
 @end
 
@@ -82,6 +84,15 @@
         [self addControllerWithIndex:index];
     }
     [self.scrollView scrollRectToVisible:CGRectMake(CGRectGetWidth(self.scrollView.frame) * index, 0, CGRectGetWidth(self.scrollView.frame), CGRectGetHeight(self.scrollView.frame)) animated:YES];
+    
+    if (self.currentIndex == 1) {
+        self.keywordText.hidden = YES;
+        self.searchButton.hidden = YES;
+    }
+    else {
+        self.keywordText.hidden = NO;
+        self.searchButton.hidden = NO;
+    }
 }
 
 - (void)addControllerWithIndex:(NSInteger)index {
