@@ -10,6 +10,7 @@
 #import "CaseListViewController.h"
 #import "ProductListViewController.h"
 #import "BuildingListViewController.h"
+#import "CustomerListViewController.h"
 
 @interface MasterViewController ()
 
@@ -108,7 +109,7 @@
             contr = [[ProductListViewController alloc] init];
             break;
         case 3:
-            contr = [[UIViewController alloc] init];
+            contr = [[CustomerListViewController alloc] init];
             break;
         default:
             return;

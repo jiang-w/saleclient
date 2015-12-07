@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0100BDE81C0C12CD0011F6D0 /* navbtn_back_hov.png in Resources */ = {isa = PBXBuildFile; fileRef = 0100BDE71C0C12CD0011F6D0 /* navbtn_back_hov.png */; };
-		010578191C1312BA00C8F7CC /* OSNAreaEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 010578181C1312BA00C8F7CC /* OSNAreaEntity.m */; settings = {ASSET_TAGS = (); }; };
-		0105781C1C1313D300C8F7CC /* AutoLayoutTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0105781B1C1313D300C8F7CC /* AutoLayoutTagView.m */; settings = {ASSET_TAGS = (); }; };
+		010578191C1312BA00C8F7CC /* OSNAreaEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 010578181C1312BA00C8F7CC /* OSNAreaEntity.m */; };
+		0105781C1C1313D300C8F7CC /* AutoLayoutTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0105781B1C1313D300C8F7CC /* AutoLayoutTagView.m */; };
 		011375491BFEF29500A9AB9E /* login_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 011375461BFEF29500A9AB9E /* login_bg.jpg */; };
 		0113754A1BFEF29500A9AB9E /* login_btn_hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 011375471BFEF29500A9AB9E /* login_btn_hover.png */; };
 		0113754B1BFEF29500A9AB9E /* welcome_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 011375481BFEF29500A9AB9E /* welcome_bg.jpg */; };
@@ -26,12 +26,15 @@
 		011375641BFF0DA400A9AB9E /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 011375621BFF0DA400A9AB9E /* MasterViewController.m */; };
 		011375651BFF0DA400A9AB9E /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 011375631BFF0DA400A9AB9E /* MasterViewController.xib */; };
 		0129AB8D1C0363D800A445FB /* OSNProductManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0129AB8C1C0363D800A445FB /* OSNProductManager.m */; };
+		0130A1771C15894800D075FF /* OSNCustomerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0130A1761C15894800D075FF /* OSNCustomerManager.m */; };
+		0130A17B1C158B6600D075FF /* CustomerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0130A17A1C158B6600D075FF /* CustomerListViewController.m */; };
+		0130A17E1C15905000D075FF /* CustomerListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0130A17D1C15905000D075FF /* CustomerListCell.m */; };
 		014060ED1C0FDABB0001804E /* OSNMainNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 014060EC1C0FDABB0001804E /* OSNMainNavigation.m */; };
 		014060F01C0FEB540001804E /* ProductImageList.m in Sources */ = {isa = PBXBuildFile; fileRef = 014060EF1C0FEB540001804E /* ProductImageList.m */; };
 		014060F31C0FEFC80001804E /* ProductImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 014060F21C0FEFC80001804E /* ProductImageCell.m */; };
 		014664EB1C06F0CF00FD2E96 /* OSNTagButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 014664EA1C06F0CF00FD2E96 /* OSNTagButton.m */; };
 		014664EE1C07056700FD2E96 /* OSNTagPadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 014664ED1C07056700FD2E96 /* OSNTagPadView.m */; };
-		01564DEB1C149A1E007BBDA2 /* BuildingDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01564DEA1C149A1E007BBDA2 /* BuildingDetailCell.m */; settings = {ASSET_TAGS = (); }; };
+		01564DEB1C149A1E007BBDA2 /* BuildingDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01564DEA1C149A1E007BBDA2 /* BuildingDetailCell.m */; };
 		015B2D0C1BFEBA5400821100 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 015B2D0B1BFEBA5400821100 /* main.m */; };
 		015B2D0F1BFEBA5400821100 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 015B2D0E1BFEBA5400821100 /* AppDelegate.m */; };
 		015B2D171BFEBA5400821100 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 015B2D161BFEBA5400821100 /* Assets.xcassets */; };
@@ -46,7 +49,7 @@
 		018B09ED1BFEC206007B69A8 /* OSNUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 018B09EC1BFEC206007B69A8 /* OSNUserInfo.m */; };
 		018B09F41BFEC38B007B69A8 /* OSNNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 018B09F11BFEC38B007B69A8 /* OSNNetworkService.m */; };
 		018B09F51BFEC38B007B69A8 /* OSNUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 018B09F31BFEC38B007B69A8 /* OSNUserManager.m */; };
-		0192392D1C1473D800948D04 /* CaseDependCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0192392C1C1473D800948D04 /* CaseDependCell.m */; settings = {ASSET_TAGS = (); }; };
+		0192392D1C1473D800948D04 /* CaseDependCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0192392C1C1473D800948D04 /* CaseDependCell.m */; };
 		01A35D3F1C0ADD7A00341F45 /* OSNCaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A35D3E1C0ADD7A00341F45 /* OSNCaseEntity.m */; };
 		01A35D421C0AE77200341F45 /* CaseImageList.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A35D411C0AE77200341F45 /* CaseImageList.m */; };
 		01A35D461C0AF4BA00341F45 /* CaseImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A35D451C0AF4BA00341F45 /* CaseImageCell.m */; };
@@ -54,26 +57,26 @@
 		01AF1F5C1C0402B00033413F /* OSNCaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F5B1C0402B00033413F /* OSNCaseManager.m */; };
 		01AF1F5F1C040D260033413F /* OSNTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F5E1C040D260033413F /* OSNTag.m */; };
 		01AF1F621C040E1B0033413F /* OSNTagGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F611C040E1B0033413F /* OSNTagGroup.m */; };
-		01B754DE1C13362B000FA9BE /* OSNBuildingEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B754DD1C13362B000FA9BE /* OSNBuildingEntity.m */; settings = {ASSET_TAGS = (); }; };
-		01B754E21C133E73000FA9BE /* BuildingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B754E01C133E73000FA9BE /* BuildingDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
-		01B754E31C133E73000FA9BE /* BuildingDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01B754E11C133E73000FA9BE /* BuildingDetailViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		01B754E61C134A70000FA9BE /* CaseDetailProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B754E51C134A70000FA9BE /* CaseDetailProductCell.m */; settings = {ASSET_TAGS = (); }; };
+		01B754DE1C13362B000FA9BE /* OSNBuildingEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B754DD1C13362B000FA9BE /* OSNBuildingEntity.m */; };
+		01B754E21C133E73000FA9BE /* BuildingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B754E01C133E73000FA9BE /* BuildingDetailViewController.m */; };
+		01B754E31C133E73000FA9BE /* BuildingDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01B754E11C133E73000FA9BE /* BuildingDetailViewController.xib */; };
+		01B754E61C134A70000FA9BE /* CaseDetailProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B754E51C134A70000FA9BE /* CaseDetailProductCell.m */; };
 		01BECEFD1C0D943E007A2E10 /* CaseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BECEFB1C0D943E007A2E10 /* CaseDetailViewController.m */; };
 		01BECEFE1C0D943E007A2E10 /* CaseDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01BECEFC1C0D943E007A2E10 /* CaseDetailViewController.xib */; };
-		01C7673E1C10733400875C1C /* OSNProductEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C7673D1C10733400875C1C /* OSNProductEntity.m */; settings = {ASSET_TAGS = (); }; };
+		01C7673E1C10733400875C1C /* OSNProductEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C7673D1C10733400875C1C /* OSNProductEntity.m */; };
 		01CA2CED1C0555F000CD0024 /* CaseTagTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CA2CEC1C0555F000CD0024 /* CaseTagTable.m */; };
 		01CA2CF11C05574C00CD0024 /* CaseTagSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CA2CF01C05574C00CD0024 /* CaseTagSection.m */; };
 		01CDB8181C059A4300463F97 /* CaseTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CDB8171C059A4300463F97 /* CaseTagCell.m */; };
 		01E063991C0B6E28009448EA /* ProductTagTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E063981C0B6E28009448EA /* ProductTagTable.m */; };
 		01E0639C1C0B6E65009448EA /* ProductTagSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E0639B1C0B6E65009448EA /* ProductTagSection.m */; };
 		01E0639F1C0B6E87009448EA /* ProductTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E0639E1C0B6E87009448EA /* ProductTagCell.m */; };
-		01E23AAF1C12C0F2006D6A9E /* ProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E23AAD1C12C0F2006D6A9E /* ProductDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
-		01E23AB01C12C0F2006D6A9E /* ProductDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01E23AAE1C12C0F2006D6A9E /* ProductDetailViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		01E23AB41C12D349006D6A9E /* BuildingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E23AB31C12D349006D6A9E /* BuildingListViewController.m */; settings = {ASSET_TAGS = (); }; };
-		01E23ABA1C12D46B006D6A9E /* BuildingLeftSider.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E23AB91C12D46B006D6A9E /* BuildingLeftSider.m */; settings = {ASSET_TAGS = (); }; };
-		01E23ABD1C12D4BC006D6A9E /* BuildingImageList.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E23ABC1C12D4BC006D6A9E /* BuildingImageList.m */; settings = {ASSET_TAGS = (); }; };
-		01E23AC01C12D858006D6A9E /* BuildingImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E23ABF1C12D858006D6A9E /* BuildingImageCell.m */; settings = {ASSET_TAGS = (); }; };
-		01E23AC31C12DDC5006D6A9E /* OSNBuildingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E23AC21C12DDC5006D6A9E /* OSNBuildingManager.m */; settings = {ASSET_TAGS = (); }; };
+		01E23AAF1C12C0F2006D6A9E /* ProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E23AAD1C12C0F2006D6A9E /* ProductDetailViewController.m */; };
+		01E23AB01C12C0F2006D6A9E /* ProductDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01E23AAE1C12C0F2006D6A9E /* ProductDetailViewController.xib */; };
+		01E23AB41C12D349006D6A9E /* BuildingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E23AB31C12D349006D6A9E /* BuildingListViewController.m */; };
+		01E23ABA1C12D46B006D6A9E /* BuildingLeftSider.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E23AB91C12D46B006D6A9E /* BuildingLeftSider.m */; };
+		01E23ABD1C12D4BC006D6A9E /* BuildingImageList.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E23ABC1C12D4BC006D6A9E /* BuildingImageList.m */; };
+		01E23AC01C12D858006D6A9E /* BuildingImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E23ABF1C12D858006D6A9E /* BuildingImageCell.m */; };
+		01E23AC31C12DDC5006D6A9E /* OSNBuildingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E23AC21C12DDC5006D6A9E /* OSNBuildingManager.m */; };
 		6ECBAA760C49A32A4783B017 /* libPods-saleclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 977BB1C584A2928D5B6CF794 /* libPods-saleclient.a */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +105,12 @@
 		011375631BFF0DA400A9AB9E /* MasterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterViewController.xib; sourceTree = "<group>"; };
 		0129AB8B1C0363D800A445FB /* OSNProductManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNProductManager.h; sourceTree = "<group>"; };
 		0129AB8C1C0363D800A445FB /* OSNProductManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNProductManager.m; sourceTree = "<group>"; };
+		0130A1751C15894800D075FF /* OSNCustomerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNCustomerManager.h; sourceTree = "<group>"; };
+		0130A1761C15894800D075FF /* OSNCustomerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNCustomerManager.m; sourceTree = "<group>"; };
+		0130A1791C158B6600D075FF /* CustomerListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerListViewController.h; sourceTree = "<group>"; };
+		0130A17A1C158B6600D075FF /* CustomerListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerListViewController.m; sourceTree = "<group>"; };
+		0130A17C1C15905000D075FF /* CustomerListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerListCell.h; sourceTree = "<group>"; };
+		0130A17D1C15905000D075FF /* CustomerListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerListCell.m; sourceTree = "<group>"; };
 		014060EB1C0FDABB0001804E /* OSNMainNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNMainNavigation.h; sourceTree = "<group>"; };
 		014060EC1C0FDABB0001804E /* OSNMainNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNMainNavigation.m; sourceTree = "<group>"; };
 		014060EE1C0FEB540001804E /* ProductImageList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductImageList.h; sourceTree = "<group>"; };
@@ -232,6 +241,17 @@
 			name = Image;
 			sourceTree = "<group>";
 		};
+		0130A1781C158A7000D075FF /* Customer */ = {
+			isa = PBXGroup;
+			children = (
+				0130A1791C158B6600D075FF /* CustomerListViewController.h */,
+				0130A17A1C158B6600D075FF /* CustomerListViewController.m */,
+				0130A17C1C15905000D075FF /* CustomerListCell.h */,
+				0130A17D1C15905000D075FF /* CustomerListCell.m */,
+			);
+			name = Customer;
+			sourceTree = "<group>";
+		};
 		014664E51C06ED1C00FD2E96 /* TagVIew */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +313,7 @@
 		015B2D211BFEBBB900821100 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0130A1781C158A7000D075FF /* Customer */,
 				01E23AB11C12D326006D6A9E /* Building */,
 				01A35D431C0AE79200341F45 /* Product */,
 				01A35D3C1C09B08D00341F45 /* Case */,
@@ -347,6 +368,8 @@
 				01AF1F5B1C0402B00033413F /* OSNCaseManager.m */,
 				01E23AC11C12DDC5006D6A9E /* OSNBuildingManager.h */,
 				01E23AC21C12DDC5006D6A9E /* OSNBuildingManager.m */,
+				0130A1751C15894800D075FF /* OSNCustomerManager.h */,
+				0130A1761C15894800D075FF /* OSNCustomerManager.m */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -595,9 +618,12 @@
 				01CDB8181C059A4300463F97 /* CaseTagCell.m in Sources */,
 				01564DEB1C149A1E007BBDA2 /* BuildingDetailCell.m in Sources */,
 				01E23ABA1C12D46B006D6A9E /* BuildingLeftSider.m in Sources */,
+				0130A1771C15894800D075FF /* OSNCustomerManager.m in Sources */,
 				014060ED1C0FDABB0001804E /* OSNMainNavigation.m in Sources */,
 				01E23AC31C12DDC5006D6A9E /* OSNBuildingManager.m in Sources */,
+				0130A17B1C158B6600D075FF /* CustomerListViewController.m in Sources */,
 				01B754DE1C13362B000FA9BE /* OSNBuildingEntity.m in Sources */,
+				0130A17E1C15905000D075FF /* CustomerListCell.m in Sources */,
 				01C7673E1C10733400875C1C /* OSNProductEntity.m in Sources */,
 				018B09E61BFEC0BB007B69A8 /* HomeViewController.m in Sources */,
 				01E23ABD1C12D4BC006D6A9E /* BuildingImageList.m in Sources */,
