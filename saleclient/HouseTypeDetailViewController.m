@@ -19,7 +19,6 @@
 
 @property (weak, nonatomic) IBOutlet UIView *navBackground;
 
-@property(nonatomic, strong) NavigationBarView *navBar;
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UILabel *openingTime;
@@ -31,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UIView *roomTagBackground;
 @property (weak, nonatomic) IBOutlet UICollectionView *caseCollectionView;
 
+@property (nonatomic, strong) NavigationBarView *navBar;
 @property (nonatomic, strong) AutoLayoutTagView *roomTagView;
 @property (nonatomic, strong) NSMutableArray *roomTabList;
 @property (nonatomic, strong) NSString *roomId;
@@ -60,11 +60,6 @@ static NSString * const reuseIdentifier = @"houseTypeCaseCell";
     [self loadviewData];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)setSubviewStyleAndLayout {
     [self.navBackground addSubview:self.navBar];
     [self.navBar mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -78,6 +73,9 @@ static NSString * const reuseIdentifier = @"houseTypeCaseCell";
     }];
 }
 
+
+#pragma mark - property
+
 - (NavigationBarView *)navBar {
     if (!_navBar) {
         _navBar = [[NavigationBarView alloc] init];
@@ -89,14 +87,27 @@ static NSString * const reuseIdentifier = @"houseTypeCaseCell";
     if (!_roomTagView) {
         _roomTagView = [[AutoLayoutTagView alloc] init];
         [_roomTagView setTagButtonStyleWithBlock:^(UIButton *button, NSUInteger index) {
-            button.frame = CGRectMake(0, 0, 100, 30);
+            button.frame = CGRectMake(0, 0, 80, 30);
+            button.contentEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
             [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             [button setTitleColor:[UIColor orangeColor] forState:UIControlStateSelected];
             button.titleLabel.font = [UIFont systemFontOfSize:14];
             button.backgroundColor = [UIColor whiteColor];
             button.layer.borderColor = [UIColor blackColor].CGColor;
-            button.layer.borderWidth = 1;
-            button.layer.cornerRadius = 5;
+            button.layer.borderWidth = 0;
+            button.layer.cornerRadius = 0;
+            
+            if (index != 0) {
+                UIView *split = [[UIView alloc] init];
+                split.backgroundColor = [UIColor blackColor];
+                [button addSubview:split];
+                [split mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.left.equalTo(button);
+                    make.top.equalTo(button).offset(6);
+                    make.bottom.equalTo(button).offset(-6);
+                    make.width.mas_equalTo(1);
+                }];
+            }
         }];
         _roomTagView.delegate = self;
     }

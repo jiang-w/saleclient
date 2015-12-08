@@ -60,9 +60,9 @@ typedef void(^buttonStyleBlock)(UIButton *button, NSUInteger index);
         [tag setTitle:title forState:UIControlStateNormal];
         
         [self setDefalutStyleWithButton:tag];
-        if (self.callback) {
-            self.callback(tag, index);
-        }
+//        if (self.callback) {
+//            self.callback(tag, index);
+//        }
         
         [self insertSubview:tag atIndex:index];
         [tag addTarget:self action:@selector(tapbuttonEventHandle:) forControlEvents:UIControlEventTouchUpInside];
@@ -209,6 +209,12 @@ typedef void(^buttonStyleBlock)(UIButton *button, NSUInteger index);
         [self removeAllConstraints];
         for (UIButton *btn in self.tagButtons) {
             [self setConstraintOfTagButton:btn];
+        }
+        
+        if (self.callback) {
+            [self.tagButtons enumerateObjectsUsingBlock:^(UIButton *btn, NSUInteger idx, BOOL *stop) {
+                self.callback(btn, idx);
+            }];
         }
     }
     

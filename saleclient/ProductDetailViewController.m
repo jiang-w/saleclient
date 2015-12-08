@@ -26,7 +26,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *scene;
 @property (weak, nonatomic) IBOutlet UILabel *info;
 @property (weak, nonatomic) IBOutlet UICollectionView *caseListView;
-
 @property (nonatomic, strong) NSMutableArray *caseList;
 
 @end
@@ -48,9 +47,11 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
     [self.image addGestureRecognizer:tap];
     self.image.userInteractionEnabled = YES;
     
-    self.caseList = [NSMutableArray array];
     [self loadProductDetailData];
 }
+
+
+#pragma mark - private
 
 - (void)setSubviewLayoutAndStyle {
     self.backButton.contentEdgeInsets = UIEdgeInsetsMake(4, 16, 4, 16);
@@ -81,7 +82,12 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
                     self.style.text = style;
                     self.info.text = dic[@"productEntity"][@"productDesc"];
                     
-                    [self.caseList removeAllObjects];
+                    if (self.caseList) {
+                        [self.caseList removeAllObjects];
+                    }
+                    else {
+                        self.caseList = [NSMutableArray array];
+                    }
                     [self.caseList addObjectsFromArray:dic[@"productCaseList"]];
                     [self.caseListView reloadData];
                 });
@@ -89,6 +95,17 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
         });
     }
 }
+
+- (void)string:(NSMutableString *)str replaceString:(NSString *)old withString:(NSString *)new {
+    NSRange substr = [str rangeOfString:old];
+    while (substr.location != NSNotFound) {
+        [str replaceCharactersInRange:substr withString:new];
+        substr = [str rangeOfString:old];
+    }
+}
+
+
+#pragma mark - <UICollectionViewDataSource>
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.caseList.count;
@@ -103,18 +120,6 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
     return cell;
 }
 
-- (void)string:(NSMutableString *)str replaceString:(NSString *)old withString:(NSString *)new {
-    NSRange substr = [str rangeOfString:old];
-    while (substr.location != NSNotFound) {
-        [str replaceCharactersInRange:substr withString:new];
-        substr = [str rangeOfString:old];
-    }
-}
-
-- (IBAction)clickBackButton:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     CaseDependCell *cell = (CaseDependCell *)[collectionView cellForItemAtIndexPath:indexPath];
     AppDelegate *appDelegate = OSNMainDelegate;
@@ -125,6 +130,13 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
     CaseDetailViewController *caseDetail = [[CaseDetailViewController alloc] init];
     caseDetail.exhibitionId = cell.exhibitionId;
     [appDelegate.mainNav pushViewController:caseDetail animated:NO];
+}
+
+
+#pragma mark - event
+
+- (IBAction)clickBackButton:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)tapProductImage:(UITapGestureRecognizer *)gesture {
