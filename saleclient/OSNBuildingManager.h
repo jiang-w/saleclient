@@ -16,4 +16,6 @@
 
 - (NSDictionary *)getBuildingDetailWithId:(NSString *)buildingId;
 
+- (NSDictionary *)getHouseTypeDetailWithParamters:(NSDictionary *)paramters;
+
 @end

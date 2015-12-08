@@ -89,7 +89,7 @@
 - (UIButton *)note {
     if (!_note) {
         _note = [UIButton buttonWithType:UIButtonTypeCustom];
-        _note.imageView.image = [UIImage imageNamed:@"history_ico.png"];
+        [_note setImage:[UIImage imageNamed:@"history_ico.png"] forState:UIControlStateNormal];
     }
     return _note;
 }
@@ -97,7 +97,7 @@
 - (UIButton *)qcode {
     if (!_qcode) {
         _qcode = [UIButton buttonWithType:UIButtonTypeCustom];
-        _qcode.imageView.image = [UIImage imageNamed:@"qcode_ico.png"];
+        [_qcode setImage:[UIImage imageNamed:@"qcode_ico.png"] forState:UIControlStateNormal];
     }
     return _qcode;
 }
@@ -105,7 +105,7 @@
 - (UIButton *)shopping {
     if (!_shopping) {
         _shopping = [UIButton buttonWithType:UIButtonTypeCustom];
-        _shopping.imageView.image = [UIImage imageNamed:@"shopping_ico.png"];
+        [_shopping setImage:[UIImage imageNamed:@"shopping_ico.png"] forState:UIControlStateNormal];
     }
     return _shopping;
 }
@@ -113,7 +113,7 @@
 - (UIButton *)history {
     if (!_history) {
         _history = [UIButton buttonWithType:UIButtonTypeCustom];
-        _history.imageView.image = [UIImage imageNamed:@"historyview_ico.png"];
+        [_history setImage:[UIImage imageNamed:@"historyview_ico.png"] forState:UIControlStateNormal];
     }
     return _history;
 }

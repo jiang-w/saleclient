@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BuildingDetailViewController : UIViewController <UICollectionViewDataSource>
+@interface BuildingDetailViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property(nonatomic, strong) NSString *buildingId;
 

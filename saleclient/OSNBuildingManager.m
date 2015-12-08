@@ -97,4 +97,17 @@
     }
 }
 
+- (NSDictionary *)getHouseTypeDetailWithParamters:(NSDictionary *)paramters {
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadBuildingCaseBrowseImageData" andParamterDictionary:paramters];
+    NSArray *dataArr = dataDic[@"data"];
+    
+    if (dataArr && dataArr.count > 0) {
+        return [dataArr firstObject];
+    }
+    else {
+        return nil;
+    }
+}
+
 @end

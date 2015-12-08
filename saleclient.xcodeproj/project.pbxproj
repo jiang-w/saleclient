@@ -50,8 +50,8 @@
 		018B09F41BFEC38B007B69A8 /* OSNNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 018B09F11BFEC38B007B69A8 /* OSNNetworkService.m */; };
 		018B09F51BFEC38B007B69A8 /* OSNUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 018B09F31BFEC38B007B69A8 /* OSNUserManager.m */; };
 		0192392D1C1473D800948D04 /* CaseDependCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0192392C1C1473D800948D04 /* CaseDependCell.m */; };
-		019BE76A1C15C8DE00980556 /* OSNCustomerListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 019BE7691C15C8DE00980556 /* OSNCustomerListItem.m */; settings = {ASSET_TAGS = (); }; };
-		019BE76D1C15DD5B00980556 /* CustomerListHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 019BE76C1C15DD5B00980556 /* CustomerListHeader.m */; settings = {ASSET_TAGS = (); }; };
+		019BE76A1C15C8DE00980556 /* OSNCustomerListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 019BE7691C15C8DE00980556 /* OSNCustomerListItem.m */; };
+		019BE76D1C15DD5B00980556 /* CustomerListHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 019BE76C1C15DD5B00980556 /* CustomerListHeader.m */; };
 		01A35D3F1C0ADD7A00341F45 /* OSNCaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A35D3E1C0ADD7A00341F45 /* OSNCaseEntity.m */; };
 		01A35D421C0AE77200341F45 /* CaseImageList.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A35D411C0AE77200341F45 /* CaseImageList.m */; };
 		01A35D461C0AF4BA00341F45 /* CaseImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A35D451C0AF4BA00341F45 /* CaseImageCell.m */; };
@@ -69,6 +69,9 @@
 		01CA2CED1C0555F000CD0024 /* CaseTagTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CA2CEC1C0555F000CD0024 /* CaseTagTable.m */; };
 		01CA2CF11C05574C00CD0024 /* CaseTagSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CA2CF01C05574C00CD0024 /* CaseTagSection.m */; };
 		01CDB8181C059A4300463F97 /* CaseTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CDB8171C059A4300463F97 /* CaseTagCell.m */; };
+		01D776BC1C16870D00F820A1 /* HouseTypeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D776BA1C16870D00F820A1 /* HouseTypeDetailViewController.m */; };
+		01D776BD1C16870D00F820A1 /* HouseTypeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01D776BB1C16870D00F820A1 /* HouseTypeDetailViewController.xib */; };
+		01D776C01C16B69C00F820A1 /* HouseTypeCaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D776BF1C16B69C00F820A1 /* HouseTypeCaseCell.m */; };
 		01E063991C0B6E28009448EA /* ProductTagTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E063981C0B6E28009448EA /* ProductTagTable.m */; };
 		01E0639C1C0B6E65009448EA /* ProductTagSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E0639B1C0B6E65009448EA /* ProductTagSection.m */; };
 		01E0639F1C0B6E87009448EA /* ProductTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E0639E1C0B6E87009448EA /* ProductTagCell.m */; };
@@ -79,7 +82,7 @@
 		01E23ABD1C12D4BC006D6A9E /* BuildingImageList.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E23ABC1C12D4BC006D6A9E /* BuildingImageList.m */; };
 		01E23AC01C12D858006D6A9E /* BuildingImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E23ABF1C12D858006D6A9E /* BuildingImageCell.m */; };
 		01E23AC31C12DDC5006D6A9E /* OSNBuildingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E23AC21C12DDC5006D6A9E /* OSNBuildingManager.m */; };
-		01F8A17A1C15EC59000A7EDB /* NavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F8A1791C15EC59000A7EDB /* NavigationBarView.m */; settings = {ASSET_TAGS = (); }; };
+		01F8A17A1C15EC59000A7EDB /* NavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F8A1791C15EC59000A7EDB /* NavigationBarView.m */; };
 		6ECBAA760C49A32A4783B017 /* libPods-saleclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 977BB1C584A2928D5B6CF794 /* libPods-saleclient.a */; };
 /* End PBXBuildFile section */
 
@@ -189,6 +192,11 @@
 		01CA2CF01C05574C00CD0024 /* CaseTagSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseTagSection.m; sourceTree = "<group>"; };
 		01CDB8161C059A4300463F97 /* CaseTagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseTagCell.h; sourceTree = "<group>"; };
 		01CDB8171C059A4300463F97 /* CaseTagCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseTagCell.m; sourceTree = "<group>"; };
+		01D776B91C16870D00F820A1 /* HouseTypeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HouseTypeDetailViewController.h; sourceTree = "<group>"; };
+		01D776BA1C16870D00F820A1 /* HouseTypeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HouseTypeDetailViewController.m; sourceTree = "<group>"; };
+		01D776BB1C16870D00F820A1 /* HouseTypeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HouseTypeDetailViewController.xib; sourceTree = "<group>"; };
+		01D776BE1C16B69C00F820A1 /* HouseTypeCaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HouseTypeCaseCell.h; sourceTree = "<group>"; };
+		01D776BF1C16B69C00F820A1 /* HouseTypeCaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HouseTypeCaseCell.m; sourceTree = "<group>"; };
 		01E063971C0B6E28009448EA /* ProductTagTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductTagTable.h; sourceTree = "<group>"; };
 		01E063981C0B6E28009448EA /* ProductTagTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductTagTable.m; sourceTree = "<group>"; };
 		01E0639A1C0B6E65009448EA /* ProductTagSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductTagSection.h; sourceTree = "<group>"; };
@@ -453,6 +461,11 @@
 				01B754E11C133E73000FA9BE /* BuildingDetailViewController.xib */,
 				01564DE91C149A1E007BBDA2 /* BuildingDetailCell.h */,
 				01564DEA1C149A1E007BBDA2 /* BuildingDetailCell.m */,
+				01D776B91C16870D00F820A1 /* HouseTypeDetailViewController.h */,
+				01D776BA1C16870D00F820A1 /* HouseTypeDetailViewController.m */,
+				01D776BB1C16870D00F820A1 /* HouseTypeDetailViewController.xib */,
+				01D776BE1C16B69C00F820A1 /* HouseTypeCaseCell.h */,
+				01D776BF1C16B69C00F820A1 /* HouseTypeCaseCell.m */,
 			);
 			name = Building;
 			sourceTree = "<group>";
@@ -549,6 +562,7 @@
 				017A27821C04A46D00CB577D /* pro_lm.gif in Resources */,
 				011375521BFEFC5000A9AB9E /* qcode_ico.png in Resources */,
 				015B2D1A1BFEBA5400821100 /* LaunchScreen.storyboard in Resources */,
+				01D776BD1C16870D00F820A1 /* HouseTypeDetailViewController.xib in Resources */,
 				015B2D171BFEBA5400821100 /* Assets.xcassets in Resources */,
 				011375491BFEF29500A9AB9E /* login_bg.jpg in Resources */,
 				0100BDE81C0C12CD0011F6D0 /* navbtn_back_hov.png in Resources */,
@@ -603,6 +617,7 @@
 			files = (
 				01B754E61C134A70000FA9BE /* CaseDetailProductCell.m in Sources */,
 				01E23AB41C12D349006D6A9E /* BuildingListViewController.m in Sources */,
+				01D776BC1C16870D00F820A1 /* HouseTypeDetailViewController.m in Sources */,
 				0187A0261C01A3C1001091F6 /* CaseListViewController.m in Sources */,
 				014664EB1C06F0CF00FD2E96 /* OSNTagButton.m in Sources */,
 				015B2D251BFEBBFD00821100 /* SignInViewController.m in Sources */,
@@ -637,6 +652,7 @@
 				0130A1771C15894800D075FF /* OSNCustomerManager.m in Sources */,
 				014060ED1C0FDABB0001804E /* OSNMainNavigation.m in Sources */,
 				01E23AC31C12DDC5006D6A9E /* OSNBuildingManager.m in Sources */,
+				01D776C01C16B69C00F820A1 /* HouseTypeCaseCell.m in Sources */,
 				0130A17B1C158B6600D075FF /* CustomerListViewController.m in Sources */,
 				01B754DE1C13362B000FA9BE /* OSNBuildingEntity.m in Sources */,
 				019BE76A1C15C8DE00980556 /* OSNCustomerListItem.m in Sources */,

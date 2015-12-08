@@ -9,6 +9,7 @@
 #import "BuildingDetailViewController.h"
 #import "BuildingDetailCell.h"
 #import "OSNBuildingManager.h"
+#import "HouseTypeDetailViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface BuildingDetailViewController ()
@@ -39,6 +40,7 @@ static NSString * const reuseIdentifier = @"buildingDetailCell";
     
      [self.buildingModelView registerClass:[BuildingDetailCell class] forCellWithReuseIdentifier:reuseIdentifier];
     self.buildingModelView.dataSource = self;
+    self.buildingModelView.delegate = self;
     
     self.buildingModelList = [NSMutableArray array];
     [self loadBuildingDetailData];
@@ -88,7 +90,16 @@ static NSString * const reuseIdentifier = @"buildingDetailCell";
     NSDictionary *dic = self.buildingModelList[indexPath.row];
     cell.name.text = [NSString stringWithFormat:@"%@ %@", dic[@"modelName"], dic[@"modelTypeName"]];
     [cell.image sd_setImageWithURL:[NSURL URLWithString:dic[@"imagePath"]]];
+    cell.modelId = dic[@"modelId"];
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    BuildingDetailCell *cell = (BuildingDetailCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    HouseTypeDetailViewController *houseTypeDetail = [[HouseTypeDetailViewController alloc] init];
+    houseTypeDetail.buildingId = self.buildingId;
+    houseTypeDetail.modelId = cell.modelId;
+    [self.navigationController pushViewController:houseTypeDetail animated:YES];
 }
 
 - (IBAction)clickBackButton:(id)sender {
