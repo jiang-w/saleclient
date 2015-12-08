@@ -12,6 +12,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "AppDelegate.h"
 #import "CaseDetailViewController.h"
+#import "ImageViewController.h"
 
 @interface ProductDetailViewController ()
 
@@ -43,6 +44,10 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
     [self.caseListView registerClass:[CaseDependCell class] forCellWithReuseIdentifier:reuseIdentifier];
     self.caseListView.dataSource = self;
     self.caseListView.delegate = self;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapProductImage:)];
+    [self.image addGestureRecognizer:tap];
+    self.image.userInteractionEnabled = YES;
     
     self.caseList = [NSMutableArray array];
     [self loadProductDetailData];
@@ -122,6 +127,12 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
     CaseDetailViewController *caseDetail = [[CaseDetailViewController alloc] init];
     caseDetail.exhibitionId = cell.exhibitionId;
     [appDelegate.mainNav pushViewController:caseDetail animated:NO];
+}
+
+- (void)tapProductImage:(UITapGestureRecognizer *)gesture {
+    ImageViewController *imageView = [[ImageViewController alloc] init];
+    imageView.image.image = self.image.image;
+    [self presentViewController:imageView animated:YES completion:nil];
 }
 
 @end
