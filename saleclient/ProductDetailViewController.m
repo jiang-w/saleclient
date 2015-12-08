@@ -9,10 +9,9 @@
 #import "ProductDetailViewController.h"
 #import "OSNProductManager.h"
 #import "CaseDependCell.h"
-#import <SDWebImage/UIImageView+WebCache.h>
-#import "AppDelegate.h"
 #import "CaseDetailViewController.h"
-#import "ImageViewController.h"
+#import "AppDelegate.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface ProductDetailViewController ()
 
@@ -88,7 +87,6 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
                 });
             }
         });
-
     }
 }
 
@@ -130,9 +128,7 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
 }
 
 - (void)tapProductImage:(UITapGestureRecognizer *)gesture {
-    ImageViewController *imageView = [[ImageViewController alloc] init];
-    imageView.image.image = self.image.image;
-    [self presentViewController:imageView animated:YES completion:nil];
+    
 }
 
 @end

@@ -258,7 +258,7 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vj4-aM-W2H">
-                    <rect key="frame" x="20" y="422" width="180" height="40"/>
+                    <rect key="frame" x="10" y="422" width="180" height="40"/>
                     <animations/>
                     <color key="backgroundColor" red="0.98431372549999996" green="0.92941176469999998" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -276,7 +276,7 @@
                 <constraint firstItem="hFo-xY-3lW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="0Pb-Wr-SjE"/>
                 <constraint firstAttribute="bottom" secondItem="hFo-xY-3lW" secondAttribute="bottom" constant="360" id="2Ns-qY-LpY"/>
                 <constraint firstAttribute="trailing" secondItem="xI2-3e-WN8" secondAttribute="trailing" id="2tK-Oq-gVe"/>
-                <constraint firstItem="Vj4-aM-W2H" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="BjK-0D-ViN"/>
+                <constraint firstItem="Vj4-aM-W2H" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="BjK-0D-ViN"/>
                 <constraint firstItem="dNK-YP-De7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="Do4-7U-Q1y"/>
                 <constraint firstItem="UeZ-wM-221" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="H8S-Mh-fJY"/>
                 <constraint firstAttribute="bottom" secondItem="xI2-3e-WN8" secondAttribute="bottom" id="Oz5-SX-QE6"/>
