@@ -34,4 +34,29 @@
     return customerList;
 }
 
+- (NSString *)generateCustomerId {
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadCrmGenerateCustomerId" andParamterDictionary:nil];
+    NSArray *dataArr = dataDic[@"data"];
+    if (dataArr && dataArr.count > 0) {
+        NSString *currentCustomerId = [dataArr firstObject][@"customerId"];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:currentCustomerId forKey:@"customerId"];
+        return currentCustomerId;
+    }
+    else {
+        return nil;
+    }
+}
+
+- (void)completeCustomerReception {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:@"" forKey:@"customerId"];
+}
+
++ (NSString *)currentCustomerId {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+   return [defaults objectForKey:@"customerId"];
+}
+
 @end

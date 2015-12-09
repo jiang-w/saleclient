@@ -9,11 +9,16 @@
 #import "HomeViewController.h"
 #import "MasterViewController.h"
 #import "OSNUserManager.h"
+#import "OSNCustomerManager.h"
 #import "AppDelegate.h"
+#import "CustomerSigninView.h"
+#import "LewPopupViewController.h"
 
 @interface HomeViewController ()
 
 @property(nonatomic, strong) MasterViewController *contentNav;
+@property (weak, nonatomic) IBOutlet UILabel *receptionText;
+@property (weak, nonatomic) IBOutlet UIButton *completeReceptionButton;
 
 @end
 
@@ -29,6 +34,16 @@
     else {
         [[OSNUserManager sharedInstance] checkSessionIsValid];
     }
+    
+    NSString *customerId = [OSNCustomerManager currentCustomerId];
+    if (customerId && ![customerId isEqualToString:@""]) {
+        self.completeReceptionButton.hidden = NO;
+        self.receptionText.text = @"正在接待";
+    }
+    else {
+        self.completeReceptionButton.hidden = YES;
+        self.receptionText.text = @"新接待";
+    }
 }
 
 - (IBAction)openNavigationViewController:(id)sender {
@@ -37,6 +52,30 @@
     [self.navigationController pushViewController:self.contentNav animated:YES];
 }
 
+- (IBAction)signinCustomer:(id)sender {
+    NSString *customerId = [OSNCustomerManager currentCustomerId];
+    if (!customerId || [customerId isEqualToString:@""]) {
+        OSNCustomerManager *manage = [[OSNCustomerManager alloc] init];
+        customerId = [manage generateCustomerId];
+        if (customerId) {
+            self.receptionText.text = @"正在接待";
+            self.completeReceptionButton.hidden = NO;
+        }
+    }
+    else {
+        CustomerSigninView *customerView = [CustomerSigninView defaultView];
+        customerView.parentVC = self;
+        customerView.customerId = customerId;
+        [self lew_presentPopupView:customerView animation:[LewPopupViewAnimationFade new] dismissed:nil];
+    }
+}
+
+- (IBAction)completeReception:(id)sender {
+    OSNCustomerManager *manager = [[OSNCustomerManager alloc] init];
+    [manager completeCustomerReception];
+    self.completeReceptionButton.hidden = YES;
+    self.receptionText.text = @"新接待";
+}
 
 #pragma mark - property
 

@@ -12,4 +12,10 @@
 
 - (NSArray *)getCustomerList:(NSDictionary *)paramters;
 
+- (NSString *)generateCustomerId;
+
+- (void)completeCustomerReception;
+
++ (NSString *)currentCustomerId;
+
 @end

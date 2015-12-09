@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController">
             <connections>
+                <outlet property="completeReceptionButton" destination="Wbi-Pl-RCT" id="sf7-kY-OeE"/>
+                <outlet property="receptionText" destination="xty-SR-6p7" id="Pl5-VK-7X9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -87,6 +89,9 @@
                     <rect key="frame" x="784" y="505" width="168" height="169"/>
                     <animations/>
                     <state key="normal" image="wc_receive_ico.png"/>
+                    <connections>
+                        <action selector="signinCustomer:" destination="-1" eventType="touchUpInside" id="A79-18-hDc"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yoX-GO-XrS">
                     <rect key="frame" x="846" y="332" width="147" height="148"/>
@@ -118,8 +123,8 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="新接待" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xty-SR-6p7">
-                    <rect key="frame" x="843" y="615" width="51" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="新接待" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xty-SR-6p7">
+                    <rect key="frame" x="826" y="614" width="84" height="21"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -139,6 +144,14 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wbi-Pl-RCT">
+                    <rect key="frame" x="850" y="711" width="37" height="35"/>
+                    <animations/>
+                    <state key="normal" image="exit.png"/>
+                    <connections>
+                        <action selector="completeReception:" destination="-1" eventType="touchUpInside" id="afO-K4-fEW"/>
+                    </connections>
+                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -153,6 +166,7 @@
         </view>
     </objects>
     <resources>
+        <image name="exit.png" width="37" height="35"/>
         <image name="history_ico.png" width="31" height="51"/>
         <image name="historyview_ico.png" width="37" height="51"/>
         <image name="qcode_ico.png" width="37" height="49"/>

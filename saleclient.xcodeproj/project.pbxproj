@@ -41,6 +41,8 @@
 		014E808D1C1807C10065987F /* LewPopupViewAnimationSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = 014E80841C1807C10065987F /* LewPopupViewAnimationSlide.m */; };
 		014E808E1C1807C10065987F /* LewPopupViewAnimationSpring.m in Sources */ = {isa = PBXBuildFile; fileRef = 014E80861C1807C10065987F /* LewPopupViewAnimationSpring.m */; };
 		014E808F1C1807C10065987F /* UIViewController+LewPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 014E80891C1807C10065987F /* UIViewController+LewPopupViewController.m */; };
+		014E80971C1813810065987F /* CustomerSigninView.m in Sources */ = {isa = PBXBuildFile; fileRef = 014E80961C1813810065987F /* CustomerSigninView.m */; };
+		014E80991C1813BE0065987F /* CustomerSigninView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 014E80981C1813BE0065987F /* CustomerSigninView.xib */; };
 		01564DEB1C149A1E007BBDA2 /* BuildingDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01564DEA1C149A1E007BBDA2 /* BuildingDetailCell.m */; };
 		015B2D0C1BFEBA5400821100 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 015B2D0B1BFEBA5400821100 /* main.m */; };
 		015B2D0F1BFEBA5400821100 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 015B2D0E1BFEBA5400821100 /* AppDelegate.m */; };
@@ -56,6 +58,7 @@
 		018B09ED1BFEC206007B69A8 /* OSNUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 018B09EC1BFEC206007B69A8 /* OSNUserInfo.m */; };
 		018B09F41BFEC38B007B69A8 /* OSNNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 018B09F11BFEC38B007B69A8 /* OSNNetworkService.m */; };
 		018B09F51BFEC38B007B69A8 /* OSNUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 018B09F31BFEC38B007B69A8 /* OSNUserManager.m */; };
+		018F894E1C1852E000B03BBD /* exit.png in Resources */ = {isa = PBXBuildFile; fileRef = 018F894D1C1852E000B03BBD /* exit.png */; };
 		0192392D1C1473D800948D04 /* CaseDependCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0192392C1C1473D800948D04 /* CaseDependCell.m */; };
 		019BE76A1C15C8DE00980556 /* OSNCustomerListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 019BE7691C15C8DE00980556 /* OSNCustomerListItem.m */; };
 		019BE76D1C15DD5B00980556 /* CustomerListHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 019BE76C1C15DD5B00980556 /* CustomerListHeader.m */; };
@@ -149,6 +152,9 @@
 		014E80871C1807C10065987F /* LewPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LewPopupViewController.h; sourceTree = "<group>"; };
 		014E80881C1807C10065987F /* UIViewController+LewPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LewPopupViewController.h"; sourceTree = "<group>"; };
 		014E80891C1807C10065987F /* UIViewController+LewPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LewPopupViewController.m"; sourceTree = "<group>"; };
+		014E80951C1813810065987F /* CustomerSigninView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerSigninView.h; sourceTree = "<group>"; };
+		014E80961C1813810065987F /* CustomerSigninView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerSigninView.m; sourceTree = "<group>"; };
+		014E80981C1813BE0065987F /* CustomerSigninView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerSigninView.xib; sourceTree = "<group>"; };
 		01564DE91C149A1E007BBDA2 /* BuildingDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingDetailCell.h; sourceTree = "<group>"; };
 		01564DEA1C149A1E007BBDA2 /* BuildingDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildingDetailCell.m; sourceTree = "<group>"; };
 		015B2D071BFEBA5400821100 /* saleclient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = saleclient.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,6 +183,7 @@
 		018B09F11BFEC38B007B69A8 /* OSNNetworkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNNetworkService.m; sourceTree = "<group>"; };
 		018B09F21BFEC38B007B69A8 /* OSNUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNUserManager.h; sourceTree = "<group>"; };
 		018B09F31BFEC38B007B69A8 /* OSNUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNUserManager.m; sourceTree = "<group>"; };
+		018F894D1C1852E000B03BBD /* exit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exit.png; sourceTree = "<group>"; };
 		0192392B1C1473D800948D04 /* CaseDependCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseDependCell.h; sourceTree = "<group>"; };
 		0192392C1C1473D800948D04 /* CaseDependCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseDependCell.m; sourceTree = "<group>"; };
 		019BE7681C15C8DE00980556 /* OSNCustomerListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNCustomerListItem.h; sourceTree = "<group>"; };
@@ -260,6 +267,7 @@
 		011375451BFEF27300A9AB9E /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				018F894D1C1852E000B03BBD /* exit.png */,
 				0100BDE71C0C12CD0011F6D0 /* navbtn_back_hov.png */,
 				01A35D471C0B3C3200341F45 /* link.png */,
 				017A27801C04A46D00CB577D /* pro_lm.gif */,
@@ -283,6 +291,9 @@
 		0130A1781C158A7000D075FF /* Customer */ = {
 			isa = PBXGroup;
 			children = (
+				014E80951C1813810065987F /* CustomerSigninView.h */,
+				014E80961C1813810065987F /* CustomerSigninView.m */,
+				014E80981C1813BE0065987F /* CustomerSigninView.xib */,
 				0130A1791C158B6600D075FF /* CustomerListViewController.h */,
 				0130A17A1C158B6600D075FF /* CustomerListViewController.m */,
 				0130A17C1C15905000D075FF /* CustomerListCell.h */,
@@ -326,6 +337,33 @@
 			path = popupViewController;
 			sourceTree = "<group>";
 		};
+		014E80901C1812450065987F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				018B09E31BFEC0BB007B69A8 /* HomeViewController.h */,
+				018B09E41BFEC0BB007B69A8 /* HomeViewController.m */,
+				018B09E51BFEC0BB007B69A8 /* HomeViewController.xib */,
+				015B2D221BFEBBFD00821100 /* SignInViewController.h */,
+				015B2D231BFEBBFD00821100 /* SignInViewController.m */,
+				015B2D241BFEBBFD00821100 /* SignInViewController.xib */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		014E80911C1812A60065987F /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				01F8A1781C15EC59000A7EDB /* NavigationBarView.h */,
+				01F8A1791C15EC59000A7EDB /* NavigationBarView.m */,
+				014060EB1C0FDABB0001804E /* OSNMainNavigation.h */,
+				014060EC1C0FDABB0001804E /* OSNMainNavigation.m */,
+				011375611BFF0DA400A9AB9E /* MasterViewController.h */,
+				011375621BFF0DA400A9AB9E /* MasterViewController.m */,
+				011375631BFF0DA400A9AB9E /* MasterViewController.xib */,
+			);
+			name = Navigation;
+			sourceTree = "<group>";
+		};
 		015B2CFE1BFEBA5400821100 = {
 			isa = PBXGroup;
 			children = (
@@ -347,12 +385,12 @@
 		015B2D091BFEBA5400821100 /* saleclient */ = {
 			isa = PBXGroup;
 			children = (
-				014E807C1C1807C10065987F /* popupViewController */,
 				018B09EF1BFEC36C007B69A8 /* Service */,
 				018B09EA1BFEC1EC007B69A8 /* Model */,
 				015B2D211BFEBBB900821100 /* View */,
 				015B2D161BFEBA5400821100 /* Assets.xcassets */,
 				015B2D181BFEBA5400821100 /* LaunchScreen.storyboard */,
+				014E807C1C1807C10065987F /* popupViewController */,
 				015B2D0A1BFEBA5400821100 /* Supporting Files */,
 			);
 			path = saleclient;
@@ -375,24 +413,13 @@
 		015B2D211BFEBBB900821100 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				014E80911C1812A60065987F /* Navigation */,
+				014E80901C1812450065987F /* Home */,
 				0130A1781C158A7000D075FF /* Customer */,
 				01E23AB11C12D326006D6A9E /* Building */,
 				01A35D431C0AE79200341F45 /* Product */,
 				01A35D3C1C09B08D00341F45 /* Case */,
 				014664E51C06ED1C00FD2E96 /* TagVIew */,
-				015B2D221BFEBBFD00821100 /* SignInViewController.h */,
-				015B2D231BFEBBFD00821100 /* SignInViewController.m */,
-				015B2D241BFEBBFD00821100 /* SignInViewController.xib */,
-				018B09E31BFEC0BB007B69A8 /* HomeViewController.h */,
-				018B09E41BFEC0BB007B69A8 /* HomeViewController.m */,
-				018B09E51BFEC0BB007B69A8 /* HomeViewController.xib */,
-				011375611BFF0DA400A9AB9E /* MasterViewController.h */,
-				011375621BFF0DA400A9AB9E /* MasterViewController.m */,
-				011375631BFF0DA400A9AB9E /* MasterViewController.xib */,
-				014060EB1C0FDABB0001804E /* OSNMainNavigation.h */,
-				014060EC1C0FDABB0001804E /* OSNMainNavigation.m */,
-				01F8A1781C15EC59000A7EDB /* NavigationBarView.h */,
-				01F8A1791C15EC59000A7EDB /* NavigationBarView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -594,6 +621,7 @@
 			files = (
 				0113754A1BFEF29500A9AB9E /* login_btn_hover.png in Resources */,
 				01A35D481C0B3C3200341F45 /* link.png in Resources */,
+				018F894E1C1852E000B03BBD /* exit.png in Resources */,
 				01B754E31C133E73000FA9BE /* BuildingDetailViewController.xib in Resources */,
 				011375531BFEFC5000A9AB9E /* shopping_ico.png in Resources */,
 				011375511BFEFC5000A9AB9E /* historyview_ico.png in Resources */,
@@ -606,6 +634,7 @@
 				01BECEFE1C0D943E007A2E10 /* CaseDetailViewController.xib in Resources */,
 				017A27821C04A46D00CB577D /* pro_lm.gif in Resources */,
 				011375521BFEFC5000A9AB9E /* qcode_ico.png in Resources */,
+				014E80991C1813BE0065987F /* CustomerSigninView.xib in Resources */,
 				015B2D1A1BFEBA5400821100 /* LaunchScreen.storyboard in Resources */,
 				01D776BD1C16870D00F820A1 /* HouseTypeDetailViewController.xib in Resources */,
 				015B2D171BFEBA5400821100 /* Assets.xcassets in Resources */,
@@ -686,6 +715,7 @@
 				0105781C1C1313D300C8F7CC /* AutoLayoutTagView.m in Sources */,
 				01CA2CF11C05574C00CD0024 /* CaseTagSection.m in Sources */,
 				01E23AC01C12D858006D6A9E /* BuildingImageCell.m in Sources */,
+				014E80971C1813810065987F /* CustomerSigninView.m in Sources */,
 				014664EE1C07056700FD2E96 /* OSNTagPadView.m in Sources */,
 				01A35D461C0AF4BA00341F45 /* CaseImageCell.m in Sources */,
 				015B2D0C1BFEBA5400821100 /* main.m in Sources */,
