@@ -35,10 +35,11 @@
         [[OSNUserManager sharedInstance] checkSessionIsValid];
     }
     
-    NSString *customerId = [OSNCustomerManager currentCustomerId];
-    if (customerId && ![customerId isEqualToString:@""]) {
+    NSString *receptionId = [OSNCustomerManager currentReceptionId];
+    if (receptionId && ![receptionId isEqualToString:@""]) {
         self.completeReceptionButton.hidden = NO;
         self.receptionText.text = @"正在接待";
+        NSLog(@"正在接待：%@", receptionId);
     }
     else {
         self.completeReceptionButton.hidden = YES;
@@ -53,11 +54,11 @@
 }
 
 - (IBAction)signinCustomer:(id)sender {
-    NSString *customerId = [OSNCustomerManager currentCustomerId];
-    if (!customerId || [customerId isEqualToString:@""]) {
+    NSString *receptionId = [OSNCustomerManager currentReceptionId];
+    if (!receptionId || [receptionId isEqualToString:@""]) {
         OSNCustomerManager *manage = [[OSNCustomerManager alloc] init];
-        customerId = [manage generateCustomerId];
-        if (customerId) {
+        receptionId = [manage generateReceptionId];
+        if (receptionId) {
             self.receptionText.text = @"正在接待";
             self.completeReceptionButton.hidden = NO;
         }
@@ -65,7 +66,7 @@
     else {
         CustomerSigninView *customerView = [CustomerSigninView defaultView];
         customerView.parentVC = self;
-        customerView.customerId = customerId;
+        customerView.receptionId = receptionId;
         [self lew_presentPopupView:customerView animation:[LewPopupViewAnimationFade new] dismissed:nil];
     }
 }

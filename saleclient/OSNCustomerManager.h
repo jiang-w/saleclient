@@ -12,10 +12,20 @@
 
 - (NSArray *)getCustomerList:(NSDictionary *)paramters;
 
-- (NSString *)generateCustomerId;
+- (NSString *)generateReceptionId;
+
+- (NSString *)createCustomerWithParamters:(NSDictionary *)paramters;
+
+- (void)updateCustomerWithParamters:(NSDictionary *)paramters;
+
+- (NSDictionary *)getCustomerWithId:(NSString *)customerId;
+
+- (NSString *)validateCustomerMobile:(NSString *)mobile;
+
+- (NSString *)combineCustomerWithNewCustomerId:(NSString *)newId andExistCustomerId:(NSString *)existId;
 
 - (void)completeCustomerReception;
 
-+ (NSString *)currentCustomerId;
++ (NSString *)currentReceptionId;
 
 @end

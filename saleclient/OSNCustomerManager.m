@@ -34,29 +34,105 @@
     return customerList;
 }
 
-- (NSString *)generateCustomerId {
+- (NSString *)generateReceptionId {
     OSNNetworkService *service = [OSNNetworkService sharedInstance];
     NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadCrmGenerateCustomerId" andParamterDictionary:nil];
     NSArray *dataArr = dataDic[@"data"];
     if (dataArr && dataArr.count > 0) {
-        NSString *currentCustomerId = [dataArr firstObject][@"customerId"];
+        NSString *receptionId = [dataArr firstObject][@"customerId"];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setObject:currentCustomerId forKey:@"customerId"];
-        return currentCustomerId;
+        [defaults setObject:receptionId forKey:@"receptionId"];
+        NSLog(@"新接待：%@", receptionId);
+        return receptionId;
     }
     else {
         return nil;
     }
 }
 
-- (void)completeCustomerReception {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:@"" forKey:@"customerId"];
+- (NSString *)createCustomerWithParamters:(NSDictionary *)paramters {
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadCrmCreateCustomer" andParamterDictionary:paramters];
+    NSArray *dataArr = dataDic[@"data"];
+    if (dataArr && dataArr.count > 0) {
+        NSString *customerId = [dataArr firstObject][@"customerId"];
+        NSLog(@"创建新客户：%@", customerId);
+        return customerId;
+    }
+    else {
+        return nil;
+    }
 }
 
-+ (NSString *)currentCustomerId {
+- (void)updateCustomerWithParamters:(NSDictionary *)paramters {
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadCrmUpdateCustomer" andParamterDictionary:paramters];
+    NSArray *dataArr = dataDic[@"data"];
+    if (dataArr && dataArr.count > 0) {
+
+    }
+}
+
+- (NSDictionary *)getCustomerWithId:(NSString *)customerId {
+    NSDictionary *paramters = @{@"customerId": customerId};
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadCrmGetCustomer" andParamterDictionary:paramters];
+    NSArray *dataArr = dataDic[@"data"];
+    if (dataArr && dataArr.count > 0) {
+        return [dataArr firstObject][@"customer"];
+    }
+    else {
+        return nil;
+    }
+}
+
+- (NSString *)validateCustomerMobile:(NSString *)mobile {
+    NSDictionary *paramters = @{@"mobile": mobile};
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadCrmValidateCustomerMobile" andParamterDictionary:paramters];
+    NSArray *dataArr = dataDic[@"data"];
+    if (dataArr && dataArr.count > 0) {
+        NSString *customerId = [dataArr firstObject][@"customerId"];
+        NSLog(@"此手机号码已存在客户：%@", customerId);
+        return customerId;
+    }
+    else {
+        return nil;
+    }
+}
+
+- (NSString *)combineCustomerWithNewCustomerId:(NSString *)newId andExistCustomerId:(NSString *)existId {
+    NSMutableDictionary *paramters = [NSMutableDictionary dictionary];
+    paramters[@"newCustomerId"] = newId;
+    paramters[@"existCustomerId"] = existId;
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadCrmCombineCustomer" andParamterDictionary:paramters];
+    NSArray *dataArr = dataDic[@"data"];
+    if (dataArr && dataArr.count > 0) {
+        NSString *customerId = [dataArr firstObject][@"existCustomerId"];
+        if (customerId) {
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:customerId forKey:@"receptionId"];
+            return customerId;
+        }
+    }
+    return nil;
+}
+
+
+- (void)completeCustomerReception {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-   return [defaults objectForKey:@"customerId"];
+    NSString *receptionId = [defaults objectForKey:@"receptionId"];
+    NSDictionary *paramters = @{@"receptionId": receptionId};
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadCrmCompleteReception" andParamterDictionary:paramters];
+    NSArray *dataArr = dataDic[@"data"];
+    [defaults setObject:@"" forKey:@"receptionId"];
+}
+
++ (NSString *)currentReceptionId {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+   return [defaults objectForKey:@"receptionId"];
 }
 
 @end

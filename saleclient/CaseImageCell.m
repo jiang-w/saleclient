@@ -15,7 +15,7 @@
 
 @property(nonatomic, strong) UIImageView *image;
 @property(nonatomic, strong) UILabel *name;
-@property(nonatomic, strong) UIButton *favorite;
+//@property(nonatomic, strong) UIButton *favorite;
 
 @end
 
@@ -50,13 +50,13 @@
         make.left.lessThanOrEqualTo(bgView).offset(40);
     }];
     
-    [bgView addSubview:self.favorite];
-    [self.favorite mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(bgView);
-        make.right.equalTo(bgView).offset(-40);
-        make.width.height.mas_offset(20);
-        make.left.greaterThanOrEqualTo(self.name.mas_right).offset(2);
-    }];
+//    [bgView addSubview:self.favorite];
+//    [self.favorite mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerY.equalTo(bgView);
+//        make.right.equalTo(bgView).offset(-40);
+//        make.width.height.mas_offset(20);
+//        make.left.greaterThanOrEqualTo(self.name.mas_right).offset(2);
+//    }];
 }
 
 #pragma mark - property
@@ -83,15 +83,15 @@
     return _name;
 }
 
-- (UIButton *)favorite {
-    if (!_favorite) {
-        _favorite = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_favorite setImage:[UIImage imageNamed:@"link.png"] forState:UIControlStateNormal];
-        [_favorite setImage:[UIImage imageNamed:@"link.png"] forState:UIControlStateSelected];
-        [_favorite addTarget:self action:@selector(didSelectFavoriteButton:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _favorite;
-}
+//- (UIButton *)favorite {
+//    if (!_favorite) {
+//        _favorite = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [_favorite setImage:[UIImage imageNamed:@"link.png"] forState:UIControlStateNormal];
+//        [_favorite setImage:[UIImage imageNamed:@"link.png"] forState:UIControlStateSelected];
+//        [_favorite addTarget:self action:@selector(didSelectFavoriteButton:) forControlEvents:UIControlEventTouchUpInside];
+//    }
+//    return _favorite;
+//}
 
 - (void)setEntity:(OSNCaseEntity *)entity {
     _entity = entity;
@@ -106,9 +106,9 @@
 
 #pragma mark - event
 
-- (void)didSelectFavoriteButton:(UIButton *)button {
-    
-}
+//- (void)didSelectFavoriteButton:(UIButton *)button {
+//    
+//}
 
 - (void)didTapCaseImage {
     CaseDetailViewController *detail = [[CaseDetailViewController alloc] initWithNibName:@"CaseDetailViewController" bundle:nil];
