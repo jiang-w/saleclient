@@ -34,6 +34,13 @@
 		014060F31C0FEFC80001804E /* ProductImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 014060F21C0FEFC80001804E /* ProductImageCell.m */; };
 		014664EB1C06F0CF00FD2E96 /* OSNTagButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 014664EA1C06F0CF00FD2E96 /* OSNTagButton.m */; };
 		014664EE1C07056700FD2E96 /* OSNTagPadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 014664ED1C07056700FD2E96 /* OSNTagPadView.m */; };
+		014E807B1C1807930065987F /* ImageShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 014E807A1C1807930065987F /* ImageShowView.m */; };
+		014E808A1C1807C10065987F /* LewPopupBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 014E807E1C1807C10065987F /* LewPopupBackgroundView.m */; };
+		014E808B1C1807C10065987F /* LewPopupViewAnimationDrop.m in Sources */ = {isa = PBXBuildFile; fileRef = 014E80801C1807C10065987F /* LewPopupViewAnimationDrop.m */; };
+		014E808C1C1807C10065987F /* LewPopupViewAnimationFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 014E80821C1807C10065987F /* LewPopupViewAnimationFade.m */; };
+		014E808D1C1807C10065987F /* LewPopupViewAnimationSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = 014E80841C1807C10065987F /* LewPopupViewAnimationSlide.m */; };
+		014E808E1C1807C10065987F /* LewPopupViewAnimationSpring.m in Sources */ = {isa = PBXBuildFile; fileRef = 014E80861C1807C10065987F /* LewPopupViewAnimationSpring.m */; };
+		014E808F1C1807C10065987F /* UIViewController+LewPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 014E80891C1807C10065987F /* UIViewController+LewPopupViewController.m */; };
 		01564DEB1C149A1E007BBDA2 /* BuildingDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01564DEA1C149A1E007BBDA2 /* BuildingDetailCell.m */; };
 		015B2D0C1BFEBA5400821100 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 015B2D0B1BFEBA5400821100 /* main.m */; };
 		015B2D0F1BFEBA5400821100 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 015B2D0E1BFEBA5400821100 /* AppDelegate.m */; };
@@ -127,6 +134,21 @@
 		014664EA1C06F0CF00FD2E96 /* OSNTagButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNTagButton.m; sourceTree = "<group>"; };
 		014664EC1C07056700FD2E96 /* OSNTagPadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNTagPadView.h; sourceTree = "<group>"; };
 		014664ED1C07056700FD2E96 /* OSNTagPadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNTagPadView.m; sourceTree = "<group>"; };
+		014E80791C1807930065987F /* ImageShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageShowView.h; sourceTree = "<group>"; };
+		014E807A1C1807930065987F /* ImageShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageShowView.m; sourceTree = "<group>"; };
+		014E807D1C1807C10065987F /* LewPopupBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LewPopupBackgroundView.h; sourceTree = "<group>"; };
+		014E807E1C1807C10065987F /* LewPopupBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LewPopupBackgroundView.m; sourceTree = "<group>"; };
+		014E807F1C1807C10065987F /* LewPopupViewAnimationDrop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LewPopupViewAnimationDrop.h; sourceTree = "<group>"; };
+		014E80801C1807C10065987F /* LewPopupViewAnimationDrop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LewPopupViewAnimationDrop.m; sourceTree = "<group>"; };
+		014E80811C1807C10065987F /* LewPopupViewAnimationFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LewPopupViewAnimationFade.h; sourceTree = "<group>"; };
+		014E80821C1807C10065987F /* LewPopupViewAnimationFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LewPopupViewAnimationFade.m; sourceTree = "<group>"; };
+		014E80831C1807C10065987F /* LewPopupViewAnimationSlide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LewPopupViewAnimationSlide.h; sourceTree = "<group>"; };
+		014E80841C1807C10065987F /* LewPopupViewAnimationSlide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LewPopupViewAnimationSlide.m; sourceTree = "<group>"; };
+		014E80851C1807C10065987F /* LewPopupViewAnimationSpring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LewPopupViewAnimationSpring.h; sourceTree = "<group>"; };
+		014E80861C1807C10065987F /* LewPopupViewAnimationSpring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LewPopupViewAnimationSpring.m; sourceTree = "<group>"; };
+		014E80871C1807C10065987F /* LewPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LewPopupViewController.h; sourceTree = "<group>"; };
+		014E80881C1807C10065987F /* UIViewController+LewPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LewPopupViewController.h"; sourceTree = "<group>"; };
+		014E80891C1807C10065987F /* UIViewController+LewPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LewPopupViewController.m"; sourceTree = "<group>"; };
 		01564DE91C149A1E007BBDA2 /* BuildingDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingDetailCell.h; sourceTree = "<group>"; };
 		01564DEA1C149A1E007BBDA2 /* BuildingDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildingDetailCell.m; sourceTree = "<group>"; };
 		015B2D071BFEBA5400821100 /* saleclient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = saleclient.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -284,6 +306,26 @@
 			name = TagVIew;
 			sourceTree = "<group>";
 		};
+		014E807C1C1807C10065987F /* popupViewController */ = {
+			isa = PBXGroup;
+			children = (
+				014E807D1C1807C10065987F /* LewPopupBackgroundView.h */,
+				014E807E1C1807C10065987F /* LewPopupBackgroundView.m */,
+				014E807F1C1807C10065987F /* LewPopupViewAnimationDrop.h */,
+				014E80801C1807C10065987F /* LewPopupViewAnimationDrop.m */,
+				014E80811C1807C10065987F /* LewPopupViewAnimationFade.h */,
+				014E80821C1807C10065987F /* LewPopupViewAnimationFade.m */,
+				014E80831C1807C10065987F /* LewPopupViewAnimationSlide.h */,
+				014E80841C1807C10065987F /* LewPopupViewAnimationSlide.m */,
+				014E80851C1807C10065987F /* LewPopupViewAnimationSpring.h */,
+				014E80861C1807C10065987F /* LewPopupViewAnimationSpring.m */,
+				014E80871C1807C10065987F /* LewPopupViewController.h */,
+				014E80881C1807C10065987F /* UIViewController+LewPopupViewController.h */,
+				014E80891C1807C10065987F /* UIViewController+LewPopupViewController.m */,
+			);
+			path = popupViewController;
+			sourceTree = "<group>";
+		};
 		015B2CFE1BFEBA5400821100 = {
 			isa = PBXGroup;
 			children = (
@@ -305,6 +347,7 @@
 		015B2D091BFEBA5400821100 /* saleclient */ = {
 			isa = PBXGroup;
 			children = (
+				014E807C1C1807C10065987F /* popupViewController */,
 				018B09EF1BFEC36C007B69A8 /* Service */,
 				018B09EA1BFEC1EC007B69A8 /* Model */,
 				015B2D211BFEBBB900821100 /* View */,
@@ -441,6 +484,8 @@
 				01E23AAE1C12C0F2006D6A9E /* ProductDetailViewController.xib */,
 				0192392B1C1473D800948D04 /* CaseDependCell.h */,
 				0192392C1C1473D800948D04 /* CaseDependCell.m */,
+				014E80791C1807930065987F /* ImageShowView.h */,
+				014E807A1C1807930065987F /* ImageShowView.m */,
 			);
 			name = Product;
 			sourceTree = "<group>";
@@ -617,6 +662,7 @@
 			files = (
 				01B754E61C134A70000FA9BE /* CaseDetailProductCell.m in Sources */,
 				01E23AB41C12D349006D6A9E /* BuildingListViewController.m in Sources */,
+				014E808B1C1807C10065987F /* LewPopupViewAnimationDrop.m in Sources */,
 				01D776BC1C16870D00F820A1 /* HouseTypeDetailViewController.m in Sources */,
 				0187A0261C01A3C1001091F6 /* CaseListViewController.m in Sources */,
 				014664EB1C06F0CF00FD2E96 /* OSNTagButton.m in Sources */,
@@ -629,6 +675,7 @@
 				0129AB8D1C0363D800A445FB /* OSNProductManager.m in Sources */,
 				01BECEFD1C0D943E007A2E10 /* CaseDetailViewController.m in Sources */,
 				01E0639C1C0B6E65009448EA /* ProductTagSection.m in Sources */,
+				014E808D1C1807C10065987F /* LewPopupViewAnimationSlide.m in Sources */,
 				015B2D0F1BFEBA5400821100 /* AppDelegate.m in Sources */,
 				01AF1F621C040E1B0033413F /* OSNTagGroup.m in Sources */,
 				018B09F51BFEC38B007B69A8 /* OSNUserManager.m in Sources */,
@@ -648,16 +695,21 @@
 				010578191C1312BA00C8F7CC /* OSNAreaEntity.m in Sources */,
 				01CDB8181C059A4300463F97 /* CaseTagCell.m in Sources */,
 				01564DEB1C149A1E007BBDA2 /* BuildingDetailCell.m in Sources */,
+				014E808C1C1807C10065987F /* LewPopupViewAnimationFade.m in Sources */,
 				01E23ABA1C12D46B006D6A9E /* BuildingLeftSider.m in Sources */,
+				014E808E1C1807C10065987F /* LewPopupViewAnimationSpring.m in Sources */,
 				0130A1771C15894800D075FF /* OSNCustomerManager.m in Sources */,
 				014060ED1C0FDABB0001804E /* OSNMainNavigation.m in Sources */,
 				01E23AC31C12DDC5006D6A9E /* OSNBuildingManager.m in Sources */,
 				01D776C01C16B69C00F820A1 /* HouseTypeCaseCell.m in Sources */,
 				0130A17B1C158B6600D075FF /* CustomerListViewController.m in Sources */,
 				01B754DE1C13362B000FA9BE /* OSNBuildingEntity.m in Sources */,
+				014E808A1C1807C10065987F /* LewPopupBackgroundView.m in Sources */,
 				019BE76A1C15C8DE00980556 /* OSNCustomerListItem.m in Sources */,
+				014E807B1C1807930065987F /* ImageShowView.m in Sources */,
 				019BE76D1C15DD5B00980556 /* CustomerListHeader.m in Sources */,
 				0130A17E1C15905000D075FF /* CustomerListCell.m in Sources */,
+				014E808F1C1807C10065987F /* UIViewController+LewPopupViewController.m in Sources */,
 				01C7673E1C10733400875C1C /* OSNProductEntity.m in Sources */,
 				018B09E61BFEC0BB007B69A8 /* HomeViewController.m in Sources */,
 				01E23ABD1C12D4BC006D6A9E /* BuildingImageList.m in Sources */,

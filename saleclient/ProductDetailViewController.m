@@ -12,6 +12,8 @@
 #import "CaseDetailViewController.h"
 #import "AppDelegate.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "ImageShowView.h"
+#import "LewPopupViewController.h"
 
 @interface ProductDetailViewController ()
 
@@ -140,7 +142,11 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
 }
 
 - (void)tapProductImage:(UITapGestureRecognizer *)gesture {
+    ImageShowView *imageShow = [[ImageShowView alloc] init];
+    imageShow.imageView.image = self.image.image;
+    imageShow.parentVC = self;
     
+    [self lew_presentPopupView:imageShow animation:[LewPopupViewAnimationFade new] dismissed:nil];
 }
 
 @end
