@@ -66,7 +66,6 @@
     else {
         CustomerSigninView *customerView = [CustomerSigninView defaultView];
         customerView.parentVC = self;
-        customerView.receptionId = receptionId;
         [self lew_presentPopupView:customerView animation:[LewPopupViewAnimationFade new] dismissed:nil];
     }
 }

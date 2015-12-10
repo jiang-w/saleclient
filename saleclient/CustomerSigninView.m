@@ -28,6 +28,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
+@property (nonatomic, strong, readonly) NSString *receptionId;
+@property(nonatomic, copy) NSString *customerId;
+
 @end
 
 @implementation CustomerSigninView
@@ -54,6 +57,8 @@
         _cancelButton.layer.cornerRadius = 5;
         
         _mobile.delegate = self;
+        
+        [self initViewData];
     }
     return self;
 }
@@ -96,19 +101,15 @@
         
         if (!self.customerId) {
             self.customerId = [manage createCustomerWithParamters:paramters];
-            NSLog(@"create customerId: %@", self.customerId);
         }
         else {
             paramters[@"customerId"] = self.customerId;
             [manage updateCustomerWithParamters:paramters];
-            NSLog(@"update customerId: %@", self.customerId);
         }
         
         if (![self.receptionId isEqualToString:self.customerId]) {
             NSString *customerId = [manage combineCustomerWithNewCustomerId:self.receptionId andExistCustomerId:self.customerId];
-            NSLog(@"combine newId: %@ existId: %@ return: %@", self.receptionId, self.customerId, customerId);
             self.customerId = customerId;
-            self.receptionId = customerId;
         }
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"保存成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
@@ -153,6 +154,8 @@
 }
 
 - (void)fillDataFromDictionary:(NSDictionary *)dictionary {
+    self.customerId = dictionary[@"customerId"];
+    
     NSString *mobile = dictionary[@"mobile"];
     if (!IS_EMPTY_STRING(mobile)) {
         self.mobile.text = mobile;
@@ -210,11 +213,9 @@
 
 #pragma mark - property
 
-- (void)setReceptionId:(NSString *)receptionId {
-    _receptionId = receptionId;
-    if (_receptionId) {
-        [self initViewData];
-    }
+- (NSString *)receptionId {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"receptionId"];
 }
 
 @end

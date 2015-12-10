@@ -12,10 +12,6 @@
 
 @property(nonatomic, weak) UIViewController *parentVC;
 
-
-@property (nonatomic, strong) NSString *receptionId;
-@property(nonatomic, copy) NSString *customerId;
-
 + (instancetype)defaultView;
 
 @end

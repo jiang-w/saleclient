@@ -42,7 +42,7 @@
         NSString *receptionId = [dataArr firstObject][@"customerId"];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:receptionId forKey:@"receptionId"];
-        NSLog(@"新接待：%@", receptionId);
+        NSLog(@"new reception：%@", receptionId);
         return receptionId;
     }
     else {
@@ -56,7 +56,7 @@
     NSArray *dataArr = dataDic[@"data"];
     if (dataArr && dataArr.count > 0) {
         NSString *customerId = [dataArr firstObject][@"customerId"];
-        NSLog(@"创建新客户：%@", customerId);
+        NSLog(@"create customer：%@", customerId);
         return customerId;
     }
     else {
@@ -69,7 +69,8 @@
     NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadCrmUpdateCustomer" andParamterDictionary:paramters];
     NSArray *dataArr = dataDic[@"data"];
     if (dataArr && dataArr.count > 0) {
-
+        NSString *customerId = [dataDic[@"data"] firstObject][@"customerId"];
+        NSLog(@"update customer: %@", customerId);
     }
 }
 
@@ -93,7 +94,7 @@
     NSArray *dataArr = dataDic[@"data"];
     if (dataArr && dataArr.count > 0) {
         NSString *customerId = [dataArr firstObject][@"customerId"];
-        NSLog(@"此手机号码已存在客户：%@", customerId);
+        NSLog(@"mobile number exist：%@", customerId);
         return customerId;
     }
     else {
@@ -111,6 +112,7 @@
     if (dataArr && dataArr.count > 0) {
         NSString *customerId = [dataArr firstObject][@"existCustomerId"];
         if (customerId) {
+            NSLog(@"combine customer newId: %@ existId: %@ return: %@", newId, existId, customerId);
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setObject:customerId forKey:@"receptionId"];
             return customerId;
