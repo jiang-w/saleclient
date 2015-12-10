@@ -16,8 +16,8 @@
 @interface CaseDetailViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *caseImage;
-@property (weak, nonatomic) IBOutlet UIImageView *personImage;
-@property (weak, nonatomic) IBOutlet UILabel *personName;
+//@property (weak, nonatomic) IBOutlet UIImageView *personImage;
+//@property (weak, nonatomic) IBOutlet UILabel *personName;
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *crowdName;
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
@@ -68,8 +68,8 @@ static NSString * const cellReuseIdentifier = @"productCellIdentifier";
             if (dic) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     self.name.text = dic[@"caseDetail"][@"exhibitionName"];
-                    [self.personImage sd_setImageWithURL:[NSURL URLWithString:dic[@"caseDetail"][@"personImagePath"]]];
-                    self.personName.text = dic[@"caseDetail"][@"personName"];
+//                    [self.personImage sd_setImageWithURL:[NSURL URLWithString:dic[@"caseDetail"][@"personImagePath"]]];
+//                    self.personName.text = dic[@"caseDetail"][@"personName"];
                     self.crowdName.text = dic[@"caseDetail"][@"crowdName"];
                     
                     NSMutableString *tags = [NSMutableString stringWithFormat:@"%@ %@ %@", dic[@"caseDetail"][@"roomName"], dic[@"caseDetail"][@"styleName"], dic[@"caseDetail"][@"houseTypeName"]];

@@ -11,6 +11,7 @@
 #import "CustomerListCell.h"
 #import "CustomerListHeader.h"
 #import <MJRefresh.h>
+#import <Masonry.h>
 
 @interface CustomerListViewController ()
 
@@ -18,6 +19,9 @@
 @property(nonatomic, assign) NSUInteger viewIndex;
 @property(nonatomic, copy) NSString *queryValue;
 @property(nonatomic, strong) NSMutableArray *customerList;
+
+@property(nonatomic, strong) UIView *tableHeader;
+@property(nonatomic, strong) UITableView *tableView;
 
 @end
 
@@ -36,17 +40,34 @@ static NSString * const reuseIdentifier = @"customerListCell";
     self.queryValue = @"";
     self.customerList = [NSMutableArray array];
     _manager = [[OSNCustomerManager alloc] init];
+    
+    [self.view addSubview:self.tableHeader];
+    [self.tableHeader mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(self.view);
+        make.height.mas_equalTo(40);
+    }];
+    
+    [self.view addSubview:self.tableView];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.left.right.equalTo(self.view);
+        make.top.equalTo(self.tableHeader.mas_bottom);
+    }];
   
     [self.tableView registerClass:[CustomerListCell class] forCellReuseIdentifier:reuseIdentifier];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.bounces = NO;
-    // 上拉刷新
+
+    // 上拉下拉刷新
     __weak __typeof__(self) weakSelf = self;
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [weakSelf loadMoreCustomerList];
     }];
+    MJRefreshNormalHeader *mjHeader = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf loadCustomerListData];
+    }];
+    mjHeader.lastUpdatedTimeLabel.hidden = YES;
+    self.tableView.mj_header = mjHeader;
     
-    [self loadCustomerListData];
+    [weakSelf loadCustomerListData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,15 +87,8 @@ static NSString * const reuseIdentifier = @"customerListCell";
     return cell;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    CustomerListHeader *header = [[CustomerListHeader alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 40)];
-    return header;
-}
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 40;
-}
-
+#pragma mark - request data
 
 - (void)loadCustomerListData {
     self.viewIndex = 1;
@@ -86,6 +100,7 @@ static NSString * const reuseIdentifier = @"customerListCell";
             [weakSelf.customerList removeAllObjects];
             [weakSelf.customerList addObjectsFromArray:list];
             [weakSelf.tableView reloadData];
+            [weakSelf.tableView.mj_header endRefreshing];
         });
     });
 }
@@ -114,5 +129,23 @@ static NSString * const reuseIdentifier = @"customerListCell";
     return list;
 }
 
+
+#pragma mark - property
+
+- (UIView *)tableHeader {
+    if (!_tableHeader) {
+        _tableHeader = [[CustomerListHeader alloc] init];
+    }
+    return _tableHeader;
+}
+
+- (UITableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] init];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+    }
+    return _tableView;
+}
 
 @end

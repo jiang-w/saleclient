@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CustomerListViewController : UITableViewController
+@interface CustomerListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 
 @end
