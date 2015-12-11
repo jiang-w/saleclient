@@ -143,7 +143,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxd-VK-vKa">
-                            <rect key="frame" x="538" y="-3" width="88" height="38"/>
+                            <rect key="frame" x="433" y="-3" width="88" height="38"/>
                             <animations/>
                             <state key="normal" image="collect.png"/>
                             <connections>
@@ -154,6 +154,7 @@
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="nxd-VK-vKa" firstAttribute="leading" secondItem="3wD-jW-XPX" secondAttribute="trailing" constant="60" id="0gz-LJ-pol"/>
                         <constraint firstItem="kNR-CI-R2x" firstAttribute="top" secondItem="ykm-ua-emW" secondAttribute="bottom" constant="10" id="708-bt-nQm"/>
                         <constraint firstItem="tPB-NT-cQm" firstAttribute="trailing" secondItem="mGV-cF-9vy" secondAttribute="trailing" id="8Ec-uu-dbu"/>
                         <constraint firstItem="tPB-NT-cQm" firstAttribute="top" relation="greaterThanOrEqual" secondItem="mGV-cF-9vy" secondAttribute="bottom" constant="10" id="94d-f5-xyM"/>
@@ -198,7 +199,6 @@
                         <constraint firstItem="nxd-VK-vKa" firstAttribute="leading" secondItem="3wD-jW-XPX" secondAttribute="leading" constant="20" id="uBh-gL-R6J"/>
                         <constraint firstItem="mGV-cF-9vy" firstAttribute="trailing" secondItem="iRS-Cf-D49" secondAttribute="trailing" id="uUJ-0P-X01"/>
                         <constraint firstItem="0kD-c6-y3T" firstAttribute="top" secondItem="hFo-xY-3lW" secondAttribute="top" constant="58" id="z06-vc-rLm"/>
-                        <constraint firstItem="nxd-VK-vKa" firstAttribute="leading" secondItem="dNK-YP-De7" secondAttribute="trailing" constant="220" id="zN8-lu-5tx"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
