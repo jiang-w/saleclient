@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CaseDetailViewController">
             <connections>
-                <outlet property="backBtn" destination="Jxg-e8-lnd" id="ynY-SL-pdN"/>
                 <outlet property="building" destination="rEy-2g-xSw" id="jrR-en-scq"/>
                 <outlet property="caseImage" destination="9uV-WG-uSy" id="1xI-vB-6sz"/>
                 <outlet property="crowdName" destination="8GS-yM-om9" id="acC-u3-g60"/>
                 <outlet property="image1" destination="bvW-Pl-MIZ" id="GgA-WA-hH0"/>
                 <outlet property="image2" destination="JCA-gE-3nr" id="JR9-Gj-zdB"/>
                 <outlet property="name" destination="CXz-Rs-Xb9" id="0Rl-Fc-VKH"/>
+                <outlet property="navBackground" destination="c6k-Xg-MnJ" id="v1t-aF-Jjl"/>
                 <outlet property="productTable" destination="rs9-5G-uyt" id="9yA-F0-Zd9"/>
                 <outlet property="tag" destination="7DV-Kp-hEw" id="k87-Ka-vHt"/>
+                <outlet property="u3dButton" destination="IuE-8T-rIh" id="ubh-uv-125"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -26,69 +27,10 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c6k-Xg-MnJ">
                     <rect key="frame" x="0.0" y="0.0" width="1024" height="76"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jxg-e8-lnd">
-                            <rect key="frame" x="56" y="28" width="32" height="32"/>
-                            <animations/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <state key="normal" title="返回">
-                                <color key="titleColor" red="0.97647058819999999" green="0.74901960779999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="goBack:" destination="-1" eventType="touchUpInside" id="MdG-cb-9lB"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hP2-eY-SFx">
-                            <rect key="frame" x="954" y="25" width="37" height="51"/>
-                            <animations/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="37" id="dIB-dM-LWY"/>
-                                <constraint firstAttribute="height" constant="51" id="qbo-TB-Fxf"/>
-                            </constraints>
-                            <state key="normal" title="Button" image="historyview_ico.png"/>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1L-6d-0Z4">
-                            <rect key="frame" x="885" y="25" width="37" height="51"/>
-                            <animations/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="37" id="MKP-aJ-pgk"/>
-                                <constraint firstAttribute="height" constant="51" id="dG7-1p-uQ2"/>
-                            </constraints>
-                            <state key="normal" title="Button" image="shopping_ico.png"/>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TIh-2a-aqB">
-                            <rect key="frame" x="816" y="25" width="37" height="51"/>
-                            <animations/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="51" id="Aj8-5D-MTA"/>
-                                <constraint firstAttribute="width" constant="37" id="eRF-rq-JAT"/>
-                            </constraints>
-                            <state key="normal" title="Button" image="qcode_ico.png"/>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NqU-ZB-iFo">
-                            <rect key="frame" x="747" y="25" width="37" height="51"/>
-                            <animations/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="51" id="0Lb-LT-6zW"/>
-                                <constraint firstAttribute="width" constant="37" id="DnR-hV-V6l"/>
-                            </constraints>
-                            <state key="normal" title="Button" image="history_ico.png"/>
-                        </button>
-                    </subviews>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="TIh-2a-aqB" secondAttribute="bottom" id="0v3-l7-eb9"/>
-                        <constraint firstItem="hP2-eY-SFx" firstAttribute="leading" secondItem="v1L-6d-0Z4" secondAttribute="trailing" constant="32" id="63a-1b-COe"/>
-                        <constraint firstAttribute="trailing" secondItem="hP2-eY-SFx" secondAttribute="trailing" constant="33" id="D8f-rh-D30"/>
-                        <constraint firstItem="v1L-6d-0Z4" firstAttribute="leading" secondItem="TIh-2a-aqB" secondAttribute="trailing" constant="32" id="N1u-BX-Avq"/>
-                        <constraint firstAttribute="bottom" secondItem="v1L-6d-0Z4" secondAttribute="bottom" id="PUO-0f-PSu"/>
-                        <constraint firstAttribute="bottom" secondItem="Jxg-e8-lnd" secondAttribute="bottom" constant="16" id="VVn-wd-FmN"/>
-                        <constraint firstItem="TIh-2a-aqB" firstAttribute="leading" secondItem="NqU-ZB-iFo" secondAttribute="trailing" constant="32" id="XOV-6u-s4d"/>
-                        <constraint firstAttribute="bottom" secondItem="NqU-ZB-iFo" secondAttribute="bottom" id="ZPA-c2-r3R"/>
                         <constraint firstAttribute="height" constant="76" id="fgS-61-7po"/>
-                        <constraint firstItem="Jxg-e8-lnd" firstAttribute="leading" secondItem="c6k-Xg-MnJ" secondAttribute="leading" constant="56" id="rbx-Lh-Rls"/>
-                        <constraint firstAttribute="bottom" secondItem="hP2-eY-SFx" secondAttribute="bottom" id="szF-KS-TeC"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UBZ-b6-160">
@@ -166,7 +108,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IuE-8T-rIh">
                             <rect key="frame" x="145" y="589" width="110" height="35"/>
                             <animations/>
-                            <state key="normal" image="u3d.png"/>
+                            <state key="normal" image="u3d_wait.png"/>
                             <connections>
                                 <action selector="u3dButtonClick:" destination="-1" eventType="touchUpInside" id="ROq-S2-TQg"/>
                             </connections>
@@ -260,10 +202,6 @@
     </objects>
     <resources>
         <image name="collect.png" width="88" height="38"/>
-        <image name="history_ico.png" width="31" height="51"/>
-        <image name="historyview_ico.png" width="37" height="51"/>
-        <image name="qcode_ico.png" width="37" height="49"/>
-        <image name="shopping_ico.png" width="37" height="53"/>
-        <image name="u3d.png" width="110" height="35"/>
+        <image name="u3d_wait.png" width="110" height="35"/>
     </resources>
 </document>

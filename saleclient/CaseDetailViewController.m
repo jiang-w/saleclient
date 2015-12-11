@@ -13,22 +13,27 @@
 #import "AppDelegate.h"
 #import "ProductDetailViewController.h"
 #import "OSNCustomerManager.h"
+#import "NavigationBarView.h"
+#import <Masonry.h>
 
 @interface CaseDetailViewController ()
 
+@property (weak, nonatomic) IBOutlet UIView *navBackground;
 @property (weak, nonatomic) IBOutlet UIImageView *caseImage;
 //@property (weak, nonatomic) IBOutlet UIImageView *personImage;
 //@property (weak, nonatomic) IBOutlet UILabel *personName;
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *crowdName;
-@property (weak, nonatomic) IBOutlet UIButton *backBtn;
 @property (weak, nonatomic) IBOutlet UILabel *tag;
 @property (weak, nonatomic) IBOutlet UILabel *building;
 @property (weak, nonatomic) IBOutlet UIImageView *image1;
 @property (weak, nonatomic) IBOutlet UIImageView *image2;
 @property (weak, nonatomic) IBOutlet UITableView *productTable;
-
+@property (weak, nonatomic) IBOutlet UIButton *u3dButton;
+@property (nonatomic, strong) NavigationBarView *navBar;
 @property (nonatomic, strong) NSMutableArray *productList;
+@property (nonatomic, strong) NSString *u3dPath;
+@property (nonatomic, strong) NSString *exhibitionCode;
 
 @end
 
@@ -54,11 +59,10 @@ static NSString * const cellReuseIdentifier = @"productCellIdentifier";
 #pragma mark - private
 
 - (void)setSubviewLayoutAndStyle {
-    self.backBtn.contentEdgeInsets = UIEdgeInsetsMake(4, 16, 4, 16);
-    [self.backBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-    self.backBtn.layer.borderColor = [UIColor orangeColor].CGColor;
-    self.backBtn.layer.borderWidth = 1;
-    self.backBtn.layer.cornerRadius = 5;
+    [self.navBackground addSubview:self.navBar];
+    [self.navBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.navBackground);
+    }];
     
     self.productTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.productTable.bounces = NO;
@@ -88,6 +92,16 @@ static NSString * const cellReuseIdentifier = @"productCellIdentifier";
                     
                     NSString *image1Url = [[dic[@"caseImageList"] firstObject] objectForKey:@"twoDMaxPath"];
                     [self.image1 sd_setImageWithURL:[NSURL URLWithString:image1Url]];
+                    
+                    self.u3dPath = dic[@"caseDetail"][@"ipadU3DPath"];
+                    if (!IS_EMPTY_STRING(self.u3dPath)) {
+                        [self.u3dButton setImage:[UIImage imageNamed:@"u3d.png"] forState:UIControlStateNormal];
+                    }
+                    else {
+                        [self.u3dButton setImage:[UIImage imageNamed:@"u3d_wait.png"] forState:UIControlStateNormal];
+                    }
+                    
+                    self.exhibitionCode = dic[@"caseDetail"][@"exhibitionCode"];
                     
                     [self.productList addObjectsFromArray:dic[@"caseAssocProduct"]];
                     [self.productTable reloadData];
@@ -123,10 +137,6 @@ static NSString * const cellReuseIdentifier = @"productCellIdentifier";
 
 #pragma mark - event
 
-- (IBAction)goBack:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 - (IBAction)collectButtonClick:(id)sender {
     NSString *receptionId = [OSNCustomerManager currentReceptionId];
     if (!IS_EMPTY_STRING(receptionId)) {
@@ -155,6 +165,7 @@ static NSString * const cellReuseIdentifier = @"productCellIdentifier";
 - (IBAction)u3dButtonClick:(id)sender {
     
 }
+
 
 #pragma mark - <UITableViewDataSource>
 
@@ -185,6 +196,16 @@ static NSString * const cellReuseIdentifier = @"productCellIdentifier";
     ProductDetailViewController *productDetail = [[ProductDetailViewController alloc] init];
     productDetail.productId = productId;
     [appDelegate.mainNav pushViewController:productDetail animated:NO];
+}
+
+
+#pragma mark - property
+
+- (NavigationBarView *)navBar {
+    if (!_navBar) {
+        _navBar = [[NavigationBarView alloc] init];
+    }
+    return _navBar;
 }
 
 @end

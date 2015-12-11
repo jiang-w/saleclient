@@ -109,12 +109,12 @@ static NSString * const reuseIdentifier = @"recordImageCell";
     if (self.recordTypeSelect.selectedSegmentIndex == 0) {
         CaseDetailViewController *caseDetail = [[CaseDetailViewController alloc] init];
         caseDetail.exhibitionId = cell.recordId;
-        [self.navigationController pushViewController:caseDetail animated:YES];
+        [self.navigationController pushViewController:caseDetail animated:NO];
     }
     else {
         ProductDetailViewController *productDetail = [[ProductDetailViewController alloc] init];
         productDetail.productId = cell.recordId;
-        [self.navigationController pushViewController:productDetail animated:YES];
+        [self.navigationController pushViewController:productDetail animated:NO];
     }
 }
 

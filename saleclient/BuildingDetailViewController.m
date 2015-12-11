@@ -10,11 +10,13 @@
 #import "BuildingDetailCell.h"
 #import "OSNBuildingManager.h"
 #import "HouseTypeDetailViewController.h"
+#import "NavigationBarView.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <Masonry.h>
 
 @interface BuildingDetailViewController ()
 
-@property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (weak, nonatomic) IBOutlet UIView *navBackground;
 @property (weak, nonatomic) IBOutlet UILabel *time;
 @property (weak, nonatomic) IBOutlet UILabel *area;
 @property (weak, nonatomic) IBOutlet UILabel *address;
@@ -24,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UICollectionView *buildingModelView;
+@property (nonatomic, strong) NavigationBarView *navBar;
 
 @property (nonatomic, strong) NSMutableArray *buildingModelList;
 
@@ -47,11 +50,10 @@ static NSString * const reuseIdentifier = @"buildingDetailCell";
 }
 
 - (void)setSubviewLayoutAndStyle {
-    self.backButton.contentEdgeInsets = UIEdgeInsetsMake(4, 16, 4, 16);
-    [self.backButton setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-    self.backButton.layer.borderColor = [UIColor orangeColor].CGColor;
-    self.backButton.layer.borderWidth = 1;
-    self.backButton.layer.cornerRadius = 5;
+    [self.navBackground addSubview:self.navBar];
+    [self.navBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.navBackground);
+    }];
 }
 
 - (void)loadBuildingDetailData {
@@ -81,6 +83,9 @@ static NSString * const reuseIdentifier = @"buildingDetailCell";
     }
 }
 
+
+#pragma mark - delegate
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.buildingModelList.count;
 }
@@ -102,8 +107,14 @@ static NSString * const reuseIdentifier = @"buildingDetailCell";
     [self.navigationController pushViewController:houseTypeDetail animated:YES];
 }
 
-- (IBAction)clickBackButton:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+
+#pragma mark - property
+
+- (NavigationBarView *)navBar {
+    if (!_navBar) {
+        _navBar = [[NavigationBarView alloc] init];
+    }
+    return _navBar;
 }
 
 @end

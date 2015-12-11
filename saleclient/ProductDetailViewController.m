@@ -15,10 +15,12 @@
 #import "ImageShowView.h"
 #import "LewPopupViewController.h"
 #import "OSNCustomerManager.h"
+#import "NavigationBarView.h"
+#import <Masonry.h>
 
 @interface ProductDetailViewController ()
 
-@property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (weak, nonatomic) IBOutlet UIView *navBackground;
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *code;
@@ -29,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *scene;
 @property (weak, nonatomic) IBOutlet UILabel *info;
 @property (weak, nonatomic) IBOutlet UICollectionView *caseListView;
+@property (nonatomic, strong) NavigationBarView *navBar;
 @property (nonatomic, strong) NSMutableArray *caseList;
 
 @end
@@ -58,11 +61,10 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
 #pragma mark - private
 
 - (void)setSubviewLayoutAndStyle {
-    self.backButton.contentEdgeInsets = UIEdgeInsetsMake(4, 16, 4, 16);
-    [self.backButton setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-    self.backButton.layer.borderColor = [UIColor orangeColor].CGColor;
-    self.backButton.layer.borderWidth = 1;
-    self.backButton.layer.cornerRadius = 5;
+    [self.navBackground addSubview:self.navBar];
+    [self.navBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.navBackground);
+    }];
 }
 
 - (void)loadProductDetailData {
@@ -154,10 +156,6 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
 
 #pragma mark - event
 
-- (IBAction)clickBackButton:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 - (void)tapProductImage:(UITapGestureRecognizer *)gesture {
     ImageShowView *imageShow = [[ImageShowView alloc] init];
     imageShow.imageView.image = self.image.image;
@@ -191,8 +189,14 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
     }
 }
 
-- (IBAction)u3dButtonClick:(id)sender {
-    
+
+#pragma mark - property
+
+- (NavigationBarView *)navBar {
+    if (!_navBar) {
+        _navBar = [[NavigationBarView alloc] init];
+    }
+    return _navBar;
 }
 
 @end

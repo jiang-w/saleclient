@@ -10,6 +10,8 @@
 		0100BDE81C0C12CD0011F6D0 /* navbtn_back_hov.png in Resources */ = {isa = PBXBuildFile; fileRef = 0100BDE71C0C12CD0011F6D0 /* navbtn_back_hov.png */; };
 		010578191C1312BA00C8F7CC /* OSNAreaEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 010578181C1312BA00C8F7CC /* OSNAreaEntity.m */; };
 		0105781C1C1313D300C8F7CC /* AutoLayoutTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0105781B1C1313D300C8F7CC /* AutoLayoutTagView.m */; };
+		0113406A1C1B29DE009C093E /* u3d_wait.png in Resources */ = {isa = PBXBuildFile; fileRef = 011340691C1B29DE009C093E /* u3d_wait.png */; settings = {ASSET_TAGS = (); }; };
+		0113406D1C1B32FE009C093E /* CALayer+XibConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0113406C1C1B32FE009C093E /* CALayer+XibConfiguration.m */; settings = {ASSET_TAGS = (); }; };
 		011375491BFEF29500A9AB9E /* login_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 011375461BFEF29500A9AB9E /* login_bg.jpg */; };
 		0113754A1BFEF29500A9AB9E /* login_btn_hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 011375471BFEF29500A9AB9E /* login_btn_hover.png */; };
 		0113754B1BFEF29500A9AB9E /* welcome_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 011375481BFEF29500A9AB9E /* welcome_bg.jpg */; };
@@ -107,6 +109,9 @@
 		010578181C1312BA00C8F7CC /* OSNAreaEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNAreaEntity.m; sourceTree = "<group>"; };
 		0105781A1C1313D300C8F7CC /* AutoLayoutTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoLayoutTagView.h; sourceTree = "<group>"; };
 		0105781B1C1313D300C8F7CC /* AutoLayoutTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoLayoutTagView.m; sourceTree = "<group>"; };
+		011340691C1B29DE009C093E /* u3d_wait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = u3d_wait.png; sourceTree = "<group>"; };
+		0113406B1C1B32FE009C093E /* CALayer+XibConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+XibConfiguration.h"; sourceTree = "<group>"; };
+		0113406C1C1B32FE009C093E /* CALayer+XibConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+XibConfiguration.m"; sourceTree = "<group>"; };
 		011375461BFEF29500A9AB9E /* login_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login_bg.jpg; sourceTree = "<group>"; };
 		011375471BFEF29500A9AB9E /* login_btn_hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_btn_hover.png; sourceTree = "<group>"; };
 		011375481BFEF29500A9AB9E /* welcome_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = welcome_bg.jpg; sourceTree = "<group>"; };
@@ -280,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				017FB2C11C1A938900625ED0 /* u3d.png */,
+				011340691C1B29DE009C093E /* u3d_wait.png */,
 				017FB2BF1C1A7C8A00625ED0 /* collect.png */,
 				018F894D1C1852E000B03BBD /* exit.png */,
 				0100BDE71C0C12CD0011F6D0 /* navbtn_back_hov.png */,
@@ -365,6 +371,8 @@
 				015B2D221BFEBBFD00821100 /* SignInViewController.h */,
 				015B2D231BFEBBFD00821100 /* SignInViewController.m */,
 				015B2D241BFEBBFD00821100 /* SignInViewController.xib */,
+				0113406B1C1B32FE009C093E /* CALayer+XibConfiguration.h */,
+				0113406C1C1B32FE009C093E /* CALayer+XibConfiguration.m */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -647,6 +655,7 @@
 				011375511BFEFC5000A9AB9E /* historyview_ico.png in Resources */,
 				0113754B1BFEF29500A9AB9E /* welcome_bg.jpg in Resources */,
 				01E23AB01C12C0F2006D6A9E /* ProductDetailViewController.xib in Resources */,
+				0113406A1C1B29DE009C093E /* u3d_wait.png in Resources */,
 				017FB2C01C1A7C8A00625ED0 /* collect.png in Resources */,
 				017A27831C04A46D00CB577D /* pro_lm1.gif in Resources */,
 				0113755D1BFEFE4D00A9AB9E /* wc_user_ico.png in Resources */,
@@ -735,6 +744,7 @@
 				01B754E21C133E73000FA9BE /* BuildingDetailViewController.m in Sources */,
 				01A35D421C0AE77200341F45 /* CaseImageList.m in Sources */,
 				0105781C1C1313D300C8F7CC /* AutoLayoutTagView.m in Sources */,
+				0113406D1C1B32FE009C093E /* CALayer+XibConfiguration.m in Sources */,
 				01CA2CF11C05574C00CD0024 /* CaseTagSection.m in Sources */,
 				01E23AC01C12D858006D6A9E /* BuildingImageCell.m in Sources */,
 				014E80971C1813810065987F /* CustomerSigninView.m in Sources */,

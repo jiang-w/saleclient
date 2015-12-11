@@ -79,8 +79,15 @@
 }
 
 - (IBAction)openReceptionRecord:(id)sender {
-    CustomerReceptionRecordViewController *record = [CustomerReceptionRecordViewController alloc];
-    [self.navigationController pushViewController:record animated:YES];
+    NSString *receptionId = [OSNCustomerManager currentReceptionId];
+    if (!IS_EMPTY_STRING(receptionId)) {
+        CustomerReceptionRecordViewController *record = [CustomerReceptionRecordViewController alloc];
+        [self.navigationController pushViewController:record animated:YES];
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请先接待客户" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 

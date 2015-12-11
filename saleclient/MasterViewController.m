@@ -11,6 +11,8 @@
 #import "ProductListViewController.h"
 #import "BuildingListViewController.h"
 #import "CustomerListViewController.h"
+#import "OSNCustomerManager.h"
+#import "CustomerReceptionRecordViewController.h"
 
 @interface MasterViewController ()
 
@@ -118,6 +120,18 @@
     _controllerDic[@(index)] = contr;
     contr.view.frame = CGRectMake(index * CGRectGetWidth(self.scrollView.frame), 0, CGRectGetWidth(self.scrollView.frame), CGRectGetHeight(self.scrollView.frame));
     [self.scrollView addSubview:contr.view];
+}
+
+- (IBAction)openReceptionRecord:(id)sender {
+    NSString *receptionId = [OSNCustomerManager currentReceptionId];
+    if (!IS_EMPTY_STRING(receptionId)) {
+        CustomerReceptionRecordViewController *record = [CustomerReceptionRecordViewController alloc];
+        [self.navigationController pushViewController:record animated:YES];
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请先接待客户" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 @end

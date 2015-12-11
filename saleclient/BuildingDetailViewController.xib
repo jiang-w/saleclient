@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BuildingDetailViewController">
             <connections>
                 <outlet property="address" destination="UKe-jc-9vo" id="cWi-Li-Zg6"/>
                 <outlet property="area" destination="dpR-tc-XMM" id="xu6-TW-Nud"/>
-                <outlet property="backButton" destination="QXP-hG-35G" id="ozU-rD-3pc"/>
                 <outlet property="buildingArea" destination="WoQ-V1-R2n" id="btO-e9-6il"/>
                 <outlet property="buildingModelView" destination="4aQ-nc-NfO" id="P5W-0y-1kQ"/>
                 <outlet property="business" destination="gCb-n3-EDc" id="iuS-Nv-kbU"/>
                 <outlet property="enterTime" destination="KYS-4I-gQ3" id="z1j-Qn-G0Z"/>
                 <outlet property="image" destination="hOE-HK-3of" id="QjJ-Y2-fag"/>
                 <outlet property="name" destination="zqx-8S-xzQ" id="jFd-Cd-JEP"/>
+                <outlet property="navBackground" destination="ThL-NY-aCY" id="I1y-UQ-87z"/>
                 <outlet property="time" destination="8Am-Em-G5m" id="CzQ-jr-pbZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -27,68 +27,10 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ThL-NY-aCY">
                     <rect key="frame" x="0.0" y="0.0" width="1024" height="76"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DH8-fc-f9r">
-                            <rect key="frame" x="954" y="25" width="37" height="51"/>
-                            <animations/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="37" id="5qg-Xj-G0g"/>
-                                <constraint firstAttribute="height" constant="51" id="cY4-12-v1W"/>
-                            </constraints>
-                            <state key="normal" title="Button" image="historyview_ico.png"/>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oyt-pw-mFg">
-                            <rect key="frame" x="885" y="25" width="37" height="51"/>
-                            <animations/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="37" id="YlK-de-j4j"/>
-                                <constraint firstAttribute="height" constant="51" id="j9T-Uu-9rf"/>
-                            </constraints>
-                            <state key="normal" title="Button" image="shopping_ico.png"/>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bm1-bQ-FFJ">
-                            <rect key="frame" x="816" y="25" width="37" height="51"/>
-                            <animations/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="37" id="HbG-Ea-QIu"/>
-                                <constraint firstAttribute="height" constant="51" id="J0r-rR-uyr"/>
-                            </constraints>
-                            <state key="normal" title="Button" image="qcode_ico.png"/>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OQP-p5-h82">
-                            <rect key="frame" x="747" y="25" width="37" height="51"/>
-                            <animations/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="37" id="8Sr-W0-Cwz"/>
-                                <constraint firstAttribute="height" constant="51" id="yX5-dx-lBy"/>
-                            </constraints>
-                            <state key="normal" title="Button" image="history_ico.png"/>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QXP-hG-35G">
-                            <rect key="frame" x="56" y="26" width="36" height="34"/>
-                            <animations/>
-                            <state key="normal" title="返回">
-                                <color key="titleColor" red="0.93333333333333335" green="0.44705882352941173" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="clickBackButton:" destination="-1" eventType="touchUpInside" id="SsN-Nu-ncq"/>
-                            </connections>
-                        </button>
-                    </subviews>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="QXP-hG-35G" secondAttribute="bottom" constant="16" id="4E6-K0-uWq"/>
-                        <constraint firstAttribute="bottom" secondItem="Oyt-pw-mFg" secondAttribute="bottom" id="4QG-Mk-4yD"/>
-                        <constraint firstAttribute="bottom" secondItem="OQP-p5-h82" secondAttribute="bottom" id="5Sd-j3-2KO"/>
                         <constraint firstAttribute="height" constant="76" id="85m-SS-QKt"/>
-                        <constraint firstAttribute="bottom" secondItem="bm1-bQ-FFJ" secondAttribute="bottom" id="CLz-vP-Em4"/>
-                        <constraint firstItem="QXP-hG-35G" firstAttribute="leading" secondItem="ThL-NY-aCY" secondAttribute="leading" constant="56" id="Kfo-zO-DLP"/>
-                        <constraint firstItem="bm1-bQ-FFJ" firstAttribute="leading" secondItem="OQP-p5-h82" secondAttribute="trailing" constant="32" id="bj9-zT-eYB"/>
-                        <constraint firstItem="Oyt-pw-mFg" firstAttribute="leading" secondItem="bm1-bQ-FFJ" secondAttribute="trailing" constant="32" id="of7-NA-0gC"/>
-                        <constraint firstAttribute="trailing" secondItem="DH8-fc-f9r" secondAttribute="trailing" constant="33" id="rlF-I6-TjD"/>
-                        <constraint firstItem="DH8-fc-f9r" firstAttribute="leading" secondItem="Oyt-pw-mFg" secondAttribute="trailing" constant="32" id="sFQ-70-eoN"/>
-                        <constraint firstAttribute="bottom" secondItem="DH8-fc-f9r" secondAttribute="bottom" id="yo2-ns-L8w"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IKq-Gg-Bdf">
@@ -274,10 +216,4 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
         </view>
     </objects>
-    <resources>
-        <image name="history_ico.png" width="31" height="51"/>
-        <image name="historyview_ico.png" width="37" height="51"/>
-        <image name="qcode_ico.png" width="37" height="49"/>
-        <image name="shopping_ico.png" width="37" height="53"/>
-    </resources>
 </document>

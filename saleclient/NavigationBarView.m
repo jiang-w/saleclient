@@ -9,6 +9,8 @@
 #import "NavigationBarView.h"
 #import <Masonry.h>
 #import "AppDelegate.h"
+#import "OSNCustomerManager.h"
+#import "CustomerReceptionRecordViewController.h"
 
 @interface NavigationBarView()
 
@@ -114,6 +116,7 @@
     if (!_history) {
         _history = [UIButton buttonWithType:UIButtonTypeCustom];
         [_history setImage:[UIImage imageNamed:@"historyview_ico.png"] forState:UIControlStateNormal];
+        [_history addTarget:self action:@selector(openReceptionRecord:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _history;
 }
@@ -122,6 +125,19 @@
 - (void)goBackHandle:(UIButton *)sender {
     AppDelegate *app = OSNMainDelegate;
     [app.mainNav popViewControllerAnimated:YES];
+}
+
+- (void)openReceptionRecord:(UIButton *)sender {
+    NSString *receptionId = [OSNCustomerManager currentReceptionId];
+    if (!IS_EMPTY_STRING(receptionId)) {
+        CustomerReceptionRecordViewController *record = [CustomerReceptionRecordViewController alloc];
+        AppDelegate *app = OSNMainDelegate;
+        [app.mainNav pushViewController:record animated:YES];
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请先接待客户" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 @end
