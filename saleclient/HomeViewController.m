@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 #import "CustomerSigninView.h"
 #import "LewPopupViewController.h"
+#import "CustomerReceptionRecordViewController.h"
 
 @interface HomeViewController ()
 
@@ -76,6 +77,12 @@
     self.completeReceptionButton.hidden = YES;
     self.receptionText.text = @"新接待";
 }
+
+- (IBAction)openReceptionRecord:(id)sender {
+    CustomerReceptionRecordViewController *record = [CustomerReceptionRecordViewController alloc];
+    [self.navigationController pushViewController:record animated:YES];
+}
+
 
 #pragma mark - property
 

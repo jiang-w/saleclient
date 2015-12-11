@@ -30,4 +30,8 @@
 
 - (NSString *)customerCollectGoodsWithParameters:(NSDictionary *)paramters;
 
+- (void)updateCustomerReceptionRecordWithParamters:(NSDictionary *)paramters;
+
+- (NSArray *)getCustomerReceptionRecordListWithParamters:(NSDictionary *)paramters;
+
 @end

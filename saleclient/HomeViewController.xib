@@ -47,6 +47,9 @@
                     <rect key="frame" x="347" y="636" width="37" height="51"/>
                     <animations/>
                     <state key="normal" image="historyview_ico.png"/>
+                    <connections>
+                        <action selector="openReceptionRecord:" destination="-1" eventType="touchUpInside" id="ogm-PP-o9X"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="历史报价" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QV5-Fm-PCz">
                     <rect key="frame" x="64" y="695" width="56" height="17"/>

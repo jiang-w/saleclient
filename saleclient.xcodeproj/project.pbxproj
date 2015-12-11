@@ -25,6 +25,9 @@
 		011375601BFF074100A9AB9E /* ProductListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0113755F1BFF074100A9AB9E /* ProductListViewController.m */; };
 		011375641BFF0DA400A9AB9E /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 011375621BFF0DA400A9AB9E /* MasterViewController.m */; };
 		011375651BFF0DA400A9AB9E /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 011375631BFF0DA400A9AB9E /* MasterViewController.xib */; };
+		0119301C1C1AA8DB005D730A /* CustomerReceptionRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0119301A1C1AA8DB005D730A /* CustomerReceptionRecordViewController.m */; };
+		0119301D1C1AA8DB005D730A /* CustomerReceptionRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0119301B1C1AA8DB005D730A /* CustomerReceptionRecordViewController.xib */; };
+		011930201C1ABF8D005D730A /* RecordImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0119301F1C1ABF8D005D730A /* RecordImageCell.m */; };
 		0129AB8D1C0363D800A445FB /* OSNProductManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0129AB8C1C0363D800A445FB /* OSNProductManager.m */; };
 		0130A1771C15894800D075FF /* OSNCustomerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0130A1761C15894800D075FF /* OSNCustomerManager.m */; };
 		0130A17B1C158B6600D075FF /* CustomerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0130A17A1C158B6600D075FF /* CustomerListViewController.m */; };
@@ -121,6 +124,11 @@
 		011375611BFF0DA400A9AB9E /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		011375621BFF0DA400A9AB9E /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		011375631BFF0DA400A9AB9E /* MasterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterViewController.xib; sourceTree = "<group>"; };
+		011930191C1AA8DB005D730A /* CustomerReceptionRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerReceptionRecordViewController.h; sourceTree = "<group>"; };
+		0119301A1C1AA8DB005D730A /* CustomerReceptionRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerReceptionRecordViewController.m; sourceTree = "<group>"; };
+		0119301B1C1AA8DB005D730A /* CustomerReceptionRecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerReceptionRecordViewController.xib; sourceTree = "<group>"; };
+		0119301E1C1ABF8D005D730A /* RecordImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordImageCell.h; sourceTree = "<group>"; };
+		0119301F1C1ABF8D005D730A /* RecordImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordImageCell.m; sourceTree = "<group>"; };
 		0129AB8B1C0363D800A445FB /* OSNProductManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNProductManager.h; sourceTree = "<group>"; };
 		0129AB8C1C0363D800A445FB /* OSNProductManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNProductManager.m; sourceTree = "<group>"; };
 		0130A1751C15894800D075FF /* OSNCustomerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNCustomerManager.h; sourceTree = "<group>"; };
@@ -306,6 +314,11 @@
 				0130A17D1C15905000D075FF /* CustomerListCell.m */,
 				019BE76B1C15DD5B00980556 /* CustomerListHeader.h */,
 				019BE76C1C15DD5B00980556 /* CustomerListHeader.m */,
+				011930191C1AA8DB005D730A /* CustomerReceptionRecordViewController.h */,
+				0119301A1C1AA8DB005D730A /* CustomerReceptionRecordViewController.m */,
+				0119301B1C1AA8DB005D730A /* CustomerReceptionRecordViewController.xib */,
+				0119301E1C1ABF8D005D730A /* RecordImageCell.h */,
+				0119301F1C1ABF8D005D730A /* RecordImageCell.m */,
 			);
 			name = Customer;
 			sourceTree = "<group>";
@@ -630,6 +643,7 @@
 				018F894E1C1852E000B03BBD /* exit.png in Resources */,
 				01B754E31C133E73000FA9BE /* BuildingDetailViewController.xib in Resources */,
 				011375531BFEFC5000A9AB9E /* shopping_ico.png in Resources */,
+				0119301D1C1AA8DB005D730A /* CustomerReceptionRecordViewController.xib in Resources */,
 				011375511BFEFC5000A9AB9E /* historyview_ico.png in Resources */,
 				0113754B1BFEF29500A9AB9E /* welcome_bg.jpg in Resources */,
 				01E23AB01C12C0F2006D6A9E /* ProductDetailViewController.xib in Resources */,
@@ -724,8 +738,10 @@
 				01CA2CF11C05574C00CD0024 /* CaseTagSection.m in Sources */,
 				01E23AC01C12D858006D6A9E /* BuildingImageCell.m in Sources */,
 				014E80971C1813810065987F /* CustomerSigninView.m in Sources */,
+				0119301C1C1AA8DB005D730A /* CustomerReceptionRecordViewController.m in Sources */,
 				014664EE1C07056700FD2E96 /* OSNTagPadView.m in Sources */,
 				01A35D461C0AF4BA00341F45 /* CaseImageCell.m in Sources */,
+				011930201C1ABF8D005D730A /* RecordImageCell.m in Sources */,
 				015B2D0C1BFEBA5400821100 /* main.m in Sources */,
 				01AF1F5F1C040D260033413F /* OSNTag.m in Sources */,
 				01F8A17A1C15EC59000A7EDB /* NavigationBarView.m in Sources */,

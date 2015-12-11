@@ -51,6 +51,7 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
     self.image.userInteractionEnabled = YES;
     
     [self loadProductDetailData];
+    [self updateCustomerReceptionRecord];
 }
 
 
@@ -104,6 +105,21 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
     while (substr.location != NSNotFound) {
         [str replaceCharactersInRange:substr withString:new];
         substr = [str rangeOfString:old];
+    }
+}
+
+- (void)updateCustomerReceptionRecord {
+    NSString *receptionId = [OSNCustomerManager currentReceptionId];
+    if (!IS_EMPTY_STRING(receptionId)) {
+        dispatch_queue_t queue = dispatch_get_global_queue(0, 0);
+        dispatch_async(queue, ^{
+            NSMutableDictionary *paramters = [NSMutableDictionary dictionary];
+            paramters[@"customerId"] = receptionId;
+            paramters[@"receptionType"] = @"OcnProduct";
+            paramters[@"goodsId"] = self.productId;
+            OSNCustomerManager *manager = [[OSNCustomerManager alloc] init];
+            [manager updateCustomerReceptionRecordWithParamters:paramters];
+        });
     }
 }
 

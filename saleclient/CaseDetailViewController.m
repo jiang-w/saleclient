@@ -47,7 +47,11 @@ static NSString * const cellReuseIdentifier = @"productCellIdentifier";
     
     self.productList = [NSMutableArray array];
     [self loadCaseDetailData];
+    [self updateCustomerReceptionRecord];
 }
+
+
+#pragma mark - private
 
 - (void)setSubviewLayoutAndStyle {
     self.backBtn.contentEdgeInsets = UIEdgeInsetsMake(4, 16, 4, 16);
@@ -89,6 +93,21 @@ static NSString * const cellReuseIdentifier = @"productCellIdentifier";
                     [self.productTable reloadData];
                 });
             }
+        });
+    }
+}
+
+- (void)updateCustomerReceptionRecord {
+    NSString *receptionId = [OSNCustomerManager currentReceptionId];
+    if (!IS_EMPTY_STRING(receptionId)) {
+        dispatch_queue_t queue = dispatch_get_global_queue(0, 0);
+        dispatch_async(queue, ^{
+            NSMutableDictionary *paramters = [NSMutableDictionary dictionary];
+            paramters[@"customerId"] = receptionId;
+            paramters[@"receptionType"] = @"Exhibition";
+            paramters[@"goodsId"] = self.exhibitionId;
+            OSNCustomerManager *manager = [[OSNCustomerManager alloc] init];
+            [manager updateCustomerReceptionRecordWithParamters:paramters];
         });
     }
 }

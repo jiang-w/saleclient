@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomerReceptionRecordViewController">
+            <connections>
+                <outlet property="backButton" destination="Yhi-FV-qpd" id="c06-uO-SVj"/>
+                <outlet property="recordListView" destination="gXB-UC-ate" id="LHe-Fq-WGU"/>
+                <outlet property="recordTypeSelect" destination="SGs-YT-yei" id="88Y-yt-Dr3"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I0F-2W-u94">
+                    <rect key="frame" x="0.0" y="0.0" width="1024" height="76"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yhi-FV-qpd">
+                            <rect key="frame" x="56" y="26" width="36" height="34"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <state key="normal" title="返回">
+                                <color key="titleColor" red="0.97647058819999999" green="0.74901960779999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="clickBackButton:" destination="-1" eventType="touchUpInside" id="0eb-uo-WvV"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客户浏览信息记录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ms7-aK-rIw">
+                            <rect key="frame" x="440" y="38" width="144" height="22"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="ms7-aK-rIw" secondAttribute="bottom" constant="16" id="2ka-wQ-cfy"/>
+                        <constraint firstAttribute="bottom" secondItem="Yhi-FV-qpd" secondAttribute="bottom" constant="16" id="8l3-Qt-AZ0"/>
+                        <constraint firstAttribute="height" constant="76" id="Xgk-7X-53M"/>
+                        <constraint firstItem="ms7-aK-rIw" firstAttribute="centerX" secondItem="I0F-2W-u94" secondAttribute="centerX" id="gwc-YX-fqf"/>
+                        <constraint firstItem="Yhi-FV-qpd" firstAttribute="leading" secondItem="I0F-2W-u94" secondAttribute="leading" constant="56" id="olv-Mg-yan"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oYf-GB-Bsv">
+                    <rect key="frame" x="0.0" y="76" width="1024" height="692"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="所有分类：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0t-GY-XOu">
+                            <rect key="frame" x="46" y="36" width="70" height="17"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SGs-YT-yei">
+                            <rect key="frame" x="124" y="30" width="200" height="29"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="200" id="XYI-gZ-UKd"/>
+                            </constraints>
+                            <segments>
+                                <segment title="接待案例"/>
+                                <segment title="接待产品"/>
+                            </segments>
+                        </segmentedControl>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gXB-UC-ate">
+                            <rect key="frame" x="0.0" y="81" width="1024" height="611"/>
+                            <animations/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ce6-NE-9xU">
+                                <size key="itemSize" width="186" height="160"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="20" minY="10" maxX="20" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                    </subviews>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="gXB-UC-ate" firstAttribute="top" secondItem="SGs-YT-yei" secondAttribute="bottom" constant="23" id="T8R-KN-lgD"/>
+                        <constraint firstItem="gXB-UC-ate" firstAttribute="leading" secondItem="oYf-GB-Bsv" secondAttribute="leading" id="YEH-oi-SHV"/>
+                        <constraint firstItem="SGs-YT-yei" firstAttribute="centerY" secondItem="j0t-GY-XOu" secondAttribute="centerY" id="aeA-oy-p7X"/>
+                        <constraint firstItem="j0t-GY-XOu" firstAttribute="leading" secondItem="oYf-GB-Bsv" secondAttribute="leading" constant="46" id="dK8-4A-KTG"/>
+                        <constraint firstItem="j0t-GY-XOu" firstAttribute="top" secondItem="oYf-GB-Bsv" secondAttribute="top" constant="36" id="gaA-ny-gFE"/>
+                        <constraint firstAttribute="trailing" secondItem="gXB-UC-ate" secondAttribute="trailing" id="hxm-h0-LQh"/>
+                        <constraint firstItem="SGs-YT-yei" firstAttribute="leading" secondItem="j0t-GY-XOu" secondAttribute="trailing" constant="8" id="pTx-0L-Hoe"/>
+                        <constraint firstAttribute="bottom" secondItem="gXB-UC-ate" secondAttribute="bottom" id="vUA-dI-ejt"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="oYf-GB-Bsv" secondAttribute="bottom" id="Ala-LD-QIq"/>
+                <constraint firstItem="oYf-GB-Bsv" firstAttribute="top" secondItem="I0F-2W-u94" secondAttribute="bottom" id="GYC-hU-MZp"/>
+                <constraint firstItem="I0F-2W-u94" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="UyT-hw-jgK"/>
+                <constraint firstAttribute="trailing" secondItem="I0F-2W-u94" secondAttribute="trailing" id="aLf-Ke-LCo"/>
+                <constraint firstItem="oYf-GB-Bsv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="czX-ia-luo"/>
+                <constraint firstItem="I0F-2W-u94" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="huH-FY-Fjb"/>
+                <constraint firstAttribute="trailing" secondItem="oYf-GB-Bsv" secondAttribute="trailing" id="xT5-GB-IiG"/>
+            </constraints>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+        </view>
+    </objects>
+</document>

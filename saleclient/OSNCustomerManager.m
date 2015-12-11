@@ -144,4 +144,16 @@
     return result;
 }
 
+- (void)updateCustomerReceptionRecordWithParamters:(NSDictionary *)paramters {
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    [service requestDataWithServiceName:@"ipadUpdateCustomerReceptionRecord" andParamterDictionary:paramters];
+}
+
+- (NSArray *)getCustomerReceptionRecordListWithParamters:(NSDictionary *)paramters {
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadViewCustomerReceptionRecord" andParamterDictionary:paramters];
+    NSArray *dataArr = [dataDic[@"data"] firstObject][@"list"];
+    return dataArr;
+}
+
 @end
