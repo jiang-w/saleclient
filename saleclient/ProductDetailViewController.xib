@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProductDetailViewController">
@@ -200,6 +200,22 @@
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxd-VK-vKa">
+                            <rect key="frame" x="538" y="-3" width="88" height="38"/>
+                            <animations/>
+                            <state key="normal" image="collect.png"/>
+                            <connections>
+                                <action selector="collectButtonClick:" destination="-1" eventType="touchUpInside" id="eNK-rw-Si0"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b2k-EW-UgO">
+                            <rect key="frame" x="653" y="-1" width="110" height="35"/>
+                            <animations/>
+                            <state key="normal" image="u3d.png"/>
+                            <connections>
+                                <action selector="u3dButtonClick:" destination="-1" eventType="touchUpInside" id="RTk-OQ-wNj"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -215,6 +231,7 @@
                         <constraint firstItem="tPB-NT-cQm" firstAttribute="top" secondItem="EdX-Qj-bJB" secondAttribute="top" id="Dl2-Ty-Ijq"/>
                         <constraint firstItem="EdX-Qj-bJB" firstAttribute="leading" secondItem="2xS-y5-eqd" secondAttribute="leading" id="F0N-Gh-A7z"/>
                         <constraint firstItem="Xus-xx-2LB" firstAttribute="top" secondItem="SbQ-XN-vaq" secondAttribute="top" id="FAZ-LE-MYD"/>
+                        <constraint firstItem="nxd-VK-vKa" firstAttribute="centerY" secondItem="3wD-jW-XPX" secondAttribute="centerY" id="FHb-w6-IZ3"/>
                         <constraint firstItem="F4B-PH-3A6" firstAttribute="top" secondItem="ykm-ua-emW" secondAttribute="top" id="Hqi-ev-KSj"/>
                         <constraint firstItem="iRS-Cf-D49" firstAttribute="leading" secondItem="dNK-YP-De7" secondAttribute="trailing" constant="38" id="JSD-uS-Ry9"/>
                         <constraint firstItem="yOg-3y-rmb" firstAttribute="trailing" secondItem="F4B-PH-3A6" secondAttribute="trailing" id="KGS-wd-TZv"/>
@@ -226,8 +243,11 @@
                         <constraint firstItem="iRS-Cf-D49" firstAttribute="top" secondItem="0kD-c6-y3T" secondAttribute="top" id="Zqu-sp-bpy"/>
                         <constraint firstItem="SbQ-XN-vaq" firstAttribute="top" secondItem="kNR-CI-R2x" secondAttribute="bottom" constant="10" id="a2z-7k-Qum"/>
                         <constraint firstItem="F4B-PH-3A6" firstAttribute="trailing" secondItem="tPB-NT-cQm" secondAttribute="trailing" id="a4U-NL-dFk"/>
+                        <constraint firstItem="nxd-VK-vKa" firstAttribute="top" secondItem="3wD-jW-XPX" secondAttribute="top" id="b8M-7y-TFX"/>
                         <constraint firstItem="mGV-cF-9vy" firstAttribute="top" secondItem="2xS-y5-eqd" secondAttribute="top" id="csI-1U-gt8"/>
                         <constraint firstAttribute="trailing" secondItem="kNR-CI-R2x" secondAttribute="trailing" constant="20" id="d1V-dL-cft"/>
+                        <constraint firstItem="b2k-EW-UgO" firstAttribute="centerY" secondItem="nxd-VK-vKa" secondAttribute="centerY" id="dDQ-wB-JVl"/>
+                        <constraint firstItem="nxd-VK-vKa" firstAttribute="leading" secondItem="3wD-jW-XPX" secondAttribute="trailing" constant="60" id="gBF-du-r97"/>
                         <constraint firstItem="ykm-ua-emW" firstAttribute="leading" secondItem="EdX-Qj-bJB" secondAttribute="leading" id="gFw-Vy-mAf"/>
                         <constraint firstAttribute="bottom" secondItem="dNK-YP-De7" secondAttribute="bottom" constant="8" id="gV6-ZV-3JS"/>
                         <constraint firstItem="WGP-tS-yrs" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Xus-xx-2LB" secondAttribute="bottom" constant="16" id="hQA-hX-mjM"/>
@@ -242,9 +262,19 @@
                         <constraint firstItem="F4B-PH-3A6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tPB-NT-cQm" secondAttribute="bottom" constant="10" id="qyv-vh-luS"/>
                         <constraint firstItem="3wD-jW-XPX" firstAttribute="leading" secondItem="dNK-YP-De7" secondAttribute="trailing" constant="55" id="sh4-0w-C26"/>
                         <constraint firstItem="SbQ-XN-vaq" firstAttribute="leading" secondItem="kNR-CI-R2x" secondAttribute="leading" id="tCy-Ds-d89"/>
+                        <constraint firstItem="nxd-VK-vKa" firstAttribute="leading" secondItem="3wD-jW-XPX" secondAttribute="leading" constant="20" id="uBh-gL-R6J"/>
                         <constraint firstItem="mGV-cF-9vy" firstAttribute="trailing" secondItem="iRS-Cf-D49" secondAttribute="trailing" id="uUJ-0P-X01"/>
+                        <constraint firstItem="b2k-EW-UgO" firstAttribute="leading" secondItem="nxd-VK-vKa" secondAttribute="trailing" constant="27" id="xvo-st-vk2"/>
                         <constraint firstItem="0kD-c6-y3T" firstAttribute="top" secondItem="hFo-xY-3lW" secondAttribute="top" constant="58" id="z06-vc-rLm"/>
+                        <constraint firstItem="nxd-VK-vKa" firstAttribute="leading" secondItem="dNK-YP-De7" secondAttribute="trailing" constant="220" id="zN8-lu-5tx"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="b8M-7y-TFX"/>
+                            <exclude reference="gBF-du-r97"/>
+                            <exclude reference="uBh-gL-R6J"/>
+                        </mask>
+                    </variation>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xI2-3e-WN8">
                     <rect key="frame" x="0.0" y="468" width="1024" height="300"/>
@@ -293,9 +323,11 @@
         </view>
     </objects>
     <resources>
+        <image name="collect.png" width="88" height="38"/>
         <image name="history_ico.png" width="31" height="51"/>
         <image name="historyview_ico.png" width="37" height="51"/>
         <image name="qcode_ico.png" width="37" height="49"/>
         <image name="shopping_ico.png" width="37" height="53"/>
+        <image name="u3d.png" width="110" height="35"/>
     </resources>
 </document>

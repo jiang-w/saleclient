@@ -155,6 +155,22 @@
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhJ-JI-7NO">
+                            <rect key="frame" x="20" y="588" width="88" height="38"/>
+                            <animations/>
+                            <state key="normal" image="collect.png"/>
+                            <connections>
+                                <action selector="collectButtonClick:" destination="-1" eventType="touchUpInside" id="ZWB-de-AIU"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IuE-8T-rIh">
+                            <rect key="frame" x="145" y="589" width="110" height="35"/>
+                            <animations/>
+                            <state key="normal" image="u3d.png"/>
+                            <connections>
+                                <action selector="u3dButtonClick:" destination="-1" eventType="touchUpInside" id="ROq-S2-TQg"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -165,17 +181,21 @@
                         <constraint firstItem="Rle-eW-4bp" firstAttribute="top" secondItem="OrO-9D-QQ2" secondAttribute="bottom" constant="21" id="Fa0-Xo-JD3"/>
                         <constraint firstAttribute="trailing" secondItem="rs9-5G-uyt" secondAttribute="trailing" constant="8" id="Ha3-6b-1y8"/>
                         <constraint firstItem="CXz-Rs-Xb9" firstAttribute="top" secondItem="UBZ-b6-160" secondAttribute="top" constant="40" id="Iag-vF-wWy"/>
+                        <constraint firstItem="IuE-8T-rIh" firstAttribute="leading" secondItem="xhJ-JI-7NO" secondAttribute="trailing" constant="37" id="JmD-vu-IgU"/>
                         <constraint firstItem="3IE-jF-Urw" firstAttribute="leading" secondItem="UBZ-b6-160" secondAttribute="leading" constant="20" id="KPH-2Y-17a"/>
                         <constraint firstAttribute="width" constant="280" id="NNo-Og-8tu"/>
                         <constraint firstItem="8GS-yM-om9" firstAttribute="centerY" secondItem="yU8-PC-deG" secondAttribute="centerY" id="Oob-Id-UxM"/>
+                        <constraint firstItem="xhJ-JI-7NO" firstAttribute="top" secondItem="rs9-5G-uyt" secondAttribute="bottom" constant="16" id="QEe-OQ-Gai"/>
                         <constraint firstItem="8GS-yM-om9" firstAttribute="leading" secondItem="yU8-PC-deG" secondAttribute="trailing" constant="8" id="Qmh-zv-i9u"/>
                         <constraint firstItem="OrO-9D-QQ2" firstAttribute="top" secondItem="3IE-jF-Urw" secondAttribute="bottom" constant="12" id="WQb-7j-o7g"/>
                         <constraint firstItem="Rle-eW-4bp" firstAttribute="leading" secondItem="UBZ-b6-160" secondAttribute="leading" constant="20" id="YAS-21-F0s"/>
+                        <constraint firstItem="IuE-8T-rIh" firstAttribute="centerY" secondItem="xhJ-JI-7NO" secondAttribute="centerY" id="dpU-8L-vqA"/>
                         <constraint firstItem="rs9-5G-uyt" firstAttribute="top" secondItem="Rle-eW-4bp" secondAttribute="bottom" constant="8" id="etc-rH-3Xy"/>
                         <constraint firstItem="rEy-2g-xSw" firstAttribute="centerY" secondItem="OrO-9D-QQ2" secondAttribute="centerY" id="fdO-v4-Du8"/>
                         <constraint firstItem="rs9-5G-uyt" firstAttribute="leading" secondItem="UBZ-b6-160" secondAttribute="leading" constant="8" id="ftV-6a-aaT"/>
                         <constraint firstItem="7DV-Kp-hEw" firstAttribute="centerY" secondItem="3IE-jF-Urw" secondAttribute="centerY" id="gAR-Zg-Bwx"/>
                         <constraint firstItem="yU8-PC-deG" firstAttribute="top" secondItem="CXz-Rs-Xb9" secondAttribute="bottom" constant="12" id="n5R-Xn-NfJ"/>
+                        <constraint firstItem="xhJ-JI-7NO" firstAttribute="leading" secondItem="UBZ-b6-160" secondAttribute="leading" constant="20" id="nC9-a9-rKf"/>
                         <constraint firstItem="yU8-PC-deG" firstAttribute="leading" secondItem="UBZ-b6-160" secondAttribute="leading" constant="20" id="pyY-qv-eKJ"/>
                         <constraint firstItem="OrO-9D-QQ2" firstAttribute="leading" secondItem="UBZ-b6-160" secondAttribute="leading" constant="20" id="q10-pn-Uy5"/>
                         <constraint firstItem="7DV-Kp-hEw" firstAttribute="leading" secondItem="3IE-jF-Urw" secondAttribute="trailing" constant="8" id="tSP-fZ-yOa"/>
@@ -239,9 +259,11 @@
         </view>
     </objects>
     <resources>
+        <image name="collect.png" width="88" height="38"/>
         <image name="history_ico.png" width="31" height="51"/>
         <image name="historyview_ico.png" width="37" height="51"/>
         <image name="qcode_ico.png" width="37" height="49"/>
         <image name="shopping_ico.png" width="37" height="53"/>
+        <image name="u3d.png" width="110" height="35"/>
     </resources>
 </document>

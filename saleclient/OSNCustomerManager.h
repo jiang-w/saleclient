@@ -10,6 +10,8 @@
 
 @interface OSNCustomerManager : NSObject
 
++ (NSString *)currentReceptionId;
+
 - (NSArray *)getCustomerList:(NSDictionary *)paramters;
 
 - (NSString *)generateReceptionId;
@@ -26,6 +28,6 @@
 
 - (void)completeCustomerReception;
 
-+ (NSString *)currentReceptionId;
+- (NSString *)customerCollectGoodsWithParameters:(NSDictionary *)paramters;
 
 @end

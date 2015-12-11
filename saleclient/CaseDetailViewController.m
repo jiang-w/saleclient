@@ -12,6 +12,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "AppDelegate.h"
 #import "ProductDetailViewController.h"
+#import "OSNCustomerManager.h"
 
 @interface CaseDetailViewController ()
 
@@ -100,12 +101,41 @@ static NSString * const cellReuseIdentifier = @"productCellIdentifier";
     }
 }
 
+
 #pragma mark - event
 
 - (IBAction)goBack:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)collectButtonClick:(id)sender {
+    NSString *receptionId = [OSNCustomerManager currentReceptionId];
+    if (!IS_EMPTY_STRING(receptionId)) {
+        NSMutableDictionary *paramters = [NSMutableDictionary dictionary];
+        paramters[@"customerId"] = receptionId;
+        paramters[@"collectType"] = @"Exhibition";
+        paramters[@"goodsId"] = self.exhibitionId;
+        OSNCustomerManager *manager = [[OSNCustomerManager alloc] init];
+        NSString *result = [manager customerCollectGoodsWithParameters:paramters];
+        if ([result isEqualToString:@"alreadyCollect"]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"已添加此收藏" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alert show];
+        }
+        
+        if ([result isEqualToString:@"success"]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"案例收藏成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alert show];
+        }
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"目前还未接待客户" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+- (IBAction)u3dButtonClick:(id)sender {
+    
+}
 
 #pragma mark - <UITableViewDataSource>
 

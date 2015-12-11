@@ -14,6 +14,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ImageShowView.h"
 #import "LewPopupViewController.h"
+#import "OSNCustomerManager.h"
 
 @interface ProductDetailViewController ()
 
@@ -147,6 +148,35 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
     imageShow.parentVC = self;
     
     [self lew_presentPopupView:imageShow animation:[LewPopupViewAnimationFade new] dismissed:nil];
+}
+
+- (IBAction)collectButtonClick:(id)sender {
+    NSString *receptionId = [OSNCustomerManager currentReceptionId];
+    if (!IS_EMPTY_STRING(receptionId)) {
+        NSMutableDictionary *paramters = [NSMutableDictionary dictionary];
+        paramters[@"customerId"] = receptionId;
+        paramters[@"collectType"] = @"OcnProduct";
+        paramters[@"goodsId"] = self.productId;
+        OSNCustomerManager *manager = [[OSNCustomerManager alloc] init];
+        NSString *result = [manager customerCollectGoodsWithParameters:paramters];
+        if ([result isEqualToString:@"alreadyCollect"]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"已添加此收藏" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alert show];
+        }
+        
+        if ([result isEqualToString:@"success"]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"产品收藏成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alert show];
+        }
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"目前还未接待客户" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+- (IBAction)u3dButtonClick:(id)sender {
+    
 }
 
 @end

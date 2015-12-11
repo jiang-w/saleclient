@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "saleclient/OSNCustomerManager.m"
-            timestampString = "471447352.945232"
+            filePath = "saleclient/OSNNetworkService.m"
+            timestampString = "471497018.045769"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "-getCustomerList:"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "-requestDataWithServiceName:andParamterDictionary:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

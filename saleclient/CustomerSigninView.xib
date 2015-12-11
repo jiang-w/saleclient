@@ -20,6 +20,8 @@
                 <outlet property="notesText" destination="xbc-ke-eZK" id="M1Z-mk-Fjr"/>
                 <outlet property="provinceText" destination="XKj-wP-STg" id="Tl3-rA-u42"/>
                 <outlet property="qqText" destination="gnC-UR-9RA" id="ihE-6x-S8I"/>
+                <outlet property="recommendMobile" destination="QXG-Hh-8Sm" id="omF-3r-IwD"/>
+                <outlet property="recommendName" destination="Qsd-RR-Kha" id="dOF-eD-ggc"/>
                 <outlet property="saveButton" destination="XuT-Pz-xvW" id="5dR-Xn-d7c"/>
             </connections>
         </placeholder>

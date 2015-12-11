@@ -25,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *areaText;
 @property (weak, nonatomic) IBOutlet UITextField *addressText;
 @property (weak, nonatomic) IBOutlet UITextField *notesText;
+@property (weak, nonatomic) IBOutlet UITextField *recommendName;
+@property (weak, nonatomic) IBOutlet UITextField *recommendMobile;
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
@@ -104,6 +106,15 @@
         }
         else {
             paramters[@"customerId"] = self.customerId;
+            paramters[@"recommendCustomerId"] = self.customerId;
+            paramters[@"recommendName"] = self.recommendName.text;
+            paramters[@"recommendMobile"] = self.recommendMobile.text;
+            if (self.customerTypeSelect.selectedSegmentIndex == 0) {
+                paramters[@"typeId"] = @"ct1001";
+            }
+            else {
+                paramters[@"typeId"] = @"ct1000";
+            }
             [manage updateCustomerWithParamters:paramters];
         }
         
@@ -207,6 +218,24 @@
     NSString *notes = dictionary[@"notes"];
     if (!IS_EMPTY_STRING(notes)) {
         self.notesText.text = notes;
+    }
+    
+    NSString *recommendName = dictionary[@"recommendName"];
+    if (!IS_EMPTY_STRING(recommendName)) {
+        self.recommendName.text = recommendName;
+    }
+    
+    NSString *recommendMobile = dictionary[@"recommendMobile"];
+    if (!IS_EMPTY_STRING(recommendMobile)) {
+        self.recommendMobile.text = recommendMobile;
+    }
+    
+    NSString *typeId = dictionary[@"typeId"];
+    if ([typeId isEqualToString:@"ct1000"]) {
+        self.customerTypeSelect.selectedSegmentIndex = 1;
+    }
+    else {
+        self.customerTypeSelect.selectedSegmentIndex = 0;
     }
 }
 

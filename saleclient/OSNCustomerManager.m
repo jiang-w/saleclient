@@ -11,6 +11,11 @@
 
 @implementation OSNCustomerManager
 
++ (NSString *)currentReceptionId {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults objectForKey:@"receptionId"];
+}
+
 - (NSArray *)getCustomerList:(NSDictionary *)paramters {
     OSNNetworkService *service = [OSNNetworkService sharedInstance];
     NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadCrmGetCustomerList" andParamterDictionary:paramters];
@@ -121,7 +126,6 @@
     return nil;
 }
 
-
 - (void)completeCustomerReception {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *receptionId = [defaults objectForKey:@"receptionId"];
@@ -132,9 +136,12 @@
     [defaults setObject:@"" forKey:@"receptionId"];
 }
 
-+ (NSString *)currentReceptionId {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-   return [defaults objectForKey:@"receptionId"];
+- (NSString *)customerCollectGoodsWithParameters:(NSDictionary *)paramters {
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadCustomerCollectGoods" andParamterDictionary:paramters];
+    NSArray *dataArr = dataDic[@"data"];
+    NSString *result = [dataArr firstObject][@"returnResult"];
+    return result;
 }
 
 @end
