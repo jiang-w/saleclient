@@ -89,6 +89,8 @@
         _keyWordText.layer.borderWidth = 1;
         _keyWordText.layer.borderColor = [UIColor orangeColor].CGColor;
         _keyWordText.layer.cornerRadius = 5;
+        _keyWordText.clearButtonMode = UITextFieldViewModeWhileEditing;
+        _keyWordText.placeholder = @"请输入楼盘信息";
     }
     return _keyWordText;
 }

@@ -49,4 +49,9 @@
     return _imageListViewController;
 }
 
+- (void)masterViewController:(MasterViewController *)master searchWithKeyword:(NSString *)keyword {
+    NSLog(@"CaseListViewController search keyword: %@", keyword);
+    [self.imageListViewController searchWithKeyword:keyword];
+}
+
 @end

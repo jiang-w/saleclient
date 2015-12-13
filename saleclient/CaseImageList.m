@@ -20,6 +20,7 @@
 @property(nonatomic, copy) NSString *roomId;
 @property(nonatomic, copy) NSString *styleId;
 @property(nonatomic, copy) NSString *houseTypeId;
+@property(nonatomic, copy) NSString *keyword;
 
 @end
 
@@ -68,6 +69,11 @@ static NSString * const reuseIdentifier = @"caseImageCell";
     // Dispose of any resources that can be recreated.
 }
 
+- (void)searchWithKeyword:(NSString *)keyword {
+    self.keyword = keyword;
+    [self loadCaseList];
+}
+
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -91,6 +97,7 @@ static NSString * const reuseIdentifier = @"caseImageCell";
     self.roomId = rusult[@"room"];
     self.styleId = rusult[@"style"];
     self.houseTypeId = rusult[@"houseType"];
+    self.keyword = nil;
     
     [self loadCaseList];
 }
@@ -139,8 +146,11 @@ static NSString * const reuseIdentifier = @"caseImageCell";
     paramDic[@"roomId"] = self.roomId;
     paramDic[@"styleId"] = self.styleId;
     paramDic[@"houseTypeId"] = self.houseTypeId;
-    paramDic[@"viewSize"] = [NSString stringWithFormat:@"%lu", self.viewSize];
-    paramDic[@"viewIndex"] = [NSString stringWithFormat:@"%lu", self.viewIndex];
+    paramDic[@"viewSize"] = [NSString stringWithFormat:@"%lu", (unsigned long)self.viewSize];
+    paramDic[@"viewIndex"] = [NSString stringWithFormat:@"%lu", (unsigned long)self.viewIndex];
+    if (!IS_EMPTY_STRING(self.keyword)) {
+        paramDic[@"exhibitionName"] = self.keyword;
+    }
     NSArray *list = [_manager getCaseListWithParameters:paramDic];
     return list;
 }

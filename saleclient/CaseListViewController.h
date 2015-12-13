@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "CaseTagTable.h"
 #import "CaseImageList.h"
+#import "MasterViewController.h"
 
-@interface CaseListViewController : UIViewController
+@interface CaseListViewController : UIViewController <MasterViewControllerDelegate>
 
 @end

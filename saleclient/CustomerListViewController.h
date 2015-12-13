@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MasterViewController.h"
 
-@interface CustomerListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
-
+@interface CustomerListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MasterViewControllerDelegate>
 
 @end

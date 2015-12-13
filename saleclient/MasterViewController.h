@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MasterViewController : UIViewController <UIScrollViewDelegate>
+@class MasterViewController;
+
+@protocol MasterViewControllerDelegate <NSObject>
+
+- (void)masterViewController:(MasterViewController *)master searchWithKeyword:(NSString *)keyword;
+
+@end
+
+@interface MasterViewController : UIViewController <UIScrollViewDelegate, UITextFieldDelegate>
 
 @property(nonatomic, assign) NSInteger currentIndex;
+@property(nonatomic, weak) id<MasterViewControllerDelegate> delegate;
 
 @end

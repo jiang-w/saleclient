@@ -51,4 +51,9 @@
     return _imageListViewController;
 }
 
+- (void)masterViewController:(MasterViewController *)master searchWithKeyword:(NSString *)keyword {
+    NSLog(@"ProductListViewController search keyword: %@", keyword);
+    [self.imageListViewController searchWithKeyword:keyword];
+}
+
 @end

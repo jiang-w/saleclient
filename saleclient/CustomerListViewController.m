@@ -37,7 +37,6 @@ static NSString * const reuseIdentifier = @"customerListCell";
     
     self.viewSize = 30;
     self.viewIndex = 1;
-    self.queryValue = @"";
     self.customerList = [NSMutableArray array];
     _manager = [[OSNCustomerManager alloc] init];
     
@@ -74,6 +73,7 @@ static NSString * const reuseIdentifier = @"customerListCell";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 #pragma mark - Table view data source
 
@@ -122,9 +122,11 @@ static NSString * const reuseIdentifier = @"customerListCell";
 
 - (NSArray *)requestCustomerList {
     NSMutableDictionary *paramters = [NSMutableDictionary dictionary];
-    paramters[@"viewIndex"] = [NSString stringWithFormat:@"%lu", self.viewIndex];
-    paramters[@"viewSize"] = [NSString stringWithFormat:@"%lu", self.viewSize];
-    paramters[@"queryValue"] = self.queryValue;
+    paramters[@"viewIndex"] = [NSString stringWithFormat:@"%lu", (unsigned long)self.viewIndex];
+    paramters[@"viewSize"] = [NSString stringWithFormat:@"%lu", (unsigned long)self.viewSize];
+    if (!IS_EMPTY_STRING(self.queryValue)) {
+        paramters[@"queryValue"] = self.queryValue;
+    }
     NSArray *list = [_manager getCustomerList:paramters];
     return list;
 }
@@ -146,6 +148,13 @@ static NSString * const reuseIdentifier = @"customerListCell";
         _tableView.dataSource = self;
     }
     return _tableView;
+}
+
+
+- (void)masterViewController:(MasterViewController *)master searchWithKeyword:(NSString *)keyword {
+    NSLog(@"CustomerListViewController search keyword: %@", keyword);
+    self.queryValue = keyword;
+    [self loadCustomerListData];
 }
 
 @end

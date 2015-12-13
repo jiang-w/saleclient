@@ -81,7 +81,7 @@
                                 <action selector="changeDisplayView:" destination="-1" eventType="touchUpInside" id="M3g-WU-jae"/>
                             </connections>
                         </button>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pTq-SB-njP">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pTq-SB-njP">
                             <rect key="frame" x="490" y="34" width="190" height="30"/>
                             <animations/>
                             <constraints>
@@ -136,6 +136,9 @@
                             <state key="normal" title="搜索">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="searchButtonClick:" destination="-1" eventType="touchUpInside" id="Stj-yb-xQw"/>
+                            </connections>
                         </button>
                     </subviews>
                     <animations/>

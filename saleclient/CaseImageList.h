@@ -11,4 +11,6 @@
 
 @interface CaseImageList : UICollectionViewController <CaseTagTableDelegate>
 
+- (void)searchWithKeyword:(NSString *)keyword;
+
 @end

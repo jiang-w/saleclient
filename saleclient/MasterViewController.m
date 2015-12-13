@@ -46,6 +46,8 @@
     CGFloat pageHeight = CGRectGetHeight(self.scrollView.frame);
     self.scrollView.contentSize = CGSizeMake(pageWidth * _btnArr.count, pageHeight);
     [self.scrollView setShowsHorizontalScrollIndicator:NO];
+    
+    self.keywordText.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -84,6 +86,19 @@
     else {
         self.keywordText.hidden = NO;
         self.searchButton.hidden = NO;
+        switch (index) {
+            case 0:
+                self.keywordText.placeholder = @"输入案例名称";
+                break;
+            case 2:
+                self.keywordText.placeholder = @"输入搜索的产品";
+                break;
+            case 3:
+                self.keywordText.placeholder = @"输入名称或手机号";
+                break;
+            default:
+                break;
+        }
     }
     
     for (UIButton *btn in _btnArr) {
@@ -93,13 +108,16 @@
     [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     
     if (!_controllerDic[@(index)]) {
-        [self addControllerWithIndex:index];
+        UIViewController *contr = [self addControllerWithIndex:index];
+        if (index != 1) {
+            self.delegate = (id<MasterViewControllerDelegate>)contr;
+        }
     }
     
     [self.scrollView scrollRectToVisible:CGRectMake(CGRectGetWidth(self.scrollView.frame) * index, 0, CGRectGetWidth(self.scrollView.frame), CGRectGetHeight(self.scrollView.frame)) animated:YES];
 }
 
-- (void)addControllerWithIndex:(NSInteger)index {
+- (UIViewController *)addControllerWithIndex:(NSInteger)index {
     UIViewController *contr;
     switch (index) {
         case 0:
@@ -115,11 +133,12 @@
             contr = [[CustomerListViewController alloc] init];
             break;
         default:
-            return;
+            return nil;
     }
     _controllerDic[@(index)] = contr;
     contr.view.frame = CGRectMake(index * CGRectGetWidth(self.scrollView.frame), 0, CGRectGetWidth(self.scrollView.frame), CGRectGetHeight(self.scrollView.frame));
     [self.scrollView addSubview:contr.view];
+    return contr;
 }
 
 - (IBAction)openReceptionRecord:(id)sender {
@@ -132,6 +151,23 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请先接待客户" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
         [alert show];
     }
+}
+
+- (IBAction)searchButtonClick:(id)sender {
+    [self.keywordText resignFirstResponder];
+    if (self.delegate) {
+        if ([self.delegate respondsToSelector:@selector(masterViewController:searchWithKeyword:)]) {
+            [self.delegate masterViewController:self searchWithKeyword:self.keywordText.text];
+        }
+    }
+}
+
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];   //点击Return后键盘消失
+    return YES;
 }
 
 @end

@@ -20,6 +20,7 @@
 @property(nonatomic, strong) NSMutableArray *productList;
 @property(nonatomic, assign) NSUInteger viewSize;
 @property(nonatomic, assign) NSUInteger viewIndex;
+@property(nonatomic, copy) NSString *keyword;
 
 @end
 
@@ -54,6 +55,11 @@ static NSString * const reuseIdentifier = @"productImageCell";
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)searchWithKeyword:(NSString *)keyword {
+    self.keyword = keyword;
+    [self loadProductList];
 }
 
 
@@ -105,6 +111,7 @@ static NSString * const reuseIdentifier = @"productImageCell";
 - (void)productTagTable:(ProductTagTable *)table didChangeSelectedTag:(OSNTag *)tag {
     [self setViewLayoutWithSectionSelectedTag:tag];
     [self setParamterDictionaryWithSectionSelectedTag:tag];
+    self.keyword = nil;
     [self loadProductList];
 }
 
@@ -113,6 +120,7 @@ static NSString * const reuseIdentifier = @"productImageCell";
 
 - (void)tagPadView:(OSNTagPadView *)view didSelectTag:(OSNTag *)tag andIndex:(NSUInteger)index {
     self.paramters[@"subClassifyId"] = tag.enumId;
+    self.keyword = nil;
     [self loadProductList];
 }
 
@@ -181,8 +189,14 @@ static NSString * const reuseIdentifier = @"productImageCell";
 
 - (void)loadProductList {
     self.viewIndex = 1;
-    self.paramters[@"viewIndex"] = [NSString stringWithFormat:@"%lu", self.viewIndex];
-    self.paramters[@"viewSize"] = [NSString stringWithFormat:@"%lu", self.viewSize];
+    self.paramters[@"viewIndex"] = [NSString stringWithFormat:@"%lu", (unsigned long)self.viewIndex];
+    self.paramters[@"viewSize"] = [NSString stringWithFormat:@"%lu", (unsigned long)self.viewSize];
+    if (self.keyword && self.keyword.length > 0) {
+        self.paramters[@"queryItemValue"] = self.keyword;
+    }
+    else {
+        [self.paramters removeObjectForKey:@"queryItemValue"];
+    }
     
     __weak __typeof__(self) weakSelf = self;
     dispatch_queue_t queue = dispatch_queue_create("updateProductList", nil);

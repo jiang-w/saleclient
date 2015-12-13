@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "ProductTagTable.h"
+#import "MasterViewController.h"
 
-@interface ProductListViewController : UIViewController
+@interface ProductListViewController : UIViewController <MasterViewControllerDelegate>
 
 @end

@@ -12,4 +12,6 @@
 
 @interface ProductImageList : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, ProductTagTableDelegate, OSNTagPadViewDelegate>
 
+- (void)searchWithKeyword:(NSString *)keyword;
+
 @end
