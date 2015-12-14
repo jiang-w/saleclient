@@ -99,6 +99,8 @@
 		01E23ABD1C12D4BC006D6A9E /* BuildingImageList.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E23ABC1C12D4BC006D6A9E /* BuildingImageList.m */; };
 		01E23AC01C12D858006D6A9E /* BuildingImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E23ABF1C12D858006D6A9E /* BuildingImageCell.m */; };
 		01E23AC31C12DDC5006D6A9E /* OSNBuildingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E23AC21C12DDC5006D6A9E /* OSNBuildingManager.m */; };
+		01E3035F1C1EE80A001EF801 /* QRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E3035E1C1EE80A001EF801 /* QRCodeScanViewController.m */; settings = {ASSET_TAGS = (); }; };
+		01E303611C1EEF10001EF801 /* pick_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01E303601C1EEF10001EF801 /* pick_bg@2x.png */; settings = {ASSET_TAGS = (); }; };
 		01F8A17A1C15EC59000A7EDB /* NavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F8A1791C15EC59000A7EDB /* NavigationBarView.m */; };
 		6ECBAA760C49A32A4783B017 /* libPods-saleclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 977BB1C584A2928D5B6CF794 /* libPods-saleclient.a */; };
 /* End PBXBuildFile section */
@@ -262,6 +264,9 @@
 		01E23ABF1C12D858006D6A9E /* BuildingImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildingImageCell.m; sourceTree = "<group>"; };
 		01E23AC11C12DDC5006D6A9E /* OSNBuildingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNBuildingManager.h; sourceTree = "<group>"; };
 		01E23AC21C12DDC5006D6A9E /* OSNBuildingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNBuildingManager.m; sourceTree = "<group>"; };
+		01E3035D1C1EE80A001EF801 /* QRCodeScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeScanViewController.h; sourceTree = "<group>"; };
+		01E3035E1C1EE80A001EF801 /* QRCodeScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeScanViewController.m; sourceTree = "<group>"; };
+		01E303601C1EEF10001EF801 /* pick_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pick_bg@2x.png"; sourceTree = "<group>"; };
 		01F8A1781C15EC59000A7EDB /* NavigationBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBarView.h; sourceTree = "<group>"; };
 		01F8A1791C15EC59000A7EDB /* NavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarView.m; sourceTree = "<group>"; };
 		085C548C4109E76C880EC2E0 /* Pods-saleclient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-saleclient.release.xcconfig"; path = "Pods/Target Support Files/Pods-saleclient/Pods-saleclient.release.xcconfig"; sourceTree = "<group>"; };
@@ -284,6 +289,7 @@
 		011375451BFEF27300A9AB9E /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				01E303601C1EEF10001EF801 /* pick_bg@2x.png */,
 				017FB2C11C1A938900625ED0 /* u3d.png */,
 				011340691C1B29DE009C093E /* u3d_wait.png */,
 				017FB2BF1C1A7C8A00625ED0 /* collect.png */,
@@ -373,6 +379,8 @@
 				015B2D241BFEBBFD00821100 /* SignInViewController.xib */,
 				0113406B1C1B32FE009C093E /* CALayer+XibConfiguration.h */,
 				0113406C1C1B32FE009C093E /* CALayer+XibConfiguration.m */,
+				01E3035D1C1EE80A001EF801 /* QRCodeScanViewController.h */,
+				01E3035E1C1EE80A001EF801 /* QRCodeScanViewController.m */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -672,6 +680,7 @@
 				0100BDE81C0C12CD0011F6D0 /* navbtn_back_hov.png in Resources */,
 				0113755B1BFEFE4D00A9AB9E /* wc_product_ico.png in Resources */,
 				011375591BFEFE4D00A9AB9E /* wc_case_ico.png in Resources */,
+				01E303611C1EEF10001EF801 /* pick_bg@2x.png in Resources */,
 				0113755A1BFEFE4D00A9AB9E /* wc_loupan_ico.png in Resources */,
 				011375651BFF0DA400A9AB9E /* MasterViewController.xib in Resources */,
 				011375501BFEFC5000A9AB9E /* history_ico.png in Resources */,
@@ -764,6 +773,7 @@
 				014E808E1C1807C10065987F /* LewPopupViewAnimationSpring.m in Sources */,
 				0130A1771C15894800D075FF /* OSNCustomerManager.m in Sources */,
 				014060ED1C0FDABB0001804E /* OSNMainNavigation.m in Sources */,
+				01E3035F1C1EE80A001EF801 /* QRCodeScanViewController.m in Sources */,
 				01E23AC31C12DDC5006D6A9E /* OSNBuildingManager.m in Sources */,
 				01D776C01C16B69C00F820A1 /* HouseTypeCaseCell.m in Sources */,
 				0130A17B1C158B6600D075FF /* CustomerListViewController.m in Sources */,

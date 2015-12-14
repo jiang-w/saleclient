@@ -31,7 +31,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
 @property (nonatomic, strong, readonly) NSString *receptionId;
-@property(nonatomic, copy) NSString *customerId;
+@property (nonatomic, copy) NSString *customerId;
+@property (nonatomic, assign) CGRect originalFrame;
 
 @end
 
@@ -40,6 +41,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        _originalFrame = frame;
         [[NSBundle mainBundle] loadNibNamed:[[self class] description] owner:self options:nil];
         _innerView.frame = frame;
         _innerView.layer.borderWidth = 2;
@@ -59,6 +61,13 @@
         _cancelButton.layer.cornerRadius = 5;
         
         _mobile.delegate = self;
+        _recommendName.delegate = self;
+        _recommendMobile.delegate = self;
+        _provinceText.delegate = self;
+        _cityText.delegate = self;
+        _areaText.delegate = self;
+        _addressText.delegate = self;
+        _notesText.delegate = self;
         
         [self initViewData];
     }
@@ -135,8 +144,23 @@
     [self.parentVC lew_dismissPopupView];
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    CGRect frame = textField.frame;
+    CGFloat yOffset = self.innerView.frame.size.height - frame.origin.y - frame.size.height - 340;
+    if (yOffset < 0) {
+        [UIView beginAnimations:@"ResizeForKeyBoard" context:nil];
+        [UIView setAnimationDuration:0.3];
+        float width = self.innerView.frame.size.width;
+        float height = self.innerView.frame.size.height;
+        CGRect rect = CGRectMake(0, yOffset, width, height);
+        self.innerView.frame = rect;
+        [UIView commitAnimations];
+    }
+}
+
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    if (!IS_EMPTY_STRING(self.mobile.text)) {
+    
+    if (textField == self.mobile && !IS_EMPTY_STRING(self.mobile.text)) {
         OSNCustomerManager *manage = [[OSNCustomerManager alloc] init];
         self.customerId = [manage validateCustomerMobile:self.mobile.text];
         if (self.customerId) {
@@ -146,6 +170,11 @@
             }
         }
     }
+    
+    [UIView beginAnimations:@"ResizeForKeyBoard" context:nil];
+    [UIView setAnimationDuration:0.3];
+    self.innerView.frame = self.originalFrame;
+    [UIView commitAnimations];
 }
 
 

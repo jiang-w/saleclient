@@ -14,6 +14,7 @@
 #import "CustomerSigninView.h"
 #import "LewPopupViewController.h"
 #import "CustomerReceptionRecordViewController.h"
+#import "QRCodeScanViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface HomeViewController ()
@@ -115,6 +116,11 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请先接待客户" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
         [alert show];
     }
+}
+
+- (IBAction)openQRCodeScan:(id)sender {
+//    QRCodeScanViewController *scanVC = [[QRCodeScanViewController alloc] init];
+//    [self presentViewController:scanVC animated:NO completion:nil];
 }
 
 

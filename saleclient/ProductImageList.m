@@ -220,8 +220,8 @@ static NSString * const reuseIdentifier = @"productImageCell";
 
 - (void)loadMoreProductList {
     self.viewIndex++;
-    self.paramters[@"viewIndex"] = [NSString stringWithFormat:@"%lu", self.viewIndex];
-    self.paramters[@"viewSize"] = [NSString stringWithFormat:@"%lu", self.viewSize];
+    self.paramters[@"viewIndex"] = [NSString stringWithFormat:@"%lu", (unsigned long)self.viewIndex];
+    self.paramters[@"viewSize"] = [NSString stringWithFormat:@"%lu", (unsigned long)self.viewSize];
     
     __weak __typeof__(self) weakSelf = self;
     dispatch_queue_t queue = dispatch_queue_create("updateCaseList", nil);

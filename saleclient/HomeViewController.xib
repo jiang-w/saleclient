@@ -38,6 +38,9 @@
                     <rect key="frame" x="167" y="637" width="37" height="49"/>
                     <animations/>
                     <state key="normal" image="qcode_ico.png"/>
+                    <connections>
+                        <action selector="openQRCodeScan:" destination="-1" eventType="touchUpInside" id="RAv-3S-Mof"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ft-ka-40i">
                     <rect key="frame" x="257" y="635" width="37" height="53"/>
