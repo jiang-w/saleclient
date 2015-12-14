@@ -83,4 +83,16 @@
     }
 }
 
+- (NSArray *)getFocusImageData {
+    OSNUserInfo *usr = [self currentUser];
+    NSMutableDictionary *paramters = [NSMutableDictionary dictionary];
+    paramters[@"factoryId"] = usr.factoryId;
+    paramters[@"municipalId"] = usr.municipalId;
+    paramters[@"shopId"] = usr.shopId;
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadFocusImageData" andParamterDictionary:paramters];
+    NSArray *dataArr = [dataDic[@"data"] firstObject][@"focusImageList"];
+    return dataArr;
+}
+
 @end

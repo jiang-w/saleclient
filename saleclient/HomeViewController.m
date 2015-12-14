@@ -14,12 +14,14 @@
 #import "CustomerSigninView.h"
 #import "LewPopupViewController.h"
 #import "CustomerReceptionRecordViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface HomeViewController ()
 
 @property(nonatomic, strong) MasterViewController *contentNav;
 @property (weak, nonatomic) IBOutlet UILabel *receptionText;
 @property (weak, nonatomic) IBOutlet UIButton *completeReceptionButton;
+@property (weak, nonatomic) IBOutlet UIScrollView *focusImageView;
 
 @end
 
@@ -46,7 +48,32 @@
         self.completeReceptionButton.hidden = YES;
         self.receptionText.text = @"新接待";
     }
+    
+    [self loadFocusImage];
 }
+
+- (void)loadFocusImage {
+    __weak __typeof__(self) weakSelf = self;
+    dispatch_queue_t queue = dispatch_get_global_queue(0, 0);
+    dispatch_async(queue, ^{
+        OSNUserManager *manager = [[OSNUserManager alloc] init];
+        NSArray *dataArr = [manager getFocusImageData];
+        if (dataArr && dataArr.count > 0) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                CGSize viewSize = weakSelf.focusImageView.frame.size;
+                weakSelf.focusImageView.contentSize = CGSizeMake(viewSize.width * dataArr.count, viewSize.height);
+                for (int i = 0; i < dataArr.count; i++) {
+                    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i * viewSize.width, 0, viewSize.width, viewSize.height)];
+                    [imageView sd_setImageWithURL:[NSURL URLWithString:dataArr[i][@"imagePath"]]];
+                    [weakSelf.focusImageView addSubview:imageView];
+                }
+            });
+        }
+    });
+}
+
+
+#pragma mark - event
 
 - (IBAction)openNavigationViewController:(id)sender {
     UIButton *btn = (UIButton *)sender;

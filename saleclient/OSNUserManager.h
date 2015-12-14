@@ -20,4 +20,6 @@
 
 - (BOOL)checkSessionIsValid;
 
+- (NSArray *)getFocusImageData;
+
 @end
