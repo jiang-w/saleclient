@@ -38,5 +38,6 @@
 @property(nonatomic, copy) NSString *defaultImage;
 @property(nonatomic, copy) NSString *exhibitionImageTypeId;
 @property(nonatomic, copy) NSString *imagePath;
+@property(nonatomic, copy) NSString *ipadU3DPath;
 
 @end

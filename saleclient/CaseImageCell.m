@@ -8,13 +8,15 @@
 
 #import "CaseImageCell.h"
 #import "CaseDetailViewController.h"
+#import "OSNCustomerManager.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface CaseImageCell()
 
 @property(nonatomic, strong) UIImageView *image;
 @property(nonatomic, strong) UILabel *name;
-//@property(nonatomic, strong) UIButton *favorite;
+@property(nonatomic, strong) UIButton *favorite;
+@property(nonatomic, strong) UIButton *u3dBtn;
 
 @end
 
@@ -46,16 +48,22 @@
     [bgView addSubview:self.name];
     [self.name mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(bgView);
-        make.left.lessThanOrEqualTo(bgView).offset(40);
+        make.left.lessThanOrEqualTo(bgView).offset(20);
     }];
     
-//    [bgView addSubview:self.favorite];
-//    [self.favorite mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.centerY.equalTo(bgView);
-//        make.right.equalTo(bgView).offset(-40);
-//        make.width.height.mas_offset(20);
-//        make.left.greaterThanOrEqualTo(self.name.mas_right).offset(2);
-//    }];
+    [bgView addSubview:self.u3dBtn];
+    [self.u3dBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(bgView);
+        make.right.equalTo(bgView).offset(-6);
+    }];
+    
+    [bgView addSubview:self.favorite];
+    [self.favorite mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(bgView);
+        make.right.equalTo(self.u3dBtn.mas_left).offset(-18);
+        make.width.height.mas_offset(18);
+        make.left.greaterThanOrEqualTo(self.name.mas_right).offset(2);
+    }];
 }
 
 #pragma mark - property
@@ -82,15 +90,23 @@
     return _name;
 }
 
-//- (UIButton *)favorite {
-//    if (!_favorite) {
-//        _favorite = [UIButton buttonWithType:UIButtonTypeCustom];
-//        [_favorite setImage:[UIImage imageNamed:@"link.png"] forState:UIControlStateNormal];
-//        [_favorite setImage:[UIImage imageNamed:@"link.png"] forState:UIControlStateSelected];
-//        [_favorite addTarget:self action:@selector(didSelectFavoriteButton:) forControlEvents:UIControlEventTouchUpInside];
-//    }
-//    return _favorite;
-//}
+- (UIButton *)favorite {
+    if (!_favorite) {
+        _favorite = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_favorite setImage:[UIImage imageNamed:@"link.png"] forState:UIControlStateNormal];
+        [_favorite addTarget:self action:@selector(didSelectFavoriteButton:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _favorite;
+}
+
+- (UIButton *)u3dBtn {
+    if (!_u3dBtn) {
+        _u3dBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_u3dBtn setImage:[UIImage imageNamed:@"diy_wait.png"] forState:UIControlStateNormal];
+        [_u3dBtn addTarget:self action:@selector(u3dButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _u3dBtn;
+}
 
 - (void)setEntity:(OSNCaseEntity *)entity {
     _entity = entity;
@@ -99,15 +115,47 @@
 //        UIImage *img = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:entity.imagePath]]];
 //        [self.image setImage:img];
         [self.image sd_setImageWithURL:[NSURL URLWithString:entity.imagePath]];
+        
+        if (!IS_EMPTY_STRING(entity.ipadU3DPath)) {
+            [self.u3dBtn setImage:[UIImage imageNamed:@"diy.png"] forState:UIControlStateNormal];
+        }
+        else {
+            [_u3dBtn setImage:[UIImage imageNamed:@"diy_wait.png"] forState:UIControlStateNormal];
+        }
     }
 }
 
 
 #pragma mark - event
 
-//- (void)didSelectFavoriteButton:(UIButton *)button {
-//    
-//}
+- (void)didSelectFavoriteButton:(UIButton *)button {
+    NSString *receptionId = [OSNCustomerManager currentReceptionId];
+    if (!IS_EMPTY_STRING(receptionId)) {
+        NSMutableDictionary *paramters = [NSMutableDictionary dictionary];
+        paramters[@"customerId"] = receptionId;
+        paramters[@"collectType"] = @"Exhibition";
+        paramters[@"goodsId"] = self.entity.exhibitionId;
+        OSNCustomerManager *manager = [[OSNCustomerManager alloc] init];
+        NSString *result = [manager customerCollectGoodsWithParameters:paramters];
+        if ([result isEqualToString:@"alreadyCollect"]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"已添加此收藏" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alert show];
+        }
+        
+        if ([result isEqualToString:@"success"]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"案例收藏成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alert show];
+        }
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"目前还未接待客户" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+- (void)u3dButtonClick:(id)sender {
+    
+}
 
 - (void)didTapCaseImage {
     CaseDetailViewController *detail = [[CaseDetailViewController alloc] initWithNibName:@"CaseDetailViewController" bundle:nil];

@@ -86,6 +86,7 @@
             entity.defaultImage = item[@"defaultImage"];
             entity.exhibitionImageTypeId = item[@"exhibitionImageTypeId"];
             entity.imagePath = item[@"imagePath"];
+            entity.ipadU3DPath = item[@"ipadU3DPath"];
             
             [list addObject:entity];
         }
