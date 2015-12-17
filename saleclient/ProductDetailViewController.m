@@ -16,7 +16,6 @@
 #import "LewPopupViewController.h"
 #import "OSNCustomerManager.h"
 #import "NavigationBarView.h"
-#import <Masonry.h>
 
 @interface ProductDetailViewController ()
 

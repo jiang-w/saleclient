@@ -7,7 +7,6 @@
 //
 
 #import "BuildingDetailCell.h"
-#import <Masonry.h>
 
 @implementation BuildingDetailCell
 

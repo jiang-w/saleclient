@@ -7,7 +7,6 @@
 //
 
 #import "RecordImageCell.h"
-#import <Masonry.h>
 
 @implementation RecordImageCell
 

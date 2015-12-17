@@ -12,7 +12,6 @@
 #import "HouseTypeDetailViewController.h"
 #import "NavigationBarView.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import <Masonry.h>
 
 @interface BuildingDetailViewController ()
 

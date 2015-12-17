@@ -11,7 +11,6 @@
 #import "CustomerListCell.h"
 #import "CustomerListHeader.h"
 #import <MJRefresh.h>
-#import <Masonry.h>
 
 @interface CustomerListViewController ()
 

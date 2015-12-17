@@ -7,7 +7,6 @@
 //
 
 #import "HouseTypeCaseCell.h"
-#import <Masonry.h>
 
 @implementation HouseTypeCaseCell
 
@@ -34,12 +33,12 @@
             make.left.equalTo(bottomBar).offset(30);
         }];
         
-        [bottomBar addSubview:self.favorite];
-        [self.favorite mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(bottomBar);
-            make.right.equalTo(bottomBar).offset(-20);
-            make.width.height.mas_equalTo(20);
-        }];
+//        [bottomBar addSubview:self.favorite];
+//        [self.favorite mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.centerY.equalTo(bottomBar);
+//            make.right.equalTo(bottomBar).offset(-20);
+//            make.width.height.mas_equalTo(20);
+//        }];
     }
     return self;
 }
@@ -60,12 +59,12 @@
     return _name;
 }
 
-- (UIButton *)favorite {
-    if (!_favorite) {
-        _favorite = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_favorite setImage:[UIImage imageNamed:@"link.png"] forState:UIControlStateNormal];
-    }
-    return _favorite;
-}
+//- (UIButton *)favorite {
+//    if (!_favorite) {
+//        _favorite = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [_favorite setImage:[UIImage imageNamed:@"link.png"] forState:UIControlStateNormal];
+//    }
+//    return _favorite;
+//}
 
 @end

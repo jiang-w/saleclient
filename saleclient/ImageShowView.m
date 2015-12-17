@@ -8,7 +8,6 @@
 
 #import "ImageShowView.h"
 #import "UIViewController+LewPopupViewController.h"
-#import <Masonry.h>
 
 @implementation ImageShowView
 

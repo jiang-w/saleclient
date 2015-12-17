@@ -7,7 +7,6 @@
 //
 
 #import "CaseDetailProductCell.h"
-#import <Masonry.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation CaseDetailProductCell

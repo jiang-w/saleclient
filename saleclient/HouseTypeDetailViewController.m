@@ -8,7 +8,6 @@
 
 #import "HouseTypeDetailViewController.h"
 #import "NavigationBarView.h"
-#import <Masonry.h>
 #import "OSNBuildingManager.h"
 #import "HouseTypeCaseCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>

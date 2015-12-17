@@ -8,7 +8,6 @@
 
 #import "ProductImageCell.h"
 #import "ProductDetailViewController.h"
-#import <Masonry.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface ProductImageCell()

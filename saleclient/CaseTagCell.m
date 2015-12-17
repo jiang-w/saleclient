@@ -8,7 +8,6 @@
 
 #import "CaseTagCell.h"
 #import "OSNTagButton.h"
-#import <Masonry.h>
 
 @implementation CaseTagCell
 

@@ -9,7 +9,6 @@
 #import "BuildingLeftSider.h"
 #import "OSNBuildingManager.h"
 #import "OSNUserManager.h"
-#import <Masonry.h>
 
 @interface BuildingLeftSider ()
 

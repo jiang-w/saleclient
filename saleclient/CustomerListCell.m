@@ -7,7 +7,6 @@
 //
 
 #import "CustomerListCell.h"
-#import <Masonry.h>
 
 @interface CustomerListCell()
 

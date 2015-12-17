@@ -8,7 +8,6 @@
 
 #import "CaseImageCell.h"
 #import "CaseDetailViewController.h"
-#import <Masonry.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface CaseImageCell()

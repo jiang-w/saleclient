@@ -7,7 +7,6 @@
 //
 
 #import "QRCodeScanViewController.h"
-#import <Masonry.h>
 
 @interface QRCodeScanViewController ()
 

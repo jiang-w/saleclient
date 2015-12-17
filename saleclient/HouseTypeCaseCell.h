@@ -12,7 +12,7 @@
 
 @property(nonatomic, strong) UIImageView *image;
 @property(nonatomic, strong) UILabel *name;
-@property(nonatomic, strong) UIButton *favorite;
+//@property(nonatomic, strong) UIButton *favorite;
 @property(nonatomic, copy) NSString *exhibitionId;
 
 @end

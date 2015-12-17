@@ -7,7 +7,6 @@
 //
 
 #import "CustomerListHeader.h"
-#import <Masonry.h>
 
 @interface CustomerListHeader()
 

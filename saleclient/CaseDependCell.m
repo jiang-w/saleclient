@@ -7,7 +7,6 @@
 //
 
 #import "CaseDependCell.h"
-#import <Masonry.h>
 
 @implementation CaseDependCell
 

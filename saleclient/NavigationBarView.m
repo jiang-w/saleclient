@@ -7,7 +7,6 @@
 //
 
 #import "NavigationBarView.h"
-#import <Masonry.h>
 #import "AppDelegate.h"
 #import "OSNCustomerManager.h"
 #import "CustomerReceptionRecordViewController.h"

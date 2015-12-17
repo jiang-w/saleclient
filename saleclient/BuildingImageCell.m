@@ -8,7 +8,6 @@
 
 #import "BuildingImageCell.h"
 #import "BuildingDetailViewController.h"
-#import <Masonry.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface BuildingImageCell()

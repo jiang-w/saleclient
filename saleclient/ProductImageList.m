@@ -9,7 +9,6 @@
 #import "ProductImageList.h"
 #import "ProductImageCell.h"
 #import "OSNProductManager.h"
-#import <Masonry.h>
 #import <MJRefresh.h>
 
 @interface ProductImageList ()

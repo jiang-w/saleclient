@@ -8,7 +8,6 @@
 
 #import "ProductTagCell.h"
 #import "OSNTagButton.h"
-#import <Masonry.h>
 
 @implementation ProductTagCell
 

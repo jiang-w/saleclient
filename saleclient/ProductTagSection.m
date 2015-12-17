@@ -7,7 +7,6 @@
 //
 
 #import "ProductTagSection.h"
-#import <Masonry.h>
 
 @interface ProductTagSection()
 

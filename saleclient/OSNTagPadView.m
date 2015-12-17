@@ -7,7 +7,6 @@
 //
 
 #import "OSNTagPadView.h"
-#import <Masonry.h>
 
 #define SAVE_CONTRAINT(c) [self.tagsContraints addObject:c]
 
