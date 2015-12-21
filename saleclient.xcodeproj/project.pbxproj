@@ -78,6 +78,9 @@
 		01AF1F5C1C0402B00033413F /* OSNCaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F5B1C0402B00033413F /* OSNCaseManager.m */; };
 		01AF1F5F1C040D260033413F /* OSNTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F5E1C040D260033413F /* OSNTag.m */; };
 		01AF1F621C040E1B0033413F /* OSNTagGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F611C040E1B0033413F /* OSNTagGroup.m */; };
+		01B0746A1C28323300FDB501 /* setting_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = 01B074691C28323300FDB501 /* setting_ico.png */; settings = {ASSET_TAGS = (); }; };
+		01B0746D1C28391C00FDB501 /* SettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B0746C1C28391C00FDB501 /* SettingView.m */; settings = {ASSET_TAGS = (); }; };
+		01B0746F1C28394900FDB501 /* SettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01B0746E1C28394900FDB501 /* SettingView.xib */; settings = {ASSET_TAGS = (); }; };
 		01B754DE1C13362B000FA9BE /* OSNBuildingEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B754DD1C13362B000FA9BE /* OSNBuildingEntity.m */; };
 		01B754E21C133E73000FA9BE /* BuildingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B754E01C133E73000FA9BE /* BuildingDetailViewController.m */; };
 		01B754E31C133E73000FA9BE /* BuildingDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01B754E11C133E73000FA9BE /* BuildingDetailViewController.xib */; };
@@ -226,6 +229,10 @@
 		01AF1F5E1C040D260033413F /* OSNTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNTag.m; sourceTree = "<group>"; };
 		01AF1F601C040E1B0033413F /* OSNTagGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNTagGroup.h; sourceTree = "<group>"; };
 		01AF1F611C040E1B0033413F /* OSNTagGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNTagGroup.m; sourceTree = "<group>"; };
+		01B074691C28323300FDB501 /* setting_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting_ico.png; sourceTree = "<group>"; };
+		01B0746B1C28391C00FDB501 /* SettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingView.h; sourceTree = "<group>"; };
+		01B0746C1C28391C00FDB501 /* SettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingView.m; sourceTree = "<group>"; };
+		01B0746E1C28394900FDB501 /* SettingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingView.xib; sourceTree = "<group>"; };
 		01B754DC1C13362B000FA9BE /* OSNBuildingEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNBuildingEntity.h; sourceTree = "<group>"; };
 		01B754DD1C13362B000FA9BE /* OSNBuildingEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNBuildingEntity.m; sourceTree = "<group>"; };
 		01B754DF1C133E73000FA9BE /* BuildingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingDetailViewController.h; sourceTree = "<group>"; };
@@ -293,6 +300,7 @@
 		011375451BFEF27300A9AB9E /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				01B074691C28323300FDB501 /* setting_ico.png */,
 				019164B31C22F86100BA2CD8 /* diy.png */,
 				019164B41C22F86100BA2CD8 /* diy_wait.png */,
 				01E303601C1EEF10001EF801 /* pick_bg@2x.png */,
@@ -387,6 +395,9 @@
 				0113406C1C1B32FE009C093E /* CALayer+XibConfiguration.m */,
 				01E3035D1C1EE80A001EF801 /* QRCodeScanViewController.h */,
 				01E3035E1C1EE80A001EF801 /* QRCodeScanViewController.m */,
+				01B0746B1C28391C00FDB501 /* SettingView.h */,
+				01B0746C1C28391C00FDB501 /* SettingView.m */,
+				01B0746E1C28394900FDB501 /* SettingView.xib */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -675,11 +686,13 @@
 				017A27831C04A46D00CB577D /* pro_lm1.gif in Resources */,
 				0113755D1BFEFE4D00A9AB9E /* wc_user_ico.png in Resources */,
 				0113755C1BFEFE4D00A9AB9E /* wc_receive_ico.png in Resources */,
+				01B0746A1C28323300FDB501 /* setting_ico.png in Resources */,
 				015B2D261BFEBBFD00821100 /* SignInViewController.xib in Resources */,
 				01BECEFE1C0D943E007A2E10 /* CaseDetailViewController.xib in Resources */,
 				017A27821C04A46D00CB577D /* pro_lm.gif in Resources */,
 				019164B61C22F86100BA2CD8 /* diy_wait.png in Resources */,
 				011375521BFEFC5000A9AB9E /* qcode_ico.png in Resources */,
+				01B0746F1C28394900FDB501 /* SettingView.xib in Resources */,
 				014E80991C1813BE0065987F /* CustomerSigninView.xib in Resources */,
 				015B2D1A1BFEBA5400821100 /* LaunchScreen.storyboard in Resources */,
 				01D776BD1C16870D00F820A1 /* HouseTypeDetailViewController.xib in Resources */,
@@ -770,6 +783,7 @@
 				01A35D461C0AF4BA00341F45 /* CaseImageCell.m in Sources */,
 				011930201C1ABF8D005D730A /* RecordImageCell.m in Sources */,
 				015B2D0C1BFEBA5400821100 /* main.m in Sources */,
+				01B0746D1C28391C00FDB501 /* SettingView.m in Sources */,
 				01AF1F5F1C040D260033413F /* OSNTag.m in Sources */,
 				01F8A17A1C15EC59000A7EDB /* NavigationBarView.m in Sources */,
 				01E063991C0B6E28009448EA /* ProductTagTable.m in Sources */,

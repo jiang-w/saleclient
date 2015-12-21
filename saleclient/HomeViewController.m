@@ -14,6 +14,7 @@
 #import "CustomerSigninView.h"
 #import "LewPopupViewController.h"
 #import "CustomerReceptionRecordViewController.h"
+#import "SettingView.h"
 #import "QRCodeScanViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -23,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *receptionText;
 @property (weak, nonatomic) IBOutlet UIButton *completeReceptionButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *focusImageView;
+@property (weak, nonatomic) IBOutlet UILabel *userLabel;
 
 @end
 
@@ -32,11 +34,13 @@
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = YES;
 
-    if (![OSNUserManager sharedInstance].currentUser) {
+    OSNUserInfo *user = [OSNUserManager sharedInstance].currentUser;
+    if (!user) {
         [self openSignInWindow];
     }
     else {
         [[OSNUserManager sharedInstance] checkSessionIsValid];
+        self.userLabel.text = [NSString stringWithFormat:@"当前登录：%@", user.personName];
     }
     
     NSString *receptionId = [OSNCustomerManager currentReceptionId];
@@ -121,6 +125,12 @@
 - (IBAction)openQRCodeScan:(id)sender {
 //    QRCodeScanViewController *scanVC = [[QRCodeScanViewController alloc] init];
 //    [self presentViewController:scanVC animated:NO completion:nil];
+}
+
+- (IBAction)settingButtonClick:(id)sender {
+    SettingView *settingView = [SettingView defaultView];
+    settingView.parentVC = self;
+    [self lew_presentPopupView:settingView animation:[LewPopupViewAnimationFade new] dismissed:nil];
 }
 
 

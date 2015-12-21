@@ -22,4 +22,6 @@
 
 - (NSArray *)getFocusImageData;
 
+- (void)signOut;
+
 @end

@@ -101,6 +101,9 @@
             HomeViewController *home = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
             appDelegate.mainNav = [[OSNMainNavigation alloc] initWithRootViewController:home];
             appDelegate.window.rootViewController = appDelegate.mainNav;
+            
+            self.userNameTextBox.text = @"";
+            self.passwordTextBox.text = @"";
         }
         else {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"用户名密码错误" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];

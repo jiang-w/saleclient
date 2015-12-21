@@ -95,4 +95,10 @@
     return dataArr;
 }
 
+- (void)signOut {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:@"userinfo"];
+    _currentUser = nil;
+}
+
 @end
