@@ -15,12 +15,14 @@
     self = [super initWithFrame:frame];
     if (self) {
         _imageView = [[UIImageView alloc] init];
+        _imageView.contentMode = UIViewContentModeScaleAspectFit;
+        _imageView.backgroundColor = [UIColor clearColor];
         [self addSubview:_imageView];
         
         [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.center.equalTo(self);
-            make.width.mas_equalTo(680);
-            make.height.mas_equalTo(460);
+            make.width.mas_equalTo(580);
+            make.height.mas_equalTo(580);
         }];
         
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapViewHandle:)];
