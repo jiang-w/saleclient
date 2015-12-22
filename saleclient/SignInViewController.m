@@ -10,6 +10,7 @@
 #import "HomeViewController.h"
 #import "OSNUserManager.h"
 #import "AppDelegate.h"
+#import "UIResponder+FirstResponder.h"
 
 @interface SignInViewController ()
 
@@ -28,20 +29,22 @@
         self.userNameTextBox.text = userinfo.userLoginId;
     }
     
-    self.userNameTextBox.delegate = self;
-    self.passwordTextBox.delegate = self;
+//    self.userNameTextBox.delegate = self;
+//    self.passwordTextBox.delegate = self;
     
     // 点击背景消失键盘
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleBackgroundTap:)];
-    tapRecognizer.cancelsTouchesInView = NO;
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handlerBackgroundTap:)];
     [self.view addGestureRecognizer:tapRecognizer];
-}
-
-- (void) handleBackgroundTap:(UITapGestureRecognizer*)sender
-{
-    // 取消输入框第一响应
-    [self.userNameTextBox resignFirstResponder];
-    [self.passwordTextBox resignFirstResponder];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(actionKeyboardShow:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(actionKeyboardHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
 }
 
 
@@ -52,37 +55,45 @@
     return YES;
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    CGRect frame = textField.frame;
-    CGFloat yOffset = self.view.frame.size.height - frame.origin.y - frame.size.height - 520;
-    if (yOffset < 0) {
-        [UIView beginAnimations:@"ResizeForKeyBoard" context:nil];
-        [UIView setAnimationDuration:0.3];
-        float width = self.view.frame.size.width;
-        float height = self.view.frame.size.height;
-        CGRect rect = CGRectMake(0, yOffset, width, height);
-        self.view.frame = rect;
-        [UIView commitAnimations];
-    }
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    [UIView beginAnimations:@"ResizeForKeyBoard" context:nil];
-    [UIView setAnimationDuration:0.3];
-    float width = self.view.frame.size.width;
-    float height = self.view.frame.size.height;
-    CGRect rect = CGRectMake(0, 0, width, height);
-    self.view.frame = rect;
-    [UIView commitAnimations];
-}
+//- (void)textFieldDidBeginEditing:(UITextField *)textField {
+//    CGRect frame = textField.frame;
+//    CGFloat yOffset = self.view.frame.size.height - frame.origin.y - frame.size.height - 520;
+//    if (yOffset < 0) {
+//        [UIView beginAnimations:@"ResizeForKeyBoard" context:nil];
+//        [UIView setAnimationDuration:0.3];
+//        float width = self.view.frame.size.width;
+//        float height = self.view.frame.size.height;
+//        CGRect rect = CGRectMake(0, yOffset, width, height);
+//        self.view.frame = rect;
+//        [UIView commitAnimations];
+//    }
+//}
+//
+//- (void)textFieldDidEndEditing:(UITextField *)textField {
+//    [UIView beginAnimations:@"ResizeForKeyBoard" context:nil];
+//    [UIView setAnimationDuration:0.3];
+//    float width = self.view.frame.size.width;
+//    float height = self.view.frame.size.height;
+//    CGRect rect = CGRectMake(0, 0, width, height);
+//    self.view.frame = rect;
+//    [UIView commitAnimations];
+//}
 
 
 #pragma mark - event
 
+- (void) handlerBackgroundTap:(UITapGestureRecognizer*)sender {
+    // 取消输入框第一响应
+//    [self.userNameTextBox resignFirstResponder];
+//    [self.passwordTextBox resignFirstResponder];
+    [self.view endEditing:YES];
+}
+
 - (IBAction)signin:(id)sender {
     // 取消输入框第一响应
-    [self.userNameTextBox resignFirstResponder];
-    [self.passwordTextBox resignFirstResponder];
+//    [self.userNameTextBox resignFirstResponder];
+//    [self.passwordTextBox resignFirstResponder];
+    [self.view endEditing:YES];
     
     NSString *userName = self.userNameTextBox.text;
     NSString *password = self.passwordTextBox.text;
@@ -112,5 +123,55 @@
     }
 }
 
+- (void)actionKeyboardShow:(NSNotification *)notification {
+    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+//    NSLog(@"keyboard: %@", NSStringFromCGSize(keyboardSize));
+    
+    id responder = [UIResponder currentFirstResponder];
+    if (responder && [responder isKindOfClass:[UITextField class]]) {
+        UITextField *txtField = (UITextField *)responder;
+//        NSLog(@"TextField: %@", NSStringFromCGRect(txtField.frame));
+        
+        CGFloat yOffset = self.view.frame.size.height - txtField.frame.origin.y - txtField.frame.size.height - keyboardSize.height - 20;
+        if (yOffset < 0) {
+            [UIView beginAnimations:@"ResizeForKeyBoard" context:nil];
+            [UIView setAnimationDuration:0.3];
+            float width = self.view.frame.size.width;
+            float height = self.view.frame.size.height;
+            CGRect rect = CGRectMake(0, yOffset, width, height);
+            self.view.frame = rect;
+            [UIView commitAnimations];
+        }
+    }
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidChangeFrameNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(actionKeyboardShow:)
+                                                 name:UIKeyboardDidChangeFrameNotification
+                                               object:nil];
+}
+
+- (void)actionKeyboardHide:(NSNotification *)notification {
+    id responder = [UIResponder currentFirstResponder];
+    if (responder && [responder isKindOfClass:[UITextField class]]) {
+        UITextField *txtField = (UITextField *)responder;
+        [txtField resignFirstResponder];
+    }
+    
+    [UIView beginAnimations:@"ResizeForKeyBoard" context:nil];
+    [UIView setAnimationDuration:0.3];
+    float width = self.view.frame.size.width;
+    float height = self.view.frame.size.height;
+    CGRect rect = CGRectMake(0, 0, width, height);
+    self.view.frame = rect;
+    [UIView commitAnimations];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidChangeFrameNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(actionKeyboardShow:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+}
 
 @end

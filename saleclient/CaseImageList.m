@@ -21,6 +21,7 @@
 @property(nonatomic, copy) NSString *styleId;
 @property(nonatomic, copy) NSString *houseTypeId;
 @property(nonatomic, copy) NSString *keyword;
+@property(nonatomic, copy) NSString *u3dPath;
 
 @end
 
@@ -97,6 +98,7 @@ static NSString * const reuseIdentifier = @"caseImageCell";
     self.roomId = rusult[@"room"];
     self.styleId = rusult[@"style"];
     self.houseTypeId = rusult[@"houseType"];
+    self.u3dPath = rusult[@"u3d"];
     self.keyword = nil;
     
     [self loadCaseList];
@@ -146,6 +148,7 @@ static NSString * const reuseIdentifier = @"caseImageCell";
     paramDic[@"roomId"] = self.roomId;
     paramDic[@"styleId"] = self.styleId;
     paramDic[@"houseTypeId"] = self.houseTypeId;
+    paramDic[@"isIpadU3DPath"] = self.u3dPath;
     paramDic[@"viewSize"] = [NSString stringWithFormat:@"%lu", (unsigned long)self.viewSize];
     paramDic[@"viewIndex"] = [NSString stringWithFormat:@"%lu", (unsigned long)self.viewIndex];
     if (!IS_EMPTY_STRING(self.keyword)) {

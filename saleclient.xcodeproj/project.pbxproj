@@ -10,8 +10,8 @@
 		0100BDE81C0C12CD0011F6D0 /* navbtn_back_hov.png in Resources */ = {isa = PBXBuildFile; fileRef = 0100BDE71C0C12CD0011F6D0 /* navbtn_back_hov.png */; };
 		010578191C1312BA00C8F7CC /* OSNAreaEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 010578181C1312BA00C8F7CC /* OSNAreaEntity.m */; };
 		0105781C1C1313D300C8F7CC /* AutoLayoutTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0105781B1C1313D300C8F7CC /* AutoLayoutTagView.m */; };
-		0113406A1C1B29DE009C093E /* u3d_wait.png in Resources */ = {isa = PBXBuildFile; fileRef = 011340691C1B29DE009C093E /* u3d_wait.png */; settings = {ASSET_TAGS = (); }; };
-		0113406D1C1B32FE009C093E /* CALayer+XibConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0113406C1C1B32FE009C093E /* CALayer+XibConfiguration.m */; settings = {ASSET_TAGS = (); }; };
+		0113406A1C1B29DE009C093E /* u3d_wait.png in Resources */ = {isa = PBXBuildFile; fileRef = 011340691C1B29DE009C093E /* u3d_wait.png */; };
+		0113406D1C1B32FE009C093E /* CALayer+XibConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0113406C1C1B32FE009C093E /* CALayer+XibConfiguration.m */; };
 		011375491BFEF29500A9AB9E /* login_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 011375461BFEF29500A9AB9E /* login_bg.jpg */; };
 		0113754A1BFEF29500A9AB9E /* login_btn_hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 011375471BFEF29500A9AB9E /* login_btn_hover.png */; };
 		0113754B1BFEF29500A9AB9E /* welcome_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 011375481BFEF29500A9AB9E /* welcome_bg.jpg */; };
@@ -66,8 +66,8 @@
 		018B09F41BFEC38B007B69A8 /* OSNNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 018B09F11BFEC38B007B69A8 /* OSNNetworkService.m */; };
 		018B09F51BFEC38B007B69A8 /* OSNUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 018B09F31BFEC38B007B69A8 /* OSNUserManager.m */; };
 		018F894E1C1852E000B03BBD /* exit.png in Resources */ = {isa = PBXBuildFile; fileRef = 018F894D1C1852E000B03BBD /* exit.png */; };
-		019164B51C22F86100BA2CD8 /* diy.png in Resources */ = {isa = PBXBuildFile; fileRef = 019164B31C22F86100BA2CD8 /* diy.png */; settings = {ASSET_TAGS = (); }; };
-		019164B61C22F86100BA2CD8 /* diy_wait.png in Resources */ = {isa = PBXBuildFile; fileRef = 019164B41C22F86100BA2CD8 /* diy_wait.png */; settings = {ASSET_TAGS = (); }; };
+		019164B51C22F86100BA2CD8 /* diy.png in Resources */ = {isa = PBXBuildFile; fileRef = 019164B31C22F86100BA2CD8 /* diy.png */; };
+		019164B61C22F86100BA2CD8 /* diy_wait.png in Resources */ = {isa = PBXBuildFile; fileRef = 019164B41C22F86100BA2CD8 /* diy_wait.png */; };
 		0192392D1C1473D800948D04 /* CaseDependCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0192392C1C1473D800948D04 /* CaseDependCell.m */; };
 		019BE76A1C15C8DE00980556 /* OSNCustomerListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 019BE7691C15C8DE00980556 /* OSNCustomerListItem.m */; };
 		019BE76D1C15DD5B00980556 /* CustomerListHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 019BE76C1C15DD5B00980556 /* CustomerListHeader.m */; };
@@ -78,9 +78,10 @@
 		01AF1F5C1C0402B00033413F /* OSNCaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F5B1C0402B00033413F /* OSNCaseManager.m */; };
 		01AF1F5F1C040D260033413F /* OSNTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F5E1C040D260033413F /* OSNTag.m */; };
 		01AF1F621C040E1B0033413F /* OSNTagGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F611C040E1B0033413F /* OSNTagGroup.m */; };
-		01B0746A1C28323300FDB501 /* setting_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = 01B074691C28323300FDB501 /* setting_ico.png */; settings = {ASSET_TAGS = (); }; };
-		01B0746D1C28391C00FDB501 /* SettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B0746C1C28391C00FDB501 /* SettingView.m */; settings = {ASSET_TAGS = (); }; };
-		01B0746F1C28394900FDB501 /* SettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01B0746E1C28394900FDB501 /* SettingView.xib */; settings = {ASSET_TAGS = (); }; };
+		01B0746A1C28323300FDB501 /* setting_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = 01B074691C28323300FDB501 /* setting_ico.png */; };
+		01B0746D1C28391C00FDB501 /* SettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B0746C1C28391C00FDB501 /* SettingView.m */; };
+		01B0746F1C28394900FDB501 /* SettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01B0746E1C28394900FDB501 /* SettingView.xib */; };
+		01B277E31C2925950056FF80 /* UIResponder+FirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B277E21C2925950056FF80 /* UIResponder+FirstResponder.m */; };
 		01B754DE1C13362B000FA9BE /* OSNBuildingEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B754DD1C13362B000FA9BE /* OSNBuildingEntity.m */; };
 		01B754E21C133E73000FA9BE /* BuildingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B754E01C133E73000FA9BE /* BuildingDetailViewController.m */; };
 		01B754E31C133E73000FA9BE /* BuildingDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01B754E11C133E73000FA9BE /* BuildingDetailViewController.xib */; };
@@ -104,8 +105,8 @@
 		01E23ABD1C12D4BC006D6A9E /* BuildingImageList.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E23ABC1C12D4BC006D6A9E /* BuildingImageList.m */; };
 		01E23AC01C12D858006D6A9E /* BuildingImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E23ABF1C12D858006D6A9E /* BuildingImageCell.m */; };
 		01E23AC31C12DDC5006D6A9E /* OSNBuildingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E23AC21C12DDC5006D6A9E /* OSNBuildingManager.m */; };
-		01E3035F1C1EE80A001EF801 /* QRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E3035E1C1EE80A001EF801 /* QRCodeScanViewController.m */; settings = {ASSET_TAGS = (); }; };
-		01E303611C1EEF10001EF801 /* pick_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01E303601C1EEF10001EF801 /* pick_bg@2x.png */; settings = {ASSET_TAGS = (); }; };
+		01E3035F1C1EE80A001EF801 /* QRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E3035E1C1EE80A001EF801 /* QRCodeScanViewController.m */; };
+		01E303611C1EEF10001EF801 /* pick_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01E303601C1EEF10001EF801 /* pick_bg@2x.png */; };
 		01F8A17A1C15EC59000A7EDB /* NavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F8A1791C15EC59000A7EDB /* NavigationBarView.m */; };
 		6ECBAA760C49A32A4783B017 /* libPods-saleclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 977BB1C584A2928D5B6CF794 /* libPods-saleclient.a */; };
 /* End PBXBuildFile section */
@@ -233,6 +234,8 @@
 		01B0746B1C28391C00FDB501 /* SettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingView.h; sourceTree = "<group>"; };
 		01B0746C1C28391C00FDB501 /* SettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingView.m; sourceTree = "<group>"; };
 		01B0746E1C28394900FDB501 /* SettingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingView.xib; sourceTree = "<group>"; };
+		01B277E11C2925950056FF80 /* UIResponder+FirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+FirstResponder.h"; sourceTree = "<group>"; };
+		01B277E21C2925950056FF80 /* UIResponder+FirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+FirstResponder.m"; sourceTree = "<group>"; };
 		01B754DC1C13362B000FA9BE /* OSNBuildingEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNBuildingEntity.h; sourceTree = "<group>"; };
 		01B754DD1C13362B000FA9BE /* OSNBuildingEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNBuildingEntity.m; sourceTree = "<group>"; };
 		01B754DF1C133E73000FA9BE /* BuildingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingDetailViewController.h; sourceTree = "<group>"; };
@@ -398,6 +401,8 @@
 				01B0746B1C28391C00FDB501 /* SettingView.h */,
 				01B0746C1C28391C00FDB501 /* SettingView.m */,
 				01B0746E1C28394900FDB501 /* SettingView.xib */,
+				01B277E11C2925950056FF80 /* UIResponder+FirstResponder.h */,
+				01B277E21C2925950056FF80 /* UIResponder+FirstResponder.m */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -801,6 +806,7 @@
 				0130A17B1C158B6600D075FF /* CustomerListViewController.m in Sources */,
 				01B754DE1C13362B000FA9BE /* OSNBuildingEntity.m in Sources */,
 				014E808A1C1807C10065987F /* LewPopupBackgroundView.m in Sources */,
+				01B277E31C2925950056FF80 /* UIResponder+FirstResponder.m in Sources */,
 				019BE76A1C15C8DE00980556 /* OSNCustomerListItem.m in Sources */,
 				014E807B1C1807930065987F /* ImageShowView.m in Sources */,
 				019BE76D1C15DD5B00980556 /* CustomerListHeader.m in Sources */,

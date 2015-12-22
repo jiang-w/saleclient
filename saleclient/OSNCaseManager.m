@@ -44,6 +44,25 @@
             
             [groups addObject:group];
         }
+        
+        // 添加换砖DIY标签
+        OSNTagGroup *group = [[OSNTagGroup alloc] init];
+        group.type = @"u3d";
+        group.name = @"换砖";
+        NSMutableArray *list = [NSMutableArray array];
+        OSNTag *allTag = [[OSNTag alloc] init];
+        allTag.enumId = @"";
+        allTag.sequenceId = @"0";
+        allTag.name = @"全部";
+        [list addObject:allTag];
+        OSNTag *tag = [[OSNTag alloc] init];
+        tag.enumId = @"Y";
+        tag.sequenceId = @"1";
+        tag.name = @"换砖DIY";
+        [list addObject:tag];
+        group.list = list;
+        
+        [groups addObject:group];
     }
     return groups;
 }
