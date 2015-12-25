@@ -57,6 +57,7 @@
 		015B2D261BFEBBFD00821100 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 015B2D241BFEBBFD00821100 /* SignInViewController.xib */; };
 		017A27821C04A46D00CB577D /* pro_lm.gif in Resources */ = {isa = PBXBuildFile; fileRef = 017A27801C04A46D00CB577D /* pro_lm.gif */; };
 		017A27831C04A46D00CB577D /* pro_lm1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 017A27811C04A46D00CB577D /* pro_lm1.gif */; };
+		017B72171C2CEE390077916B /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 017B72161C2CEE390077916B /* QRCodeViewController.m */; };
 		017FB2C01C1A7C8A00625ED0 /* collect.png in Resources */ = {isa = PBXBuildFile; fileRef = 017FB2BF1C1A7C8A00625ED0 /* collect.png */; };
 		017FB2C21C1A938900625ED0 /* u3d.png in Resources */ = {isa = PBXBuildFile; fileRef = 017FB2C11C1A938900625ED0 /* u3d.png */; };
 		0187A0261C01A3C1001091F6 /* CaseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0187A0251C01A3C1001091F6 /* CaseListViewController.m */; };
@@ -192,6 +193,8 @@
 		015B2D241BFEBBFD00821100 /* SignInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
 		017A27801C04A46D00CB577D /* pro_lm.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = pro_lm.gif; sourceTree = "<group>"; };
 		017A27811C04A46D00CB577D /* pro_lm1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = pro_lm1.gif; sourceTree = "<group>"; };
+		017B72151C2CEE390077916B /* QRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
+		017B72161C2CEE390077916B /* QRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeViewController.m; sourceTree = "<group>"; };
 		017FB2BF1C1A7C8A00625ED0 /* collect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collect.png; sourceTree = "<group>"; };
 		017FB2C11C1A938900625ED0 /* u3d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = u3d.png; sourceTree = "<group>"; };
 		0187A0241C01A3C1001091F6 /* CaseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseListViewController.h; sourceTree = "<group>"; };
@@ -398,6 +401,8 @@
 				0113406C1C1B32FE009C093E /* CALayer+XibConfiguration.m */,
 				01E3035D1C1EE80A001EF801 /* QRCodeScanViewController.h */,
 				01E3035E1C1EE80A001EF801 /* QRCodeScanViewController.m */,
+				017B72151C2CEE390077916B /* QRCodeViewController.h */,
+				017B72161C2CEE390077916B /* QRCodeViewController.m */,
 				01B0746B1C28391C00FDB501 /* SettingView.h */,
 				01B0746C1C28391C00FDB501 /* SettingView.m */,
 				01B0746E1C28394900FDB501 /* SettingView.xib */,
@@ -817,6 +822,7 @@
 				01E23ABD1C12D4BC006D6A9E /* BuildingImageList.m in Sources */,
 				0192392D1C1473D800948D04 /* CaseDependCell.m in Sources */,
 				01E23AAF1C12C0F2006D6A9E /* ProductDetailViewController.m in Sources */,
+				017B72171C2CEE390077916B /* QRCodeViewController.m in Sources */,
 				014060F01C0FEB540001804E /* ProductImageList.m in Sources */,
 				01CA2CED1C0555F000CD0024 /* CaseTagTable.m in Sources */,
 				011375641BFF0DA400A9AB9E /* MasterViewController.m in Sources */,
