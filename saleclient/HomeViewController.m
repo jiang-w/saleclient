@@ -124,10 +124,9 @@
 }
 
 - (IBAction)openQRCodeScan:(id)sender {
-    QRCodeScanViewController *scanVC = [[QRCodeScanViewController alloc] init];
+//    QRCodeScanViewController *scanVC = [[QRCodeScanViewController alloc] init];
+    QRCodeViewController *scanVC = [[QRCodeViewController alloc] init];
     [self presentViewController:scanVC animated:NO completion:nil];
-//    QRCodeViewController *scanVC = [[QRCodeViewController alloc] init];
-//    [self presentViewController:scanVC animated:NO completion:nil];
 }
 
 - (IBAction)settingButtonClick:(id)sender {

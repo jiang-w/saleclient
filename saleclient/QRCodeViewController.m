@@ -72,6 +72,8 @@
     self.preview.videoGravity = AVLayerVideoGravityResizeAspectFill;
     self.preview.frame = [UIScreen mainScreen].bounds;
     [self.view.layer insertSublayer:self.preview atIndex:0];
+    // 设置摄像头取景方向
+    self.preview.connection.videoOrientation = AVCaptureVideoOrientationLandscapeRight;
     
     self.scanRectView = [UIView new];
     [self.view addSubview:self.scanRectView];
@@ -107,6 +109,5 @@
 {
     [self.session startRunning];
 }
-
 
 @end
