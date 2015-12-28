@@ -7,6 +7,7 @@
 //
 
 #import "QRCodeViewController.h"
+#import "Masonry.h"
 #import <AVFoundation/AVFoundation.h>
 
 @interface QRCodeViewController () <AVCaptureMetadataOutputObjectsDelegate, UIAlertViewDelegate>
@@ -77,11 +78,21 @@
     
     self.scanRectView = [UIView new];
     [self.view addSubview:self.scanRectView];
-    self.scanRectView.frame = CGRectMake(0, 0, scanSize.width, scanSize.height);
-    self.scanRectView.center = CGPointMake(CGRectGetMidX([UIScreen mainScreen].bounds), CGRectGetMidY([UIScreen mainScreen].bounds));
     self.scanRectView.layer.borderColor = [UIColor orangeColor].CGColor;
     self.scanRectView.layer.borderWidth = 1;
+    [self.scanRectView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.view);
+        make.size.mas_equalTo(CGSizeMake(scanSize.width, scanSize.height));
+    }];
     
+    UILabel * labIntroudction= [[UILabel alloc] init];
+    labIntroudction.textColor=[UIColor orangeColor];
+    labIntroudction.text=@"将二维码图像置于矩形方框内";
+    [self.view addSubview:labIntroudction];
+    [labIntroudction mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.top.equalTo(self.scanRectView.mas_bottom).offset(10);
+    }];
     
     //开始捕获
     [self.session startRunning];
