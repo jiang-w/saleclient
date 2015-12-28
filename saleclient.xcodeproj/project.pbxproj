@@ -934,7 +934,7 @@
 			baseConfigurationReference = C91545DC02F872E51821B588 /* Pods-saleclient.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 伟 Jiang (85V724K3K4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/saleclient/saleclient-Prefix.pch";
@@ -942,7 +942,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.com.oceano.padclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e40c5193-75be-46d6-8a09-530179987148";
+				PROVISIONING_PROFILE = "804c34e8-012d-45af-a2c3-e7dad78888d7";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -952,7 +952,7 @@
 			baseConfigurationReference = 085C548C4109E76C880EC2E0 /* Pods-saleclient.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 伟 Jiang (85V724K3K4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/saleclient/saleclient-Prefix.pch";
@@ -960,7 +960,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.com.oceano.padclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e40c5193-75be-46d6-8a09-530179987148";
+				PROVISIONING_PROFILE = "804c34e8-012d-45af-a2c3-e7dad78888d7";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;

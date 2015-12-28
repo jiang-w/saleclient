@@ -48,18 +48,6 @@
         _innerView.layer.borderColor = [UIColor orangeColor].CGColor;
         [self addSubview:_innerView];
         
-        [_saveButton setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-        _saveButton.backgroundColor = RGB(252, 237, 226);
-        _saveButton.layer.borderWidth = 1;
-        _saveButton.layer.borderColor = [UIColor orangeColor].CGColor;
-        _saveButton.layer.cornerRadius = 5;
-        
-        [_cancelButton setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-        _cancelButton.backgroundColor = RGB(252, 237, 226);
-        _cancelButton.layer.borderWidth = 1;
-        _cancelButton.layer.borderColor = [UIColor orangeColor].CGColor;
-        _cancelButton.layer.cornerRadius = 5;
-        
         _mobile.delegate = self;
         _recommendName.delegate = self;
         _recommendMobile.delegate = self;
@@ -75,7 +63,7 @@
 }
 
 + (instancetype)defaultView {
-    CustomerSigninView *view = [[CustomerSigninView alloc]initWithFrame:CGRectMake(0, 0, 680, 520)];
+    CustomerSigninView *view = [[CustomerSigninView alloc]initWithFrame:CGRectMake(0, 0, 680, 620)];
     return view;
 }
 

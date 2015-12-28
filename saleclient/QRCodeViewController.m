@@ -26,12 +26,28 @@
     [super viewDidLoad];
     
     [self setupCamera];
+    
+    UIButton *backBtn = [[UIButton alloc] initWithFrame:CGRectMake(60, 40, 100, 30)];
+    [backBtn setTitle:@"返回" forState:UIControlStateNormal];
+    [backBtn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    backBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    backBtn.backgroundColor = [UIColor clearColor];
+    backBtn.contentEdgeInsets = UIEdgeInsetsMake(6, 4, 6, 4);
+    backBtn.layer.borderColor = [UIColor orangeColor].CGColor;
+    backBtn.layer.borderWidth = 1;
+    backBtn.layer.cornerRadius = 5;
+    [backBtn addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:backBtn];
+}
+
+- (void)goBack:(UIButton *)sender {
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (void)setupCamera {
     CGSize windowSize = [UIScreen mainScreen].bounds.size;
     
-    CGSize scanSize = CGSizeMake(windowSize.width*3/4, windowSize.width*3/4);
+    CGSize scanSize = CGSizeMake(windowSize.height/2, windowSize.height/2);
     CGRect scanRect = CGRectMake((windowSize.width-scanSize.width)/2, (windowSize.height-scanSize.height)/2,
                                  scanSize.width, scanSize.height);
     //计算rectOfInterest 如果是竖屏x,y交换位置
@@ -61,7 +77,7 @@
     [self.view addSubview:self.scanRectView];
     self.scanRectView.frame = CGRectMake(0, 0, scanSize.width, scanSize.height);
     self.scanRectView.center = CGPointMake(CGRectGetMidX([UIScreen mainScreen].bounds), CGRectGetMidY([UIScreen mainScreen].bounds));
-    self.scanRectView.layer.borderColor = [UIColor redColor].CGColor;
+    self.scanRectView.layer.borderColor = [UIColor orangeColor].CGColor;
     self.scanRectView.layer.borderWidth = 1;
     
     

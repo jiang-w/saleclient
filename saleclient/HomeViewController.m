@@ -16,6 +16,7 @@
 #import "CustomerReceptionRecordViewController.h"
 #import "SettingView.h"
 #import "QRCodeScanViewController.h"
+#import "QRCodeViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface HomeViewController ()
@@ -123,7 +124,9 @@
 }
 
 - (IBAction)openQRCodeScan:(id)sender {
-//    QRCodeScanViewController *scanVC = [[QRCodeScanViewController alloc] init];
+    QRCodeScanViewController *scanVC = [[QRCodeScanViewController alloc] init];
+    [self presentViewController:scanVC animated:NO completion:nil];
+//    QRCodeViewController *scanVC = [[QRCodeViewController alloc] init];
 //    [self presentViewController:scanVC animated:NO completion:nil];
 }
 
