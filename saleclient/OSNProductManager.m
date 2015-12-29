@@ -147,7 +147,7 @@
             entity.imagePath = item[@"imagePath"];
             entity.isPush = item[@"isPush"];
             entity.factoryId = item[@"factoryId"];
-            entity.municipalId = item[@"municipalId"];
+            entity.municipalId = item[@"municipalId"]; 
             entity.shopId = item[@"shopId"];
             entity.productTypeId = item[@"productTypeId"];
             entity.columnType = item[@"columnType"];
@@ -170,6 +170,13 @@
     else {
         return nil;
     }
+}
+
+- (NSString *)getProductDetailWithQRCodeUrl:(NSString *)url {
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadFindOcnProductIdByQrcodeUrl" andParamterDictionary:@{@"qrcodeUrl": url}];
+    NSString *productId = dataDic[@"ocnProductId"];
+    return productId;
 }
 
 @end

@@ -275,7 +275,7 @@
 			( "10010", "用户查询权限正常") ;
 
 20、客户管理-新建客户-验证客户的手机号：ipadCrmValidateCustomerMobile【2015-03-17】
-测试链接：http://crm.osnyun.com/rpcmanager/control/ipadCrmValidateCustomerMobile?userLoginId=shejs01&accessToken=3NKdCxDmZ5Lb4_PneyB5rO&mobile=15800345621
+测试链接：http://crm.osnyun.com/rpcmanager/control/ipadCrmValidateCustomerMobile?userLoginId=shejs01&accessToken=3NKdCxDmZ5Lb4_PneyB5rO&mobile=
 				userLoginId【登录账号】
 				accessToken【令牌】	
 				mobile【手机号】
@@ -705,5 +705,20 @@
 			( "10002", "用户密码错误") ;
 			( "10003", "用户没有权限") ;
 			( "10009", "用户令牌值错误") ;			
-			( "10010", "用户查询权限正常") ;																
-									
+			( "10010", "用户查询权限正常") ;	
+
+
+43、 查询所有IPAD换砖——U3D文件getIpadUthreeDFloors【2015-12-19】 add by huanghubing
+         测试链接：http://crm.osnyun.com/rpcmanager/control/getIpadUthreeDFloors
+         参数无：
+         返回值：略	
+
+            ( "10003", "查询成功") ;
+			( "10004", "查询失败") ;
+																			
+44、根据二维码扫码链接查询产品ID
+    测试链接：http://crm.osnyun.com/rpcmanager/control/ipadFindOcnProductIdByQrcodeUrl?qrcodeUrl=http://weixin.qq.com/q/TXVxGsjlJR9czOk8gFnP
+    参数：qrcodeUrl 【二维码扫码链接】【必须】
+    返回值：code: 0 失败 1 成功
+           msg: err失败 success成功
+           ocnProductId:产品ID

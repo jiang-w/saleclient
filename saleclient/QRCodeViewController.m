@@ -7,6 +7,10 @@
 //
 
 #import "QRCodeViewController.h"
+#import "OSNProductManager.h"
+#import "OSNMainNavigation.h"
+#import "ProductDetailViewController.h"
+#import "MasterViewController.h"
 #import "Masonry.h"
 #import <AVFoundation/AVFoundation.h>
 
@@ -108,16 +112,30 @@
         [self.session stopRunning];
         
         AVMetadataMachineReadableCodeObject *metadataObject = metadataObjects.firstObject;
-        
-        //输出扫描字符串
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:metadataObject.stringValue message:@"" delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil];
-        
-        [alert show];
+        NSString *qrCodeUrl = metadataObject.stringValue;
+        OSNProductManager *manager = [[OSNProductManager alloc] init];
+        NSString *productId = [manager getProductDetailWithQRCodeUrl:qrCodeUrl];
+        if (productId && productId.length > 0) {
+            [self dismissViewControllerAnimated:NO completion:nil];
+            
+            MasterViewController *masterVC = [[MasterViewController alloc] initWithNibName:@"MasterViewController" bundle:nil];
+            masterVC.currentIndex = 2;
+            
+            ProductDetailViewController *detail = [[ProductDetailViewController alloc] initWithNibName:@"ProductDetailViewController" bundle:nil];
+            detail.productId = productId;
+            
+            OSNMainNavigation *nav = (OSNMainNavigation *)self.presentingViewController;
+            [nav pushViewController:masterVC animated:NO];
+            [nav pushViewController:detail animated:NO];
+        }
+        else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"无效的二维码" message:@"" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alert show];
+        }
     }
 }
 
-- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
-{
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
     [self.session startRunning];
 }
 

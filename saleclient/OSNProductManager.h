@@ -16,4 +16,6 @@
 
 - (NSDictionary *)getProductDetailWithId:(NSString *)productId;
 
+- (NSString *)getProductDetailWithQRCodeUrl:(NSString *)url;
+
 @end
