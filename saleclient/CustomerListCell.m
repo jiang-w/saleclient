@@ -7,6 +7,8 @@
 //
 
 #import "CustomerListCell.h"
+#import "CustomerDetailMaster.h"
+#import "AppDelegate.h"
 
 @interface CustomerListCell()
 
@@ -170,8 +172,17 @@
         [_operation setTitle:@"客户档案" forState:UIControlStateNormal];
         [_operation setTitleColor:RGB(67, 176, 250) forState:UIControlStateNormal];
         _operation.titleLabel.font = [UIFont systemFontOfSize:14];
+        
+        [_operation addTarget:self action:@selector(customerDetailButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _operation;
+}
+
+
+- (void)customerDetailButtonClick:(UIButton *)sender {
+    CustomerDetailMaster *detail = [[CustomerDetailMaster alloc] initWithCustomerId:self.customerId];
+    AppDelegate *app = [UIApplication sharedApplication].delegate;
+    [app.mainNav pushViewController:detail animated:YES];
 }
 
 @end

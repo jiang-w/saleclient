@@ -55,6 +55,7 @@
 		015B2D1A1BFEBA5400821100 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 015B2D181BFEBA5400821100 /* LaunchScreen.storyboard */; };
 		015B2D251BFEBBFD00821100 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 015B2D231BFEBBFD00821100 /* SignInViewController.m */; };
 		015B2D261BFEBBFD00821100 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 015B2D241BFEBBFD00821100 /* SignInViewController.xib */; };
+		016E3D7F1C32618C00E23702 /* CustomerDetailMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 016E3D7E1C32618C00E23702 /* CustomerDetailMaster.m */; };
 		017A27821C04A46D00CB577D /* pro_lm.gif in Resources */ = {isa = PBXBuildFile; fileRef = 017A27801C04A46D00CB577D /* pro_lm.gif */; };
 		017A27831C04A46D00CB577D /* pro_lm1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 017A27811C04A46D00CB577D /* pro_lm1.gif */; };
 		017B72171C2CEE390077916B /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 017B72161C2CEE390077916B /* QRCodeViewController.m */; };
@@ -191,6 +192,8 @@
 		015B2D221BFEBBFD00821100 /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
 		015B2D231BFEBBFD00821100 /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
 		015B2D241BFEBBFD00821100 /* SignInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
+		016E3D7D1C32618C00E23702 /* CustomerDetailMaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerDetailMaster.h; sourceTree = "<group>"; };
+		016E3D7E1C32618C00E23702 /* CustomerDetailMaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerDetailMaster.m; sourceTree = "<group>"; };
 		017A27801C04A46D00CB577D /* pro_lm.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = pro_lm.gif; sourceTree = "<group>"; };
 		017A27811C04A46D00CB577D /* pro_lm1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = pro_lm1.gif; sourceTree = "<group>"; };
 		017B72151C2CEE390077916B /* QRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
@@ -351,6 +354,8 @@
 				0119301B1C1AA8DB005D730A /* CustomerReceptionRecordViewController.xib */,
 				0119301E1C1ABF8D005D730A /* RecordImageCell.h */,
 				0119301F1C1ABF8D005D730A /* RecordImageCell.m */,
+				016E3D7D1C32618C00E23702 /* CustomerDetailMaster.h */,
+				016E3D7E1C32618C00E23702 /* CustomerDetailMaster.m */,
 			);
 			name = Customer;
 			sourceTree = "<group>";
@@ -783,6 +788,7 @@
 				018B09ED1BFEC206007B69A8 /* OSNUserInfo.m in Sources */,
 				01B754E21C133E73000FA9BE /* BuildingDetailViewController.m in Sources */,
 				01A35D421C0AE77200341F45 /* CaseImageList.m in Sources */,
+				016E3D7F1C32618C00E23702 /* CustomerDetailMaster.m in Sources */,
 				0105781C1C1313D300C8F7CC /* AutoLayoutTagView.m in Sources */,
 				0113406D1C1B32FE009C093E /* CALayer+XibConfiguration.m in Sources */,
 				01CA2CF11C05574C00CD0024 /* CaseTagSection.m in Sources */,
