@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MasterViewController.h"
 
 @interface HomeViewController : UIViewController
+
+@property(nonatomic, strong) MasterViewController *contentNav;
 
 @end

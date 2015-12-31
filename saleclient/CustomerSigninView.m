@@ -10,6 +10,8 @@
 #import "UIViewController+LewPopupViewController.h"
 #import "OSNCustomerManager.h"
 #import "OSNUserManager.h"
+#import "HomeViewController.h"
+#import "CustomerDetailMaster.h"
 
 @interface CustomerSigninView()
 
@@ -123,6 +125,17 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"保存成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
         [alert show];
     }
+}
+
+- (IBAction)openCustomerDetail:(id)sender {
+    [self.parentVC lew_dismissPopupView];
+    
+    HomeViewController *parent = (HomeViewController *)self.parentVC;
+    parent.contentNav.currentIndex = 3;
+    [parent.navigationController pushViewController:parent.contentNav animated:NO];
+    
+    CustomerDetailMaster *customerDetail = [[CustomerDetailMaster alloc] initWithCustomerId:self.receptionId];
+    [parent.navigationController pushViewController:customerDetail animated:NO];
 }
 
 

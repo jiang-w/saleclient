@@ -8,6 +8,7 @@
 
 #import "CustomerDetailMaster.h"
 #import "AutoLayoutTagView.h"
+#import "OSNNetworkService.h"
 #import <Masonry.h>
 
 @interface CustomerDetailMaster () <AutoLayoutTagViewDelegate, UIScrollViewDelegate>
@@ -16,8 +17,9 @@
 @property (nonatomic, strong) AutoLayoutTagView *tagView;
 @property (nonatomic, strong) UIScrollView      *scrollView;
 @property (nonatomic, strong) UILabel           *titlelabel;
-@property (nonatomic,strong ) UIButton          *backButton;
+@property (nonatomic, strong) UIButton          *backButton;
 @property (nonatomic, strong) NSArray           *tags;
+@property (nonatomic, strong) UIWebView         *contentView;
 
 @end
 
@@ -34,7 +36,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tags = @[@"基础资料", @"跟进记录", @"方案记录", @"收藏记录", @"订单记录", @"状态更改日志", @"回访记录", @"量尺记录", @"报价单", @"接待记录"];
+    self.tags = @[@{@"title": @"基础资料", @"dataUrl": @"ViewCustomerDetailInfo"},
+                  @{@"title": @"跟进记录", @"dataUrl": @"ListCustomerFollowUp"},
+                  @{@"title": @"方案记录", @"dataUrl": @"ListViewCustCase"},
+                  @{@"title": @"收藏记录", @"dataUrl": @"ListCustomerCollectGoodsRecord"},
+                  @{@"title": @"订单记录", @"dataUrl": @"ListCustomerOrder"},
+                  @{@"title": @"状态更改日志", @"dataUrl": @"ListViewCustomerStatusLog"},
+                  @{@"title": @"回访记录", @"dataUrl": @"ListViewCustVisitRecord"},
+                  @{@"title": @"量尺记录", @"dataUrl": @"ListViewCustAmountRecord"},
+                  @{@"title": @"报价单", @"dataUrl": @"ListMallShoppingCartQuote"},
+                  @{@"title": @"接待记录", @"dataUrl": @"ListViewCustomerReceptionRecord"}];
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self.view addSubview:self.tagView];
@@ -60,6 +71,12 @@
     [self.backButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.tagView.mas_top).offset(-14);
         make.left.equalTo(self.view).offset(56);
+    }];
+    
+    [self.scrollView addSubview:self.contentView];
+    [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.scrollView);
+        make.width.height.equalTo(self.scrollView);
     }];
 }
 
@@ -92,8 +109,8 @@
     if (_tags != tags) {
         _tags = tags;
         [self.tagView removeAllTags];
-        for (NSString *tag in _tags) {
-            [self.tagView addTagWithTitle:tag];
+        for (NSDictionary *tag in _tags) {
+            [self.tagView addTagWithTitle:tag[@"title"]];
         }
         
         if (_tags.count > 0) {
@@ -136,6 +153,13 @@
     return _backButton;
 }
 
+- (UIWebView *)contentView {
+    if (!_contentView) {
+        _contentView = [[UIWebView alloc] init];
+    }
+    return _contentView;
+}
+
 
 #pragma mark - AutoLayoutTagViewDelegate
 
@@ -148,6 +172,18 @@
         make.height.mas_equalTo(3);
         make.bottom.left.right.equalTo(button);
     }];
+    
+    // 加载web
+    NSString *url = [NSString stringWithFormat:@"%@%@?customerId=%@", CRMURL, [self.tags[index] objectForKey:@"dataUrl"], self.customerId];
+    OSNNetworkService *service = [[OSNNetworkService alloc] init];
+    NSHTTPURLResponse *response;
+    NSError *error;
+    NSData *data = [service syncPostRequest:url parameters:nil returnResponse:&response error:&error];
+    NSString *contentHtml = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+    NSString *htmlText = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ContentView" ofType:@"html"] encoding:NSUTF8StringEncoding error:&error];
+    htmlText = [htmlText stringByReplacingOccurrencesOfString:@"{{content}}" withString:contentHtml];
+    [self.contentView loadHTMLString:htmlText baseURL:nil];
+//    [self.contentView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
 }
 
 - (void)autoLayoutTagView:(AutoLayoutTagView *)view disSelectTagButton:(UIButton *)button andIndex:(NSUInteger)index {

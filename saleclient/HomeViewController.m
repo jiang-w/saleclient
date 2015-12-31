@@ -7,7 +7,6 @@
 //
 
 #import "HomeViewController.h"
-#import "MasterViewController.h"
 #import "OSNUserManager.h"
 #import "OSNCustomerManager.h"
 #import "AppDelegate.h"
@@ -21,7 +20,6 @@
 
 @interface HomeViewController ()
 
-@property(nonatomic, strong) MasterViewController *contentNav;
 @property (weak, nonatomic) IBOutlet UILabel *receptionText;
 @property (weak, nonatomic) IBOutlet UIButton *completeReceptionButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *focusImageView;

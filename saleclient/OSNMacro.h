@@ -8,6 +8,8 @@
 
 /* 基础服务地址 */
 #define BASEURL @"http://121.41.120.221:8080/rpcmanager/control/"
+/* CRM */
+#define CRMURL @"http://crm.osnyun.com/workplace/control/"
 
 /* 通知 */
 #define RESPONSE_STATUS_NOTIFICATION @"ResponseStatusNotification"

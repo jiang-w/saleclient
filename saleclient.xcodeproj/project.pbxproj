@@ -97,6 +97,7 @@
 		01D776BC1C16870D00F820A1 /* HouseTypeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D776BA1C16870D00F820A1 /* HouseTypeDetailViewController.m */; };
 		01D776BD1C16870D00F820A1 /* HouseTypeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01D776BB1C16870D00F820A1 /* HouseTypeDetailViewController.xib */; };
 		01D776C01C16B69C00F820A1 /* HouseTypeCaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01D776BF1C16B69C00F820A1 /* HouseTypeCaseCell.m */; };
+		01DD92261C34E21600BCB289 /* ContentView.html in Resources */ = {isa = PBXBuildFile; fileRef = 01DD92251C34E21600BCB289 /* ContentView.html */; };
 		01E063991C0B6E28009448EA /* ProductTagTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E063981C0B6E28009448EA /* ProductTagTable.m */; };
 		01E0639C1C0B6E65009448EA /* ProductTagSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E0639B1C0B6E65009448EA /* ProductTagSection.m */; };
 		01E0639F1C0B6E87009448EA /* ProductTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E0639E1C0B6E87009448EA /* ProductTagCell.m */; };
@@ -265,6 +266,7 @@
 		01D776BB1C16870D00F820A1 /* HouseTypeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HouseTypeDetailViewController.xib; sourceTree = "<group>"; };
 		01D776BE1C16B69C00F820A1 /* HouseTypeCaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HouseTypeCaseCell.h; sourceTree = "<group>"; };
 		01D776BF1C16B69C00F820A1 /* HouseTypeCaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HouseTypeCaseCell.m; sourceTree = "<group>"; };
+		01DD92251C34E21600BCB289 /* ContentView.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = ContentView.html; sourceTree = "<group>"; };
 		01E063971C0B6E28009448EA /* ProductTagTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductTagTable.h; sourceTree = "<group>"; };
 		01E063981C0B6E28009448EA /* ProductTagTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductTagTable.m; sourceTree = "<group>"; };
 		01E0639A1C0B6E65009448EA /* ProductTagSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductTagSection.h; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 				0119301F1C1ABF8D005D730A /* RecordImageCell.m */,
 				016E3D7D1C32618C00E23702 /* CustomerDetailMaster.h */,
 				016E3D7E1C32618C00E23702 /* CustomerDetailMaster.m */,
+				01DD92251C34E21600BCB289 /* ContentView.html */,
 			);
 			name = Customer;
 			sourceTree = "<group>";
@@ -702,6 +705,7 @@
 				0113755D1BFEFE4D00A9AB9E /* wc_user_ico.png in Resources */,
 				0113755C1BFEFE4D00A9AB9E /* wc_receive_ico.png in Resources */,
 				01B0746A1C28323300FDB501 /* setting_ico.png in Resources */,
+				01DD92261C34E21600BCB289 /* ContentView.html in Resources */,
 				015B2D261BFEBBFD00821100 /* SignInViewController.xib in Resources */,
 				01BECEFE1C0D943E007A2E10 /* CaseDetailViewController.xib in Resources */,
 				017A27821C04A46D00CB577D /* pro_lm.gif in Resources */,
