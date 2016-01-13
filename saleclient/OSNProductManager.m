@@ -135,7 +135,7 @@
         for (NSDictionary *item in dataArr) {
             OSNProductEntity *entity = [[OSNProductEntity alloc] init];
             entity.columnId = item[@"columnId"];
-            entity.productId = item[@"productId"];
+            entity.productId = item[@"ocnProductId"];
             entity.lastUpdatedStamp = item[@"lastUpdatedStamp"];
             entity.typeId = item[@"typeId"];
             entity.ocnProductId = item[@"ocnProductId"];
