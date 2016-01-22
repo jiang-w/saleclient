@@ -89,9 +89,10 @@
         if (self.genderSelect.selectedSegmentIndex == 1) {
             paramters[@"genderId"] = @"F";
         }
-        else {
+        else if (self.genderSelect.selectedSegmentIndex == 0) {
             paramters[@"genderId"] = @"M";
         }
+        
         paramters[@"qq"] = self.qqText.text;
         paramters[@"email"] = self.eMailText.text;
         paramters[@"provinceId"] = self.provinceText.text;
@@ -211,8 +212,11 @@
     if ([genderId isEqualToString:@"F"]) {
         self.genderSelect.selectedSegmentIndex = 1;
     }
-    else {
+    else if ([genderId isEqualToString:@"M"]) {
         self.genderSelect.selectedSegmentIndex = 0;
+    }
+    else {
+        self.genderSelect.selectedSegmentIndex = -1;
     }
     
     NSString *qq = dictionary[@"qq"];
