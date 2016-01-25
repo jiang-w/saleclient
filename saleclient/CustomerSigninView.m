@@ -12,25 +12,30 @@
 #import "OSNUserManager.h"
 #import "HomeViewController.h"
 #import "CustomerDetailMaster.h"
+#import "AddressPickerView.h"
+#import <Masonry.h>
 
 @interface CustomerSigninView()
 
-@property(nonatomic, weak) IBOutlet UIView *innerView;
+@property (weak, nonatomic) IBOutlet UIView *innerView;
 @property (weak, nonatomic) IBOutlet UITextField *name;
 @property (weak, nonatomic) IBOutlet UITextField *mobile;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *genderSelect;
 @property (weak, nonatomic) IBOutlet UITextField *qqText;
 @property (weak, nonatomic) IBOutlet UITextField *eMailText;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *customerTypeSelect;
-@property (weak, nonatomic) IBOutlet UITextField *provinceText;
-@property (weak, nonatomic) IBOutlet UITextField *cityText;
-@property (weak, nonatomic) IBOutlet UITextField *areaText;
 @property (weak, nonatomic) IBOutlet UITextField *addressText;
 @property (weak, nonatomic) IBOutlet UITextField *notesText;
 @property (weak, nonatomic) IBOutlet UITextField *recommendName;
 @property (weak, nonatomic) IBOutlet UITextField *recommendMobile;
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+@property (nonatomic, strong) AddressPickerView *addressPicker;
+
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@property (weak, nonatomic) IBOutlet UITextField *provinceText;
+@property (weak, nonatomic) IBOutlet UITextField *cityText;
+@property (weak, nonatomic) IBOutlet UITextField *areaText;
 
 @property (nonatomic, strong, readonly) NSString *receptionId;
 @property (nonatomic, copy) NSString *customerId;
@@ -49,6 +54,10 @@
         _innerView.layer.borderWidth = 2;
         _innerView.layer.borderColor = [UIColor orangeColor].CGColor;
         [self addSubview:_innerView];
+        
+        [_innerView addSubview:self.addressPicker];
+        UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAddressLabel:)];
+        [_addressLabel addGestureRecognizer:tapRecognizer];
         
         _mobile.delegate = self;
         _recommendName.delegate = self;
@@ -72,13 +81,27 @@
 
 #pragma mark - event
 
+- (void)tapAddressLabel:(UITapGestureRecognizer *)recognizer {
+    [self endEditing:YES];
+    if (self.addressPicker.hidden) {
+        self.addressPicker.hidden = NO;
+        [self.addressPicker mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.addressLabel.mas_bottom).offset(10);
+            make.left.equalTo(self.addressLabel);
+            make.right.equalTo(self.addressText);
+            make.height.mas_equalTo(200);
+        }];
+    }
+}
+
 - (IBAction)cancelButtonClick:(id)sender {
     [self.parentVC lew_dismissPopupView];
 }
 
 - (IBAction)saveButtonClick:(id)sender {
     if (IS_EMPTY_STRING(self.name.text) || IS_EMPTY_STRING(self.mobile.text)) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"姓名和手机号不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"姓名和手机号不能为空"
+                                                       delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
         [alert show];
     }
     else {
@@ -279,6 +302,14 @@
 - (NSString *)receptionId {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     return [defaults objectForKey:@"receptionId"];
+}
+
+- (AddressPickerView *)addressPicker {
+    if (!_addressPicker) {
+        _addressPicker = [[AddressPickerView alloc] init];
+        _addressPicker.hidden = YES;
+    }
+    return _addressPicker;
 }
 
 @end

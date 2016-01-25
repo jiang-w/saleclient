@@ -56,6 +56,10 @@
 		015B2D251BFEBBFD00821100 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 015B2D231BFEBBFD00821100 /* SignInViewController.m */; };
 		015B2D261BFEBBFD00821100 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 015B2D241BFEBBFD00821100 /* SignInViewController.xib */; };
 		016E3D7F1C32618C00E23702 /* CustomerDetailMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 016E3D7E1C32618C00E23702 /* CustomerDetailMaster.m */; };
+		0177F1E81C56605B00F5969C /* AddressPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0177F1E71C56605B00F5969C /* AddressPickerView.m */; settings = {ASSET_TAGS = (); }; };
+		0177F1EB1C56720700F5969C /* AddressPickerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0177F1EA1C56720700F5969C /* AddressPickerViewModel.m */; settings = {ASSET_TAGS = (); }; };
+		0177F1EE1C56728300F5969C /* RegionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0177F1ED1C56728300F5969C /* RegionModel.m */; settings = {ASSET_TAGS = (); }; };
+		0177F1F01C56749600F5969C /* AreaPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0177F1EF1C56749600F5969C /* AreaPlist.plist */; settings = {ASSET_TAGS = (); }; };
 		017A27821C04A46D00CB577D /* pro_lm.gif in Resources */ = {isa = PBXBuildFile; fileRef = 017A27801C04A46D00CB577D /* pro_lm.gif */; };
 		017A27831C04A46D00CB577D /* pro_lm1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 017A27811C04A46D00CB577D /* pro_lm1.gif */; };
 		017B72171C2CEE390077916B /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 017B72161C2CEE390077916B /* QRCodeViewController.m */; };
@@ -195,6 +199,13 @@
 		015B2D241BFEBBFD00821100 /* SignInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
 		016E3D7D1C32618C00E23702 /* CustomerDetailMaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerDetailMaster.h; sourceTree = "<group>"; };
 		016E3D7E1C32618C00E23702 /* CustomerDetailMaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerDetailMaster.m; sourceTree = "<group>"; };
+		0177F1E61C56605B00F5969C /* AddressPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressPickerView.h; sourceTree = "<group>"; };
+		0177F1E71C56605B00F5969C /* AddressPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressPickerView.m; sourceTree = "<group>"; };
+		0177F1E91C56720700F5969C /* AddressPickerViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressPickerViewModel.h; sourceTree = "<group>"; };
+		0177F1EA1C56720700F5969C /* AddressPickerViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressPickerViewModel.m; sourceTree = "<group>"; };
+		0177F1EC1C56728300F5969C /* RegionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegionModel.h; sourceTree = "<group>"; };
+		0177F1ED1C56728300F5969C /* RegionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegionModel.m; sourceTree = "<group>"; };
+		0177F1EF1C56749600F5969C /* AreaPlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AreaPlist.plist; sourceTree = "<group>"; };
 		017A27801C04A46D00CB577D /* pro_lm.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = pro_lm.gif; sourceTree = "<group>"; };
 		017A27811C04A46D00CB577D /* pro_lm1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = pro_lm1.gif; sourceTree = "<group>"; };
 		017B72151C2CEE390077916B /* QRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
@@ -342,6 +353,10 @@
 		0130A1781C158A7000D075FF /* Customer */ = {
 			isa = PBXGroup;
 			children = (
+				0177F1E61C56605B00F5969C /* AddressPickerView.h */,
+				0177F1E71C56605B00F5969C /* AddressPickerView.m */,
+				0177F1E91C56720700F5969C /* AddressPickerViewModel.h */,
+				0177F1EA1C56720700F5969C /* AddressPickerViewModel.m */,
 				014E80951C1813810065987F /* CustomerSigninView.h */,
 				014E80961C1813810065987F /* CustomerSigninView.m */,
 				014E80981C1813BE0065987F /* CustomerSigninView.xib */,
@@ -471,6 +486,7 @@
 			children = (
 				011375451BFEF27300A9AB9E /* Image */,
 				015B2D1B1BFEBA5400821100 /* Info.plist */,
+				0177F1EF1C56749600F5969C /* AreaPlist.plist */,
 				015B2D0D1BFEBA5400821100 /* AppDelegate.h */,
 				015B2D0E1BFEBA5400821100 /* AppDelegate.m */,
 				015B2D0B1BFEBA5400821100 /* main.m */,
@@ -514,6 +530,8 @@
 				01B754DD1C13362B000FA9BE /* OSNBuildingEntity.m */,
 				019BE7681C15C8DE00980556 /* OSNCustomerListItem.h */,
 				019BE7691C15C8DE00980556 /* OSNCustomerListItem.m */,
+				0177F1EC1C56728300F5969C /* RegionModel.h */,
+				0177F1ED1C56728300F5969C /* RegionModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -695,6 +713,7 @@
 				018F894E1C1852E000B03BBD /* exit.png in Resources */,
 				01B754E31C133E73000FA9BE /* BuildingDetailViewController.xib in Resources */,
 				011375531BFEFC5000A9AB9E /* shopping_ico.png in Resources */,
+				0177F1F01C56749600F5969C /* AreaPlist.plist in Resources */,
 				0119301D1C1AA8DB005D730A /* CustomerReceptionRecordViewController.xib in Resources */,
 				011375511BFEFC5000A9AB9E /* historyview_ico.png in Resources */,
 				0113754B1BFEF29500A9AB9E /* welcome_bg.jpg in Resources */,
@@ -802,6 +821,7 @@
 				014664EE1C07056700FD2E96 /* OSNTagPadView.m in Sources */,
 				01A35D461C0AF4BA00341F45 /* CaseImageCell.m in Sources */,
 				011930201C1ABF8D005D730A /* RecordImageCell.m in Sources */,
+				0177F1E81C56605B00F5969C /* AddressPickerView.m in Sources */,
 				015B2D0C1BFEBA5400821100 /* main.m in Sources */,
 				01B0746D1C28391C00FDB501 /* SettingView.m in Sources */,
 				01AF1F5F1C040D260033413F /* OSNTag.m in Sources */,
@@ -817,6 +837,7 @@
 				014060ED1C0FDABB0001804E /* OSNMainNavigation.m in Sources */,
 				01E3035F1C1EE80A001EF801 /* QRCodeScanViewController.m in Sources */,
 				01E23AC31C12DDC5006D6A9E /* OSNBuildingManager.m in Sources */,
+				0177F1EE1C56728300F5969C /* RegionModel.m in Sources */,
 				01D776C01C16B69C00F820A1 /* HouseTypeCaseCell.m in Sources */,
 				0130A17B1C158B6600D075FF /* CustomerListViewController.m in Sources */,
 				01B754DE1C13362B000FA9BE /* OSNBuildingEntity.m in Sources */,
@@ -828,6 +849,7 @@
 				0130A17E1C15905000D075FF /* CustomerListCell.m in Sources */,
 				014E808F1C1807C10065987F /* UIViewController+LewPopupViewController.m in Sources */,
 				01C7673E1C10733400875C1C /* OSNProductEntity.m in Sources */,
+				0177F1EB1C56720700F5969C /* AddressPickerViewModel.m in Sources */,
 				018B09E61BFEC0BB007B69A8 /* HomeViewController.m in Sources */,
 				01E23ABD1C12D4BC006D6A9E /* BuildingImageList.m in Sources */,
 				0192392D1C1473D800948D04 /* CaseDependCell.m in Sources */,
@@ -945,14 +967,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: 伟 Jiang (85V724K3K4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 伟 Jiang (85V724K3K4)";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/saleclient/saleclient-Prefix.pch";
 				INFOPLIST_FILE = saleclient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.com.oceano.padclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "804c34e8-012d-45af-a2c3-e7dad78888d7";
+				PROVISIONING_PROFILE = "9cfb83b0-9c92-4c63-801a-34c2242cd823";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -963,14 +985,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: 伟 Jiang (85V724K3K4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 伟 Jiang (85V724K3K4)";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/saleclient/saleclient-Prefix.pch";
 				INFOPLIST_FILE = saleclient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.com.oceano.padclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "804c34e8-012d-45af-a2c3-e7dad78888d7";
+				PROVISIONING_PROFILE = "9cfb83b0-9c92-4c63-801a-34c2242cd823";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
