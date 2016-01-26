@@ -41,7 +41,6 @@
     [self addSubview:self.cancelButton];
     [self.cancelButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self);
-        make.height.mas_equalTo(30);
         make.width.mas_equalTo(60);
         make.right.equalTo(self).offset(-10);
     }];
@@ -50,14 +49,6 @@
     self.layer.borderWidth = 1;
     self.layer.cornerRadius = 5;
     self.backgroundColor = [UIColor whiteColor];
-}
-
-- (void)show {
-    self.hidden = NO;
-}
-
-- (void)hidden {
-    self.hidden = YES;
 }
 
 #pragma mark - Delegate
@@ -90,8 +81,8 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     NSDictionary *selData = self.data[row];
-    if (self.block) {
-        self.block(self, selData);
+    if (self.didSelectBlock) {
+        self.didSelectBlock(self, selData);
     }
 }
 
@@ -99,7 +90,9 @@
 #pragma mark - Event
 
 - (void)clickCancelButton:(UIButton *)sender {
-    [self hidden];
+    if (self.dissmissBlock) {
+        self.dissmissBlock(self);
+    }
 }
 
 #pragma mark - Property
@@ -130,8 +123,8 @@
         NSString *code = self.data[i][@"code"];
         if ([code isEqualToString:ageCode]) {
             [self.pickerView selectRow:i inComponent:0 animated:NO];
-            if (self.block) {
-                self.block(self, self.data[i]);
+            if (self.didSelectBlock) {
+                self.didSelectBlock(self, self.data[i]);
             }
             return;
         }

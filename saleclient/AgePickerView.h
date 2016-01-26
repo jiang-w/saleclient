@@ -10,13 +10,13 @@
 
 @class AgePickerView;
 typedef void (^AgePickerViewdidSelectBlock)(AgePickerView *view, NSDictionary *userInfo);
+typedef void (^AgePickerViewDissmissBlock)(AgePickerView *view);
 
 @interface AgePickerView : UIView
 
-@property (nonatomic, copy) AgePickerViewdidSelectBlock block;
+@property (nonatomic, copy) AgePickerViewdidSelectBlock didSelectBlock;
+@property (nonatomic, copy) AgePickerViewDissmissBlock dissmissBlock;
 
 - (void)setAgeCode:(NSString *)ageCode;
-- (void)show;
-- (void)hidden;
 
 @end

@@ -34,7 +34,6 @@
 @property (nonatomic, strong) AddressPickerView *addressPicker;
 @property (weak, nonatomic) IBOutlet UILabel *ageLabel;
 @property (nonatomic, strong) AgePickerView *agePicker;
-@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
 @property (nonatomic, strong) NSString *ageCode;
 @property (nonatomic, strong) NSString *provinceCode;
@@ -52,33 +51,21 @@
     self = [super initWithFrame:frame];
     if (self) {
         _originalFrame = frame;
-        [[NSBundle mainBundle] loadNibNamed:[[self class] description] owner:self options:nil];
-        _innerView.frame = frame;
-        _innerView.layer.borderWidth = 2;
-        _innerView.layer.borderColor = [UIColor orangeColor].CGColor;
-        [self addSubview:_innerView];
-        
-        [_innerView addSubview:self.addressPicker];
-        UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAddressLabel:)];
-        [_addressLabel addGestureRecognizer:tapRecognizer];
-        
-        [_innerView addSubview:self.agePicker];
-        tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAgeLabel:)];
-        [_ageLabel addGestureRecognizer:tapRecognizer];
-        
+
         _mobile.delegate = self;
         _recommendName.delegate = self;
         _recommendMobile.delegate = self;
         _addressText.delegate = self;
         _notesText.delegate = self;
         
+        [self initViewAndLayout];
         [self initViewData];
     }
     return self;
 }
 
 + (instancetype)defaultView {
-    CustomerSigninView *view = [[CustomerSigninView alloc]initWithFrame:CGRectMake(0, 0, 680, 620)];
+    CustomerSigninView *view = [[CustomerSigninView alloc] initWithFrame:CGRectMake(0, 0, 680, 620)];
     return view;
 }
 
@@ -87,27 +74,12 @@
 
 - (void)tapAddressLabel:(UITapGestureRecognizer *)recognizer {
     [self endEditing:YES];
-    if (self.addressPicker.hidden) {
-        self.addressPicker.hidden = NO;
-        [self.addressPicker mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.addressLabel.mas_bottom).offset(6);
-            make.left.equalTo(self.addressLabel);
-            make.right.equalTo(self.addressLabel);
-            make.height.mas_equalTo(200);
-        }];
-    }
+    [self showAddressPicker];
 }
 
 - (void)tapAgeLabel:(UITapGestureRecognizer *)recognizer {
     [self endEditing:YES];
-    if (self.agePicker.hidden) {
-        self.agePicker.hidden = NO;
-        [self.agePicker mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.ageLabel.mas_bottom).offset(6);
-            make.left.right.equalTo(self.ageLabel);
-            make.height.mas_equalTo(140);
-        }];
-    }
+    [self showAgePicker];
 }
 
 - (IBAction)cancelButtonClick:(id)sender {
@@ -221,6 +193,79 @@
 
 
 #pragma mark - private method
+
+- (void)initViewAndLayout {
+    [[NSBundle mainBundle] loadNibNamed:[[self class] description] owner:self options:nil];
+    self.innerView.layer.borderWidth = 2;
+    self.innerView.layer.borderColor = [UIColor orangeColor].CGColor;
+    [self addSubview:self.innerView];
+    [self.innerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self);
+    }];
+    
+    [self.innerView addSubview:self.addressPicker];
+    [self.addressPicker mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.addressLabel.mas_bottom).offset(6);
+        make.left.equalTo(self.addressLabel);
+        make.right.equalTo(self.addressLabel);
+        make.height.mas_equalTo(30);
+    }];
+    [self hiddenAddressPicker];
+    
+    [self.innerView addSubview:self.agePicker];
+    [self.agePicker mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.ageLabel.mas_bottom).offset(6);
+        make.left.right.equalTo(self.ageLabel);
+        make.height.mas_equalTo(0);
+    }];
+    [self hiddenAgePicker];
+    
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAddressLabel:)];
+    [_addressLabel addGestureRecognizer:tapRecognizer];
+    
+    tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAgeLabel:)];
+    [_ageLabel addGestureRecognizer:tapRecognizer];
+}
+
+- (void)showAgePicker {
+    self.agePicker.hidden = NO;
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.agePicker mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(140);
+        }];
+        [self layoutIfNeeded];
+    }];
+}
+
+- (void)hiddenAgePicker {
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.agePicker mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(30);
+        }];
+        [self layoutIfNeeded];
+    }];
+    self.agePicker.hidden = YES;
+}
+
+- (void)showAddressPicker {
+    self.addressPicker.hidden = NO;
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.addressPicker mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(200);
+        }];
+        [self layoutIfNeeded];
+    }];
+}
+
+- (void)hiddenAddressPicker {
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.addressPicker mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(30);
+        }];
+        [self layoutIfNeeded];
+    }];
+    self.addressPicker.hidden = YES;
+}
 
 - (void)initViewData {
     OSNUserInfo *userInfo = [OSNUserManager sharedInstance].currentUser;
@@ -342,12 +387,13 @@
     if (!_addressPicker) {
         _addressPicker = [[AddressPickerView alloc] init];
         _addressPicker.hidden = YES;
-        __weak CustomerSigninView *safeSelf = self;
+        __weak CustomerSigninView *weakSelf = self;
         _addressPicker.block = ^(AddressPickerView *view, NSDictionary *userInfo) {
-            safeSelf.addressLabel.text = view.description;
-            safeSelf.provinceCode = userInfo[@"province"];
-            safeSelf.cityCode = userInfo[@"city"];
-            safeSelf.countyCode = userInfo[@"county"];
+            weakSelf.addressLabel.text = view.description;
+            weakSelf.provinceCode = userInfo[@"province"];
+            weakSelf.cityCode = userInfo[@"city"];
+            weakSelf.countyCode = userInfo[@"county"];
+            [weakSelf hiddenAddressPicker];
         };
     }
     return _addressPicker;
@@ -356,12 +402,14 @@
 - (AgePickerView *)agePicker {
     if (!_agePicker) {
         _agePicker = [[AgePickerView alloc] init];
-        _agePicker.hidden = YES;
-        __weak CustomerSigninView *safeSelf = self;
-        _agePicker.block = ^(AgePickerView *view, NSDictionary *userInfo) {
-            safeSelf.ageLabel.text = userInfo[@"description"];
-            safeSelf.ageLabel.textColor = [UIColor blackColor];
-            safeSelf.ageCode = userInfo[@"code"];
+        __weak CustomerSigninView *weakSelf = self;
+        _agePicker.didSelectBlock = ^(AgePickerView *view, NSDictionary *userInfo) {
+            weakSelf.ageLabel.text = userInfo[@"description"];
+            weakSelf.ageLabel.textColor = [UIColor blackColor];
+            weakSelf.ageCode = userInfo[@"code"];
+        };
+        _agePicker.dissmissBlock = ^(AgePickerView *view) {
+            [weakSelf hiddenAgePicker];
         };
     }
     return _agePicker;

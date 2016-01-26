@@ -52,16 +52,14 @@
     [self.buttonPanel addSubview:self.cancelButton];
     [self.cancelButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.buttonPanel).offset(20);
-        make.top.equalTo(self.buttonPanel).offset(5);
-        make.bottom.equalTo(self.buttonPanel).offset(-5);
+        make.centerY.equalTo(self.buttonPanel);
         make.width.mas_equalTo(60);
     }];
     
     [self.buttonPanel addSubview:self.saveButton];
     [self.saveButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.buttonPanel).offset(-20);
-        make.top.equalTo(self.buttonPanel).offset(5);
-        make.bottom.equalTo(self.buttonPanel).offset(-5);
+        make.centerY.equalTo(self.buttonPanel);
         make.width.mas_equalTo(60);
     }];
     
@@ -92,6 +90,7 @@
         _cancelButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [_cancelButton setTitle:@"取消" forState:UIControlStateNormal];
         [_cancelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        _cancelButton.titleLabel.font = [UIFont systemFontOfSize:13];
         [_cancelButton addTarget:self action:@selector(clickCancelButton:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _cancelButton;
@@ -100,8 +99,9 @@
 - (UIButton *)saveButton {
     if (!_saveButton) {
         _saveButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        [_saveButton setTitle:@"确定" forState:UIControlStateNormal];
+        [_saveButton setTitle:@"完成" forState:UIControlStateNormal];
         [_saveButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        _saveButton.titleLabel.font = [UIFont systemFontOfSize:13];
         [_saveButton addTarget:self action:@selector(clickSaveButton:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _saveButton;
@@ -132,7 +132,6 @@
 }
 
 - (void)clickSaveButton:(UIButton *)sender {
-    self.hidden = YES;
     if (self.block) {
         NSDictionary *userInfo = @{@"province": self.model.province.code,
                                    @"city": self.model.city.code,
