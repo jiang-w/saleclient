@@ -78,7 +78,7 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
                     [self.image sd_setImageWithURL:[NSURL URLWithString:productImageUrl]];
                     self.name.text = [NSString stringWithFormat:@"【%@】", dic[@"productEntity"][@"ocnProductName"]];
                     self.code.text = dic[@"productEntity"][@"ocnProductCode"];
-                    self.size.text = dic[@"productEntity"][@"ocnProductSpec"];
+                    self.size.text = dic[@"productEntity"][@"ocnSpecificationID"];
                     self.price.text = [NSString stringWithFormat:@"¥ %@", dic[@"productEntity"][@"ocnProductPrice"]];
                     self.special.text = dic[@"productEntity"][@"productCharacteristic"];
                     self.scene.text = dic[@"productEntity"][@"applyScope"];

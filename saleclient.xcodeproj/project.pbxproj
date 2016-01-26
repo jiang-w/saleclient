@@ -31,6 +31,7 @@
 		0119301D1C1AA8DB005D730A /* CustomerReceptionRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0119301B1C1AA8DB005D730A /* CustomerReceptionRecordViewController.xib */; };
 		011930201C1ABF8D005D730A /* RecordImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0119301F1C1ABF8D005D730A /* RecordImageCell.m */; };
 		0129AB8D1C0363D800A445FB /* OSNProductManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0129AB8C1C0363D800A445FB /* OSNProductManager.m */; };
+		01303C5A1C5737730089055E /* AgePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01303C591C5737730089055E /* AgePickerView.m */; };
 		0130A1771C15894800D075FF /* OSNCustomerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0130A1761C15894800D075FF /* OSNCustomerManager.m */; };
 		0130A17B1C158B6600D075FF /* CustomerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0130A17A1C158B6600D075FF /* CustomerListViewController.m */; };
 		0130A17E1C15905000D075FF /* CustomerListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0130A17D1C15905000D075FF /* CustomerListCell.m */; };
@@ -151,6 +152,8 @@
 		0119301F1C1ABF8D005D730A /* RecordImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordImageCell.m; sourceTree = "<group>"; };
 		0129AB8B1C0363D800A445FB /* OSNProductManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNProductManager.h; sourceTree = "<group>"; };
 		0129AB8C1C0363D800A445FB /* OSNProductManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNProductManager.m; sourceTree = "<group>"; };
+		01303C581C5737730089055E /* AgePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgePickerView.h; sourceTree = "<group>"; };
+		01303C591C5737730089055E /* AgePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgePickerView.m; sourceTree = "<group>"; };
 		0130A1751C15894800D075FF /* OSNCustomerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNCustomerManager.h; sourceTree = "<group>"; };
 		0130A1761C15894800D075FF /* OSNCustomerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNCustomerManager.m; sourceTree = "<group>"; };
 		0130A1791C158B6600D075FF /* CustomerListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerListViewController.h; sourceTree = "<group>"; };
@@ -353,6 +356,8 @@
 		0130A1781C158A7000D075FF /* Customer */ = {
 			isa = PBXGroup;
 			children = (
+				01303C581C5737730089055E /* AgePickerView.h */,
+				01303C591C5737730089055E /* AgePickerView.m */,
 				0177F1E61C56605B00F5969C /* AddressPickerView.h */,
 				0177F1E71C56605B00F5969C /* AddressPickerView.m */,
 				0177F1E91C56720700F5969C /* AddressPickerViewModel.h */,
@@ -838,6 +843,7 @@
 				01E3035F1C1EE80A001EF801 /* QRCodeScanViewController.m in Sources */,
 				01E23AC31C12DDC5006D6A9E /* OSNBuildingManager.m in Sources */,
 				0177F1EE1C56728300F5969C /* RegionModel.m in Sources */,
+				01303C5A1C5737730089055E /* AgePickerView.m in Sources */,
 				01D776C01C16B69C00F820A1 /* HouseTypeCaseCell.m in Sources */,
 				0130A17B1C158B6600D075FF /* CustomerListViewController.m in Sources */,
 				01B754DE1C13362B000FA9BE /* OSNBuildingEntity.m in Sources */,

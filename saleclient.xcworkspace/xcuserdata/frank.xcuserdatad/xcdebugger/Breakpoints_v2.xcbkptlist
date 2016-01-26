@@ -120,11 +120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "saleclient/CustomerSigninView.m"
-            timestampString = "475475098.235856"
+            timestampString = "475484340.136612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
             landmarkName = "-initViewData"
             landmarkType = "5">
          </BreakpointContent>
