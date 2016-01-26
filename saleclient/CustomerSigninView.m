@@ -32,10 +32,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (nonatomic, strong) AddressPickerView *addressPicker;
 
+@property (nonatomic, strong) NSString *provinceCode;
+@property (nonatomic, strong) NSString *cityCode;
+@property (nonatomic, strong) NSString *countyCode;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
-@property (weak, nonatomic) IBOutlet UITextField *provinceText;
-@property (weak, nonatomic) IBOutlet UITextField *cityText;
-@property (weak, nonatomic) IBOutlet UITextField *areaText;
 
 @property (nonatomic, strong, readonly) NSString *receptionId;
 @property (nonatomic, copy) NSString *customerId;
@@ -62,9 +62,6 @@
         _mobile.delegate = self;
         _recommendName.delegate = self;
         _recommendMobile.delegate = self;
-        _provinceText.delegate = self;
-        _cityText.delegate = self;
-        _areaText.delegate = self;
         _addressText.delegate = self;
         _notesText.delegate = self;
         
@@ -118,9 +115,9 @@
         
         paramters[@"qq"] = self.qqText.text;
         paramters[@"email"] = self.eMailText.text;
-        paramters[@"provinceId"] = self.provinceText.text;
-        paramters[@"cityId"] = self.cityText.text;
-        paramters[@"areaId"] = self.areaText.text;
+        paramters[@"provinceId"] = self.provinceCode;
+        paramters[@"cityId"] = self.cityCode;
+        paramters[@"areaId"] = self.countyCode;
         paramters[@"address"] = self.addressText.text;
         paramters[@"notes"] = self.notesText.text;
         
@@ -207,9 +204,12 @@
 
 - (void)initViewData {
     OSNUserInfo *userInfo = [OSNUserManager sharedInstance].currentUser;
-    _provinceText.text = userInfo.provinceName;
-    _cityText.text = userInfo.cityName;
-    _areaText.text = userInfo.areaName;
+    self.provinceCode = userInfo.provinceId;
+    self.cityCode = userInfo.cityId;
+    self.countyCode = userInfo.areaId;
+    [self.addressPicker setProvinceCode:self.provinceCode cityCode:self.cityCode andCountyCode:self.countyCode];
+    self.addressLabel.text = self.addressPicker.description;
+    self.addressLabel.textColor = [UIColor blackColor];
     
     OSNCustomerManager *manage = [[OSNCustomerManager alloc] init];
     NSDictionary *dataDic = [manage getCustomerWithId:self.receptionId];
@@ -252,20 +252,21 @@
         self.eMailText.text = email;
     }
     
-    NSString *province = dictionary[@"provinceId"];
-    if (!IS_EMPTY_STRING(province)) {
-        self.provinceText.text = province;
+    NSString *provinceId = dictionary[@"provinceId"];
+    if (!IS_EMPTY_STRING(provinceId)) {
+        self.provinceCode = provinceId;
     }
-    
-    NSString *city = dictionary[@"cityId"];
-    if (!IS_EMPTY_STRING(city)) {
-        self.cityText.text = city;
+    NSString *cityId = dictionary[@"cityId"];
+    if (!IS_EMPTY_STRING(cityId)) {
+        self.cityCode = cityId;
     }
-    
-    NSString *area = dictionary[@"areaId"];
-    if (!IS_EMPTY_STRING(area)) {
-        self.areaText.text = area;
+    NSString *areaId = dictionary[@"areaId"];
+    if (!IS_EMPTY_STRING(areaId)) {
+        self.countyCode = areaId;
     }
+    [self.addressPicker setProvinceCode:self.provinceCode cityCode:self.cityCode andCountyCode:self.countyCode];
+    self.addressLabel.text = self.addressPicker.description;
+    self.addressLabel.textColor = [UIColor blackColor];
     
     NSString *address = dictionary[@"address"];
     if (!IS_EMPTY_STRING(address)) {
@@ -294,6 +295,14 @@
     else {
         self.customerTypeSelect.selectedSegmentIndex = 0;
     }
+    
+    // 家装客户姓名红色显示
+    if (self.customerId && [typeId isEqualToString:@"ct1001"]) {
+        self.name.textColor = [UIColor redColor];
+    }
+    else {
+        self.name.textColor = [UIColor blackColor];
+    }
 }
 
 
@@ -308,6 +317,13 @@
     if (!_addressPicker) {
         _addressPicker = [[AddressPickerView alloc] init];
         _addressPicker.hidden = YES;
+        __weak CustomerSigninView *safeSelf = self;
+        _addressPicker.block = ^(AddressPickerView *view, NSDictionary *userInfo) {
+            safeSelf.addressLabel.text = view.description;
+            safeSelf.provinceCode = userInfo[@"province"];
+            safeSelf.cityCode = userInfo[@"city"];
+            safeSelf.countyCode = userInfo[@"county"];
+        };
     }
     return _addressPicker;
 }

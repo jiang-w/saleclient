@@ -23,4 +23,6 @@
 @property (nonatomic, strong, readonly) RegionModel *city;
 @property (nonatomic, strong, readonly) RegionModel *county;
 
+- (instancetype)initWithProvinceCode:(NSString *)provinceCode cityCode:(NSString *)cityCode andCountyCode:(NSString *)countyCode;
+
 @end

@@ -56,10 +56,10 @@
 		015B2D251BFEBBFD00821100 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 015B2D231BFEBBFD00821100 /* SignInViewController.m */; };
 		015B2D261BFEBBFD00821100 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 015B2D241BFEBBFD00821100 /* SignInViewController.xib */; };
 		016E3D7F1C32618C00E23702 /* CustomerDetailMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 016E3D7E1C32618C00E23702 /* CustomerDetailMaster.m */; };
-		0177F1E81C56605B00F5969C /* AddressPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0177F1E71C56605B00F5969C /* AddressPickerView.m */; settings = {ASSET_TAGS = (); }; };
-		0177F1EB1C56720700F5969C /* AddressPickerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0177F1EA1C56720700F5969C /* AddressPickerViewModel.m */; settings = {ASSET_TAGS = (); }; };
-		0177F1EE1C56728300F5969C /* RegionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0177F1ED1C56728300F5969C /* RegionModel.m */; settings = {ASSET_TAGS = (); }; };
-		0177F1F01C56749600F5969C /* AreaPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0177F1EF1C56749600F5969C /* AreaPlist.plist */; settings = {ASSET_TAGS = (); }; };
+		0177F1E81C56605B00F5969C /* AddressPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0177F1E71C56605B00F5969C /* AddressPickerView.m */; };
+		0177F1EB1C56720700F5969C /* AddressPickerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0177F1EA1C56720700F5969C /* AddressPickerViewModel.m */; };
+		0177F1EE1C56728300F5969C /* RegionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0177F1ED1C56728300F5969C /* RegionModel.m */; };
+		0177F1F01C56749600F5969C /* AreaPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0177F1EF1C56749600F5969C /* AreaPlist.plist */; };
 		017A27821C04A46D00CB577D /* pro_lm.gif in Resources */ = {isa = PBXBuildFile; fileRef = 017A27801C04A46D00CB577D /* pro_lm.gif */; };
 		017A27831C04A46D00CB577D /* pro_lm1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 017A27811C04A46D00CB577D /* pro_lm1.gif */; };
 		017B72171C2CEE390077916B /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 017B72161C2CEE390077916B /* QRCodeViewController.m */; };
@@ -974,7 +974,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.com.oceano.padclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9cfb83b0-9c92-4c63-801a-34c2242cd823";
+				PROVISIONING_PROFILE = "804c34e8-012d-45af-a2c3-e7dad78888d7";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -992,7 +992,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.com.oceano.padclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9cfb83b0-9c92-4c63-801a-34c2242cd823";
+				PROVISIONING_PROFILE = "804c34e8-012d-45af-a2c3-e7dad78888d7";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;

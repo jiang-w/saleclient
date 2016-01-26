@@ -34,6 +34,14 @@
     return self;
 }
 
+- (void)setProvinceCode:(NSString *)provinceCode cityCode:(NSString *)cityCode andCountyCode:(NSString *)countyCode {
+    self.model = [[AddressPickerViewModel alloc] initWithProvinceCode:provinceCode cityCode:cityCode andCountyCode:countyCode];
+    [self.pickerView reloadAllComponents];
+    [self.pickerView selectRow:self.model.selectedProvinceIndex inComponent:0 animated:NO];
+    [self.pickerView selectRow:self.model.selectedCityIndex inComponent:1 animated:NO];
+    [self.pickerView selectRow:self.model.selectedCountyIndex inComponent:2 animated:NO];
+}
+
 - (void)initAndLayoutSubview {
     [self addSubview:self.buttonPanel];
     [self.buttonPanel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -109,6 +117,13 @@
     return _pickerView;
 }
 
+- (NSString *)description {
+    NSString *provinceName = self.model.province != nil? self.model.province.name : @"";
+    NSString *cityName = self.model.city != nil? self.model.city.name : @"";
+    NSString *countyName = self.model.county != nil? self.model.county.name : @"";
+    return [NSString stringWithFormat:@"%@ %@ %@", provinceName, cityName, countyName];
+}
+
 
 #pragma mark - Event
 
@@ -118,6 +133,12 @@
 
 - (void)clickSaveButton:(UIButton *)sender {
     self.hidden = YES;
+    if (self.block) {
+        NSDictionary *userInfo = @{@"province": self.model.province.code,
+                                   @"city": self.model.city.code,
+                                   @"county": self.model.county.code};
+        self.block(self, userInfo);
+    }
 }
 
 
@@ -198,11 +219,6 @@
         default:
             break;
     }
-    
-    NSString *provinceName = self.model.province != nil? self.model.province.name : @"";
-    NSString *cityName = self.model.city != nil? self.model.city.name : @"";
-    NSString *countyName = self.model.county != nil? self.model.county.name : @"";
-    NSLog(@"%@,%@,%@", provinceName, cityName, countyName);
 }
 
 @end
