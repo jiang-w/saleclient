@@ -15,6 +15,7 @@
 #import "AddressPickerView.h"
 #import "AgePickerView.h"
 #import <Masonry.h>
+#import "UIResponder+FirstResponder.h"
 
 @interface CustomerSigninView()
 
@@ -51,13 +52,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         _originalFrame = frame;
-
-        _mobile.delegate = self;
-        _recommendName.delegate = self;
-        _recommendMobile.delegate = self;
-        _addressText.delegate = self;
-        _notesText.delegate = self;
-        
         [self initViewAndLayout];
         [self initViewData];
     }
@@ -158,20 +152,6 @@
     [self.parentVC lew_dismissPopupView];
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    CGRect frame = textField.frame;
-    CGFloat yOffset = self.innerView.frame.size.height - frame.origin.y - frame.size.height - 340;
-    if (yOffset < 0) {
-        [UIView beginAnimations:@"ResizeForKeyBoard" context:nil];
-        [UIView setAnimationDuration:0.3];
-        float width = self.innerView.frame.size.width;
-        float height = self.innerView.frame.size.height;
-        CGRect rect = CGRectMake(0, yOffset, width, height);
-        self.innerView.frame = rect;
-        [UIView commitAnimations];
-    }
-}
-
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     
     if (textField == self.mobile && !IS_EMPTY_STRING(self.mobile.text)) {
@@ -184,11 +164,55 @@
             }
         }
     }
+}
+
+
+#pragma mark - notification
+
+- (void)actionKeyboardShow:(NSNotification *)notification {
+        CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    id responder = [UIResponder currentFirstResponder];
+    if (responder && [responder isKindOfClass:[UITextField class]]) {
+        UITextField *txtField = (UITextField *)responder;
+        CGRect txtFrame = txtField.frame;
+        
+        CGFloat yOffset = self.innerView.frame.size.height - txtFrame.origin.y - txtFrame.size.height - keyboardSize.height;
+        if (yOffset < 0) {
+            [UIView beginAnimations:@"ResizeForKeyBoard" context:nil];
+            [UIView setAnimationDuration:0.3];
+            float width = self.innerView.frame.size.width;
+            float height = self.innerView.frame.size.height;
+            CGRect rect = CGRectMake(0, yOffset, width, height);
+            self.innerView.frame = rect;
+            [UIView commitAnimations];
+        }
+    }
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidChangeFrameNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(actionKeyboardShow:)
+                                                 name:UIKeyboardDidChangeFrameNotification
+                                               object:nil];
+}
+
+- (void)actionKeyboardHide:(NSNotification *)notification {
+    id responder = [UIResponder currentFirstResponder];
+    if (responder && [responder isKindOfClass:[UITextField class]]) {
+        UITextField *txtField = (UITextField *)responder;
+        [txtField resignFirstResponder];
+    }
     
     [UIView beginAnimations:@"ResizeForKeyBoard" context:nil];
     [UIView setAnimationDuration:0.3];
     self.innerView.frame = self.originalFrame;
     [UIView commitAnimations];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidChangeFrameNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(actionKeyboardShow:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
 }
 
 
@@ -225,6 +249,18 @@
     
     tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAgeLabel:)];
     [_ageLabel addGestureRecognizer:tapRecognizer];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(actionKeyboardShow:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(actionKeyboardHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+    
+    self.mobile.delegate = self;
 }
 
 - (void)showAgePicker {
