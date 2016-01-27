@@ -16,6 +16,7 @@
 #import "AgePickerView.h"
 #import <Masonry.h>
 #import "UIResponder+FirstResponder.h"
+#import "OSNWebViewController.h"
 
 @interface CustomerSigninView()
 
@@ -143,6 +144,16 @@
     
     CustomerDetailMaster *customerDetail = [[CustomerDetailMaster alloc] initWithCustomerId:self.receptionId];
     [parent.navigationController pushViewController:customerDetail animated:NO];
+}
+
+- (IBAction)openWebView:(id)sender {
+    [self.parentVC lew_dismissPopupView];
+    
+    HomeViewController *parent = (HomeViewController *)self.parentVC;
+    OSNWebViewController *webView = [[OSNWebViewController alloc] init];
+//    webView.url = @"http://bi.osnyun.com:11113/OSNBigData/console/userPortrait/userState.jsp?customerId=%271041316205%27";
+    webView.url = [NSString stringWithFormat:@"http://bi.osnyun.com:11113/OSNBigData/console/userPortrait/userState.jsp?customerId=%@", self.customerId];
+    [parent.navigationController pushViewController:webView animated:NO];
 }
 
 

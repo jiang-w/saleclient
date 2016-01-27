@@ -82,6 +82,7 @@
 		01A35D421C0AE77200341F45 /* CaseImageList.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A35D411C0AE77200341F45 /* CaseImageList.m */; };
 		01A35D461C0AF4BA00341F45 /* CaseImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A35D451C0AF4BA00341F45 /* CaseImageCell.m */; };
 		01A35D481C0B3C3200341F45 /* link.png in Resources */ = {isa = PBXBuildFile; fileRef = 01A35D471C0B3C3200341F45 /* link.png */; };
+		01A6D0781C58670100807F4C /* OSNWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A6D0771C58670100807F4C /* OSNWebViewController.m */; };
 		01AF1F5C1C0402B00033413F /* OSNCaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F5B1C0402B00033413F /* OSNCaseManager.m */; };
 		01AF1F5F1C040D260033413F /* OSNTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F5E1C040D260033413F /* OSNTag.m */; };
 		01AF1F621C040E1B0033413F /* OSNTagGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F611C040E1B0033413F /* OSNTagGroup.m */; };
@@ -245,6 +246,8 @@
 		01A35D441C0AF4BA00341F45 /* CaseImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseImageCell.h; sourceTree = "<group>"; };
 		01A35D451C0AF4BA00341F45 /* CaseImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseImageCell.m; sourceTree = "<group>"; };
 		01A35D471C0B3C3200341F45 /* link.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = link.png; sourceTree = "<group>"; };
+		01A6D0761C58670100807F4C /* OSNWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNWebViewController.h; sourceTree = "<group>"; };
+		01A6D0771C58670100807F4C /* OSNWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNWebViewController.m; sourceTree = "<group>"; };
 		01AF1F5A1C0402B00033413F /* OSNCaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNCaseManager.h; sourceTree = "<group>"; };
 		01AF1F5B1C0402B00033413F /* OSNCaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNCaseManager.m; sourceTree = "<group>"; };
 		01AF1F5D1C040D260033413F /* OSNTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNTag.h; sourceTree = "<group>"; };
@@ -450,6 +453,8 @@
 				011375611BFF0DA400A9AB9E /* MasterViewController.h */,
 				011375621BFF0DA400A9AB9E /* MasterViewController.m */,
 				011375631BFF0DA400A9AB9E /* MasterViewController.xib */,
+				01A6D0761C58670100807F4C /* OSNWebViewController.h */,
+				01A6D0771C58670100807F4C /* OSNWebViewController.m */,
 			);
 			name = Navigation;
 			sourceTree = "<group>";
@@ -815,6 +820,7 @@
 				014060F31C0FEFC80001804E /* ProductImageCell.m in Sources */,
 				018B09ED1BFEC206007B69A8 /* OSNUserInfo.m in Sources */,
 				01B754E21C133E73000FA9BE /* BuildingDetailViewController.m in Sources */,
+				01A6D0781C58670100807F4C /* OSNWebViewController.m in Sources */,
 				01A35D421C0AE77200341F45 /* CaseImageList.m in Sources */,
 				016E3D7F1C32618C00E23702 /* CustomerDetailMaster.m in Sources */,
 				0105781C1C1313D300C8F7CC /* AutoLayoutTagView.m in Sources */,
