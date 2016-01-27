@@ -20,6 +20,7 @@
 1、登录请求：ipadUserLogin
 参数说明：userLoginId【登录账号】
 				password【密码】
+				isUseEncryption【是否加密】【true|false，默认为true】
 返回值：
 	格式：{"returnValue":{"data":[{"userLoginId":"shejs01","personName":"设计师1"}],"status":"10004","message":"用户登录成功","accessToken":"1iePpROtx3g8xEGav5jlZ2"}}		
 	说明：返回值中其他属性不用管，这是系统自带的，每个请求里面都有的。
@@ -722,3 +723,154 @@
     返回值：code: 0 失败 1 成功
            msg: err失败 success成功
            ocnProductId:产品ID
+
+45、客户管理-创建收货地址
+测试链接：http://crm.osnyun.com/rpcmanager/control/ipadCrmCreateCustomerAddress?userLoginId=shejs01&accessToken=3NKdCxDmZ5Lb4_PneyB5rO
+				userLoginId【登录账号】【必输参数】
+				accessToken【令牌】	【必输参数】
+				customerId【客户ID】【必输参数】
+				name【收货人姓名】【必输参数】
+				contactPhone【联系电话】【必输参数】
+				provinceId【省份ID】【必输参数】
+				provinceName【省份名称】【必输参数】
+				cityId【城市ID】【必输参数】
+				cityName【城市名称】【必输参数】
+				areaId【区/县ID】【必输参数】
+				areaName【区/县名称】【必输参数】
+				state【是否默认 0 否 1 是】【必输参数】
+				buildingId【楼盘ID】【必输参数】
+				buildingName【楼盘名称】【必输参数】
+				address【详细地址】【必输参数】
+				buildingNo【栋/座号】
+				room【室号】
+说明：
+返回值：略
+			( "10001", "用户不存在") ;
+			( "10002", "用户密码错误") ;
+			( "10003", "用户没有权限") ;
+			( "10009", "用户令牌值错误") ;
+			( "10008", "用户会话过期") ;
+			( "10011", "用户操作权限正常") ;
+			( "20002", "输入参数错误") ;
+			( "30004", "保存数据成功");
+            ( "30005", "保存数据失败");
+
+46、客户管理-更新收货地址
+测试链接：http://crm.osnyun.com/rpcmanager/control/ipadCrmUpdateCustomerAddress?userLoginId=shejs01&accessToken=3NKdCxDmZ5Lb4_PneyB5rO
+				userLoginId【登录账号】【必输参数】
+				accessToken【令牌】	【必输参数】
+				addressId【地址ID】【必输参数】
+				customerId【客户ID】【必输参数】
+				name【收货人姓名】【必输参数】
+				contactPhone【联系电话】【必输参数】
+				provinceId【省份ID】【必输参数】
+				provinceName【省份名称】【必输参数】
+				cityId【城市ID】【必输参数】
+				cityName【城市名称】【必输参数】
+				areaId【区/县ID】【必输参数】
+				areaName【区/县名称】【必输参数】
+				state【是否默认 0 否 1 是】【必输参数】
+				buildingId【楼盘ID】【必输参数】
+				buildingName【楼盘名称】【必输参数】
+				address【详细地址】【必输参数】
+				buildingNo【栋/座号】
+				room【室号】
+说明：
+返回值：略
+			( "10001", "用户不存在") ;
+			( "10002", "用户密码错误") ;
+			( "10003", "用户没有权限") ;
+			( "10009", "用户令牌值错误") ;
+			( "10008", "用户会话过期") ;
+			( "10011", "用户操作权限正常") ;
+			( "20002", "输入参数错误") ;
+			( "30004", "保存数据成功");
+            ( "30005", "保存数据失败");
+
+47、客户管理-查询详细地址
+测试链接：http://crm.osnyun.com/rpcmanager/control/ipadCrmGetCustomerAddress?userLoginId=shejs01&accessToken=3NKdCxDmZ5Lb4_PneyB5rO&addressId=10001
+				userLoginId【登录账号】【必输参数】
+				accessToken【令牌】	【必输参数】
+				addressId【地址ID】【必输参数】
+
+说明：
+返回值：略
+			( "10001", "用户不存在") ;
+			( "10002", "用户密码错误") ;
+			( "10003", "用户没有权限") ;
+			( "10009", "用户令牌值错误") ;
+			( "10008", "用户会话过期") ;
+			( "10011", "用户操作权限正常") ;
+			( "20002", "输入参数错误") ;
+			( "30002", "查询实体数据成功") ;
+            ( "30003", "查询实体数据失败") ;
+
+48、客户管理-查询地址列表
+测试链接：http://crm.osnyun.com/rpcmanager/control/ipadCrmListCustomerAddress?userLoginId=shejs01&accessToken=3NKdCxDmZ5Lb4_PneyB5rO&customerId=jms116941
+				userLoginId【登录账号】【必输参数】
+				accessToken【令牌】	【必输参数】
+				customerId【客户ID】【必输参数】
+说明：
+返回值：略
+			( "10001", "用户不存在") ;
+			( "10002", "用户密码错误") ;
+			( "10003", "用户没有权限") ;
+			( "10009", "用户令牌值错误") ;
+			( "10008", "用户会话过期") ;
+			( "10011", "用户操作权限正常") ;
+			( "20002", "输入参数错误") ;
+			( "30000", "查询实体列表数据成功") ;
+            ( "30001", "查询实体列表数据失败") ;
+
+49、客户管理-删除地址
+测试链接：http://crm.osnyun.com/rpcmanager/control/ipadCrmDeleteCustomerAddress?userLoginId=shejs01&accessToken=3NKdCxDmZ5Lb4_PneyB5rO&addressId=jms116941
+				userLoginId【登录账号】【必输参数】
+				accessToken【令牌】	【必输参数】
+				addressId【地址ID】【必输参数】
+说明：
+返回值：略
+			( "10001", "用户不存在") ;
+			( "10002", "用户密码错误") ;
+			( "10003", "用户没有权限") ;
+			( "10009", "用户令牌值错误") ;
+			( "10008", "用户会话过期") ;
+			( "10011", "用户操作权限正常") ;
+			( "20002", "输入参数错误") ;
+			( "30008", "删除数据成功");
+            ( "30009", "删除数据失败");
+			( "31000", "默认地址不能删除");【注意】
+
+50、客户管理-设置默认地址（快捷方式）
+测试链接：http://crm.osnyun.com/rpcmanager/control/ipadCrmSetDefaultAddress?userLoginId=shejs01&accessToken=3NKdCxDmZ5Lb4_PneyB5rO&addressId=jms116941
+				userLoginId【登录账号】【必输参数】
+				accessToken【令牌】	【必输参数】
+				addressId【地址ID】【必输参数】
+说明：
+返回值：略
+			( "10001", "用户不存在") ;
+			( "10002", "用户密码错误") ;
+			( "10003", "用户没有权限") ;
+			( "10009", "用户令牌值错误") ;
+			( "10008", "用户会话过期") ;
+			( "10011", "用户操作权限正常") ;
+			( "20002", "输入参数错误") ;
+			( "30004", "保存数据成功")
+			( "30005", "保存数据失败")
+
+51、客户管理-设计师查询
+测试链接：http://crm.osnyun.com/rpcmanager/control/ipadCrmLookUpDesignerList?userLoginId=shejs01&accessToken=3NKdCxDmZ5Lb4_PneyB5rO&groupName=&personName=
+                userLoginId【登录账号】【必输参数】
+				accessToken【令牌】	【必输参数】
+				groupName【公司名称，模糊查询，可以为空】
+				personName【设计师名称，模糊查询，可以为空】
+说明：
+返回值：略
+			( "10001", "用户不存在") ;
+			( "10002", "用户密码错误") ;
+			( "10003", "用户没有权限") ;
+			( "10009", "用户令牌值错误") ;
+			( "10008", "用户会话过期") ;
+			( "10011", "用户操作权限正常") ;
+			( "20002", "输入参数错误") ;
+			( "30000", "查询列表数据成功")
+			( "30001", "查询列表数据失败")

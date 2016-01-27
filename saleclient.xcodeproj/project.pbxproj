@@ -83,6 +83,9 @@
 		01A35D461C0AF4BA00341F45 /* CaseImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A35D451C0AF4BA00341F45 /* CaseImageCell.m */; };
 		01A35D481C0B3C3200341F45 /* link.png in Resources */ = {isa = PBXBuildFile; fileRef = 01A35D471C0B3C3200341F45 /* link.png */; };
 		01A6D0781C58670100807F4C /* OSNWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A6D0771C58670100807F4C /* OSNWebViewController.m */; };
+		01A6D07B1C58A4F200807F4C /* BuildingPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A6D07A1C58A4F200807F4C /* BuildingPickerView.m */; };
+		01A6D0891C58CD9C00807F4C /* CustomerAddressManagerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A6D0871C58CD9C00807F4C /* CustomerAddressManagerVC.m */; };
+		01A6D08A1C58CD9C00807F4C /* CustomerAddressManagerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01A6D0881C58CD9C00807F4C /* CustomerAddressManagerVC.xib */; };
 		01AF1F5C1C0402B00033413F /* OSNCaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F5B1C0402B00033413F /* OSNCaseManager.m */; };
 		01AF1F5F1C040D260033413F /* OSNTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F5E1C040D260033413F /* OSNTag.m */; };
 		01AF1F621C040E1B0033413F /* OSNTagGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F611C040E1B0033413F /* OSNTagGroup.m */; };
@@ -248,6 +251,11 @@
 		01A35D471C0B3C3200341F45 /* link.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = link.png; sourceTree = "<group>"; };
 		01A6D0761C58670100807F4C /* OSNWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNWebViewController.h; sourceTree = "<group>"; };
 		01A6D0771C58670100807F4C /* OSNWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNWebViewController.m; sourceTree = "<group>"; };
+		01A6D0791C58A4F200807F4C /* BuildingPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingPickerView.h; sourceTree = "<group>"; };
+		01A6D07A1C58A4F200807F4C /* BuildingPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildingPickerView.m; sourceTree = "<group>"; };
+		01A6D0861C58CD9C00807F4C /* CustomerAddressManagerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerAddressManagerVC.h; sourceTree = "<group>"; };
+		01A6D0871C58CD9C00807F4C /* CustomerAddressManagerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerAddressManagerVC.m; sourceTree = "<group>"; };
+		01A6D0881C58CD9C00807F4C /* CustomerAddressManagerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerAddressManagerVC.xib; sourceTree = "<group>"; };
 		01AF1F5A1C0402B00033413F /* OSNCaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNCaseManager.h; sourceTree = "<group>"; };
 		01AF1F5B1C0402B00033413F /* OSNCaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNCaseManager.m; sourceTree = "<group>"; };
 		01AF1F5D1C040D260033413F /* OSNTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNTag.h; sourceTree = "<group>"; };
@@ -359,6 +367,9 @@
 		0130A1781C158A7000D075FF /* Customer */ = {
 			isa = PBXGroup;
 			children = (
+				01A6D0861C58CD9C00807F4C /* CustomerAddressManagerVC.h */,
+				01A6D0871C58CD9C00807F4C /* CustomerAddressManagerVC.m */,
+				01A6D0881C58CD9C00807F4C /* CustomerAddressManagerVC.xib */,
 				01303C581C5737730089055E /* AgePickerView.h */,
 				01303C591C5737730089055E /* AgePickerView.m */,
 				0177F1E61C56605B00F5969C /* AddressPickerView.h */,
@@ -446,6 +457,8 @@
 		014E80911C1812A60065987F /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				01A6D0761C58670100807F4C /* OSNWebViewController.h */,
+				01A6D0771C58670100807F4C /* OSNWebViewController.m */,
 				01F8A1781C15EC59000A7EDB /* NavigationBarView.h */,
 				01F8A1791C15EC59000A7EDB /* NavigationBarView.m */,
 				014060EB1C0FDABB0001804E /* OSNMainNavigation.h */,
@@ -453,8 +466,6 @@
 				011375611BFF0DA400A9AB9E /* MasterViewController.h */,
 				011375621BFF0DA400A9AB9E /* MasterViewController.m */,
 				011375631BFF0DA400A9AB9E /* MasterViewController.xib */,
-				01A6D0761C58670100807F4C /* OSNWebViewController.h */,
-				01A6D0771C58670100807F4C /* OSNWebViewController.m */,
 			);
 			name = Navigation;
 			sourceTree = "<group>";
@@ -618,6 +629,8 @@
 		01E23AB11C12D326006D6A9E /* Building */ = {
 			isa = PBXGroup;
 			children = (
+				01A6D0791C58A4F200807F4C /* BuildingPickerView.h */,
+				01A6D07A1C58A4F200807F4C /* BuildingPickerView.m */,
 				01E23AB21C12D349006D6A9E /* BuildingListViewController.h */,
 				01E23AB31C12D349006D6A9E /* BuildingListViewController.m */,
 				01E23AB81C12D46B006D6A9E /* BuildingLeftSider.h */,
@@ -738,6 +751,7 @@
 				015B2D261BFEBBFD00821100 /* SignInViewController.xib in Resources */,
 				01BECEFE1C0D943E007A2E10 /* CaseDetailViewController.xib in Resources */,
 				017A27821C04A46D00CB577D /* pro_lm.gif in Resources */,
+				01A6D08A1C58CD9C00807F4C /* CustomerAddressManagerVC.xib in Resources */,
 				019164B61C22F86100BA2CD8 /* diy_wait.png in Resources */,
 				011375521BFEFC5000A9AB9E /* qcode_ico.png in Resources */,
 				01B0746F1C28394900FDB501 /* SettingView.xib in Resources */,
@@ -822,12 +836,14 @@
 				01B754E21C133E73000FA9BE /* BuildingDetailViewController.m in Sources */,
 				01A6D0781C58670100807F4C /* OSNWebViewController.m in Sources */,
 				01A35D421C0AE77200341F45 /* CaseImageList.m in Sources */,
+				01A6D07B1C58A4F200807F4C /* BuildingPickerView.m in Sources */,
 				016E3D7F1C32618C00E23702 /* CustomerDetailMaster.m in Sources */,
 				0105781C1C1313D300C8F7CC /* AutoLayoutTagView.m in Sources */,
 				0113406D1C1B32FE009C093E /* CALayer+XibConfiguration.m in Sources */,
 				01CA2CF11C05574C00CD0024 /* CaseTagSection.m in Sources */,
 				01E23AC01C12D858006D6A9E /* BuildingImageCell.m in Sources */,
 				014E80971C1813810065987F /* CustomerSigninView.m in Sources */,
+				01A6D0891C58CD9C00807F4C /* CustomerAddressManagerVC.m in Sources */,
 				0119301C1C1AA8DB005D730A /* CustomerReceptionRecordViewController.m in Sources */,
 				014664EE1C07056700FD2E96 /* OSNTagPadView.m in Sources */,
 				01A35D461C0AF4BA00341F45 /* CaseImageCell.m in Sources */,
@@ -924,7 +940,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "1802f7bb-dc99-4f61-af7e-695ac6536ae5";
@@ -964,7 +980,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PROVISIONING_PROFILE = "1802f7bb-dc99-4f61-af7e-695ac6536ae5";
 				SDKROOT = iphoneos;

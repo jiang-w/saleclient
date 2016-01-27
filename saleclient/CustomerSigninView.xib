@@ -10,6 +10,7 @@
                 <outlet property="addressLabel" destination="yN2-P6-QYV" id="vTq-Nq-4gv"/>
                 <outlet property="addressText" destination="bkJ-Oo-6uJ" id="oAn-Hy-AmR"/>
                 <outlet property="ageLabel" destination="oCf-31-JDz" id="QWd-Wl-uVC"/>
+                <outlet property="buildingLabel" destination="1Ih-2u-j5z" id="GrH-v8-6lH"/>
                 <outlet property="customerTypeSelect" destination="cOW-KW-KYV" id="yEm-Dy-HGs"/>
                 <outlet property="eMailText" destination="pPR-4H-eXw" id="U88-dS-r18"/>
                 <outlet property="genderSelect" destination="dBv-S0-5Yv" id="das-0U-Sa7"/>
@@ -175,11 +176,6 @@
                         <action selector="saveButtonClick:" destination="-1" eventType="touchUpInside" id="c0F-qn-RV9"/>
                     </connections>
                 </button>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入楼盘全称" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TWT-Sp-Qki">
-                    <rect key="frame" x="403" y="254" width="210" height="30"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ch4-99-vm4">
                     <rect key="frame" x="385" y="453" width="100" height="30"/>
                     <color key="backgroundColor" red="0.9882352941176471" green="0.92941176470588238" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
@@ -197,6 +193,9 @@
                             <integer key="value" value="5"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="openAddressManager:" destination="-1" eventType="touchUpInside" id="F1A-57-Se8"/>
+                    </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oZz-hW-gGi">
                     <rect key="frame" x="126" y="498" width="167" height="30"/>
@@ -339,6 +338,23 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="请选择楼盘" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ih-2u-j5z">
+                    <rect key="frame" x="403" y="254" width="210" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.80392156862745101" green="0.80392156862745101" blue="0.80392156862745101" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                            <color key="value" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

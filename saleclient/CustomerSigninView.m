@@ -17,6 +17,8 @@
 #import <Masonry.h>
 #import "UIResponder+FirstResponder.h"
 #import "OSNWebViewController.h"
+#import "BuildingPickerView.h"
+#import "CustomerAddressManagerVC.h"
 
 @interface CustomerSigninView()
 
@@ -36,6 +38,8 @@
 @property (nonatomic, strong) AddressPickerView *addressPicker;
 @property (weak, nonatomic) IBOutlet UILabel *ageLabel;
 @property (nonatomic, strong) AgePickerView *agePicker;
+@property (weak, nonatomic) IBOutlet UILabel *buildingLabel;
+@property (nonatomic, strong) BuildingPickerView *buildingPicker;
 
 @property (nonatomic, strong) NSString *ageCode;
 @property (nonatomic, strong) NSString *provinceCode;
@@ -69,12 +73,21 @@
 
 - (void)tapAddressLabel:(UITapGestureRecognizer *)recognizer {
     [self endEditing:YES];
+    [self hiddenAllPicker];
     [self showAddressPicker];
 }
 
 - (void)tapAgeLabel:(UITapGestureRecognizer *)recognizer {
     [self endEditing:YES];
+    [self hiddenAllPicker];
     [self showAgePicker];
+}
+
+- (void)tapBuildingLabel:(UITapGestureRecognizer *)recognizer {
+    [self endEditing:YES];
+    [self hiddenAllPicker];
+    [self showBuildingPicker];
+    [self.buildingPicker setProvinceCode:self.provinceCode cityCode:self.cityCode andCountyCode:self.countyCode];
 }
 
 - (IBAction)cancelButtonClick:(id)sender {
@@ -146,6 +159,14 @@
     [parent.navigationController pushViewController:customerDetail animated:NO];
 }
 
+- (IBAction)openAddressManager:(id)sender {
+    [self.parentVC lew_dismissPopupView];
+    
+    HomeViewController *parent = (HomeViewController *)self.parentVC;
+    CustomerAddressManagerVC *addressCV = [[CustomerAddressManagerVC alloc] initWithNibName:@"CustomerAddressManagerVC" bundle:nil];
+    [parent.navigationController pushViewController:addressCV animated:YES];
+}
+
 - (IBAction)openWebView:(id)sender {
     [self.parentVC lew_dismissPopupView];
     
@@ -181,7 +202,8 @@
 #pragma mark - notification
 
 - (void)actionKeyboardShow:(NSNotification *)notification {
-        CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    [self hiddenAllPicker];
+    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     id responder = [UIResponder currentFirstResponder];
     if (responder && [responder isKindOfClass:[UITextField class]]) {
         UITextField *txtField = (UITextField *)responder;
@@ -242,7 +264,7 @@
     [self.addressPicker mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.addressLabel.mas_bottom).offset(6);
         make.left.equalTo(self.addressLabel);
-        make.right.equalTo(self.addressLabel);
+        make.right.equalTo(self.buildingLabel);
         make.height.mas_equalTo(30);
     }];
     [self hiddenAddressPicker];
@@ -255,11 +277,21 @@
     }];
     [self hiddenAgePicker];
     
+    [self.innerView addSubview:self.buildingPicker];
+    [self.buildingPicker mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.buildingLabel.mas_bottom).offset(6);
+        make.left.right.equalTo(self.buildingLabel);
+        make.height.mas_equalTo(0);
+    }];
+    
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAddressLabel:)];
     [_addressLabel addGestureRecognizer:tapRecognizer];
     
     tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAgeLabel:)];
     [_ageLabel addGestureRecognizer:tapRecognizer];
+    
+    tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapBuildingLabel:)];
+    [_buildingLabel addGestureRecognizer:tapRecognizer];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(actionKeyboardShow:)
@@ -312,6 +344,32 @@
         [self layoutIfNeeded];
     }];
     self.addressPicker.hidden = YES;
+}
+
+- (void)showBuildingPicker {
+    self.buildingPicker.hidden = NO;
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.buildingPicker mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(140);
+        }];
+        [self layoutIfNeeded];
+    }];
+}
+
+- (void)hiddenBuildingPicker {
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.buildingPicker mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(30);
+        }];
+        [self layoutIfNeeded];
+    }];
+    self.buildingPicker.hidden = YES;
+}
+
+- (void)hiddenAllPicker {
+    [self hiddenAgePicker];
+    [self hiddenAddressPicker];
+    [self hiddenBuildingPicker];
 }
 
 - (void)initViewData {
@@ -460,6 +518,18 @@
         };
     }
     return _agePicker;
+}
+
+- (BuildingPickerView *)buildingPicker {
+    if (!_buildingPicker) {
+        _buildingPicker = [[BuildingPickerView alloc] init];
+        __weak CustomerSigninView *weakSelf = self;
+        _buildingPicker.didSelectBlock = ^(BuildingPickerView *view, OSNBuildingEntity *entity) {
+            weakSelf.buildingLabel.text = entity.buildingName;
+            weakSelf.buildingLabel.textColor = [UIColor blackColor];
+        };
+    }
+    return _buildingPicker;
 }
 
 @end
