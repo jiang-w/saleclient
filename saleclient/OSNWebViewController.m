@@ -8,13 +8,15 @@
 
 #import "OSNWebViewController.h"
 #import "NavigationBarView.h"
+#import "AppDelegate.h"
 #import <Masonry.h>
 #import <MBProgressHUD.h>
 
 @interface OSNWebViewController () <UIWebViewDelegate>
 
-@property (nonatomic, strong) NavigationBarView *navBar;
 @property (nonatomic, strong) UIWebView *webView;
+@property (nonatomic, strong) UIButton *backButton;
+@property (nonatomic, strong) UIView *navBar;
 
 @end
 
@@ -26,6 +28,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.navBar];
     [self.view addSubview:self.webView];
+    [self.navBar addSubview:self.backButton];
 }
 
 - (void)updateViewConstraints {
@@ -33,15 +36,24 @@
     
     [self.navBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.equalTo(self.view);
-        make.height.mas_equalTo(76);
+        make.height.mas_offset(76);
     }];
     
     [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.navBar.mas_bottom);
         make.left.right.bottom.equalTo(self.view);
     }];
+    
+    [self.backButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.navBar).offset(56);
+        make.bottom.equalTo(self.navBar).offset(-16);
+    }];
 }
 
+- (void)goBackHandle:(UIButton *)sender {
+    AppDelegate *app = OSNMainDelegate;
+    [app.mainNav popViewControllerAnimated:YES];
+}
 
 #pragma mark - Delegate
 
@@ -62,11 +74,26 @@
 
 #pragma mark - Preporty
 
-- (NavigationBarView *)navBar {
+- (UIView *)navBar {
     if (!_navBar) {
-        _navBar = [[NavigationBarView alloc] init];
+        _navBar = [[UIView alloc] init];
     }
     return _navBar;
+}
+
+- (UIButton *)backButton {
+    if (!_backButton) {
+        _backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_backButton setTitle:@"返回" forState:UIControlStateNormal];
+        [_backButton setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+        _backButton.layer.borderWidth = 1;
+        _backButton.layer.borderColor = [[UIColor orangeColor] CGColor];
+        _backButton.layer.cornerRadius = 5;
+        _backButton.contentEdgeInsets = UIEdgeInsetsMake(4, 16, 4, 16);
+        
+        [_backButton addTarget:self action:@selector(goBackHandle:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _backButton;
 }
 
 - (UIWebView *)webView {

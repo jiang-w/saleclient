@@ -90,6 +90,11 @@
     [self.buildingPicker setProvinceCode:self.provinceCode cityCode:self.cityCode andCountyCode:self.countyCode];
 }
 
+- (void)tapInnerView:(UITapGestureRecognizer *)recognizer {
+    [self endEditing:YES];
+    [self hiddenAllPicker];
+}
+
 - (IBAction)cancelButtonClick:(id)sender {
     [self.parentVC lew_dismissPopupView];
 }
@@ -286,18 +291,17 @@
     
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAddressLabel:)];
     [_addressLabel addGestureRecognizer:tapRecognizer];
-    
     tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAgeLabel:)];
     [_ageLabel addGestureRecognizer:tapRecognizer];
-    
     tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapBuildingLabel:)];
     [_buildingLabel addGestureRecognizer:tapRecognizer];
+    tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapInnerView:)];
+    [_innerView addGestureRecognizer:tapRecognizer];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(actionKeyboardShow:)
                                                  name:UIKeyboardDidShowNotification
                                                object:nil];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(actionKeyboardHide:)
                                                  name:UIKeyboardWillHideNotification

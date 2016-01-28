@@ -34,16 +34,16 @@
 - (void)initAndLayoutSubview {
     [self addSubview:self.pickerView];
     [self.pickerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self).offset(30);
+        make.top.equalTo(self);
         make.left.right.bottom.equalTo(self);
     }];
     
-    [self addSubview:self.cancelButton];
-    [self.cancelButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self);
-        make.width.mas_equalTo(60);
-        make.right.equalTo(self).offset(-10);
-    }];
+//    [self addSubview:self.cancelButton];
+//    [self.cancelButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self);
+//        make.width.mas_equalTo(60);
+//        make.right.equalTo(self).offset(-10);
+//    }];
     
     self.layer.borderColor = RGB(204, 204, 202).CGColor;
     self.layer.borderWidth = 1;
