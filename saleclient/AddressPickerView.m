@@ -133,9 +133,16 @@
 
 - (void)clickSaveButton:(UIButton *)sender {
     if (self.block) {
-        NSDictionary *userInfo = @{@"province": self.model.province.code,
-                                   @"city": self.model.city.code,
-                                   @"county": self.model.county.code};
+        NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+        if (self.model.province) {
+            userInfo[@"province"] = self.model.province.code;
+        }
+        if (self.model.city) {
+            userInfo[@"city"] = self.model.city.code;
+        }
+        if (self.model.county) {
+            userInfo[@"county"] = self.model.county.code;
+        }
         self.block(self, userInfo);
     }
 }

@@ -81,9 +81,11 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    OSNBuildingEntity *entity = self.buildingArray[row];
-    if (self.didSelectBlock) {
-        self.didSelectBlock(self, entity);
+    if (self.buildingArray.count > 0) {
+        OSNBuildingEntity *entity = self.buildingArray[row];
+        if (self.didSelectBlock) {
+            self.didSelectBlock(self, entity);
+        }
     }
 }
 

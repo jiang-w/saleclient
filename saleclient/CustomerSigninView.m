@@ -390,6 +390,8 @@
     if (dataDic) {
         [self fillDataFromDictionary:dataDic];
     }
+    
+    NSArray *designers = [[OSNUserManager sharedInstance] getDesignerList];
 }
 
 - (void)fillDataFromDictionary:(NSDictionary *)dictionary {

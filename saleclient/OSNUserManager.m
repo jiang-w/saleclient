@@ -101,4 +101,12 @@
     _currentUser = nil;
 }
 
+- (NSArray *)getDesignerList {
+    NSMutableDictionary *paramters = [NSMutableDictionary dictionary];
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadCrmLookUpDesignerList" andParamterDictionary:paramters];
+    NSArray *dataArr = dataDic[@"data"];
+    return dataArr;
+}
+
 @end

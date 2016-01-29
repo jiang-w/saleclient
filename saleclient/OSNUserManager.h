@@ -24,4 +24,6 @@
 
 - (void)signOut;
 
+- (NSArray *)getDesignerList;
+
 @end
