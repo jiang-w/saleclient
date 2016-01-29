@@ -10,4 +10,8 @@
 
 @interface CustomerAddressManagerVC : UIViewController
 
+@property (nonatomic, copy) NSString *customerId;
+@property (nonatomic, copy) NSString *customerName;
+@property (nonatomic, copy) NSString *mobile;
+
 @end

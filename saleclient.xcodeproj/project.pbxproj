@@ -82,6 +82,7 @@
 		01A35D421C0AE77200341F45 /* CaseImageList.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A35D411C0AE77200341F45 /* CaseImageList.m */; };
 		01A35D461C0AF4BA00341F45 /* CaseImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A35D451C0AF4BA00341F45 /* CaseImageCell.m */; };
 		01A35D481C0B3C3200341F45 /* link.png in Resources */ = {isa = PBXBuildFile; fileRef = 01A35D471C0B3C3200341F45 /* link.png */; };
+		01A672EC1C5B311900FBAB72 /* OSNCustomerAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A672EB1C5B311900FBAB72 /* OSNCustomerAddress.m */; };
 		01A6D0781C58670100807F4C /* OSNWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A6D0771C58670100807F4C /* OSNWebViewController.m */; };
 		01A6D07B1C58A4F200807F4C /* BuildingPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A6D07A1C58A4F200807F4C /* BuildingPickerView.m */; };
 		01A6D0891C58CD9C00807F4C /* CustomerAddressManagerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A6D0871C58CD9C00807F4C /* CustomerAddressManagerVC.m */; };
@@ -249,6 +250,8 @@
 		01A35D441C0AF4BA00341F45 /* CaseImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseImageCell.h; sourceTree = "<group>"; };
 		01A35D451C0AF4BA00341F45 /* CaseImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseImageCell.m; sourceTree = "<group>"; };
 		01A35D471C0B3C3200341F45 /* link.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = link.png; sourceTree = "<group>"; };
+		01A672EA1C5B311900FBAB72 /* OSNCustomerAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNCustomerAddress.h; sourceTree = "<group>"; };
+		01A672EB1C5B311900FBAB72 /* OSNCustomerAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNCustomerAddress.m; sourceTree = "<group>"; };
 		01A6D0761C58670100807F4C /* OSNWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNWebViewController.h; sourceTree = "<group>"; };
 		01A6D0771C58670100807F4C /* OSNWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNWebViewController.m; sourceTree = "<group>"; };
 		01A6D0791C58A4F200807F4C /* BuildingPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingPickerView.h; sourceTree = "<group>"; };
@@ -553,6 +556,8 @@
 				019BE7691C15C8DE00980556 /* OSNCustomerListItem.m */,
 				0177F1EC1C56728300F5969C /* RegionModel.h */,
 				0177F1ED1C56728300F5969C /* RegionModel.m */,
+				01A672EA1C5B311900FBAB72 /* OSNCustomerAddress.h */,
+				01A672EB1C5B311900FBAB72 /* OSNCustomerAddress.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -821,6 +826,7 @@
 				015B2D251BFEBBFD00821100 /* SignInViewController.m in Sources */,
 				01A35D3F1C0ADD7A00341F45 /* OSNCaseEntity.m in Sources */,
 				01AF1F5C1C0402B00033413F /* OSNCaseManager.m in Sources */,
+				01A672EC1C5B311900FBAB72 /* OSNCustomerAddress.m in Sources */,
 				018B09F41BFEC38B007B69A8 /* OSNNetworkService.m in Sources */,
 				011375601BFF074100A9AB9E /* ProductListViewController.m in Sources */,
 				01E0639F1C0B6E87009448EA /* ProductTagCell.m in Sources */,

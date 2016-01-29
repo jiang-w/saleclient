@@ -7,7 +7,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomerAddressManagerVC">
             <connections>
-                <outlet property="backButton" destination="DHY-KY-XRh" id="7f0-aq-9XP"/>
+                <outlet property="addressLabel" destination="qCG-1h-iWr" id="iZj-Cy-bTc"/>
+                <outlet property="addressList" destination="2jQ-UH-do7" id="ZIe-w7-5qZ"/>
+                <outlet property="addressText" destination="Fx6-dq-Pb9" id="HFz-yY-BpX"/>
+                <outlet property="buildingLabel" destination="4j1-DM-aNG" id="MEl-Dd-66U"/>
+                <outlet property="buildingNoText" destination="ET7-fc-HYT" id="W2S-UE-54t"/>
+                <outlet property="roomNoText" destination="EbO-IL-J9E" id="dL7-jW-Ek9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -140,6 +145,9 @@
                                     <integer key="value" value="5"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="clickSaveButton:" destination="-1" eventType="touchUpInside" id="w6U-t9-Fsm"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

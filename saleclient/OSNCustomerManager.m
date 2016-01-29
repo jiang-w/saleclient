@@ -156,4 +156,83 @@
     return dataArr;
 }
 
+- (void)CreateCustomerAddress:(OSNCustomerAddress *)address {
+    NSMutableDictionary *paramters = [NSMutableDictionary dictionary];
+    paramters[@"customerId"] = address.customerId;
+    paramters[@"name"] = address.name;
+    paramters[@"contactPhone"] = address.contactPhone;
+    paramters[@"provinceId"] = address.provinceId;
+    paramters[@"provinceName"] = address.provinceName;
+    paramters[@"cityId"] = address.cityId;
+    paramters[@"cityName"] = address.cityName;
+    paramters[@"areaId"] = address.areaId;
+    paramters[@"areaName"] = address.areaName;
+    paramters[@"state"] = [NSString stringWithFormat:@"%d", (int)address.state];
+    paramters[@"buildingId"] = address.buildingId;
+    paramters[@"buildingName"] = address.buildingName;
+    paramters[@"address"] = address.address;
+    paramters[@"buildingNo"] = address.buildingNo;
+    paramters[@"room"] = address.room;
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadCrmCreateCustomerAddress" andParamterDictionary:paramters];
+    address.addressId = dataDic[@"data"][@"addressId"];
+}
+
+- (void)UpdateCustomerAddress:(OSNCustomerAddress *)address {
+    NSMutableDictionary *paramters = [NSMutableDictionary dictionary];
+    paramters[@"customerId"] = address.customerId;
+    paramters[@"name"] = address.name;
+    paramters[@"contactPhone"] = address.contactPhone;
+    paramters[@"provinceId"] = address.provinceId;
+    paramters[@"provinceName"] = address.provinceName;
+    paramters[@"cityId"] = address.cityId;
+    paramters[@"cityName"] = address.cityName;
+    paramters[@"areaId"] = address.areaId;
+    paramters[@"areaName"] = address.areaName;
+    paramters[@"state"] = [NSString stringWithFormat:@"%ld", (long)address.state];
+    paramters[@"buildingId"] = address.buildingId;
+    paramters[@"buildingName"] = address.buildingName;
+    paramters[@"address"] = address.address;
+    paramters[@"buildingNo"] = address.buildingNo;
+    paramters[@"room"] = address.room;
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadCrmUpdateCustomerAddress" andParamterDictionary:paramters];
+}
+
+- (OSNCustomerAddress *)GetCustomerAddressWithId:(NSString *)addressId {
+    NSDictionary *paramters = @{@"addressId": addressId};
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadCrmGetCustomerAddress" andParamterDictionary:paramters];
+    OSNCustomerAddress *address = nil;
+    return address;
+}
+
+- (NSArray *)getAddressListWithCustomerId:(NSString *)customerId {
+    NSMutableArray *addressArray = [NSMutableArray array];
+    NSDictionary *paramters = @{@"customerId": customerId};
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadCrmListCustomerAddress" andParamterDictionary:paramters];
+    NSArray *dataArr = dataDic[@"data"];
+    for (NSDictionary *item in dataArr) {
+        OSNCustomerAddress *address = [[OSNCustomerAddress alloc] init];
+        address.customerId = item[@"addressArray"];
+        address.name = item[@"name"];
+        address.contactPhone = item[@"contactPhone"];
+        address.provinceId = item[@"provinceId"];
+        address.provinceName = item[@"provinceName"];
+        address.cityId = item[@"cityId"];
+        address.cityName = item[@"cityName"];
+        address.areaId = item[@"areaId"];
+        address.areaName = item[@"areaName"];
+        address.state = [item[@"state"] integerValue];
+        address.buildingId = item[@"buildingId"];
+        address.buildingName = item[@"buildingName"];
+        address.address = item[@"address"];
+        address.buildingNo = item[@"buildingNo"];
+        address.room = item[@"room"];
+        [addressArray addObject:address];
+    }
+    return addressArray;
+}
+
 @end

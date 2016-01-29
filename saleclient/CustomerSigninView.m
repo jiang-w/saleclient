@@ -123,7 +123,6 @@
         paramters[@"provinceId"] = self.provinceCode;
         paramters[@"cityId"] = self.cityCode;
         paramters[@"areaId"] = self.countyCode;
-        paramters[@"address"] = self.addressText.text;
         paramters[@"notes"] = self.notesText.text;
         
         if (!self.customerId) {
@@ -165,11 +164,21 @@
 }
 
 - (IBAction)openAddressManager:(id)sender {
-    [self.parentVC lew_dismissPopupView];
-    
-    HomeViewController *parent = (HomeViewController *)self.parentVC;
-    CustomerAddressManagerVC *addressCV = [[CustomerAddressManagerVC alloc] initWithNibName:@"CustomerAddressManagerVC" bundle:nil];
-    [parent.navigationController pushViewController:addressCV animated:YES];
+    if (IS_EMPTY_STRING(self.name.text) || IS_EMPTY_STRING(self.mobile.text)) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"姓名和手机号不能为空"
+                                                       delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        [alert show];
+    }
+    else {
+        [self.parentVC lew_dismissPopupView];
+        
+        HomeViewController *parent = (HomeViewController *)self.parentVC;
+        CustomerAddressManagerVC *addressCV = [[CustomerAddressManagerVC alloc] initWithNibName:@"CustomerAddressManagerVC" bundle:nil];
+        addressCV.customerId = self.customerId;
+        addressCV.customerName = self.name.text;
+        addressCV.mobile = self.mobile.text;
+        [parent.navigationController pushViewController:addressCV animated:YES];
+    }
 }
 
 - (IBAction)openWebView:(id)sender {
@@ -178,7 +187,7 @@
     HomeViewController *parent = (HomeViewController *)self.parentVC;
     OSNWebViewController *webView = [[OSNWebViewController alloc] init];
 //    webView.url = @"http://bi.osnyun.com:11113/OSNBigData/console/userPortrait/userState.jsp?customerId=%271041316205%27";
-    webView.url = [NSString stringWithFormat:@"http://bi.osnyun.com:11113/OSNBigData/console/userPortrait/userState.jsp?customerId=%@", self.customerId];
+    webView.url = [NSString stringWithFormat:@"http://bi.osnyun.com:11113/OSNBigData/console/userPortrait/userState.jsp?customerId='%@'", self.customerId];
     [parent.navigationController pushViewController:webView animated:NO];
 }
 
@@ -449,10 +458,10 @@
     self.addressLabel.text = self.addressPicker.description;
     self.addressLabel.textColor = [UIColor blackColor];
     
-    NSString *address = dictionary[@"address"];
-    if (!IS_EMPTY_STRING(address)) {
-        self.addressText.text = address;
-    }
+//    NSString *address = dictionary[@"address"];
+//    if (!IS_EMPTY_STRING(address)) {
+//        self.addressText.text = address;
+//    }
     
     NSString *notes = dictionary[@"notes"];
     if (!IS_EMPTY_STRING(notes)) {

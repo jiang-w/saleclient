@@ -136,12 +136,15 @@
         NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
         if (self.model.province) {
             userInfo[@"province"] = self.model.province.code;
+            userInfo[@"provinceName"] = self.model.province.name;
         }
         if (self.model.city) {
             userInfo[@"city"] = self.model.city.code;
+            userInfo[@"cityName"] = self.model.city.name;
         }
         if (self.model.county) {
             userInfo[@"county"] = self.model.county.code;
+            userInfo[@"countyName"] = self.model.county.name;
         }
         self.block(self, userInfo);
     }

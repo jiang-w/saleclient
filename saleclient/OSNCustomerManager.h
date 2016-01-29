@@ -34,4 +34,10 @@
 
 - (NSArray *)getCustomerReceptionRecordListWithParamters:(NSDictionary *)paramters;
 
+- (void)CreateCustomerAddress:(OSNCustomerAddress *)address;
+
+- (void)UpdateCustomerAddress:(OSNCustomerAddress *)address;
+
+- (NSArray *)getAddressListWithCustomerId:(NSString *)customerId;
+
 @end
