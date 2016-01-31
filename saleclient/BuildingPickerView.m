@@ -31,6 +31,17 @@
     return self;
 }
 
+- (NSString *)description {
+    NSInteger selectedRow = [self.pickerView selectedRowInComponent:0];
+    if (selectedRow >= 0 && selectedRow < self.buildingArray.count) {
+        OSNBuildingEntity *building = self.buildingArray[selectedRow];
+        return building.buildingName;
+    }
+    else {
+        return nil;
+    }
+}
+
 - (void)setProvinceCode:(NSString *)provinceCode cityCode:(NSString *)cityCode andCountyCode:(NSString *)countyCode {
     NSMutableDictionary *paramters = [NSMutableDictionary dictionary];
     paramters[@"provinceId"] = provinceCode;
@@ -38,6 +49,28 @@
     paramters[@"areaId"] = countyCode;
     self.buildingArray = [_manager getBuildingListWithParameters:paramters];
     [self.pickerView reloadAllComponents];
+    if (self.buildingArray.count > 0) {
+        [self.pickerView selectRow:0 inComponent:0 animated:NO];
+        [self pickerView:self.pickerView didSelectRow:0 inComponent:0];
+    }
+}
+
+- (void)setProvinceCode:(NSString *)provinceCode cityCode:(NSString *)cityCode countyCode:(NSString *)countyCode andBuildingId:(NSString *)buildingId {
+    NSMutableDictionary *paramters = [NSMutableDictionary dictionary];
+    paramters[@"provinceId"] = provinceCode;
+    paramters[@"cityId"] = cityCode;
+    paramters[@"areaId"] = countyCode;
+    self.buildingArray = [_manager getBuildingListWithParameters:paramters];
+    [self.pickerView reloadAllComponents];
+    
+    for (int i = 0; i < self.buildingArray.count; i++) {
+        OSNBuildingEntity *entity = self.buildingArray[i];
+        if ([entity.buildingId isEqualToString:buildingId]) {
+            [self.pickerView selectRow:i inComponent:0 animated:NO];
+            [self pickerView:self.pickerView didSelectRow:i inComponent:0];
+            break;
+        }
+    }
 }
 
 - (void)initViewAndLayout {

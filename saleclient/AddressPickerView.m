@@ -40,6 +40,7 @@
     [self.pickerView selectRow:self.model.selectedProvinceIndex inComponent:0 animated:NO];
     [self.pickerView selectRow:self.model.selectedCityIndex inComponent:1 animated:NO];
     [self.pickerView selectRow:self.model.selectedCountyIndex inComponent:2 animated:NO];
+    [self clickSaveButton:self.saveButton];
 }
 
 - (void)initAndLayoutSubview {

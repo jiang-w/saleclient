@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="CustomerAddressCell">
+            <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TXu-qf-0zQ">
+                        <rect key="frame" x="38" y="8" width="52" height="28"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="设为默认">
+                            <color key="titleColor" red="0.93333333330000001" green="0.44705882349999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="ClickPreferButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8UK-ei-hTS"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="详细地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUl-3Q-dTS">
+                        <rect key="frame" x="127" y="12" width="64" height="20"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="066-O8-6KH">
+                        <rect key="frame" x="612" y="7" width="60" height="29"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <inset key="contentEdgeInsets" minX="16" minY="6" maxX="16" maxY="6"/>
+                        <state key="normal" title="编辑">
+                            <color key="titleColor" red="0.93333333330000001" green="0.44705882349999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                <integer key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                <color key="value" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="ClickEditButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="0iz-vu-J4E"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DFX-Pf-6Ob">
+                        <rect key="frame" x="682" y="7" width="60" height="29"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <inset key="contentEdgeInsets" minX="16" minY="6" maxX="16" maxY="6"/>
+                        <state key="normal" title="删除">
+                            <color key="titleColor" red="0.93333333330000001" green="0.44705882349999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                <integer key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                <color key="value" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="ClickDeleteButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="g9G-lf-SvH"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <animations/>
+                <constraints>
+                    <constraint firstItem="TXu-qf-0zQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="30" id="Jxa-f8-oXy"/>
+                    <constraint firstItem="TXu-qf-0zQ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="KWu-eI-mVY"/>
+                    <constraint firstItem="DFX-Pf-6Ob" firstAttribute="leading" secondItem="066-O8-6KH" secondAttribute="trailing" constant="10" id="LZZ-DN-9Ss"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="DFX-Pf-6Ob" secondAttribute="trailing" constant="18" id="aJL-4X-oW5"/>
+                    <constraint firstItem="GUl-3Q-dTS" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="mnn-jV-8X0"/>
+                    <constraint firstItem="066-O8-6KH" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="mqR-WC-zwk"/>
+                    <constraint firstItem="DFX-Pf-6Ob" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="nYE-Rk-KWL"/>
+                    <constraint firstItem="GUl-3Q-dTS" firstAttribute="leading" secondItem="TXu-qf-0zQ" secondAttribute="trailing" constant="37" id="oDa-Cr-Wok"/>
+                </constraints>
+            </tableViewCellContentView>
+            <animations/>
+            <connections>
+                <outlet property="addressLabel" destination="GUl-3Q-dTS" id="zpn-Q4-hJX"/>
+                <outlet property="delBtn" destination="DFX-Pf-6Ob" id="gfS-3Z-OOF"/>
+                <outlet property="editBtn" destination="066-O8-6KH" id="762-t0-TJS"/>
+                <outlet property="preferBtn" destination="TXu-qf-0zQ" id="KUN-gQ-WAH"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

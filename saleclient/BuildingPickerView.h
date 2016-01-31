@@ -17,4 +17,6 @@ typedef void (^BuildingPickerViewdidSelectBlock)(BuildingPickerView *view, id ob
 
 - (void)setProvinceCode:(NSString *)provinceCode cityCode:(NSString *)cityCode andCountyCode:(NSString *)countyCode;
 
+- (void)setProvinceCode:(NSString *)provinceCode cityCode:(NSString *)cityCode countyCode:(NSString *)countyCode andBuildingId:(NSString *)buildingId;
+
 @end

@@ -38,6 +38,12 @@
 
 - (void)UpdateCustomerAddress:(OSNCustomerAddress *)address;
 
+- (OSNCustomerAddress *)GetCustomerAddressWithId:(NSString *)addressId;
+
+- (void)deleteCustomerAddressWithId:(NSString *)addressId;
+
 - (NSArray *)getAddressListWithCustomerId:(NSString *)customerId;
+
+- (void)SetDefaultAddressWithId:(NSString *)addressId;
 
 @end

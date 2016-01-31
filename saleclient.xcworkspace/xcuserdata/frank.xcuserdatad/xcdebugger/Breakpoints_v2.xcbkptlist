@@ -116,16 +116,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "saleclient/CustomerAddressManagerVC.m"
-            timestampString = "475754576.810998"
+            filePath = "saleclient/OSNCustomerManager.m"
+            timestampString = "475920628.019443"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "-clickSaveButton:"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
+            landmarkName = "-getAddressListWithCustomerId:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -136,12 +136,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "saleclient/OSNCustomerManager.m"
-            timestampString = "475754672.190565"
+            timestampString = "475912670.961893"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
-            landmarkName = "-getAddressListWithCustomerId:"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "-UpdateCustomerAddress:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "saleclient/OSNNetworkService.m"
+            timestampString = "475912818.361724"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "-requestDataWithServiceName:andParamterDictionary:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

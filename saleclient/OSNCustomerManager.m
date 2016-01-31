@@ -180,6 +180,7 @@
 
 - (void)UpdateCustomerAddress:(OSNCustomerAddress *)address {
     NSMutableDictionary *paramters = [NSMutableDictionary dictionary];
+    paramters[@"addressId"] = address.addressId;
     paramters[@"customerId"] = address.customerId;
     paramters[@"name"] = address.name;
     paramters[@"contactPhone"] = address.contactPhone;
@@ -203,8 +204,31 @@
     NSDictionary *paramters = @{@"addressId": addressId};
     OSNNetworkService *service = [OSNNetworkService sharedInstance];
     NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadCrmGetCustomerAddress" andParamterDictionary:paramters];
-    OSNCustomerAddress *address = nil;
+    NSDictionary *item = dataDic[@"data"];
+    OSNCustomerAddress *address = [[OSNCustomerAddress alloc] init];
+    address.customerId = item[@"customerId"];
+    address.addressId = item[@"addressId"];
+    address.name = item[@"name"];
+    address.contactPhone = item[@"contactPhone"];
+    address.provinceId = item[@"provinceId"];
+    address.provinceName = item[@"provinceName"];
+    address.cityId = item[@"cityId"];
+    address.cityName = item[@"cityName"];
+    address.areaId = item[@"areaId"];
+    address.areaName = item[@"areaName"];
+    address.state = [item[@"state"] integerValue];
+    address.buildingId = item[@"buildingId"];
+    address.buildingName = item[@"buildingName"];
+    address.address = item[@"address"];
+    address.buildingNo = item[@"buildingNo"];
+    address.room = item[@"room"];
     return address;
+}
+
+- (void)deleteCustomerAddressWithId:(NSString *)addressId {
+    NSDictionary *paramters = @{@"addressId": addressId};
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadCrmDeleteCustomerAddress" andParamterDictionary:paramters];
 }
 
 - (NSArray *)getAddressListWithCustomerId:(NSString *)customerId {
@@ -215,7 +239,8 @@
     NSArray *dataArr = dataDic[@"data"];
     for (NSDictionary *item in dataArr) {
         OSNCustomerAddress *address = [[OSNCustomerAddress alloc] init];
-        address.customerId = item[@"addressArray"];
+        address.customerId = customerId;
+        address.addressId = item[@"addressId"];
         address.name = item[@"name"];
         address.contactPhone = item[@"contactPhone"];
         address.provinceId = item[@"provinceId"];
@@ -233,6 +258,12 @@
         [addressArray addObject:address];
     }
     return addressArray;
+}
+
+- (void)SetDefaultAddressWithId:(NSString *)addressId {
+    NSDictionary *paramters = @{@"addressId": addressId};
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadCrmSetDefaultAddress" andParamterDictionary:paramters];
 }
 
 @end

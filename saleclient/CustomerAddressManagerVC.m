@@ -10,10 +10,11 @@
 #import "OSNCustomerManager.h"
 #import "AddressPickerView.h"
 #import "BuildingPickerView.h"
+#import "CustomerAddressCell.h"
 #import <MBProgressHUD.h>
 #import <Masonry.h>
 
-@interface CustomerAddressManagerVC () <UITableViewDataSource, UITableViewDelegate>
+@interface CustomerAddressManagerVC () <UITableViewDataSource, UITableViewDelegate, CustomerAddressCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *addressList;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
@@ -26,10 +27,14 @@
 @property (nonatomic, strong) BuildingPickerView *buildingPicker;
 @property (nonatomic, strong) OSNCustomerAddress *entity;
 @property (nonatomic, strong) NSArray *dataList;
+@property (nonatomic, strong) UIAlertView *saveAlert;
+@property (nonatomic, strong) UIAlertView *deleteAleart;
 
 @end
 
 @implementation CustomerAddressManagerVC
+
+static NSString * const reuseIdentifier = @"addressListCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,8 +49,10 @@
     tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapInnerView:)];
     [self.view addGestureRecognizer:tapRecognizer];
     
-    self.addressList.dataSource = self;
-    self.addressList.delegate = self;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(actionKeyboardShow:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
 }
 
 - (void)setViewLayoutAndStyle {
@@ -64,6 +71,12 @@
         make.height.mas_equalTo(30);
     }];
     [self hiddenBuildingPicker];
+    
+    self.addressList.bounces = NO;
+    self.addressList.allowsSelection = NO;
+    self.addressList.dataSource = self;
+    self.addressList.delegate = self;
+    self.addressList.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 - (void)initViewData {
@@ -90,22 +103,25 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)clickClearButton:(id)sender {
+    [self initEditText];
+}
+
 - (IBAction)clickSaveButton:(id)sender {
-    self.entity.customerId = self.customerId;
-    self.entity.name = self.customerName;
-    self.entity.contactPhone = self.mobile;
-    self.entity.address = self.addressLabel.text;
-    self.entity.buildingNo = self.buildingNoText.text;
-    self.entity.room = self.roomNoText.text;
-    self.entity.state = self.dataList.count > 0 ? 0 : 1;
+    [self.view endEditing:YES];
+    [self hiddenAllPicker];
     
-    OSNCustomerManager *customerManager = [[OSNCustomerManager alloc] init];
-    if (self.entity.addressId) {
-        [customerManager UpdateCustomerAddress:self.entity];
+    if (![self validateInput]) {
+        self.saveAlert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                           message:@"地址信息不能为空" delegate:nil
+                                 cancelButtonTitle:@"确定" otherButtonTitles: nil];
     }
     else {
-        [customerManager CreateCustomerAddress:self.entity];
+        self.saveAlert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                           message:@"是否要保存地址" delegate:self
+                                 cancelButtonTitle:@"取消" otherButtonTitles: @"确定", nil];
     }
+    [self.saveAlert show];
 }
 
 - (void)tapAddressLabel:(UITapGestureRecognizer *)recognizer {
@@ -139,13 +155,91 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    CustomerAddressCell* cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    if (!cell) {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomerAddressCell" owner:self options:nil];
+        for (id obj in nib) {
+            if ([obj isKindOfClass:[CustomerAddressCell class]]) {
+                cell = (CustomerAddressCell *)obj;
+                cell.delegate = self;
+                break;
+            }
+        }
+    }
     OSNCustomerAddress *entity = self.dataList[indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@ %@"
-                           , entity.provinceName, entity.cityName, entity.areaName,
-                           entity.address, entity.buildingName, entity.buildingNo, entity.room];
+    cell.addressEntity = entity;
     return cell;
 }
+
+//- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    UITableViewRowAction *editAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"编辑" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+//        
+//        OSNCustomerAddress *address = self.dataList[indexPath.row];
+//        [self fillEditTextWithAddress:address];
+////        [tableView setEditing:NO animated:YES];
+//    }];
+//    UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+//        
+//        OSNCustomerAddress *address = self.dataList[indexPath.row];
+//        self.entity = address;
+//        self.deleteAleart = [[UIAlertView alloc] initWithTitle:@"提示" message:@"是否要删除此地址" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+//        [self.deleteAleart show];
+////        [tableView setEditing:NO animated:YES];
+//    }];
+//    return @[deleteAction, editAction];
+//}
+
+- (void)customerAddressCell:(CustomerAddressCell *)cell willEditAddress:(OSNCustomerAddress *)address {
+    [self fillEditTextWithAddress:address];
+}
+
+- (void)customerAddressCell:(CustomerAddressCell *)cell willDeleteAddress:(OSNCustomerAddress *)address {
+    self.entity = address;
+    self.deleteAleart = [[UIAlertView alloc] initWithTitle:@"提示" message:@"是否要删除此地址" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [self.deleteAleart show];
+}
+
+- (void)customerAddressCell:(CustomerAddressCell *)cell willSetPreferAddress:(OSNCustomerAddress *)address {
+    OSNCustomerManager *customerManager = [[OSNCustomerManager alloc] init];
+    [customerManager SetDefaultAddressWithId:address.addressId];
+    [self initViewData];
+}
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (alertView == self.saveAlert) {
+        if (buttonIndex == 1) {
+            self.entity.customerId = self.customerId;
+            self.entity.name = self.customerName;
+            self.entity.contactPhone = self.mobile;
+            self.entity.address = self.addressText.text;
+            self.entity.buildingNo = self.buildingNoText.text;
+            self.entity.room = self.roomNoText.text;
+            
+            OSNCustomerManager *customerManager = [[OSNCustomerManager alloc] init];
+            if (self.entity.addressId) {
+                [customerManager UpdateCustomerAddress:self.entity];
+            }
+            else {
+                self.entity.state = self.dataList.count > 0 ? 0 : 1;
+                [customerManager CreateCustomerAddress:self.entity];
+            }
+            _entity = nil;
+            [self initEditText];
+            [self initViewData];
+        }
+    }
+    
+    if (alertView == self.deleteAleart) {
+        if (buttonIndex == 1) {
+            OSNCustomerManager *customerManager = [[OSNCustomerManager alloc] init];
+            [customerManager deleteCustomerAddressWithId:self.entity.addressId];
+            _entity = nil;
+            [self initViewData];
+        }
+    }
+}
+
 
 #pragma mark - Private
 
@@ -194,6 +288,44 @@
     [self hiddenBuildingPicker];
 }
 
+- (void)fillEditTextWithAddress:(OSNCustomerAddress *)address {
+    [self.addressPicker setProvinceCode:address.provinceId cityCode:address.cityId andCountyCode:address.areaId];
+    [self.buildingPicker setProvinceCode:address.provinceId cityCode:address.cityId countyCode:address.areaId andBuildingId:address.buildingId];
+    self.addressText.text = address.address;
+    if (![address.buildingNo isEqual:[NSNull null]]) {
+        self.buildingNoText.text = address.buildingNo;
+    }
+    if (![address.room isEqual:[NSNull null]]) {
+        self.roomNoText.text = address.room;
+    }
+    self.entity.addressId = address.addressId;
+    self.entity.state = address.state;
+}
+
+- (void)initEditText {
+    self.addressLabel.text = @"选择省市区";
+    self.addressLabel.textColor = RGB(205, 205, 210);
+    self.buildingLabel.text = @"选择楼盘";
+    self.buildingLabel.textColor = RGB(205, 205, 210);
+    self.addressText.text = @"";
+    self.buildingNoText.text = @"";
+    self.roomNoText.text = @"";
+}
+
+- (BOOL)validateInput {
+    if ([self.addressLabel.text isEqualToString:@"选择省市区"]) {
+        return NO;
+    }
+    if ([self.buildingLabel.text isEqualToString:@"选择省市区"]) {
+        return NO;
+    }
+    if ([self.addressText.text isEqualToString:@""]) {
+        return NO;
+    }
+    return YES;
+}
+
+
 #pragma mark - Preporty
 
 - (AddressPickerView *)addressPicker {
@@ -210,6 +342,7 @@
             weakSelf.addressLabel.text = [NSString stringWithFormat:@"%@ %@ %@",
                                           weakSelf.entity.provinceName, weakSelf.entity.cityName, weakSelf.entity.areaName];
             weakSelf.addressLabel.textColor = [UIColor blackColor];
+            [weakSelf.buildingPicker setProvinceCode:weakSelf.entity.provinceId cityCode:weakSelf.entity.cityId andCountyCode:weakSelf.entity.areaId];
             [weakSelf hiddenAddressPicker];
         };
     }
@@ -235,6 +368,13 @@
         _entity = [[OSNCustomerAddress alloc] init];
     }
     return _entity;
+}
+
+
+#pragma mark - Notification
+
+- (void)actionKeyboardShow:(NSNotification *)notification {
+    [self hiddenAllPicker];
 }
 
 @end

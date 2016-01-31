@@ -121,6 +121,8 @@
 		01E3035F1C1EE80A001EF801 /* QRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E3035E1C1EE80A001EF801 /* QRCodeScanViewController.m */; };
 		01E303611C1EEF10001EF801 /* pick_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01E303601C1EEF10001EF801 /* pick_bg@2x.png */; };
 		01F8A17A1C15EC59000A7EDB /* NavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F8A1791C15EC59000A7EDB /* NavigationBarView.m */; };
+		01F9DDA31C5DF67C006E1F27 /* CustomerAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F9DDA11C5DF67C006E1F27 /* CustomerAddressCell.m */; settings = {ASSET_TAGS = (); }; };
+		01F9DDA41C5DF67C006E1F27 /* CustomerAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F9DDA21C5DF67C006E1F27 /* CustomerAddressCell.xib */; settings = {ASSET_TAGS = (); }; };
 		6ECBAA760C49A32A4783B017 /* libPods-saleclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 977BB1C584A2928D5B6CF794 /* libPods-saleclient.a */; };
 /* End PBXBuildFile section */
 
@@ -319,6 +321,9 @@
 		01E303601C1EEF10001EF801 /* pick_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pick_bg@2x.png"; sourceTree = "<group>"; };
 		01F8A1781C15EC59000A7EDB /* NavigationBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBarView.h; sourceTree = "<group>"; };
 		01F8A1791C15EC59000A7EDB /* NavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarView.m; sourceTree = "<group>"; };
+		01F9DDA01C5DF67C006E1F27 /* CustomerAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerAddressCell.h; sourceTree = "<group>"; };
+		01F9DDA11C5DF67C006E1F27 /* CustomerAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerAddressCell.m; sourceTree = "<group>"; };
+		01F9DDA21C5DF67C006E1F27 /* CustomerAddressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerAddressCell.xib; sourceTree = "<group>"; };
 		085C548C4109E76C880EC2E0 /* Pods-saleclient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-saleclient.release.xcconfig"; path = "Pods/Target Support Files/Pods-saleclient/Pods-saleclient.release.xcconfig"; sourceTree = "<group>"; };
 		977BB1C584A2928D5B6CF794 /* libPods-saleclient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-saleclient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91545DC02F872E51821B588 /* Pods-saleclient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-saleclient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-saleclient/Pods-saleclient.debug.xcconfig"; sourceTree = "<group>"; };
@@ -373,6 +378,9 @@
 				01A6D0861C58CD9C00807F4C /* CustomerAddressManagerVC.h */,
 				01A6D0871C58CD9C00807F4C /* CustomerAddressManagerVC.m */,
 				01A6D0881C58CD9C00807F4C /* CustomerAddressManagerVC.xib */,
+				01F9DDA01C5DF67C006E1F27 /* CustomerAddressCell.h */,
+				01F9DDA11C5DF67C006E1F27 /* CustomerAddressCell.m */,
+				01F9DDA21C5DF67C006E1F27 /* CustomerAddressCell.xib */,
 				01303C581C5737730089055E /* AgePickerView.h */,
 				01303C591C5737730089055E /* AgePickerView.m */,
 				0177F1E61C56605B00F5969C /* AddressPickerView.h */,
@@ -735,6 +743,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01F9DDA41C5DF67C006E1F27 /* CustomerAddressCell.xib in Resources */,
 				0113754A1BFEF29500A9AB9E /* login_btn_hover.png in Resources */,
 				019164B51C22F86100BA2CD8 /* diy.png in Resources */,
 				01A35D481C0B3C3200341F45 /* link.png in Resources */,
@@ -885,6 +894,7 @@
 				01C7673E1C10733400875C1C /* OSNProductEntity.m in Sources */,
 				0177F1EB1C56720700F5969C /* AddressPickerViewModel.m in Sources */,
 				018B09E61BFEC0BB007B69A8 /* HomeViewController.m in Sources */,
+				01F9DDA31C5DF67C006E1F27 /* CustomerAddressCell.m in Sources */,
 				01E23ABD1C12D4BC006D6A9E /* BuildingImageList.m in Sources */,
 				0192392D1C1473D800948D04 /* CaseDependCell.m in Sources */,
 				01E23AAF1C12C0F2006D6A9E /* ProductDetailViewController.m in Sources */,
