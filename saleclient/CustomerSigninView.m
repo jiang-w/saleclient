@@ -19,6 +19,7 @@
 #import "OSNWebViewController.h"
 #import "BuildingPickerView.h"
 #import "CustomerAddressManagerVC.h"
+#import "OSNCustomerManager.h"
 
 @interface CustomerSigninView()
 
@@ -40,14 +41,14 @@
 @property (nonatomic, strong) AgePickerView *agePicker;
 @property (weak, nonatomic) IBOutlet UILabel *buildingLabel;
 @property (nonatomic, strong) BuildingPickerView *buildingPicker;
+@property (weak, nonatomic) IBOutlet UITextField *buildingNo;
+@property (weak, nonatomic) IBOutlet UITextField *roomNo;
 
 @property (nonatomic, strong) NSString *ageCode;
-@property (nonatomic, strong) NSString *provinceCode;
-@property (nonatomic, strong) NSString *cityCode;
-@property (nonatomic, strong) NSString *countyCode;
 @property (nonatomic, strong, readonly) NSString *receptionId;
 @property (nonatomic, copy) NSString *customerId;
 @property (nonatomic, assign) CGRect originalFrame;
+@property (nonatomic, strong) OSNCustomerAddress *customerAddress;
 
 @end
 
@@ -87,7 +88,7 @@
     [self endEditing:YES];
     [self hiddenAllPicker];
     [self showBuildingPicker];
-    [self.buildingPicker setProvinceCode:self.provinceCode cityCode:self.cityCode andCountyCode:self.countyCode];
+//    [self.buildingPicker setProvinceCode:self.provinceCode cityCode:self.cityCode andCountyCode:self.countyCode];
 }
 
 - (void)tapInnerView:(UITapGestureRecognizer *)recognizer {
@@ -120,9 +121,6 @@
         paramters[@"qq"] = self.qqText.text;
         paramters[@"email"] = self.eMailText.text;
         paramters[@"customerAge"] = self.ageCode;
-        paramters[@"provinceId"] = self.provinceCode;
-        paramters[@"cityId"] = self.cityCode;
-        paramters[@"areaId"] = self.countyCode;
         paramters[@"notes"] = self.notesText.text;
         
         if (!self.customerId) {
@@ -147,9 +145,43 @@
             self.customerId = customerId;
         }
         
+        if (self.customerAddress) {
+            self.customerAddress.customerId = self.customerId;
+            if ([self validateAddressInput]) {
+                self.customerAddress.customerId = self.customerId;
+                self.customerAddress.name = self.name.text;
+                self.customerAddress.contactPhone = self.mobile.text;
+                self.customerAddress.address = self.addressText.text;
+                self.customerAddress.buildingNo = self.buildingNo.text;
+                self.customerAddress.room = self.roomNo.text;
+                
+                OSNCustomerManager *customerManager = [[OSNCustomerManager alloc] init];
+                if (self.customerAddress.addressId) {
+                    [customerManager UpdateCustomerAddress:self.customerAddress];
+                }
+                else {
+                    [customerManager CreateCustomerAddress:self.customerAddress];
+                }
+            }
+        }
+        
+        
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"保存成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
         [alert show];
     }
+}
+
+- (BOOL)validateAddressInput {
+    if ([self.addressLabel.text isEqualToString:@"选择省市区"]) {
+        return NO;
+    }
+    if ([self.buildingLabel.text isEqualToString:@"选择省市区"]) {
+        return NO;
+    }
+    if ([self.addressText.text isEqualToString:@""]) {
+        return NO;
+    }
+    return YES;
 }
 
 - (IBAction)openCustomerDetail:(id)sender {
@@ -208,6 +240,8 @@
             if (dataDic) {
                 [self fillDataFromDictionary:dataDic];
             }
+            
+            [self loadAddressDataWithCustomerId:self.customerId];
         }
     }
 }
@@ -386,18 +420,14 @@
 }
 
 - (void)initViewData {
-    OSNUserInfo *userInfo = [OSNUserManager sharedInstance].currentUser;
-    self.provinceCode = userInfo.provinceId;
-    self.cityCode = userInfo.cityId;
-    self.countyCode = userInfo.areaId;
-    [self.addressPicker setProvinceCode:self.provinceCode cityCode:self.cityCode andCountyCode:self.countyCode];
-    self.addressLabel.text = self.addressPicker.description;
-    self.addressLabel.textColor = [UIColor blackColor];
-    
     OSNCustomerManager *manage = [[OSNCustomerManager alloc] init];
     NSDictionary *dataDic = [manage getCustomerWithId:self.receptionId];
     if (dataDic) {
         [self fillDataFromDictionary:dataDic];
+        
+        if (self.customerId) {
+            [self loadAddressDataWithCustomerId:self.customerId];
+        }
     }
     
     NSArray *designers = [[OSNUserManager sharedInstance] getDesignerList];
@@ -442,27 +472,6 @@
         [self.agePicker setAgeCode:ageCode];
     }
     
-    NSString *provinceId = dictionary[@"provinceId"];
-    if (!IS_EMPTY_STRING(provinceId)) {
-        self.provinceCode = provinceId;
-    }
-    NSString *cityId = dictionary[@"cityId"];
-    if (!IS_EMPTY_STRING(cityId)) {
-        self.cityCode = cityId;
-    }
-    NSString *areaId = dictionary[@"areaId"];
-    if (!IS_EMPTY_STRING(areaId)) {
-        self.countyCode = areaId;
-    }
-    [self.addressPicker setProvinceCode:self.provinceCode cityCode:self.cityCode andCountyCode:self.countyCode];
-    self.addressLabel.text = self.addressPicker.description;
-    self.addressLabel.textColor = [UIColor blackColor];
-    
-//    NSString *address = dictionary[@"address"];
-//    if (!IS_EMPTY_STRING(address)) {
-//        self.addressText.text = address;
-//    }
-    
     NSString *notes = dictionary[@"notes"];
     if (!IS_EMPTY_STRING(notes)) {
         self.notesText.text = notes;
@@ -495,6 +504,49 @@
     }
 }
 
+- (void)loadAddressDataWithCustomerId:(NSString *)customerId {
+    OSNCustomerManager *customerManager = [[OSNCustomerManager alloc] init];
+    NSArray *addressList = [customerManager getAddressListWithCustomerId:customerId];
+    for (OSNCustomerAddress *address in addressList) {
+        if (address.state == 1) {
+            self.customerAddress = address;
+            break;
+        }
+    }
+    if (!self.customerAddress) {
+        self.customerAddress = [[OSNCustomerAddress alloc] init];
+        self.customerAddress.customerId = customerId;
+        self.customerAddress.state = 1;
+    }
+    OSNUserInfo *userInfo = [OSNUserManager sharedInstance].currentUser;
+    if ([self.customerAddress.provinceId isEqual:[NSNull null]]) {
+        self.customerAddress.provinceId = userInfo.provinceId;
+    }
+    if ([self.customerAddress.cityId isEqual:[NSNull null]]) {
+        self.customerAddress.cityId = userInfo.cityId;
+    }
+    if ([self.customerAddress.areaId isEqual:[NSNull null]]) {
+        self.customerAddress.areaId = userInfo.areaId;
+    }
+    
+    [self.addressPicker setProvinceCode:self.customerAddress.provinceId cityCode:self.customerAddress.cityId andCountyCode:self.customerAddress.areaId];
+    if ([self.customerAddress.buildingId isEqual:[NSNull null]]) {
+        [self.buildingPicker setProvinceCode:self.customerAddress.provinceId cityCode:self.customerAddress.cityId andCountyCode:self.customerAddress.areaId];
+    }
+    else {
+        [self.buildingPicker setProvinceCode:self.customerAddress.provinceId cityCode:self.customerAddress.cityId countyCode:self.customerAddress.areaId andBuildingId:self.customerAddress.buildingId];
+    }
+    if (![self.customerAddress.address isEqual:[NSNull null]]) {
+        self.addressText.text = self.customerAddress.address;
+    }
+    if (![self.customerAddress.buildingNo isEqual:[NSNull null]]) {
+        self.buildingNo.text = [self.customerAddress.buildingNo isEqual:[NSNull null]] ? @"" : self.customerAddress.buildingNo;
+    }
+    if (![self.customerAddress.room isEqual:[NSNull null]]) {
+        self.roomNo.text = [self.customerAddress.room isEqual:[NSNull null]] ? @"" : self.customerAddress.room;
+    }
+}
+
 
 #pragma mark - property
 
@@ -510,9 +562,15 @@
         __weak CustomerSigninView *weakSelf = self;
         _addressPicker.block = ^(AddressPickerView *view, NSDictionary *userInfo) {
             weakSelf.addressLabel.text = view.description;
-            weakSelf.provinceCode = userInfo[@"province"];
-            weakSelf.cityCode = userInfo[@"city"];
-            weakSelf.countyCode = userInfo[@"county"];
+            weakSelf.addressLabel.textColor = [UIColor blackColor];
+            if (weakSelf.customerAddress) {
+                weakSelf.customerAddress.provinceId = userInfo[@"province"];
+                weakSelf.customerAddress.provinceName = userInfo[@"provinceName"];
+                weakSelf.customerAddress.cityId = userInfo[@"city"];
+                weakSelf.customerAddress.cityName = userInfo[@"cityName"];
+                weakSelf.customerAddress.areaId = userInfo[@"county"];
+                weakSelf.customerAddress.areaName = userInfo[@"countyName"];
+            }
             [weakSelf hiddenAddressPicker];
         };
     }
