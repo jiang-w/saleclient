@@ -20,6 +20,8 @@
 #import "BuildingPickerView.h"
 #import "CustomerAddressManagerVC.h"
 #import "OSNCustomerManager.h"
+#import "DesignerPickerView.h"
+#import "DesignerPickerViewModel.h"
 
 @interface CustomerSigninView()
 
@@ -43,12 +45,18 @@
 @property (nonatomic, strong) BuildingPickerView *buildingPicker;
 @property (weak, nonatomic) IBOutlet UITextField *buildingNo;
 @property (weak, nonatomic) IBOutlet UITextField *roomNo;
+@property (weak, nonatomic) IBOutlet UILabel *designerLabel;
+@property (nonatomic, strong) DesignerPickerView *designerPicker;
 
+@property (weak, nonatomic) IBOutlet UITextField *receptionShopName;
+@property (weak, nonatomic) IBOutlet UITextField *receptionTime;
+@property (weak, nonatomic) IBOutlet UITextField *receptionGuideName;
 @property (nonatomic, strong) NSString *ageCode;
 @property (nonatomic, strong, readonly) NSString *receptionId;
 @property (nonatomic, copy) NSString *customerId;
 @property (nonatomic, assign) CGRect originalFrame;
 @property (nonatomic, strong) OSNCustomerAddress *customerAddress;
+@property (nonatomic, strong) NSString *designerId;
 
 @end
 
@@ -88,7 +96,12 @@
     [self endEditing:YES];
     [self hiddenAllPicker];
     [self showBuildingPicker];
-//    [self.buildingPicker setProvinceCode:self.provinceCode cityCode:self.cityCode andCountyCode:self.countyCode];
+}
+
+- (void)tapDesignerLabel:(UITapGestureRecognizer *)recognizer {
+    [self endEditing:YES];
+    [self hiddenAllPicker];
+    [self showDesignerPicker];
 }
 
 - (void)tapInnerView:(UITapGestureRecognizer *)recognizer {
@@ -315,7 +328,6 @@
         make.right.equalTo(self.buildingLabel);
         make.height.mas_equalTo(30);
     }];
-    [self hiddenAddressPicker];
     
     [self.innerView addSubview:self.agePicker];
     [self.agePicker mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -323,7 +335,6 @@
         make.left.right.equalTo(self.ageLabel);
         make.height.mas_equalTo(0);
     }];
-    [self hiddenAgePicker];
     
     [self.innerView addSubview:self.buildingPicker];
     [self.buildingPicker mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -332,12 +343,23 @@
         make.height.mas_equalTo(0);
     }];
     
+    [self.innerView addSubview:self.designerPicker];
+    [self.designerPicker mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.designerLabel.mas_top).offset(-6);
+        make.left.right.equalTo(self.designerLabel);
+        make.height.mas_equalTo(0);
+    }];
+    
+    [self hiddenAllPicker];
+    
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAddressLabel:)];
     [_addressLabel addGestureRecognizer:tapRecognizer];
     tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAgeLabel:)];
     [_ageLabel addGestureRecognizer:tapRecognizer];
     tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapBuildingLabel:)];
     [_buildingLabel addGestureRecognizer:tapRecognizer];
+    tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDesignerLabel:)];
+    [_designerLabel addGestureRecognizer:tapRecognizer];
     tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapInnerView:)];
     [_innerView addGestureRecognizer:tapRecognizer];
     
@@ -413,10 +435,31 @@
     self.buildingPicker.hidden = YES;
 }
 
+- (void)showDesignerPicker {
+    self.designerPicker.hidden = NO;
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.designerPicker mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(140);
+        }];
+        [self layoutIfNeeded];
+    }];
+}
+
+- (void)hiddenDesignerPicker {
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.designerPicker mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(30);
+        }];
+        [self layoutIfNeeded];
+    }];
+    self.designerPicker.hidden = YES;
+}
+
 - (void)hiddenAllPicker {
     [self hiddenAgePicker];
     [self hiddenAddressPicker];
     [self hiddenBuildingPicker];
+    [self hiddenDesignerPicker];
 }
 
 - (void)initViewData {
@@ -429,8 +472,6 @@
             [self loadAddressDataWithCustomerId:self.customerId];
         }
     }
-    
-    NSArray *designers = [[OSNUserManager sharedInstance] getDesignerList];
 }
 
 - (void)fillDataFromDictionary:(NSDictionary *)dictionary {
@@ -485,6 +526,21 @@
     NSString *recommendMobile = dictionary[@"recommendMobile"];
     if (!IS_EMPTY_STRING(recommendMobile)) {
         self.recommendMobile.text = recommendMobile;
+    }
+    
+    NSString *receptionShopName = dictionary[@"receptionShopName"];
+    if (!IS_EMPTY_STRING(receptionShopName)) {
+        self.receptionShopName.text = receptionShopName;
+    }
+    
+    NSString *receptionTime = dictionary[@"receptionTime"];
+    if (!IS_EMPTY_STRING(receptionTime)) {
+        self.receptionTime.text = receptionTime;
+    }
+    
+    NSString *receptionGuideName = dictionary[@"receptionGuideName"];
+    if (!IS_EMPTY_STRING(receptionGuideName)) {
+        self.receptionGuideName.text = receptionGuideName;
     }
     
     NSString *typeId = dictionary[@"typeId"];
@@ -570,6 +626,7 @@
                 weakSelf.customerAddress.cityName = userInfo[@"cityName"];
                 weakSelf.customerAddress.areaId = userInfo[@"county"];
                 weakSelf.customerAddress.areaName = userInfo[@"countyName"];
+                [weakSelf.buildingPicker setProvinceCode:weakSelf.customerAddress.provinceId cityCode:weakSelf.customerAddress.cityId andCountyCode:weakSelf.customerAddress.areaId];
             }
             [weakSelf hiddenAddressPicker];
         };
@@ -603,6 +660,20 @@
         };
     }
     return _buildingPicker;
+}
+
+- (DesignerPickerView *)designerPicker {
+    if (!_designerPicker) {
+        DesignerPickerViewModel *viewModel = [[DesignerPickerViewModel alloc] init];
+        _designerPicker = [[DesignerPickerView alloc] initWithViewModel:viewModel];
+        __weak CustomerSigninView *weakSelf = self;
+        _designerPicker.didSelectBlock = ^(DesignerPickerView *view, NSDictionary *designer) {
+            weakSelf.designerLabel.text = designer[@"personName"];
+            weakSelf.designerLabel.textColor = [UIColor blackColor];
+            weakSelf.designerId = designer[@"partyId"];
+        };
+    }
+    return _designerPicker;
 }
 
 @end

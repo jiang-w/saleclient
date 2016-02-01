@@ -30,6 +30,8 @@
 		0119301C1C1AA8DB005D730A /* CustomerReceptionRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0119301A1C1AA8DB005D730A /* CustomerReceptionRecordViewController.m */; };
 		0119301D1C1AA8DB005D730A /* CustomerReceptionRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0119301B1C1AA8DB005D730A /* CustomerReceptionRecordViewController.xib */; };
 		011930201C1ABF8D005D730A /* RecordImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0119301F1C1ABF8D005D730A /* RecordImageCell.m */; };
+		011E6C8F1C5F071A00C210C1 /* DesignerPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 011E6C8E1C5F071A00C210C1 /* DesignerPickerView.m */; };
+		011E6C921C5F0AEF00C210C1 /* DesignerPickerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 011E6C911C5F0AEF00C210C1 /* DesignerPickerViewModel.m */; };
 		0129AB8D1C0363D800A445FB /* OSNProductManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0129AB8C1C0363D800A445FB /* OSNProductManager.m */; };
 		01303C5A1C5737730089055E /* AgePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01303C591C5737730089055E /* AgePickerView.m */; };
 		0130A1771C15894800D075FF /* OSNCustomerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0130A1761C15894800D075FF /* OSNCustomerManager.m */; };
@@ -121,8 +123,8 @@
 		01E3035F1C1EE80A001EF801 /* QRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E3035E1C1EE80A001EF801 /* QRCodeScanViewController.m */; };
 		01E303611C1EEF10001EF801 /* pick_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01E303601C1EEF10001EF801 /* pick_bg@2x.png */; };
 		01F8A17A1C15EC59000A7EDB /* NavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F8A1791C15EC59000A7EDB /* NavigationBarView.m */; };
-		01F9DDA31C5DF67C006E1F27 /* CustomerAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F9DDA11C5DF67C006E1F27 /* CustomerAddressCell.m */; settings = {ASSET_TAGS = (); }; };
-		01F9DDA41C5DF67C006E1F27 /* CustomerAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F9DDA21C5DF67C006E1F27 /* CustomerAddressCell.xib */; settings = {ASSET_TAGS = (); }; };
+		01F9DDA31C5DF67C006E1F27 /* CustomerAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F9DDA11C5DF67C006E1F27 /* CustomerAddressCell.m */; };
+		01F9DDA41C5DF67C006E1F27 /* CustomerAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F9DDA21C5DF67C006E1F27 /* CustomerAddressCell.xib */; };
 		6ECBAA760C49A32A4783B017 /* libPods-saleclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 977BB1C584A2928D5B6CF794 /* libPods-saleclient.a */; };
 /* End PBXBuildFile section */
 
@@ -157,6 +159,10 @@
 		0119301B1C1AA8DB005D730A /* CustomerReceptionRecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerReceptionRecordViewController.xib; sourceTree = "<group>"; };
 		0119301E1C1ABF8D005D730A /* RecordImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordImageCell.h; sourceTree = "<group>"; };
 		0119301F1C1ABF8D005D730A /* RecordImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordImageCell.m; sourceTree = "<group>"; };
+		011E6C8D1C5F071A00C210C1 /* DesignerPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignerPickerView.h; sourceTree = "<group>"; };
+		011E6C8E1C5F071A00C210C1 /* DesignerPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignerPickerView.m; sourceTree = "<group>"; };
+		011E6C901C5F0AEF00C210C1 /* DesignerPickerViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignerPickerViewModel.h; sourceTree = "<group>"; };
+		011E6C911C5F0AEF00C210C1 /* DesignerPickerViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignerPickerViewModel.m; sourceTree = "<group>"; };
 		0129AB8B1C0363D800A445FB /* OSNProductManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNProductManager.h; sourceTree = "<group>"; };
 		0129AB8C1C0363D800A445FB /* OSNProductManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNProductManager.m; sourceTree = "<group>"; };
 		01303C581C5737730089055E /* AgePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgePickerView.h; sourceTree = "<group>"; };
@@ -375,6 +381,10 @@
 		0130A1781C158A7000D075FF /* Customer */ = {
 			isa = PBXGroup;
 			children = (
+				011E6C8D1C5F071A00C210C1 /* DesignerPickerView.h */,
+				011E6C8E1C5F071A00C210C1 /* DesignerPickerView.m */,
+				011E6C901C5F0AEF00C210C1 /* DesignerPickerViewModel.h */,
+				011E6C911C5F0AEF00C210C1 /* DesignerPickerViewModel.m */,
 				01A6D0861C58CD9C00807F4C /* CustomerAddressManagerVC.h */,
 				01A6D0871C58CD9C00807F4C /* CustomerAddressManagerVC.m */,
 				01A6D0881C58CD9C00807F4C /* CustomerAddressManagerVC.xib */,
@@ -841,6 +851,7 @@
 				01E0639F1C0B6E87009448EA /* ProductTagCell.m in Sources */,
 				0129AB8D1C0363D800A445FB /* OSNProductManager.m in Sources */,
 				01BECEFD1C0D943E007A2E10 /* CaseDetailViewController.m in Sources */,
+				011E6C921C5F0AEF00C210C1 /* DesignerPickerViewModel.m in Sources */,
 				01E0639C1C0B6E65009448EA /* ProductTagSection.m in Sources */,
 				014E808D1C1807C10065987F /* LewPopupViewAnimationSlide.m in Sources */,
 				015B2D0F1BFEBA5400821100 /* AppDelegate.m in Sources */,
@@ -883,6 +894,7 @@
 				01303C5A1C5737730089055E /* AgePickerView.m in Sources */,
 				01D776C01C16B69C00F820A1 /* HouseTypeCaseCell.m in Sources */,
 				0130A17B1C158B6600D075FF /* CustomerListViewController.m in Sources */,
+				011E6C8F1C5F071A00C210C1 /* DesignerPickerView.m in Sources */,
 				01B754DE1C13362B000FA9BE /* OSNBuildingEntity.m in Sources */,
 				014E808A1C1807C10065987F /* LewPopupBackgroundView.m in Sources */,
 				01B277E31C2925950056FF80 /* UIResponder+FirstResponder.m in Sources */,
