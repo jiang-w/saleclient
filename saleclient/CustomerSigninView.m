@@ -137,7 +137,7 @@
         paramters[@"typeId"] = !self.customer.typeId ? @"" : self.customer.typeId;
         
         [manage updateCustomerWithParamters:paramters];
-        if ([self validateAddressInput] && self.customer.defaultAddress) {
+        if ([self validateAddressInput]) {
             [manage UpdateCustomerAddress:self.customer.defaultAddress];
         }
         
@@ -380,29 +380,35 @@
                 }
             }
             
-            if (self.customer.defaultAddress) {
-                NSString *provinceId = self.customer.defaultAddress.provinceId;
-                NSString *cityId = self.customer.defaultAddress.cityId;
-                NSString *areaId = self.customer.defaultAddress.areaId;
-                if (provinceId && cityId && areaId) {
-                    [self.addressPicker setProvinceCode:provinceId cityCode:cityId andCountyCode:areaId];
-                    NSString *buildingId = self.customer.defaultAddress.buildingId;
-                    if (buildingId) {
-                        [self.buildingPicker setProvinceCode:provinceId cityCode:cityId countyCode:areaId andBuildingId:buildingId];
-                    }
-                    else {
-                        [self.buildingPicker setProvinceCode:provinceId cityCode:cityId andCountyCode:areaId];
-                    }
+            if (!self.customer.defaultAddress) {
+                self.customer.defaultAddress = [[OSNCustomerAddress alloc] init];
+                self.customer.defaultAddress.customerId = customerId;
+                self.customer.defaultAddress.name = self.customer.customerName;
+                self.customer.defaultAddress.contactPhone = self.customer.mobile;
+                self.customer.defaultAddress.state = 1;
+            }
+            
+            NSString *provinceId = self.customer.defaultAddress.provinceId;
+            NSString *cityId = self.customer.defaultAddress.cityId;
+            NSString *areaId = self.customer.defaultAddress.areaId;
+            NSString *buildingId = self.customer.defaultAddress.buildingId;
+            if (provinceId && cityId && areaId) {
+                [self.addressPicker setProvinceCode:provinceId cityCode:cityId andCountyCode:areaId];
+                if (buildingId) {
+                    [self.buildingPicker setProvinceCode:provinceId cityCode:cityId countyCode:areaId andBuildingId:buildingId];
                 }
-                if (self.customer.defaultAddress.address) {
-                    self.addressText.text = self.customer.defaultAddress.address;
+                else {
+                    [self.buildingPicker setProvinceCode:provinceId cityCode:cityId andCountyCode:areaId];
                 }
-                if (self.customer.defaultAddress.buildingNo) {
-                    self.buildingNo.text = self.customer.defaultAddress.buildingNo;
-                }
-                if (self.customer.defaultAddress.room) {
-                    self.roomNo.text = self.customer.defaultAddress.room;
-                }
+            }
+            if (self.customer.defaultAddress.address) {
+                self.addressText.text = self.customer.defaultAddress.address;
+            }
+            if (self.customer.defaultAddress.buildingNo) {
+                self.buildingNo.text = self.customer.defaultAddress.buildingNo;
+            }
+            if (self.customer.defaultAddress.room) {
+                self.roomNo.text = self.customer.defaultAddress.room;
             }
         });
     });
@@ -577,11 +583,11 @@
     self.customer.recommendName = IS_EMPTY_STRING(self.recommendName.text) ? nil : self.recommendName.text;
     self.customer.recommendMobile = IS_EMPTY_STRING(self.recommendMobile.text) ? nil : self.recommendMobile.text;
     self.customer.recommendCustomerId = self.customer.customerId;
-    if (self.customer.defaultAddress) {
-        self.customer.defaultAddress.name = IS_EMPTY_STRING(self.name.text) ? nil : self.name.text;
-        self.customer.defaultAddress.contactPhone = IS_EMPTY_STRING(self.mobile.text) ? nil : self.mobile.text;
-        self.customer.defaultAddress.address = IS_EMPTY_STRING(self.addressText.text) ? nil : self.addressText.text;
-    }
+    self.customer.defaultAddress.name = IS_EMPTY_STRING(self.name.text) ? nil : self.name.text;
+    self.customer.defaultAddress.contactPhone = IS_EMPTY_STRING(self.mobile.text) ? nil : self.mobile.text;
+    self.customer.defaultAddress.address = IS_EMPTY_STRING(self.addressText.text) ? nil : self.addressText.text;
+    self.customer.defaultAddress.buildingNo = IS_EMPTY_STRING(self.buildingNo.text) ? nil : self.buildingNo.text;
+    self.customer.defaultAddress.room = IS_EMPTY_STRING(self.roomNo.text) ? nil : self.roomNo.text;
 }
 
 
@@ -600,15 +606,13 @@
         _addressPicker.block = ^(AddressPickerView *view, NSDictionary *userInfo) {
             weakSelf.addressLabel.text = view.description;
             weakSelf.addressLabel.textColor = [UIColor blackColor];
-            if (weakSelf.customer.defaultAddress) {
-                weakSelf.customer.defaultAddress.provinceId = userInfo[@"province"];
-                weakSelf.customer.defaultAddress.provinceName = userInfo[@"provinceName"];
-                weakSelf.customer.defaultAddress.cityId = userInfo[@"city"];
-                weakSelf.customer.defaultAddress.cityName = userInfo[@"cityName"];
-                weakSelf.customer.defaultAddress.areaId = userInfo[@"county"];
-                weakSelf.customer.defaultAddress.areaName = userInfo[@"countyName"];
-                [weakSelf.buildingPicker setProvinceCode:userInfo[@"province"] cityCode:userInfo[@"city"] andCountyCode:userInfo[@"county"]];
-            }
+            weakSelf.customer.defaultAddress.provinceId = userInfo[@"province"];
+            weakSelf.customer.defaultAddress.provinceName = userInfo[@"provinceName"];
+            weakSelf.customer.defaultAddress.cityId = userInfo[@"city"];
+            weakSelf.customer.defaultAddress.cityName = userInfo[@"cityName"];
+            weakSelf.customer.defaultAddress.areaId = userInfo[@"county"];
+            weakSelf.customer.defaultAddress.areaName = userInfo[@"countyName"];
+            [weakSelf.buildingPicker setProvinceCode:userInfo[@"province"] cityCode:userInfo[@"city"] andCountyCode:userInfo[@"county"]];
             [weakSelf hiddenAddressPicker];
         };
     }
@@ -639,6 +643,7 @@
             weakSelf.buildingLabel.text = entity.buildingName;
             weakSelf.buildingLabel.textColor = [UIColor blackColor];
             weakSelf.customer.defaultAddress.buildingId = entity.buildingId;
+            weakSelf.customer.defaultAddress.buildingName = entity.buildingName;
         };
     }
     return _buildingPicker;
