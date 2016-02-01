@@ -15,3 +15,4 @@
 #import "OSNBuildingEntity.h"
 #import "OSNCustomerListItem.h"
 #import "OSNCustomerAddress.h"
+#import "OSNCustomerInfo.h"

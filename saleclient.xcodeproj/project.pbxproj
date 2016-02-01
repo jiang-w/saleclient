@@ -32,6 +32,7 @@
 		011930201C1ABF8D005D730A /* RecordImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0119301F1C1ABF8D005D730A /* RecordImageCell.m */; };
 		011E6C8F1C5F071A00C210C1 /* DesignerPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 011E6C8E1C5F071A00C210C1 /* DesignerPickerView.m */; };
 		011E6C921C5F0AEF00C210C1 /* DesignerPickerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 011E6C911C5F0AEF00C210C1 /* DesignerPickerViewModel.m */; };
+		011E6C9B1C5F37F100C210C1 /* OSNCustomerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 011E6C9A1C5F37F100C210C1 /* OSNCustomerInfo.m */; };
 		0129AB8D1C0363D800A445FB /* OSNProductManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0129AB8C1C0363D800A445FB /* OSNProductManager.m */; };
 		01303C5A1C5737730089055E /* AgePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01303C591C5737730089055E /* AgePickerView.m */; };
 		0130A1771C15894800D075FF /* OSNCustomerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0130A1761C15894800D075FF /* OSNCustomerManager.m */; };
@@ -163,6 +164,8 @@
 		011E6C8E1C5F071A00C210C1 /* DesignerPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignerPickerView.m; sourceTree = "<group>"; };
 		011E6C901C5F0AEF00C210C1 /* DesignerPickerViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignerPickerViewModel.h; sourceTree = "<group>"; };
 		011E6C911C5F0AEF00C210C1 /* DesignerPickerViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignerPickerViewModel.m; sourceTree = "<group>"; };
+		011E6C991C5F37F100C210C1 /* OSNCustomerInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNCustomerInfo.h; sourceTree = "<group>"; };
+		011E6C9A1C5F37F100C210C1 /* OSNCustomerInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNCustomerInfo.m; sourceTree = "<group>"; };
 		0129AB8B1C0363D800A445FB /* OSNProductManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNProductManager.h; sourceTree = "<group>"; };
 		0129AB8C1C0363D800A445FB /* OSNProductManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNProductManager.m; sourceTree = "<group>"; };
 		01303C581C5737730089055E /* AgePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgePickerView.h; sourceTree = "<group>"; };
@@ -576,6 +579,8 @@
 				0177F1ED1C56728300F5969C /* RegionModel.m */,
 				01A672EA1C5B311900FBAB72 /* OSNCustomerAddress.h */,
 				01A672EB1C5B311900FBAB72 /* OSNCustomerAddress.m */,
+				011E6C991C5F37F100C210C1 /* OSNCustomerInfo.h */,
+				011E6C9A1C5F37F100C210C1 /* OSNCustomerInfo.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -913,6 +918,7 @@
 				017B72171C2CEE390077916B /* QRCodeViewController.m in Sources */,
 				014060F01C0FEB540001804E /* ProductImageList.m in Sources */,
 				01CA2CED1C0555F000CD0024 /* CaseTagTable.m in Sources */,
+				011E6C9B1C5F37F100C210C1 /* OSNCustomerInfo.m in Sources */,
 				011375641BFF0DA400A9AB9E /* MasterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

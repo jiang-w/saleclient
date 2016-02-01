@@ -36,27 +36,25 @@
 @property (weak, nonatomic) IBOutlet UITextField *notesText;
 @property (weak, nonatomic) IBOutlet UITextField *recommendName;
 @property (weak, nonatomic) IBOutlet UITextField *recommendMobile;
-@property (weak, nonatomic) IBOutlet UIButton *saveButton;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
-@property (nonatomic, strong) AddressPickerView *addressPicker;
 @property (weak, nonatomic) IBOutlet UILabel *ageLabel;
-@property (nonatomic, strong) AgePickerView *agePicker;
 @property (weak, nonatomic) IBOutlet UILabel *buildingLabel;
-@property (nonatomic, strong) BuildingPickerView *buildingPicker;
 @property (weak, nonatomic) IBOutlet UITextField *buildingNo;
 @property (weak, nonatomic) IBOutlet UITextField *roomNo;
 @property (weak, nonatomic) IBOutlet UILabel *designerLabel;
-@property (nonatomic, strong) DesignerPickerView *designerPicker;
-
 @property (weak, nonatomic) IBOutlet UITextField *receptionShopName;
 @property (weak, nonatomic) IBOutlet UITextField *receptionTime;
 @property (weak, nonatomic) IBOutlet UITextField *receptionGuideName;
-@property (nonatomic, strong) NSString *ageCode;
+@property (weak, nonatomic) IBOutlet UIButton *saveButton;
+
+@property (nonatomic, strong) AddressPickerView *addressPicker;
+@property (nonatomic, strong) AgePickerView *agePicker;
+@property (nonatomic, strong) BuildingPickerView *buildingPicker;
+@property (nonatomic, strong) DesignerPickerView *designerPicker;
+
 @property (nonatomic, strong, readonly) NSString *receptionId;
-@property (nonatomic, copy) NSString *customerId;
+@property (nonatomic, strong) OSNCustomerInfo *customer;
 @property (nonatomic, assign) CGRect originalFrame;
-@property (nonatomic, strong) OSNCustomerAddress *customerAddress;
-@property (nonatomic, strong) NSString *designerId;
 
 @end
 
@@ -67,7 +65,7 @@
     if (self) {
         _originalFrame = frame;
         [self initViewAndLayout];
-        [self initViewData];
+        [self initViewDataWithCustomerId:self.receptionId];
     }
     return self;
 }
@@ -116,70 +114,42 @@
 - (IBAction)saveButtonClick:(id)sender {
     if (IS_EMPTY_STRING(self.name.text) || IS_EMPTY_STRING(self.mobile.text)) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"姓名和手机号不能为空"
-                                                       delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles: nil];
         [alert show];
     }
     else {
+        [self updateCustomerInfoFromView];
+        
         OSNCustomerManager *manage = [[OSNCustomerManager alloc] init];
         NSMutableDictionary *paramters = [NSMutableDictionary dictionary];
-        paramters[@"customerName"] = self.name.text;
-        paramters[@"mobile"] = self.mobile.text;
-        if (self.genderSelect.selectedSegmentIndex == 1) {
-            paramters[@"genderId"] = @"F";
-        }
-        else if (self.genderSelect.selectedSegmentIndex == 0) {
-            paramters[@"genderId"] = @"M";
-        }
+        paramters[@"customerName"] = self.customer.customerName;
+        paramters[@"mobile"] = self.customer.mobile;
+        paramters[@"genderId"] = !self.customer.genderId ? @"" : self.customer.genderId;
+        paramters[@"qq"] = !self.customer.qq ? @"" : self.customer.qq;
+        paramters[@"customerAge"] = !self.customer.customerAge ? @"" : self.customer.customerAge;
+        paramters[@"notes"] = !self.customer.notes ? @"" : self.customer.notes;
+        paramters[@"customerId"] = !self.customer.customerId ? @"" : self.customer.customerId;
+        paramters[@"recommendCustomerId"] = !self.customer.recommendCustomerId ? @"" : self.customer.recommendCustomerId;
+        paramters[@"recommendName"] = !self.customer.recommendName ? @"" : self.customer.recommendName;
+        paramters[@"recommendMobile"] = !self.customer.recommendMobile ? @"" : self.customer.recommendMobile;
+        paramters[@"typeId"] = !self.customer.typeId ? @"" : self.customer.typeId;
         
-        paramters[@"qq"] = self.qqText.text;
-        paramters[@"email"] = self.eMailText.text;
-        paramters[@"customerAge"] = self.ageCode;
-        paramters[@"notes"] = self.notesText.text;
-        
-        if (!self.customerId) {
-            self.customerId = [manage createCustomerWithParamters:paramters];
-        }
-        else {
-            paramters[@"customerId"] = self.customerId;
-            paramters[@"recommendCustomerId"] = self.customerId;
-            paramters[@"recommendName"] = self.recommendName.text;
-            paramters[@"recommendMobile"] = self.recommendMobile.text;
-            if (self.customerTypeSelect.selectedSegmentIndex == 0) {
-                paramters[@"typeId"] = @"ct1001";
-            }
-            else {
-                paramters[@"typeId"] = @"ct1000";
-            }
-            [manage updateCustomerWithParamters:paramters];
+        [manage updateCustomerWithParamters:paramters];
+        if ([self validateAddressInput] && self.customer.defaultAddress) {
+            [manage UpdateCustomerAddress:self.customer.defaultAddress];
         }
         
-        if (![self.receptionId isEqualToString:self.customerId]) {
-            NSString *customerId = [manage combineCustomerWithNewCustomerId:self.receptionId andExistCustomerId:self.customerId];
-            self.customerId = customerId;
+        if (![self.receptionId isEqualToString:self.customer.customerId]) {
+            NSString *customerId = [manage combineCustomerWithNewCustomerId:self.receptionId andExistCustomerId:self.customer.customerId];
+            self.customer.customerId = customerId;
         }
-        
-        if (self.customerAddress) {
-            self.customerAddress.customerId = self.customerId;
-            if ([self validateAddressInput]) {
-                self.customerAddress.customerId = self.customerId;
-                self.customerAddress.name = self.name.text;
-                self.customerAddress.contactPhone = self.mobile.text;
-                self.customerAddress.address = self.addressText.text;
-                self.customerAddress.buildingNo = self.buildingNo.text;
-                self.customerAddress.room = self.roomNo.text;
-                
-                OSNCustomerManager *customerManager = [[OSNCustomerManager alloc] init];
-                if (self.customerAddress.addressId) {
-                    [customerManager UpdateCustomerAddress:self.customerAddress];
-                }
-                else {
-                    [customerManager CreateCustomerAddress:self.customerAddress];
-                }
-            }
-        }
-        
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"保存成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"保存成功"
+                                                       delegate:self
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles: nil];
         [alert show];
     }
 }
@@ -211,7 +181,9 @@
 - (IBAction)openAddressManager:(id)sender {
     if (IS_EMPTY_STRING(self.name.text) || IS_EMPTY_STRING(self.mobile.text)) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"姓名和手机号不能为空"
-                                                       delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles: nil];
         [alert show];
     }
     else {
@@ -219,7 +191,7 @@
         
         HomeViewController *parent = (HomeViewController *)self.parentVC;
         CustomerAddressManagerVC *addressCV = [[CustomerAddressManagerVC alloc] initWithNibName:@"CustomerAddressManagerVC" bundle:nil];
-        addressCV.customerId = self.customerId;
+        addressCV.customerId = self.customer.customerId;
         addressCV.customerName = self.name.text;
         addressCV.mobile = self.mobile.text;
         [parent.navigationController pushViewController:addressCV animated:YES];
@@ -232,7 +204,7 @@
     HomeViewController *parent = (HomeViewController *)self.parentVC;
     OSNWebViewController *webView = [[OSNWebViewController alloc] init];
 //    webView.url = @"http://bi.osnyun.com:11113/OSNBigData/console/userPortrait/userState.jsp?customerId=%271041316205%27";
-    webView.url = [NSString stringWithFormat:@"http://bi.osnyun.com:11113/OSNBigData/console/userPortrait/userState.jsp?customerId='%@'", self.customerId];
+    webView.url = [NSString stringWithFormat:@"http://bi.osnyun.com:11113/OSNBigData/console/userPortrait/userState.jsp?customerId='%@'", self.customer.customerId];
     [parent.navigationController pushViewController:webView animated:NO];
 }
 
@@ -244,17 +216,11 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    
     if (textField == self.mobile && !IS_EMPTY_STRING(self.mobile.text)) {
         OSNCustomerManager *manage = [[OSNCustomerManager alloc] init];
-        self.customerId = [manage validateCustomerMobile:self.mobile.text];
-        if (self.customerId) {
-            NSDictionary *dataDic = [manage getCustomerWithId:self.customerId];
-            if (dataDic) {
-                [self fillDataFromDictionary:dataDic];
-            }
-            
-            [self loadAddressDataWithCustomerId:self.customerId];
+        NSString *customerId = [manage validateCustomerMobile:self.mobile.text];
+        if (customerId) {
+            [self initViewDataWithCustomerId:customerId];
         }
     }
 }
@@ -375,6 +341,73 @@
     self.mobile.delegate = self;
 }
 
+- (void)initViewDataWithCustomerId:(NSString *)customerId {
+    self.customer = [[OSNCustomerInfo alloc] init];
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        OSNCustomerManager *manage = [[OSNCustomerManager alloc] init];
+        NSDictionary *dataDic = [manage getCustomerWithId:customerId];
+        self.customer.customerId = dataDic[@"customerId"];
+        self.customer.customerName = dataDic[@"customerName"];
+        self.customer.mobile = dataDic[@"mobile"];
+        self.customer.genderId = dataDic[@"genderId"];
+        self.customer.customerAge = dataDic[@"customerAge"];
+        self.customer.email = dataDic[@"email"];
+        self.customer.qq = dataDic[@"qq"];
+        self.customer.notes = dataDic[@"notes"];
+        self.customer.recommendCustomerId = dataDic[@"recommendCustomerId"];
+        self.customer.recommendName = dataDic[@"recommendName"];
+        self.customer.recommendMobile = dataDic[@"recommendMobile"];
+        self.customer.receptionShopName = dataDic[@"receptionShopName"];
+        self.customer.receptionTime = dataDic[@"receptionTime"];
+        self.customer.receptionGuideName = dataDic[@"receptionGuideName"];
+        self.customer.typeId = dataDic[@"typeId"];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self fillDataFromCustomerInfo:self.customer];
+        });
+    });
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        OSNCustomerManager *customerManager = [[OSNCustomerManager alloc] init];
+        NSArray *addressList = [customerManager getAddressListWithCustomerId:customerId];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            for (OSNCustomerAddress *address in addressList) {
+                if (address.state == 1) {
+                    self.customer.defaultAddress = address;
+                    break;
+                }
+            }
+            
+            if (self.customer.defaultAddress) {
+                NSString *provinceId = self.customer.defaultAddress.provinceId;
+                NSString *cityId = self.customer.defaultAddress.cityId;
+                NSString *areaId = self.customer.defaultAddress.areaId;
+                if (provinceId && cityId && areaId) {
+                    [self.addressPicker setProvinceCode:provinceId cityCode:cityId andCountyCode:areaId];
+                    NSString *buildingId = self.customer.defaultAddress.buildingId;
+                    if (buildingId) {
+                        [self.buildingPicker setProvinceCode:provinceId cityCode:cityId countyCode:areaId andBuildingId:buildingId];
+                    }
+                    else {
+                        [self.buildingPicker setProvinceCode:provinceId cityCode:cityId andCountyCode:areaId];
+                    }
+                }
+                if (self.customer.defaultAddress.address) {
+                    self.addressText.text = self.customer.defaultAddress.address;
+                }
+                if (self.customer.defaultAddress.buildingNo) {
+                    self.buildingNo.text = self.customer.defaultAddress.buildingNo;
+                }
+                if (self.customer.defaultAddress.room) {
+                    self.roomNo.text = self.customer.defaultAddress.room;
+                }
+            }
+        });
+    });
+}
+
 - (void)showAgePicker {
     self.agePicker.hidden = NO;
     [UIView animateWithDuration:0.3 animations:^{
@@ -462,97 +495,63 @@
     [self hiddenDesignerPicker];
 }
 
-- (void)initViewData {
-    OSNCustomerManager *manage = [[OSNCustomerManager alloc] init];
-    NSDictionary *dataDic = [manage getCustomerWithId:self.receptionId];
-    if (dataDic) {
-        [self fillDataFromDictionary:dataDic];
-        
-        if (self.customerId) {
-            [self loadAddressDataWithCustomerId:self.customerId];
-        }
-    }
-}
-
-- (void)fillDataFromDictionary:(NSDictionary *)dictionary {
-    self.customerId = dictionary[@"customerId"];
-    
-    NSString *mobile = dictionary[@"mobile"];
-    if (!IS_EMPTY_STRING(mobile)) {
-        self.mobile.text = mobile;
+- (void)fillDataFromCustomerInfo:(OSNCustomerInfo *)customer {
+    if (!IS_EMPTY_STRING(customer.customerName)) {
+        self.name.text = customer.customerName;
     }
     
-    NSString *name = dictionary[@"customerName"];
-    if (!IS_EMPTY_STRING(name)) {
-        self.name.text = name;
+    if (!IS_EMPTY_STRING(customer.mobile)) {
+        self.mobile.text = customer.mobile;
     }
     
-    NSString *genderId = dictionary[@"genderId"];
-    if ([genderId isEqualToString:@"F"]) {
+    if ([customer.genderId isEqualToString:@"F"]) {
         self.genderSelect.selectedSegmentIndex = 1;
     }
-    else if ([genderId isEqualToString:@"M"]) {
+    else if ([customer.genderId isEqualToString:@"M"]) {
         self.genderSelect.selectedSegmentIndex = 0;
     }
     else {
         self.genderSelect.selectedSegmentIndex = -1;
     }
     
-    NSString *qq = dictionary[@"qq"];
-    if (!IS_EMPTY_STRING(qq)) {
-        self.qqText.text = qq;
+    if (!IS_EMPTY_STRING(customer.qq)) {
+        self.qqText.text = customer.qq;
     }
     
-    NSString *email = dictionary[@"email"];
-    if (!IS_EMPTY_STRING(email)) {
-        self.eMailText.text = email;
+    if (!IS_EMPTY_STRING(customer.email)) {
+        self.eMailText.text = customer.email;
     }
     
-    NSString *ageCode = dictionary[@"customerAge"];
-    if (!IS_EMPTY_STRING(ageCode)) {
-        [self.agePicker setAgeCode:ageCode];
+    if (!IS_EMPTY_STRING(customer.customerAge)) {
+        [self.agePicker setAgeCode:customer.customerAge];
     }
     
-    NSString *notes = dictionary[@"notes"];
-    if (!IS_EMPTY_STRING(notes)) {
-        self.notesText.text = notes;
+    if (!IS_EMPTY_STRING(customer.notes)) {
+        self.notesText.text = customer.notes;
     }
     
-    NSString *recommendName = dictionary[@"recommendName"];
-    if (!IS_EMPTY_STRING(recommendName)) {
-        self.recommendName.text = recommendName;
+    if (!IS_EMPTY_STRING(customer.recommendName)) {
+        self.recommendName.text = customer.recommendName;
     }
     
-    NSString *recommendMobile = dictionary[@"recommendMobile"];
-    if (!IS_EMPTY_STRING(recommendMobile)) {
-        self.recommendMobile.text = recommendMobile;
+    if (!IS_EMPTY_STRING(customer.recommendMobile)) {
+        self.recommendMobile.text = customer.recommendMobile;
     }
     
-    NSString *receptionShopName = dictionary[@"receptionShopName"];
-    if (!IS_EMPTY_STRING(receptionShopName)) {
-        self.receptionShopName.text = receptionShopName;
+    if (!IS_EMPTY_STRING(customer.receptionShopName)) {
+        self.receptionShopName.text = customer.receptionShopName;
     }
     
-    NSString *receptionTime = dictionary[@"receptionTime"];
-    if (!IS_EMPTY_STRING(receptionTime)) {
-        self.receptionTime.text = receptionTime;
+    if (!IS_EMPTY_STRING(customer.receptionTime)) {
+        self.receptionTime.text = customer.receptionTime;
     }
     
-    NSString *receptionGuideName = dictionary[@"receptionGuideName"];
-    if (!IS_EMPTY_STRING(receptionGuideName)) {
-        self.receptionGuideName.text = receptionGuideName;
+    if (!IS_EMPTY_STRING(customer.receptionGuideName)) {
+        self.receptionGuideName.text = customer.receptionGuideName;
     }
-    
-    NSString *typeId = dictionary[@"typeId"];
-    if ([typeId isEqualToString:@"ct1000"]) {
-        self.customerTypeSelect.selectedSegmentIndex = 1;
-    }
-    else {
-        self.customerTypeSelect.selectedSegmentIndex = 0;
-    }
-    
+
     // 家装客户姓名红色显示
-    if (self.customerId && [typeId isEqualToString:@"ct1001"]) {
+    if (customer.customerId && [customer.typeId isEqualToString:@"ct1001"]) {
         self.name.textColor = [UIColor redColor];
     }
     else {
@@ -560,46 +559,28 @@
     }
 }
 
-- (void)loadAddressDataWithCustomerId:(NSString *)customerId {
-    OSNCustomerManager *customerManager = [[OSNCustomerManager alloc] init];
-    NSArray *addressList = [customerManager getAddressListWithCustomerId:customerId];
-    for (OSNCustomerAddress *address in addressList) {
-        if (address.state == 1) {
-            self.customerAddress = address;
-            break;
-        }
+- (void)updateCustomerInfoFromView {
+    self.customer.customerName = IS_EMPTY_STRING(self.name.text) ? nil : self.name.text;
+    self.customer.mobile = IS_EMPTY_STRING(self.mobile.text) ? nil : self.mobile.text;
+    if (self.genderSelect.selectedSegmentIndex == 1) {
+        self.customer.genderId = @"F";
     }
-    if (!self.customerAddress) {
-        self.customerAddress = [[OSNCustomerAddress alloc] init];
-        self.customerAddress.customerId = customerId;
-        self.customerAddress.state = 1;
-    }
-    OSNUserInfo *userInfo = [OSNUserManager sharedInstance].currentUser;
-    if ([self.customerAddress.provinceId isEqual:[NSNull null]]) {
-        self.customerAddress.provinceId = userInfo.provinceId;
-    }
-    if ([self.customerAddress.cityId isEqual:[NSNull null]]) {
-        self.customerAddress.cityId = userInfo.cityId;
-    }
-    if ([self.customerAddress.areaId isEqual:[NSNull null]]) {
-        self.customerAddress.areaId = userInfo.areaId;
-    }
-    
-    [self.addressPicker setProvinceCode:self.customerAddress.provinceId cityCode:self.customerAddress.cityId andCountyCode:self.customerAddress.areaId];
-    if ([self.customerAddress.buildingId isEqual:[NSNull null]]) {
-        [self.buildingPicker setProvinceCode:self.customerAddress.provinceId cityCode:self.customerAddress.cityId andCountyCode:self.customerAddress.areaId];
+    else if (self.genderSelect.selectedSegmentIndex == 0) {
+        self.customer.genderId = @"M";
     }
     else {
-        [self.buildingPicker setProvinceCode:self.customerAddress.provinceId cityCode:self.customerAddress.cityId countyCode:self.customerAddress.areaId andBuildingId:self.customerAddress.buildingId];
+        self.customer.genderId = nil;
     }
-    if (![self.customerAddress.address isEqual:[NSNull null]]) {
-        self.addressText.text = self.customerAddress.address;
-    }
-    if (![self.customerAddress.buildingNo isEqual:[NSNull null]]) {
-        self.buildingNo.text = [self.customerAddress.buildingNo isEqual:[NSNull null]] ? @"" : self.customerAddress.buildingNo;
-    }
-    if (![self.customerAddress.room isEqual:[NSNull null]]) {
-        self.roomNo.text = [self.customerAddress.room isEqual:[NSNull null]] ? @"" : self.customerAddress.room;
+    self.customer.qq = IS_EMPTY_STRING(self.qqText.text) ? nil : self.qqText.text;
+    self.customer.email = IS_EMPTY_STRING(self.eMailText.text) ? nil : self.eMailText.text;
+    self.customer.notes = IS_EMPTY_STRING(self.notesText.text) ? nil : self.notesText.text;
+    self.customer.recommendName = IS_EMPTY_STRING(self.recommendName.text) ? nil : self.recommendName.text;
+    self.customer.recommendMobile = IS_EMPTY_STRING(self.recommendMobile.text) ? nil : self.recommendMobile.text;
+    self.customer.recommendCustomerId = self.customer.customerId;
+    if (self.customer.defaultAddress) {
+        self.customer.defaultAddress.name = IS_EMPTY_STRING(self.name.text) ? nil : self.name.text;
+        self.customer.defaultAddress.contactPhone = IS_EMPTY_STRING(self.mobile.text) ? nil : self.mobile.text;
+        self.customer.defaultAddress.address = IS_EMPTY_STRING(self.addressText.text) ? nil : self.addressText.text;
     }
 }
 
@@ -619,14 +600,14 @@
         _addressPicker.block = ^(AddressPickerView *view, NSDictionary *userInfo) {
             weakSelf.addressLabel.text = view.description;
             weakSelf.addressLabel.textColor = [UIColor blackColor];
-            if (weakSelf.customerAddress) {
-                weakSelf.customerAddress.provinceId = userInfo[@"province"];
-                weakSelf.customerAddress.provinceName = userInfo[@"provinceName"];
-                weakSelf.customerAddress.cityId = userInfo[@"city"];
-                weakSelf.customerAddress.cityName = userInfo[@"cityName"];
-                weakSelf.customerAddress.areaId = userInfo[@"county"];
-                weakSelf.customerAddress.areaName = userInfo[@"countyName"];
-                [weakSelf.buildingPicker setProvinceCode:weakSelf.customerAddress.provinceId cityCode:weakSelf.customerAddress.cityId andCountyCode:weakSelf.customerAddress.areaId];
+            if (weakSelf.customer.defaultAddress) {
+                weakSelf.customer.defaultAddress.provinceId = userInfo[@"province"];
+                weakSelf.customer.defaultAddress.provinceName = userInfo[@"provinceName"];
+                weakSelf.customer.defaultAddress.cityId = userInfo[@"city"];
+                weakSelf.customer.defaultAddress.cityName = userInfo[@"cityName"];
+                weakSelf.customer.defaultAddress.areaId = userInfo[@"county"];
+                weakSelf.customer.defaultAddress.areaName = userInfo[@"countyName"];
+                [weakSelf.buildingPicker setProvinceCode:userInfo[@"province"] cityCode:userInfo[@"city"] andCountyCode:userInfo[@"county"]];
             }
             [weakSelf hiddenAddressPicker];
         };
@@ -641,7 +622,7 @@
         _agePicker.didSelectBlock = ^(AgePickerView *view, NSDictionary *userInfo) {
             weakSelf.ageLabel.text = userInfo[@"description"];
             weakSelf.ageLabel.textColor = [UIColor blackColor];
-            weakSelf.ageCode = userInfo[@"code"];
+            weakSelf.customer.customerAge = userInfo[@"code"];
         };
         _agePicker.dissmissBlock = ^(AgePickerView *view) {
             [weakSelf hiddenAgePicker];
@@ -657,6 +638,7 @@
         _buildingPicker.didSelectBlock = ^(BuildingPickerView *view, OSNBuildingEntity *entity) {
             weakSelf.buildingLabel.text = entity.buildingName;
             weakSelf.buildingLabel.textColor = [UIColor blackColor];
+            weakSelf.customer.defaultAddress.buildingId = entity.buildingId;
         };
     }
     return _buildingPicker;
@@ -670,7 +652,7 @@
         _designerPicker.didSelectBlock = ^(DesignerPickerView *view, NSDictionary *designer) {
             weakSelf.designerLabel.text = designer[@"personName"];
             weakSelf.designerLabel.textColor = [UIColor blackColor];
-            weakSelf.designerId = designer[@"partyId"];
+            weakSelf.customer.designerId = designer[@"partyId"];
         };
     }
     return _designerPicker;
