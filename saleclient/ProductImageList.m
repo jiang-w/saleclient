@@ -227,12 +227,17 @@ static NSString * const reuseIdentifier = @"productImageCell";
     dispatch_async(queue, ^{
         OSNProductManager *manager = [[OSNProductManager alloc] init];
         NSArray *list = [manager getProductListWithParameters:weakSelf.paramters];
-        [weakSelf.productList addObjectsFromArray:list];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf.imageList reloadData];
-            [weakSelf.imageList.mj_footer endRefreshing];
-        });
+        if (list.count > 0) {
+            [weakSelf.productList addObjectsFromArray:list];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf.imageList reloadData];
+                [weakSelf.imageList.mj_footer endRefreshing];
+            });
+        }
+        else {
+            [weakSelf.imageList.mj_footer endRefreshingWithNoMoreData];
+        }
     });
 }
 

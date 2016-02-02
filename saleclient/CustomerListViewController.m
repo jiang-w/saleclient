@@ -110,12 +110,17 @@ static NSString * const reuseIdentifier = @"customerListCell";
     dispatch_queue_t queue = dispatch_queue_create("loadCustomerList", nil);
     dispatch_async(queue, ^{
         NSArray *list = [weakSelf requestCustomerList];
-        [weakSelf.customerList addObjectsFromArray:list];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf.tableView reloadData];
-            [weakSelf.tableView.mj_footer endRefreshing];
-        });
+        if (list.count > 0) {
+            [weakSelf.customerList addObjectsFromArray:list];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf.tableView reloadData];
+                [weakSelf.tableView.mj_footer endRefreshing];
+            });
+        }
+        else {
+            [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+        }
     });
 }
 

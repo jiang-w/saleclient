@@ -107,12 +107,17 @@ static NSString * const reuseIdentifier = @"buildingImageCell";
     dispatch_queue_t queue = dispatch_queue_create("updateCaseList", nil);
     dispatch_async(queue, ^{
         NSArray *list = [weakSelf requestBuildingList];
-        [weakSelf.buildingList addObjectsFromArray:list];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf.collectionView reloadData];
-            [weakSelf.collectionView.mj_footer endRefreshing];
-        });
+        if (list.count > 0) {
+            [weakSelf.buildingList addObjectsFromArray:list];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf.collectionView reloadData];
+                [weakSelf.collectionView.mj_footer endRefreshing];
+            });
+        }
+        else {
+            [weakSelf.collectionView.mj_footer endRefreshingWithNoMoreData];
+        }
     });
 }
 
