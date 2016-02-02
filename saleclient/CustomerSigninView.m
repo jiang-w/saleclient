@@ -128,6 +128,7 @@
         paramters[@"mobile"] = self.customer.mobile;
         paramters[@"genderId"] = !self.customer.genderId ? @"" : self.customer.genderId;
         paramters[@"qq"] = !self.customer.qq ? @"" : self.customer.qq;
+        paramters[@"email"] = !self.customer.email ? @"" : self.customer.email;
         paramters[@"customerAge"] = !self.customer.customerAge ? @"" : self.customer.customerAge;
         paramters[@"notes"] = !self.customer.notes ? @"" : self.customer.notes;
         paramters[@"customerId"] = !self.customer.customerId ? @"" : self.customer.customerId;
@@ -390,9 +391,10 @@
                 self.customer.defaultAddress.state = 1;
             }
             
-            NSString *provinceId = self.customer.defaultAddress.provinceId;
-            NSString *cityId = self.customer.defaultAddress.cityId;
-            NSString *areaId = self.customer.defaultAddress.areaId;
+            OSNUserInfo *user = [OSNUserManager sharedInstance].currentUser;
+            NSString *provinceId = self.customer.defaultAddress.provinceId ? self.customer.defaultAddress.provinceId : user.provinceId;
+            NSString *cityId = self.customer.defaultAddress.cityId ? self.customer.defaultAddress.cityId : user.cityId;
+            NSString *areaId = self.customer.defaultAddress.areaId ? self.customer.defaultAddress.areaId : user.areaId;
             NSString *buildingId = self.customer.defaultAddress.buildingId;
             if (provinceId && cityId && areaId) {
                 [self.addressPicker setProvinceCode:provinceId cityCode:cityId andCountyCode:areaId];
@@ -504,7 +506,7 @@
 }
 
 - (void)fillDataFromCustomerInfo:(OSNCustomerInfo *)customer {
-    if (!IS_EMPTY_STRING(customer.customerName)) {
+    if (!IS_EMPTY_STRING(customer.customerName) && !IS_EMPTY_STRING(customer.mobile)) {
         self.name.text = customer.customerName;
     }
     
