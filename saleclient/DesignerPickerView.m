@@ -39,6 +39,17 @@
     self.backgroundColor = [UIColor whiteColor];
 }
 
+- (void)setDesignerId:(NSString *)designerId {
+    for (int i = 0; i < self.viewModel.designers.count; i++) {
+        NSDictionary *designer = self.viewModel.designers[i];
+        if ([designer[@"partyId"] isEqualToString:designerId]) {
+            [self.pickerView selectRow:i inComponent:0 animated:NO];
+            [self pickerView:self.pickerView didSelectRow:i inComponent:0];
+            break;
+        }
+    }
+}
+
 
 #pragma mark - Delegate
 

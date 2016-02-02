@@ -19,4 +19,6 @@ typedef void (^DesignerPickerViewDidSelectBlock)(DesignerPickerView *view, NSDic
 
 - (instancetype)initWithViewModel:(DesignerPickerViewModel *)viewModel;
 
+- (void)setDesignerId:(NSString *)designerId;
+
 @end

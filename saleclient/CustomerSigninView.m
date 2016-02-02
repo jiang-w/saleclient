@@ -135,6 +135,7 @@
         paramters[@"recommendName"] = !self.customer.recommendName ? @"" : self.customer.recommendName;
         paramters[@"recommendMobile"] = !self.customer.recommendMobile ? @"" : self.customer.recommendMobile;
         paramters[@"typeId"] = !self.customer.typeId ? @"" : self.customer.typeId;
+        paramters[@"partyId"] = !self.customer.designerId ? @"" : self.customer.designerId;
         
         [manage updateCustomerWithParamters:paramters];
         if ([self validateAddressInput]) {
@@ -362,6 +363,7 @@
         self.customer.receptionTime = dataDic[@"receptionTime"];
         self.customer.receptionGuideName = dataDic[@"receptionGuideName"];
         self.customer.typeId = dataDic[@"typeId"];
+        self.customer.designerId = dataDic[@"partyId"];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self fillDataFromCustomerInfo:self.customer];
@@ -554,6 +556,10 @@
     
     if (!IS_EMPTY_STRING(customer.receptionGuideName)) {
         self.receptionGuideName.text = customer.receptionGuideName;
+    }
+    
+    if (!IS_EMPTY_STRING(customer.designerId)) {
+        [self.designerPicker setDesignerId:customer.designerId];
     }
 
     // 家装客户姓名红色显示
