@@ -377,4 +377,8 @@ static NSString * const reuseIdentifier = @"addressListCell";
     [self hiddenAllPicker];
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
+}
+
 @end

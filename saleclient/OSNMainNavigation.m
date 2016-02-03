@@ -66,4 +66,8 @@
     }
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:RESPONSE_STATUS_NOTIFICATION object:nil];
+}
+
 @end
