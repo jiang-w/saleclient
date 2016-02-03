@@ -61,6 +61,7 @@ static NSString * const reuseIdentifier = @"customerListCell";
     }];
     MJRefreshNormalHeader *mjHeader = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf loadCustomerListData];
+        [weakSelf.tableView.mj_footer resetNoMoreData];
     }];
     mjHeader.lastUpdatedTimeLabel.hidden = YES;
     self.tableView.mj_header = mjHeader;
@@ -110,17 +111,16 @@ static NSString * const reuseIdentifier = @"customerListCell";
     dispatch_queue_t queue = dispatch_queue_create("loadCustomerList", nil);
     dispatch_async(queue, ^{
         NSArray *list = [weakSelf requestCustomerList];
-        if (list.count > 0) {
-            [weakSelf.customerList addObjectsFromArray:list];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (list.count > 0) {
+                [weakSelf.customerList addObjectsFromArray:list];
                 [weakSelf.tableView reloadData];
                 [weakSelf.tableView.mj_footer endRefreshing];
-            });
-        }
-        else {
-            [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
-        }
+            }
+            else {
+                [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+            }
+        });
     });
 }
 

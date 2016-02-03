@@ -56,8 +56,14 @@ static NSString * const reuseIdentifier = @"caseImageCell";
     
     // Register cell classes
     [self.collectionView registerClass:[CaseImageCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    // 上拉刷新
+    
     __weak __typeof__(self) weakSelf = self;
+    // 下拉刷新
+    self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf loadCaseList];
+        [weakSelf.collectionView.mj_footer resetNoMoreData];
+    }];
+    // 上拉刷新
     self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [weakSelf loadMoreCaseList];
     }];
@@ -123,7 +129,7 @@ static NSString * const reuseIdentifier = @"caseImageCell";
             [weakSelf.collectionView scrollRectToVisible:CGRectMake(0, 0, width, height) animated:NO];
             // 刷新列表数据
             [weakSelf.collectionView reloadData];
-            [weakSelf.collectionView.mj_footer endRefreshing];
+            [weakSelf.collectionView.mj_header endRefreshing];
         });
     });
 }
@@ -134,17 +140,16 @@ static NSString * const reuseIdentifier = @"caseImageCell";
     dispatch_queue_t queue = dispatch_queue_create("updateCaseList", nil);
     dispatch_async(queue, ^{
         NSArray *list = [weakSelf requestCaseList];
-        if (list.count > 0) {
-            [weakSelf.caseList addObjectsFromArray:list];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (list.count > 0) {
+                [weakSelf.caseList addObjectsFromArray:list];
                 [weakSelf.collectionView reloadData];
                 [weakSelf.collectionView.mj_footer endRefreshing];
-            });
-        }
-        else {
-            [weakSelf.collectionView.mj_footer endRefreshingWithNoMoreData];
-        }
+            }
+            else {
+                [weakSelf.collectionView.mj_footer endRefreshingWithNoMoreData];
+            }
+        });
     });
 }
 

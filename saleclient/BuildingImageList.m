@@ -60,12 +60,19 @@ static NSString * const reuseIdentifier = @"buildingImageCell";
     
     // Register cell classes
     [self.collectionView registerClass:[BuildingImageCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    // 上拉刷新
+    
     __weak __typeof__(self) weakSelf = self;
+    // 下拉刷新
+    self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf loadBuildingList];
+        [weakSelf.collectionView.mj_footer resetNoMoreData];
+    }];
+    
+    // 上拉刷新
     self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [weakSelf loadMoreBuildingList];
     }];
-
+    
     [self loadBuildingList];
 }
 
@@ -97,6 +104,7 @@ static NSString * const reuseIdentifier = @"buildingImageCell";
             [weakSelf.collectionView scrollRectToVisible:CGRectMake(0, 0, width, height) animated:NO];
             // 刷新列表数据
             [weakSelf.collectionView reloadData];
+            [weakSelf.collectionView.mj_header endRefreshing];
         });
     });
 }
@@ -107,17 +115,16 @@ static NSString * const reuseIdentifier = @"buildingImageCell";
     dispatch_queue_t queue = dispatch_queue_create("updateCaseList", nil);
     dispatch_async(queue, ^{
         NSArray *list = [weakSelf requestBuildingList];
-        if (list.count > 0) {
-            [weakSelf.buildingList addObjectsFromArray:list];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (list.count > 0) {
+                [weakSelf.buildingList addObjectsFromArray:list];
                 [weakSelf.collectionView reloadData];
                 [weakSelf.collectionView.mj_footer endRefreshing];
-            });
-        }
-        else {
-            [weakSelf.collectionView.mj_footer endRefreshingWithNoMoreData];
-        }
+            }
+            else {
+                [weakSelf.collectionView.mj_footer endRefreshingWithNoMoreData];
+            }
+        });
     });
 }
 

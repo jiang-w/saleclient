@@ -42,8 +42,14 @@ static NSString * const reuseIdentifier = @"productImageCell";
         make.edges.equalTo(self.view);
     }];
     
-    // 上拉刷新
     __weak __typeof__(self) weakSelf = self;
+    // 下拉刷新
+    self.imageList.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf loadProductList];
+        [weakSelf.imageList.mj_footer resetNoMoreData];
+    }];
+    
+    // 上拉刷新
     self.imageList.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [weakSelf loadMoreProductList];
     }];
@@ -213,6 +219,7 @@ static NSString * const reuseIdentifier = @"productImageCell";
             [weakSelf.imageList scrollRectToVisible:CGRectMake(0, 0, width, height) animated:NO];
             // 刷新列表数据
             [weakSelf.imageList reloadData];
+            [weakSelf.imageList.mj_header endRefreshing];
         });
     });
 }
@@ -227,17 +234,16 @@ static NSString * const reuseIdentifier = @"productImageCell";
     dispatch_async(queue, ^{
         OSNProductManager *manager = [[OSNProductManager alloc] init];
         NSArray *list = [manager getProductListWithParameters:weakSelf.paramters];
-        if (list.count > 0) {
-            [weakSelf.productList addObjectsFromArray:list];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (list.count > 0) {
+                [weakSelf.productList addObjectsFromArray:list];
                 [weakSelf.imageList reloadData];
                 [weakSelf.imageList.mj_footer endRefreshing];
-            });
-        }
-        else {
-            [weakSelf.imageList.mj_footer endRefreshingWithNoMoreData];
-        }
+            }
+            else {
+                [weakSelf.imageList.mj_footer endRefreshingWithNoMoreData];
+            }
+        });
     });
 }
 
