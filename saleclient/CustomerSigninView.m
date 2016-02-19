@@ -140,6 +140,8 @@
         
         [manage updateCustomerWithParamters:paramters];
         if ([self validateAddressInput]) {
+            self.customer.defaultAddress.name = self.customer.customerName;
+            self.customer.defaultAddress.contactPhone = self.customer.mobile;
             [manage UpdateCustomerAddress:self.customer.defaultAddress];
         }
         
@@ -650,6 +652,7 @@
         _buildingPicker.didSelectBlock = ^(BuildingPickerView *view, OSNBuildingEntity *entity) {
             weakSelf.buildingLabel.text = entity.buildingName;
             weakSelf.buildingLabel.textColor = [UIColor blackColor];
+            weakSelf.addressText.text = entity.buildingPlace;
             weakSelf.customer.defaultAddress.buildingId = entity.buildingId;
             weakSelf.customer.defaultAddress.buildingName = entity.buildingName;
         };

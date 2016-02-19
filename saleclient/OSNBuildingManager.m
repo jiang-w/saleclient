@@ -76,6 +76,7 @@
             entity.buildingLatitude = [item[@"buildingLatitude"] floatValue];
             entity.lastUpdatedStamp = item[@"lastUpdatedStamp"];
             entity.cityName = item[@"cityName"];
+            entity.buildingPlace = item[@"buildingPlace"];
             
             [list addObject:entity];
         }

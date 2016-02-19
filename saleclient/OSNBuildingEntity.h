@@ -29,5 +29,6 @@
 @property(nonatomic, assign) float buildingLatitude;
 @property(nonatomic, copy) NSString *lastUpdatedStamp;
 @property(nonatomic, copy) NSString *cityName;
+@property(nonatomic, copy) NSString *buildingPlace;
 
 @end
