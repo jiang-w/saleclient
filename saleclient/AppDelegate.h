@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "SignInViewController.h"
 #import "OSNMainNavigation.h"
+#import <PgySDK/PgyManager.h>
+#import <PgyUpdate/PgyUpdateManager.h>
+
+#define PGY_APPKEY @"d1b8862120e2d164a0cfcdcbe3ba6ca1"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

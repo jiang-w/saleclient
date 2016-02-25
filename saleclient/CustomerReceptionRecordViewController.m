@@ -56,6 +56,7 @@ static NSString * const reuseIdentifier = @"recordImageCell";
         dispatch_async(queue, ^{
             NSMutableDictionary *paramters = [NSMutableDictionary dictionary];
             paramters[@"customerId"] = receptionId;
+            paramters[@"viewSize"] = @"9999";
             if (self.recordTypeSelect.selectedSegmentIndex == 1) {
                 paramters[@"receptionType"] = @"OcnProduct";
             }

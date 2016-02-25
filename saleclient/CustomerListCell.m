@@ -8,6 +8,7 @@
 
 #import "CustomerListCell.h"
 #import "CustomerDetailMaster.h"
+#import "OSNWebViewController.h"
 #import "AppDelegate.h"
 
 @interface CustomerListCell()
@@ -21,6 +22,7 @@
 @property(nonatomic, strong) UILabel *createTime;
 @property(nonatomic, strong) UILabel *guider;
 @property(nonatomic, strong) UIButton *operation;
+@property(nonatomic, strong) UIButton *profile;
 
 @end
 
@@ -68,13 +70,19 @@
         [self.contentView addSubview:self.guider];
         [self.guider mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.contentView);
-            make.centerX.equalTo(self.createTime.mas_centerX).offset(140);
+            make.centerX.equalTo(self.createTime.mas_centerX).offset(120);
         }];
         
         [self.contentView addSubview:self.operation];
         [self.operation mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.contentView);
-            make.centerX.equalTo(self.guider.mas_centerX).offset(80);
+            make.centerX.equalTo(self.guider.mas_centerX).offset(60);
+        }];
+        
+        [self.contentView addSubview:self.profile];
+        [self.profile mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.contentView);
+            make.centerX.equalTo(self.operation.mas_centerX).offset(80);
         }];
         
         UIView *separator = [[UIView alloc] init];
@@ -171,18 +179,36 @@
         _operation = [UIButton buttonWithType:UIButtonTypeCustom];
         [_operation setTitle:@"客户档案" forState:UIControlStateNormal];
         [_operation setTitleColor:RGB(67, 176, 250) forState:UIControlStateNormal];
-        _operation.titleLabel.font = [UIFont systemFontOfSize:14];
+        _operation.titleLabel.font = [UIFont systemFontOfSize:13];
         
         [_operation addTarget:self action:@selector(customerDetailButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _operation;
 }
 
+- (UIButton *)profile {
+    if (!_profile) {
+        _profile = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_profile setTitle:@"用户画像" forState:UIControlStateNormal];
+        [_profile setTitleColor:RGB(67, 176, 250) forState:UIControlStateNormal];
+        _profile.titleLabel.font = [UIFont systemFontOfSize:13];
+        
+        [_profile addTarget:self action:@selector(customerProfileButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _profile;
+}
 
 - (void)customerDetailButtonClick:(UIButton *)sender {
     CustomerDetailMaster *detail = [[CustomerDetailMaster alloc] initWithCustomerId:self.customerId];
     AppDelegate *app = [UIApplication sharedApplication].delegate;
     [app.mainNav pushViewController:detail animated:YES];
+}
+
+- (void)customerProfileButtonClick:(UIButton *)sender {
+    OSNWebViewController *webView = [[OSNWebViewController alloc] init];
+    webView.url = [NSString stringWithFormat:@"http://bi.osnyun.com:11113/OSNBigData/console/userPortrait/userState.jsp?customerId='%@'", self.customerId];
+    AppDelegate *app = [UIApplication sharedApplication].delegate;
+    [app.mainNav pushViewController:webView animated:YES];
 }
 
 @end

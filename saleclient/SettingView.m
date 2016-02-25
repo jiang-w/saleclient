@@ -10,6 +10,8 @@
 #import "OSNUserManager.h"
 #import "AppDelegate.h"
 #import "UIViewController+LewPopupViewController.h"
+#import <PgySDK/PgyManager.h>
+#import <PgyUpdate/PgyUpdateManager.h>
 
 @interface SettingView()
 
@@ -42,8 +44,10 @@
 }
 
 - (IBAction)updateButtonClick:(id)sender {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"当前版本已是最新" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-    [alert show];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"当前版本已是最新" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+//    [alert show];
+//    [[PgyUpdateManager sharedPgyManager] checkUpdateWithDelegete:self selector:@selector(updateMethod:)];
+    [[PgyUpdateManager sharedPgyManager] checkUpdate];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -53,6 +57,28 @@
         AppDelegate *appDelegate = OSNMainDelegate;
         appDelegate.window.rootViewController = appDelegate.signInViewController;
     }
+}
+
+/**
+ *  检查更新回调
+ *
+ *  @param response 检查更新的返回结果
+ */
+- (void)updateMethod:(NSDictionary *)response {
+    if (response[@"downloadURL"]) {
+        
+        NSString *message = response[@"releaseNote"];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"发现新版本"
+                                                            message:message
+                                                           delegate:self
+                                                  cancelButtonTitle:@"好的"
+                                                  otherButtonTitles:nil];
+        
+        [alertView show];
+    }
+    
+    //    调用checkUpdateWithDelegete后可用此方法来更新本地的版本号，如果有更新的话，在调用了此方法后再次调用将不提示更新信息。
+    //        [[PgyUpdateManager sharedPgyManager] updateLocalBuildNumber];
 }
 
 @end

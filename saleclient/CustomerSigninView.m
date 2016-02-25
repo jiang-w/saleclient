@@ -38,7 +38,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *recommendMobile;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ageLabel;
-@property (weak, nonatomic) IBOutlet UILabel *buildingLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *buildingLabel;
+@property (weak, nonatomic) IBOutlet UITextField *buildingText;
 @property (weak, nonatomic) IBOutlet UITextField *buildingNo;
 @property (weak, nonatomic) IBOutlet UITextField *roomNo;
 @property (weak, nonatomic) IBOutlet UILabel *designerLabel;
@@ -90,11 +91,11 @@
     [self showAgePicker];
 }
 
-- (void)tapBuildingLabel:(UITapGestureRecognizer *)recognizer {
-    [self endEditing:YES];
-    [self hiddenAllPicker];
-    [self showBuildingPicker];
-}
+//- (void)tapBuildingLabel:(UITapGestureRecognizer *)recognizer {
+//    [self endEditing:YES];
+//    [self hiddenAllPicker];
+//    [self showBuildingPicker];
+//}
 
 - (void)tapDesignerLabel:(UITapGestureRecognizer *)recognizer {
     [self endEditing:YES];
@@ -109,6 +110,12 @@
 
 - (IBAction)cancelButtonClick:(id)sender {
     [self.parentVC lew_dismissPopupView];
+}
+
+- (IBAction)clickBuildingSelectButton:(id)sender {
+    [self endEditing:YES];
+    [self hiddenAllPicker];
+    [self showBuildingPicker];
 }
 
 - (IBAction)saveButtonClick:(id)sender {
@@ -162,7 +169,10 @@
     if ([self.addressLabel.text isEqualToString:@"选择省市区"]) {
         return NO;
     }
-    if ([self.buildingLabel.text isEqualToString:@"选择省市区"]) {
+//    if ([self.buildingLabel.text isEqualToString:@"选择省市区"]) {
+//        return NO;
+//    }
+    if (IS_EMPTY_STRING(self.buildingText.text)) {
         return NO;
     }
     if ([self.addressText.text isEqualToString:@""]) {
@@ -295,7 +305,8 @@
     [self.addressPicker mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.addressLabel.mas_bottom).offset(6);
         make.left.equalTo(self.addressLabel);
-        make.right.equalTo(self.buildingLabel);
+//        make.right.equalTo(self.buildingLabel);
+        make.right.equalTo(self.eMailText);
         make.height.mas_equalTo(30);
     }];
     
@@ -308,8 +319,10 @@
     
     [self.innerView addSubview:self.buildingPicker];
     [self.buildingPicker mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.buildingLabel.mas_bottom).offset(6);
-        make.left.right.equalTo(self.buildingLabel);
+//        make.top.equalTo(self.buildingLabel.mas_bottom).offset(6);
+//        make.left.right.equalTo(self.buildingLabel);
+        make.top.equalTo(self.buildingText.mas_bottom).offset(6);
+        make.left.right.equalTo(self.buildingText);
         make.height.mas_equalTo(0);
     }];
     
@@ -326,8 +339,8 @@
     [_addressLabel addGestureRecognizer:tapRecognizer];
     tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAgeLabel:)];
     [_ageLabel addGestureRecognizer:tapRecognizer];
-    tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapBuildingLabel:)];
-    [_buildingLabel addGestureRecognizer:tapRecognizer];
+//    tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapBuildingLabel:)];
+//    [_buildingLabel addGestureRecognizer:tapRecognizer];
     tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDesignerLabel:)];
     [_designerLabel addGestureRecognizer:tapRecognizer];
     tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapInnerView:)];
@@ -398,15 +411,20 @@
             NSString *cityId = self.customer.defaultAddress.cityId ? self.customer.defaultAddress.cityId : user.cityId;
             NSString *areaId = self.customer.defaultAddress.areaId ? self.customer.defaultAddress.areaId : user.areaId;
             NSString *buildingId = self.customer.defaultAddress.buildingId;
+            NSString *buildingName = self.customer.defaultAddress.buildingName;
             if (provinceId && cityId && areaId) {
                 [self.addressPicker setProvinceCode:provinceId cityCode:cityId andCountyCode:areaId];
                 if (buildingId) {
                     [self.buildingPicker setProvinceCode:provinceId cityCode:cityId countyCode:areaId andBuildingId:buildingId];
                 }
-                else {
-                    [self.buildingPicker setProvinceCode:provinceId cityCode:cityId andCountyCode:areaId];
-                }
+//                else {
+//                    [self.buildingPicker setProvinceCode:provinceId cityCode:cityId andCountyCode:areaId];
+//                }
             }
+            self.customer.defaultAddress.buildingId = buildingId;
+            self.customer.defaultAddress.buildingName = buildingName;
+            self.buildingText.text = buildingName;
+            
             if (self.customer.defaultAddress.address) {
                 self.addressText.text = self.customer.defaultAddress.address;
             }
@@ -573,6 +591,10 @@
     else {
         self.name.textColor = [UIColor blackColor];
     }
+    
+//    if (!IS_EMPTY_STRING(customer.defaultAddress.buildingName)) {
+//        self.buildingText.text = customer.defaultAddress.buildingName;
+//    }
 }
 
 - (void)updateCustomerInfoFromView {
@@ -598,6 +620,11 @@
     self.customer.defaultAddress.address = IS_EMPTY_STRING(self.addressText.text) ? nil : self.addressText.text;
     self.customer.defaultAddress.buildingNo = IS_EMPTY_STRING(self.buildingNo.text) ? nil : self.buildingNo.text;
     self.customer.defaultAddress.room = IS_EMPTY_STRING(self.roomNo.text) ? nil : self.roomNo.text;
+    
+    if (![self.buildingText.text isEqualToString:self.customer.defaultAddress.buildingName]) {
+        self.customer.defaultAddress.buildingName = self.buildingText.text;
+        self.customer.defaultAddress.buildingId = @"";
+    }
 }
 
 
@@ -650,8 +677,9 @@
         _buildingPicker = [[BuildingPickerView alloc] init];
         __weak CustomerSigninView *weakSelf = self;
         _buildingPicker.didSelectBlock = ^(BuildingPickerView *view, OSNBuildingEntity *entity) {
-            weakSelf.buildingLabel.text = entity.buildingName;
-            weakSelf.buildingLabel.textColor = [UIColor blackColor];
+//            weakSelf.buildingLabel.text = entity.buildingName;
+//            weakSelf.buildingLabel.textColor = [UIColor blackColor];
+            weakSelf.buildingText.text = entity.buildingName;
             weakSelf.addressText.text = entity.buildingPlace;
             weakSelf.customer.defaultAddress.buildingId = entity.buildingId;
             weakSelf.customer.defaultAddress.buildingName = entity.buildingName;

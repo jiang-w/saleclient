@@ -23,6 +23,11 @@
     self.window.rootViewController = self.mainNav;
     
     [self.window makeKeyAndVisible];
+    
+    [[PgyUpdateManager sharedPgyManager] startManagerWithAppId:PGY_APPKEY];
+    [[PgyManager sharedPgyManager] startManagerWithAppId:PGY_APPKEY];
+    [[PgyUpdateManager sharedPgyManager] checkUpdate];
+    
     return YES;
 }
 

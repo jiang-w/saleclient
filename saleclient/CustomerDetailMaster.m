@@ -9,6 +9,7 @@
 #import "CustomerDetailMaster.h"
 #import "AutoLayoutTagView.h"
 #import "OSNNetworkService.h"
+#import "OSNUserManager.h"
 #import <Masonry.h>
 
 @interface CustomerDetailMaster () <AutoLayoutTagViewDelegate, UIScrollViewDelegate>
@@ -173,8 +174,9 @@
         make.bottom.left.right.equalTo(button);
     }];
     
+    NSString *loginId = [OSNUserManager sharedInstance].currentUser.userLoginId;
     // 加载web
-    NSString *url = [NSString stringWithFormat:@"%@%@?customerId=%@", CRMURL, [self.tags[index] objectForKey:@"dataUrl"], self.customerId];
+    NSString *url = [NSString stringWithFormat:@"%@%@?customerId=%@&userLoginId=%@&VIEW_SIZE_1=99999", CRMURL, [self.tags[index] objectForKey:@"dataUrl"], self.customerId, loginId];
     OSNNetworkService *service = [[OSNNetworkService alloc] init];
     NSHTTPURLResponse *response;
     NSError *error;

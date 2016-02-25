@@ -123,6 +123,8 @@
 		01E23AC31C12DDC5006D6A9E /* OSNBuildingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E23AC21C12DDC5006D6A9E /* OSNBuildingManager.m */; };
 		01E3035F1C1EE80A001EF801 /* QRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E3035E1C1EE80A001EF801 /* QRCodeScanViewController.m */; };
 		01E303611C1EEF10001EF801 /* pick_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01E303601C1EEF10001EF801 /* pick_bg@2x.png */; };
+		01ECF34C1C7EE1000012BC40 /* PgySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01ECF34A1C7EE1000012BC40 /* PgySDK.framework */; };
+		01ECF34D1C7EE1000012BC40 /* PgyUpdate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01ECF34B1C7EE1000012BC40 /* PgyUpdate.framework */; };
 		01F8A17A1C15EC59000A7EDB /* NavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F8A1791C15EC59000A7EDB /* NavigationBarView.m */; };
 		01F9DDA31C5DF67C006E1F27 /* CustomerAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F9DDA11C5DF67C006E1F27 /* CustomerAddressCell.m */; };
 		01F9DDA41C5DF67C006E1F27 /* CustomerAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F9DDA21C5DF67C006E1F27 /* CustomerAddressCell.xib */; };
@@ -328,6 +330,8 @@
 		01E3035D1C1EE80A001EF801 /* QRCodeScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeScanViewController.h; sourceTree = "<group>"; };
 		01E3035E1C1EE80A001EF801 /* QRCodeScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeScanViewController.m; sourceTree = "<group>"; };
 		01E303601C1EEF10001EF801 /* pick_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pick_bg@2x.png"; sourceTree = "<group>"; };
+		01ECF34A1C7EE1000012BC40 /* PgySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PgySDK.framework; sourceTree = "<group>"; };
+		01ECF34B1C7EE1000012BC40 /* PgyUpdate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PgyUpdate.framework; sourceTree = "<group>"; };
 		01F8A1781C15EC59000A7EDB /* NavigationBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBarView.h; sourceTree = "<group>"; };
 		01F8A1791C15EC59000A7EDB /* NavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarView.m; sourceTree = "<group>"; };
 		01F9DDA01C5DF67C006E1F27 /* CustomerAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerAddressCell.h; sourceTree = "<group>"; };
@@ -343,6 +347,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01ECF34D1C7EE1000012BC40 /* PgyUpdate.framework in Frameworks */,
+				01ECF34C1C7EE1000012BC40 /* PgySDK.framework in Frameworks */,
 				6ECBAA760C49A32A4783B017 /* libPods-saleclient.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -684,6 +690,8 @@
 		5848A951BEB05BD01F3E6171 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				01ECF34A1C7EE1000012BC40 /* PgySDK.framework */,
+				01ECF34B1C7EE1000012BC40 /* PgyUpdate.framework */,
 				977BB1C584A2928D5B6CF794 /* libPods-saleclient.a */,
 			);
 			name = Frameworks;
@@ -1030,6 +1038,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: 伟 Jiang (85V724K3K4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 伟 Jiang (85V724K3K4)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/saleclient/saleclient-Prefix.pch";
 				INFOPLIST_FILE = saleclient/Info.plist;
@@ -1048,6 +1060,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: 伟 Jiang (85V724K3K4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 伟 Jiang (85V724K3K4)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/saleclient/saleclient-Prefix.pch";
 				INFOPLIST_FILE = saleclient/Info.plist;
