@@ -66,19 +66,19 @@
     [self addSubview:self.createTime];
     [self.createTime mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self);
-        make.centerX.equalTo(self.type.mas_centerX).offset(180);
+        make.centerX.equalTo(self.type.mas_centerX).offset(160);
     }];
     
     [self addSubview:self.guider];
     [self.guider mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self);
-        make.centerX.equalTo(self.createTime.mas_centerX).offset(140);
+        make.centerX.equalTo(self.createTime.mas_centerX).offset(120);
     }];
     
     [self addSubview:self.operation];
     [self.operation mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self);
-        make.centerX.equalTo(self.guider.mas_centerX).offset(80);
+        make.centerX.equalTo(self.guider.mas_centerX).offset(120);
     }];
 }
 
@@ -147,8 +147,8 @@
     if (!_guider) {
         _guider = [[UILabel alloc] init];
         _guider.font = [UIFont systemFontOfSize:14];
-        _gender.text = @"导购";
-        _gender.textColor = [UIColor orangeColor];
+        _guider.text = @"导购";
+        _guider.textColor = [UIColor orangeColor];
     }
     return _guider;
 }

@@ -64,7 +64,7 @@
         [self.contentView addSubview:self.createTime];
         [self.createTime mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.contentView);
-            make.centerX.equalTo(self.type.mas_centerX).offset(180);
+            make.centerX.equalTo(self.type.mas_centerX).offset(160);
         }];
         
         [self.contentView addSubview:self.guider];
@@ -76,7 +76,7 @@
         [self.contentView addSubview:self.operation];
         [self.operation mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.contentView);
-            make.centerX.equalTo(self.guider.mas_centerX).offset(60);
+            make.centerX.equalTo(self.guider.mas_centerX).offset(80);
         }];
         
         [self.contentView addSubview:self.profile];

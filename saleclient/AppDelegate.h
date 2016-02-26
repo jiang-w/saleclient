@@ -12,7 +12,7 @@
 #import <PgySDK/PgyManager.h>
 #import <PgyUpdate/PgyUpdateManager.h>
 
-#define PGY_APPKEY @"d1b8862120e2d164a0cfcdcbe3ba6ca1"
+#define PGY_APPKEY @"0708103e8dc001092667e681c9ce600c"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
