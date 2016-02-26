@@ -362,9 +362,9 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7UK-kA-P64">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7UK-kA-P64">
                     <rect key="frame" x="583" y="254" width="30" height="30"/>
-                    <state key="normal" title="..."/>
+                    <state key="normal" image="search.png"/>
                     <connections>
                         <action selector="clickBuildingSelectButton:" destination="-1" eventType="touchUpInside" id="Niq-QZ-kdQ"/>
                     </connections>
@@ -375,4 +375,7 @@
             <point key="canvasLocation" x="721" y="421"/>
         </view>
     </objects>
+    <resources>
+        <image name="search.png" width="60" height="60"/>
+    </resources>
 </document>

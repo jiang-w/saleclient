@@ -68,8 +68,13 @@
         if ([entity.buildingId isEqualToString:buildingId]) {
             [self.pickerView selectRow:i inComponent:0 animated:NO];
             [self pickerView:self.pickerView didSelectRow:i inComponent:0];
-            break;
+            return;
         }
+    }
+    
+    if (self.buildingArray.count > 0) {
+        [self.pickerView selectRow:0 inComponent:0 animated:NO];
+        [self pickerView:self.pickerView didSelectRow:0 inComponent:0];
     }
 }
 
@@ -116,6 +121,8 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     if (self.buildingArray.count > 0) {
         OSNBuildingEntity *entity = self.buildingArray[row];
+        self.selectedBuildingID = entity.buildingId;
+        self.selectedBuildingName = entity.buildingName;
         if (self.didSelectBlock) {
             self.didSelectBlock(self, entity);
         }

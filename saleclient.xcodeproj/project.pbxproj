@@ -60,6 +60,7 @@
 		015B2D251BFEBBFD00821100 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 015B2D231BFEBBFD00821100 /* SignInViewController.m */; };
 		015B2D261BFEBBFD00821100 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 015B2D241BFEBBFD00821100 /* SignInViewController.xib */; };
 		016E3D7F1C32618C00E23702 /* CustomerDetailMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 016E3D7E1C32618C00E23702 /* CustomerDetailMaster.m */; };
+		0172D7081C802EBF000BA777 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 0172D7071C802EBF000BA777 /* search.png */; };
 		0177F1E81C56605B00F5969C /* AddressPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0177F1E71C56605B00F5969C /* AddressPickerView.m */; };
 		0177F1EB1C56720700F5969C /* AddressPickerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0177F1EA1C56720700F5969C /* AddressPickerViewModel.m */; };
 		0177F1EE1C56728300F5969C /* RegionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0177F1ED1C56728300F5969C /* RegionModel.m */; };
@@ -220,6 +221,7 @@
 		015B2D241BFEBBFD00821100 /* SignInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
 		016E3D7D1C32618C00E23702 /* CustomerDetailMaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerDetailMaster.h; sourceTree = "<group>"; };
 		016E3D7E1C32618C00E23702 /* CustomerDetailMaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerDetailMaster.m; sourceTree = "<group>"; };
+		0172D7071C802EBF000BA777 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		0177F1E61C56605B00F5969C /* AddressPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressPickerView.h; sourceTree = "<group>"; };
 		0177F1E71C56605B00F5969C /* AddressPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressPickerView.m; sourceTree = "<group>"; };
 		0177F1E91C56720700F5969C /* AddressPickerViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressPickerViewModel.h; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 		011375451BFEF27300A9AB9E /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				0172D7071C802EBF000BA777 /* search.png */,
 				01B074691C28323300FDB501 /* setting_ico.png */,
 				019164B31C22F86100BA2CD8 /* diy.png */,
 				019164B41C22F86100BA2CD8 /* diy_wait.png */,
@@ -799,6 +802,7 @@
 				011375491BFEF29500A9AB9E /* login_bg.jpg in Resources */,
 				0100BDE81C0C12CD0011F6D0 /* navbtn_back_hov.png in Resources */,
 				0113755B1BFEFE4D00A9AB9E /* wc_product_ico.png in Resources */,
+				0172D7081C802EBF000BA777 /* search.png in Resources */,
 				011375591BFEFE4D00A9AB9E /* wc_case_ico.png in Resources */,
 				01E303611C1EEF10001EF801 /* pick_bg@2x.png in Resources */,
 				0113755A1BFEFE4D00A9AB9E /* wc_loupan_ico.png in Resources */,

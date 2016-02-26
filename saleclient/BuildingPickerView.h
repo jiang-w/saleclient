@@ -13,6 +13,9 @@ typedef void (^BuildingPickerViewdidSelectBlock)(BuildingPickerView *view, id ob
 
 @interface BuildingPickerView : UIView
 
+@property (nonatomic, copy) NSString *selectedBuildingName;
+@property (nonatomic, copy) NSString *selectedBuildingID;
+
 @property (nonatomic, copy) BuildingPickerViewdidSelectBlock didSelectBlock;
 
 - (void)setProvinceCode:(NSString *)provinceCode cityCode:(NSString *)cityCode andCountyCode:(NSString *)countyCode;

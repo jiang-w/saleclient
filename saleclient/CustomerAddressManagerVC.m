@@ -18,7 +18,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *addressList;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
-@property (weak, nonatomic) IBOutlet UILabel *buildingLabel;
+@property (weak, nonatomic) IBOutlet UITextField *buildingText;
 @property (weak, nonatomic) IBOutlet UITextField *addressText;
 @property (weak, nonatomic) IBOutlet UITextField *buildingNoText;
 @property (weak, nonatomic) IBOutlet UITextField *roomNoText;
@@ -44,8 +44,6 @@ static NSString * const reuseIdentifier = @"addressListCell";
     
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAddressLabel:)];
     [self.addressLabel addGestureRecognizer:tapRecognizer];
-    tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapBuildingLabel:)];
-    [self.buildingLabel addGestureRecognizer:tapRecognizer];
     tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapInnerView:)];
     [self.view addGestureRecognizer:tapRecognizer];
     
@@ -66,8 +64,8 @@ static NSString * const reuseIdentifier = @"addressListCell";
     
     [self.view addSubview:self.buildingPicker];
     [self.buildingPicker mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.buildingLabel.mas_bottom).offset(6);
-        make.left.right.equalTo(self.buildingLabel);
+        make.top.equalTo(self.buildingText.mas_bottom).offset(6);
+        make.left.right.equalTo(self.buildingText);
         make.height.mas_equalTo(30);
     }];
     [self hiddenBuildingPicker];
@@ -130,7 +128,12 @@ static NSString * const reuseIdentifier = @"addressListCell";
     [self showAddressPicker];
 }
 
-- (void)tapBuildingLabel:(UITapGestureRecognizer *)recognizer {
+- (void)tapInnerView:(UITapGestureRecognizer *)recognizer {
+    [self.view endEditing:YES];
+    [self hiddenAllPicker];
+}
+
+- (IBAction)clickBuildingSearchButton:(id)sender {
     [self.view endEditing:YES];
     [self hiddenAllPicker];
     [self showBuildingPicker];
@@ -141,12 +144,6 @@ static NSString * const reuseIdentifier = @"addressListCell";
         [self.buildingPicker setProvinceCode:provinceId cityCode:cityId andCountyCode:areaId];
     }
 }
-
-- (void)tapInnerView:(UITapGestureRecognizer *)recognizer {
-    [self.view endEditing:YES];
-    [self hiddenAllPicker];
-}
-
 
 #pragma mark - Delegate
 
@@ -215,6 +212,14 @@ static NSString * const reuseIdentifier = @"addressListCell";
             self.entity.address = self.addressText.text;
             self.entity.buildingNo = self.buildingNoText.text;
             self.entity.room = self.roomNoText.text;
+            if (![self.buildingText.text isEqualToString:self.buildingPicker.selectedBuildingName]) {
+                self.entity.buildingName = self.buildingText.text;
+                self.entity.buildingId = @"";
+            }
+            else {
+                self.entity.buildingName = self.buildingPicker.selectedBuildingName;
+                self.entity.buildingId = self.buildingPicker.selectedBuildingID;
+            }
             
             OSNCustomerManager *customerManager = [[OSNCustomerManager alloc] init];
             if (self.entity.addressId) {
@@ -291,6 +296,7 @@ static NSString * const reuseIdentifier = @"addressListCell";
 - (void)fillEditTextWithAddress:(OSNCustomerAddress *)address {
     [self.addressPicker setProvinceCode:address.provinceId cityCode:address.cityId andCountyCode:address.areaId];
     [self.buildingPicker setProvinceCode:address.provinceId cityCode:address.cityId countyCode:address.areaId andBuildingId:address.buildingId];
+    self.buildingText.text = address.buildingName;
     self.addressText.text = address.address;
     if (![address.buildingNo isEqual:[NSNull null]]) {
         self.buildingNoText.text = address.buildingNo;
@@ -305,8 +311,7 @@ static NSString * const reuseIdentifier = @"addressListCell";
 - (void)initEditText {
     self.addressLabel.text = @"选择省市区";
     self.addressLabel.textColor = RGB(205, 205, 210);
-    self.buildingLabel.text = @"选择楼盘";
-    self.buildingLabel.textColor = RGB(205, 205, 210);
+    self.buildingText.text = @"";
     self.addressText.text = @"";
     self.buildingNoText.text = @"";
     self.roomNoText.text = @"";
@@ -314,9 +319,6 @@ static NSString * const reuseIdentifier = @"addressListCell";
 
 - (BOOL)validateInput {
     if ([self.addressLabel.text isEqualToString:@"选择省市区"]) {
-        return NO;
-    }
-    if ([self.buildingLabel.text isEqualToString:@"选择省市区"]) {
         return NO;
     }
     if ([self.addressText.text isEqualToString:@""]) {
@@ -354,10 +356,8 @@ static NSString * const reuseIdentifier = @"addressListCell";
         _buildingPicker = [[BuildingPickerView alloc] init];
         __weak CustomerAddressManagerVC *weakSelf = self;
         _buildingPicker.didSelectBlock = ^(BuildingPickerView *view, OSNBuildingEntity *entity) {
-            weakSelf.buildingLabel.text = entity.buildingName;
-            weakSelf.buildingLabel.textColor = [UIColor blackColor];
-            weakSelf.entity.buildingId = entity.buildingId;
-            weakSelf.entity.buildingName = entity.buildingName;
+            weakSelf.buildingText.text = entity.buildingName;
+            weakSelf.addressText.text = entity.buildingPlace;
         };
     }
     return _buildingPicker;
