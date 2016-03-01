@@ -28,6 +28,10 @@
     [[PgyManager sharedPgyManager] startManagerWithAppId:PGY_APPKEY];
     [[PgyUpdateManager sharedPgyManager] checkUpdate];
     
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    NSLog(@"app_Version: %@", app_Version);
+    
     return YES;
 }
 

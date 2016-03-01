@@ -24,16 +24,22 @@
 - (OSNUserInfo *)signiInWithUserName:(NSString *)userName andPassword:(NSString *)password isRemember:(BOOL)remember {
     OSNNetworkService *service = [OSNNetworkService sharedInstance];
     NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadUserLogin" andParamterDictionary:@{@"userLoginId":userName,@"password":password}];
-    NSDictionary *usrDic = [dataDic[@"data"] firstObject];
+    NSMutableDictionary *usrDic = [NSMutableDictionary dictionaryWithDictionary:[dataDic[@"data"] firstObject]];
     if (usrDic) {
         OSNUserInfo *info = [[OSNUserInfo alloc] init];
         info.userLoginId = usrDic[@"userLoginId"];
         info.personName = usrDic[@"personName"];
         info.provinceId = usrDic[@"provinceId"];
         info.cityId = usrDic[@"cityId"];
+        if (usrDic[@"areaId"] == [NSNull null]) {
+            usrDic[@"areaId"] = nil;
+        }
         info.areaId = usrDic[@"areaId"];
         info.provinceName = usrDic[@"provinceName"];
         info.cityName = usrDic[@"cityName"];
+        if (usrDic[@"areaName"] == [NSNull null]) {
+            usrDic[@"areaName"] = nil;
+        }
         info.areaName = usrDic[@"areaName"];
         info.factoryId = usrDic[@"factoryId"];
         info.municipalId = usrDic[@"municipalId"];
