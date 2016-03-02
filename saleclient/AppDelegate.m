@@ -34,13 +34,7 @@
                                                object: nil];
     self.hostReach = [Reachability reachabilityForInternetConnection];
     [self.hostReach startNotifier];
-    NetworkStatus status = [self.hostReach currentReachabilityStatus];
-    if (status == NotReachable) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"网络异常"
-                                                        message:@"无法连接到服务器，请检查网络"
-                                                       delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-        [alert show];
-    }
+    [self updateInterfaceWithReachability:self.hostReach];
     
     [[PgyUpdateManager sharedPgyManager] startManagerWithAppId:PGY_APPKEY];
     [[PgyManager sharedPgyManager] startManagerWithAppId:PGY_APPKEY];
@@ -50,8 +44,12 @@
 }
 
 - (void)reachabilityChanged:(NSNotification *)note {
-    Reachability* curReach = [note object];
+    Reachability *curReach = [note object];
     NSParameterAssert([curReach isKindOfClass: [Reachability class]]);
+    [self updateInterfaceWithReachability:curReach];
+}
+
+- (void)updateInterfaceWithReachability:(Reachability *)curReach {
     NetworkStatus status = [curReach currentReachabilityStatus];
     if (status == NotReachable) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"网络异常"
