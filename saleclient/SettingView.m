@@ -12,10 +12,12 @@
 #import "UIViewController+LewPopupViewController.h"
 #import <PgySDK/PgyManager.h>
 #import <PgyUpdate/PgyUpdateManager.h>
+#import "OSNNetworkService.h"
 
 @interface SettingView()
 
 @property(nonatomic, weak) IBOutlet UIView *innerView;
+@property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 
 @end
 
@@ -29,6 +31,11 @@
         _innerView.layer.borderWidth = 2;
         _innerView.layer.borderColor = [UIColor orangeColor].CGColor;
         [self addSubview:_innerView];
+        
+        NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+        NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+        NSString *build_Version = [infoDictionary objectForKey:@"CFBundleVersion"];
+        _versionLabel.text = [NSString stringWithFormat:@"当前版本：%@(%@)", app_Version, build_Version];
     }
     return self;
 }

@@ -9,8 +9,11 @@
 #import "AppDelegate.h"
 #import "SignInViewController.h"
 #import "HomeViewController.h"
+#import "Reachability.h"
 
 @interface AppDelegate ()
+
+@property (nonatomic, strong) Reachability  *hostReach;
 
 @end
 
@@ -24,15 +27,38 @@
     
     [self.window makeKeyAndVisible];
     
+    // 监测网络情况
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reachabilityChanged:)
+                                                 name: kReachabilityChangedNotification
+                                               object: nil];
+    self.hostReach = [Reachability reachabilityForInternetConnection];
+    [self.hostReach startNotifier];
+    NetworkStatus status = [self.hostReach currentReachabilityStatus];
+    if (status == NotReachable) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"网络异常"
+                                                        message:@"无法连接到服务器，请检查网络"
+                                                       delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+    }
+    
     [[PgyUpdateManager sharedPgyManager] startManagerWithAppId:PGY_APPKEY];
     [[PgyManager sharedPgyManager] startManagerWithAppId:PGY_APPKEY];
     [[PgyUpdateManager sharedPgyManager] checkUpdate];
-    
-    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-    NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-    NSLog(@"app_Version: %@", app_Version);
-    
+
     return YES;
+}
+
+- (void)reachabilityChanged:(NSNotification *)note {
+    Reachability* curReach = [note object];
+    NSParameterAssert([curReach isKindOfClass: [Reachability class]]);
+    NetworkStatus status = [curReach currentReachabilityStatus];
+    if (status == NotReachable) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"网络异常"
+                                                        message:@"无法连接到服务器，请检查网络"
+                                                       delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -41,8 +67,7 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -50,7 +75,7 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

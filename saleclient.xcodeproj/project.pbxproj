@@ -59,6 +59,7 @@
 		015B2D1A1BFEBA5400821100 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 015B2D181BFEBA5400821100 /* LaunchScreen.storyboard */; };
 		015B2D251BFEBBFD00821100 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 015B2D231BFEBBFD00821100 /* SignInViewController.m */; };
 		015B2D261BFEBBFD00821100 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 015B2D241BFEBBFD00821100 /* SignInViewController.xib */; };
+		0166B7761C871DB900CAF1F1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0166B7751C871DB900CAF1F1 /* Reachability.m */; settings = {ASSET_TAGS = (); }; };
 		016E3D7F1C32618C00E23702 /* CustomerDetailMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 016E3D7E1C32618C00E23702 /* CustomerDetailMaster.m */; };
 		0172D7081C802EBF000BA777 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 0172D7071C802EBF000BA777 /* search.png */; };
 		0177F1E81C56605B00F5969C /* AddressPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0177F1E71C56605B00F5969C /* AddressPickerView.m */; };
@@ -219,6 +220,8 @@
 		015B2D221BFEBBFD00821100 /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
 		015B2D231BFEBBFD00821100 /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
 		015B2D241BFEBBFD00821100 /* SignInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
+		0166B7741C871DB900CAF1F1 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		0166B7751C871DB900CAF1F1 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		016E3D7D1C32618C00E23702 /* CustomerDetailMaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerDetailMaster.h; sourceTree = "<group>"; };
 		016E3D7E1C32618C00E23702 /* CustomerDetailMaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerDetailMaster.m; sourceTree = "<group>"; };
 		0172D7071C802EBF000BA777 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
@@ -597,6 +600,8 @@
 		018B09EF1BFEC36C007B69A8 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				0166B7741C871DB900CAF1F1 /* Reachability.h */,
+				0166B7751C871DB900CAF1F1 /* Reachability.m */,
 				018B09F01BFEC38B007B69A8 /* OSNNetworkService.h */,
 				018B09F11BFEC38B007B69A8 /* OSNNetworkService.m */,
 				018B09F21BFEC38B007B69A8 /* OSNUserManager.h */,
@@ -927,6 +932,7 @@
 				01E23ABD1C12D4BC006D6A9E /* BuildingImageList.m in Sources */,
 				0192392D1C1473D800948D04 /* CaseDependCell.m in Sources */,
 				01E23AAF1C12C0F2006D6A9E /* ProductDetailViewController.m in Sources */,
+				0166B7761C871DB900CAF1F1 /* Reachability.m in Sources */,
 				017B72171C2CEE390077916B /* QRCodeViewController.m in Sources */,
 				014060F01C0FEB540001804E /* ProductImageList.m in Sources */,
 				01CA2CED1C0555F000CD0024 /* CaseTagTable.m in Sources */,
