@@ -18,6 +18,7 @@
 
 @property(nonatomic, weak) IBOutlet UIView *innerView;
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
+@property (nonatomic, strong) UIButton *closeButton;
 
 @end
 
@@ -35,7 +36,13 @@
         NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
         NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
         NSString *build_Version = [infoDictionary objectForKey:@"CFBundleVersion"];
-        _versionLabel.text = [NSString stringWithFormat:@"当前版本：%@(%@)", app_Version, build_Version];
+        _versionLabel.text = [NSString stringWithFormat:@"当前版本：%@(build %@)", app_Version, build_Version];
+        
+        [self addSubview:self.closeButton];
+        [self.closeButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self).offset(16);
+            make.right.equalTo(self).offset(-16);
+        }];
     }
     return self;
 }
@@ -76,6 +83,25 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"当前版本已是最新" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
         [alert show];
     }
+}
+
+- (UIButton *)closeButton {
+    if (!_closeButton) {
+        _closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _closeButton.frame = CGRectMake(0, 0, 30, 30);
+        _closeButton.layer.cornerRadius = _closeButton.frame.size.height / 2;
+        _closeButton.titleLabel.font = [UIFont boldSystemFontOfSize:12];
+        [_closeButton setTitle:@"╳" forState:UIControlStateNormal];
+        [_closeButton setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+        _closeButton.layer.borderWidth = 1.5;
+        _closeButton.layer.borderColor = [UIColor orangeColor].CGColor;
+        [_closeButton addTarget:self action:@selector(closeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _closeButton;
+}
+
+- (void)closeButtonClick:(id)sender {
+    [self.parentVC lew_dismissPopupView];
 }
 
 @end

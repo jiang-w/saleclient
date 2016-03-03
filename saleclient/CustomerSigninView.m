@@ -56,6 +56,8 @@
 @property (nonatomic, strong) OSNCustomerInfo *customer;
 @property (nonatomic, assign) CGRect originalFrame;
 
+@property (nonatomic, strong) UIButton *closeButton;
+
 @end
 
 @implementation CustomerSigninView
@@ -101,7 +103,7 @@
     [self hiddenAllPicker];
 }
 
-- (IBAction)cancelButtonClick:(id)sender {
+- (void)closeButtonClick:(id)sender {
     [self.parentVC lew_dismissPopupView];
 }
 
@@ -341,6 +343,12 @@
                                                object:nil];
     
     self.mobile.delegate = self;
+    
+    [self addSubview:self.closeButton];
+    [self.closeButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self).offset(16);
+        make.right.equalTo(self).offset(-16);
+    }];
 }
 
 - (void)initViewDataWithCustomerId:(NSString *)customerId {
@@ -678,6 +686,21 @@
         };
     }
     return _designerPicker;
+}
+
+- (UIButton *)closeButton {
+    if (!_closeButton) {
+        _closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _closeButton.frame = CGRectMake(0, 0, 30, 30);
+        _closeButton.layer.cornerRadius = _closeButton.frame.size.height / 2;
+        _closeButton.titleLabel.font = [UIFont boldSystemFontOfSize:12];
+        [_closeButton setTitle:@"╳" forState:UIControlStateNormal];
+        [_closeButton setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+        _closeButton.layer.borderWidth = 1.5;
+        _closeButton.layer.borderColor = [UIColor orangeColor].CGColor;
+        [_closeButton addTarget:self action:@selector(closeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _closeButton;
 }
 
 - (void)dealloc {
