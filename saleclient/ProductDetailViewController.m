@@ -16,8 +16,10 @@
 #import "LewPopupViewController.h"
 #import "OSNCustomerManager.h"
 #import "NavigationBarView.h"
+#import "OSNCaseManager.h"
+#import "AutoLayoutTagView.h"
 
-@interface ProductDetailViewController ()
+@interface ProductDetailViewController () <AutoLayoutTagViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *navBackground;
 @property (weak, nonatomic) IBOutlet UIImageView *image;
@@ -32,6 +34,10 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *caseListView;
 @property (nonatomic, strong) NavigationBarView *navBar;
 @property (nonatomic, strong) NSMutableArray *caseList;
+
+@property (nonatomic, strong) NSArray *roomTagDataList;
+@property (nonatomic, strong) NSArray *styleTagDataList;
+@property (nonatomic, strong) AutoLayoutTagView *roomTagSelectView;
 
 @end
 
@@ -54,6 +60,7 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
     
     [self loadProductDetailData];
     [self updateCustomerReceptionRecord];
+    [self loadCaseTagData];
 }
 
 
@@ -63,6 +70,12 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
     [self.navBackground addSubview:self.navBar];
     [self.navBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.navBackground);
+    }];
+    
+    [self.view addSubview:self.roomTagSelectView];
+    [self.roomTagSelectView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(self.caseListView);
+        make.height.mas_offset(40);
     }];
 }
 
@@ -122,6 +135,24 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
             [manager updateCustomerReceptionRecordWithParamters:paramters];
         });
     }
+}
+
+- (void)loadCaseTagData {
+    __weak __typeof__(self)weakSelf = self;
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        OSNCaseManager *manager = [[OSNCaseManager alloc] init];
+        NSArray *TagGroups = [manager getCaseTagList];
+        weakSelf.roomTagDataList = [[TagGroups objectAtIndex:0] list];
+        weakSelf.styleTagDataList = [[TagGroups objectAtIndex:1] list];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (weakSelf.roomTagDataList && weakSelf.roomTagDataList.count > 0) {
+                [weakSelf.roomTagDataList enumerateObjectsUsingBlock:^(OSNTag *tag, NSUInteger idx, BOOL *stop) {
+                    [weakSelf.roomTagSelectView addTagWithTitle:tag.name];
+                }];
+            }
+        });
+    });
 }
 
 
@@ -188,6 +219,15 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
     }
 }
 
+- (void)autoLayoutTagView:(AutoLayoutTagView *)view didSelectTagButton:(UIButton *)button andIndex:(NSUInteger)index {
+//    view.hidden = YES;
+    
+}
+
+- (void)autoLayoutTagView:(AutoLayoutTagView *)view disSelectTagButton:(UIButton *)button andIndex:(NSUInteger)index {
+    
+}
+
 
 #pragma mark - property
 
@@ -196,6 +236,25 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
         _navBar = [[NavigationBarView alloc] init];
     }
     return _navBar;
+}
+
+- (AutoLayoutTagView *)roomTagSelectView {
+    if (!_roomTagSelectView) {
+        _roomTagSelectView = [[AutoLayoutTagView alloc] init];
+        _roomTagSelectView.backgroundColor = RGB(225, 230, 235);
+        _roomTagSelectView.tagSpace = 10;
+        _roomTagSelectView.delegate = self;
+        
+        [_roomTagSelectView setTagButtonStyleWithBlock:^(UIButton *button, NSUInteger index) {
+            [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [button setTitleColor:[UIColor orangeColor] forState:UIControlStateSelected];
+            button.titleLabel.font = [UIFont systemFontOfSize:13];
+            button.backgroundColor = [UIColor clearColor];
+            button.contentEdgeInsets = UIEdgeInsetsMake(6, 18, 6, 18);
+            button.layer.borderWidth = 0;
+        }];
+    }
+    return _roomTagSelectView;
 }
 
 @end
