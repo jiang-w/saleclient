@@ -111,28 +111,31 @@ typedef void(^buttonStyleBlock)(UIButton *button, NSUInteger index);
 #pragma mark - property
 
 - (void)setSelectedIndex:(NSInteger)index {
-    if (index >= -1 && index < self.tagButtons.count && _selectedIndex != index) {
-        if (_selectedIndex != -1) {
-            UIButton *disSelectTag = self.tagButtons[_selectedIndex];
+    if (index >= -1 && (self.tagButtons.count - index) > 0 && _selectedIndex != index) {
+        NSInteger oldIndex = _selectedIndex;
+        _selectedIndex = index;
+        
+        if (oldIndex != -1) {
+            UIButton *disSelectTag = self.tagButtons[oldIndex];
             disSelectTag.selected = NO;
             
             if (self.delegate) {
                 if ([self.delegate respondsToSelector:@selector(autoLayoutTagView:disSelectTagButton:andIndex:)]) {
-                    [self.delegate autoLayoutTagView:self disSelectTagButton:disSelectTag andIndex:_selectedIndex];
+                    [self.delegate autoLayoutTagView:self disSelectTagButton:disSelectTag andIndex:oldIndex];
                 }
             }
         }
-        if (index != -1) {
-            UIButton *selectTag = self.tagButtons[index];
+        
+        if (_selectedIndex != -1) {
+            UIButton *selectTag = self.tagButtons[_selectedIndex];
             selectTag.selected = YES;
             
             if (self.delegate) {
                 if ([self.delegate respondsToSelector:@selector(autoLayoutTagView:didSelectTagButton:andIndex:)]) {
-                    [self.delegate autoLayoutTagView:self didSelectTagButton:selectTag andIndex:index];
+                    [self.delegate autoLayoutTagView:self didSelectTagButton:selectTag andIndex:_selectedIndex];
                 }
             }
         }
-        _selectedIndex = index;
     }
 }
 

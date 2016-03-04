@@ -38,6 +38,10 @@
 @property (nonatomic, strong) NSArray *roomTagDataList;
 @property (nonatomic, strong) NSArray *styleTagDataList;
 @property (nonatomic, strong) AutoLayoutTagView *roomTagSelectView;
+@property (nonatomic, strong) AutoLayoutTagView *styleTagSelectView;
+@property (nonatomic, strong) UIView *tagShowBlock;
+@property (nonatomic, strong) NSArray *caseAllDataList;
+@property (nonatomic, strong) AutoLayoutTagView *typeSelectView;
 
 @end
 
@@ -77,6 +81,30 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
         make.top.left.right.equalTo(self.caseListView);
         make.height.mas_offset(40);
     }];
+    
+    [self.view addSubview:self.styleTagSelectView];
+    [self.styleTagSelectView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(self.caseListView);
+        make.height.mas_offset(40);
+    }];
+    
+    [self.view addSubview:self.tagShowBlock];
+    [self.tagShowBlock mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.caseListView.mas_top).offset(-10);
+        make.left.equalTo(self.caseListView).offset(400);
+        make.width.mas_offset(300);
+        make.height.mas_offset(30);
+    }];
+    
+    [self.view addSubview:self.typeSelectView];
+    [self.typeSelectView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.caseListView.mas_top).offset(-4);
+        make.left.equalTo(self.view).offset(10);
+        make.width.mas_offset(360);
+        make.height.mas_offset(42);
+    }];
+    [self.typeSelectView addTagWithTitle:@"空间"];
+    [self.typeSelectView addTagWithTitle:@"风格"];
 }
 
 - (void)loadProductDetailData {
@@ -99,15 +127,9 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
                     [self string:style replaceString:@"&nbsp;" withString:@" "];
                     self.style.text = style;
                     self.info.text = dic[@"productEntity"][@"productDesc"];
+                    self.caseAllDataList = dic[@"productCaseList"];
                     
-                    if (self.caseList) {
-                        [self.caseList removeAllObjects];
-                    }
-                    else {
-                        self.caseList = [NSMutableArray array];
-                    }
-                    [self.caseList addObjectsFromArray:dic[@"productCaseList"]];
-                    [self.caseListView reloadData];
+                    [self refreshCaseListView];
                 });
             }
         });
@@ -142,8 +164,16 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         OSNCaseManager *manager = [[OSNCaseManager alloc] init];
         NSArray *TagGroups = [manager getCaseTagList];
-        weakSelf.roomTagDataList = [[TagGroups objectAtIndex:0] list];
-        weakSelf.styleTagDataList = [[TagGroups objectAtIndex:1] list];
+        NSMutableArray *tags = [NSMutableArray arrayWithArray:[[TagGroups objectAtIndex:0] list]];
+        if (tags.count > 0) {
+            [tags removeObjectAtIndex:0];
+        }
+        weakSelf.roomTagDataList = tags;
+        tags = [NSMutableArray arrayWithArray:[[TagGroups objectAtIndex:1] list]];
+        if (tags.count > 0) {
+            [tags removeObjectAtIndex:0];
+        }
+        weakSelf.styleTagDataList = tags;
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (weakSelf.roomTagDataList && weakSelf.roomTagDataList.count > 0) {
@@ -151,8 +181,47 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
                     [weakSelf.roomTagSelectView addTagWithTitle:tag.name];
                 }];
             }
+            
+            if (weakSelf.styleTagDataList && weakSelf.styleTagDataList.count > 0) {
+                [weakSelf.styleTagDataList enumerateObjectsUsingBlock:^(OSNTag *tag, NSUInteger idx, BOOL *stop) {
+                    [weakSelf.styleTagSelectView addTagWithTitle:tag.name];
+                }];
+            }
         });
     });
+}
+
+- (void)refreshCaseListView {
+    if (self.caseAllDataList) {
+        if (self.caseList) {
+            [self.caseList removeAllObjects];
+        }
+        else {
+            self.caseList = [NSMutableArray array];
+        }
+        
+        NSInteger selectedRoomTagIndex = self.roomTagSelectView.selectedIndex;
+        NSInteger selectedStyleTagIndex = self.styleTagSelectView.selectedIndex;
+        
+        for (NSDictionary *dic in self.caseAllDataList) {
+            if (selectedRoomTagIndex != -1) {
+                OSNTag *roomTag = self.roomTagDataList[selectedRoomTagIndex];
+                if (![dic[@"roomId"] isEqualToString:roomTag.enumId]) {
+                    continue;
+                }
+            }
+            
+            if (selectedStyleTagIndex != -1) {
+                OSNTag *styleTag = self.styleTagDataList[selectedStyleTagIndex];
+                if (![dic[@"styleId"] isEqualToString:styleTag.enumId]) {
+                    continue;
+                }
+            }
+            
+            [self.caseList addObject:dic];
+        }
+        [self.caseListView reloadData];
+    }
 }
 
 
@@ -181,6 +250,10 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
     CaseDetailViewController *caseDetail = [[CaseDetailViewController alloc] init];
     caseDetail.exhibitionId = cell.exhibitionId;
     [appDelegate.mainNav pushViewController:caseDetail animated:NO];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    self.typeSelectView.selectedIndex = -1;
 }
 
 
@@ -220,12 +293,116 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
 }
 
 - (void)autoLayoutTagView:(AutoLayoutTagView *)view didSelectTagButton:(UIButton *)button andIndex:(NSUInteger)index {
-//    view.hidden = YES;
-    
+    if (view == self.typeSelectView) {
+        switch (self.typeSelectView.selectedIndex) {
+            case 0:
+                self.roomTagSelectView.hidden = NO;
+                break;
+            case 1:
+                self.styleTagSelectView.hidden = NO;
+                break;
+            default:
+                break;
+        }
+    }
+    else {
+        [self showSelectTags];
+    }
 }
 
 - (void)autoLayoutTagView:(AutoLayoutTagView *)view disSelectTagButton:(UIButton *)button andIndex:(NSUInteger)index {
+    if (view == self.typeSelectView) {
+        switch (index) {
+            case 0:
+                self.roomTagSelectView.hidden = YES;
+                break;
+            case 1:
+                self.styleTagSelectView.hidden = YES;
+                break;
+            default:
+                break;
+        }
+    }
+    else {
+        if (view.selectedIndex == -1) {
+            [self showSelectTags];
+        }
+    }
+}
+
+- (void)showSelectTags {
+    for (UIView *view in self.tagShowBlock.subviews) {
+        [view removeFromSuperview];
+    }
+ 
+    if (self.roomTagSelectView.selectedIndex != -1 || self.styleTagSelectView.selectedIndex != -1) {
+        UILabel *title = [[UILabel alloc] init];
+        title.text = @"已选择：";
+        title.font = [UIFont systemFontOfSize:12];
+        [self.tagShowBlock addSubview:title];
+        [title mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.tagShowBlock);
+            make.left.equalTo(self.tagShowBlock).offset(10);
+        }];
+        
+        UIView *prevView = title;
+        if (self.roomTagSelectView.selectedIndex != -1) {
+            OSNTag *tag = self.roomTagDataList[self.roomTagSelectView.selectedIndex];
+            UIButton *tagButton = [self createTagButtonWithName:tag.name];
+            tagButton.tag = 100;
+            [self.tagShowBlock addSubview:tagButton];
+            [tagButton mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(prevView.mas_right).offset(10);
+                make.centerY.equalTo(self.tagShowBlock);
+            }];
+            prevView = tagButton;
+        }
+        
+        if (self.styleTagSelectView.selectedIndex != -1) {
+            OSNTag *tag = self.styleTagDataList[self.styleTagSelectView.selectedIndex];
+            UIButton *tagButton = [self createTagButtonWithName:tag.name];
+            tagButton.tag = 200;
+            [self.tagShowBlock addSubview:tagButton];
+            [tagButton mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(prevView.mas_right).offset(10);
+                make.centerY.equalTo(self.tagShowBlock);
+            }];
+        }
+    }
     
+    [self refreshCaseListView];
+}
+
+- (UIButton *)createTagButtonWithName:(NSString *)name {
+    UIButton *tagButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [tagButton setTitle:name forState:UIControlStateNormal];
+    [tagButton setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    tagButton.titleLabel.font = [UIFont systemFontOfSize:12];
+    tagButton.contentEdgeInsets = UIEdgeInsetsMake(6, 8, 6, 30);
+    tagButton.layer.borderColor = [UIColor orangeColor].CGColor;
+    tagButton.layer.borderWidth = 1;
+    
+    UILabel *closeLabel = [[UILabel alloc] init];
+    closeLabel.text = @"╳";
+    closeLabel.font = [UIFont systemFontOfSize:10];
+    closeLabel.textColor = [UIColor orangeColor];
+    [tagButton addSubview:closeLabel];
+    [closeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(tagButton).offset(-10);
+        make.centerY.equalTo(tagButton);
+    }];
+    
+    [tagButton addTarget:self action:@selector(clickCloseTagButton:) forControlEvents:UIControlEventTouchUpInside];
+    return tagButton;
+}
+
+- (void)clickCloseTagButton:(UIButton *)sender {
+    if (sender.tag == 100) {
+        self.roomTagSelectView.selectedIndex = -1;
+    }
+    if (sender.tag == 200) {
+        self.styleTagSelectView.selectedIndex = -1;
+    }
 }
 
 
@@ -238,12 +415,20 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
     return _navBar;
 }
 
+- (UIView *)tagShowBlock {
+    if (!_tagShowBlock) {
+        _tagShowBlock = [[UIView alloc] init];
+    }
+    return  _tagShowBlock;
+}
+
 - (AutoLayoutTagView *)roomTagSelectView {
     if (!_roomTagSelectView) {
         _roomTagSelectView = [[AutoLayoutTagView alloc] init];
         _roomTagSelectView.backgroundColor = RGB(225, 230, 235);
         _roomTagSelectView.tagSpace = 10;
         _roomTagSelectView.delegate = self;
+        _roomTagSelectView.hidden = YES;
         
         [_roomTagSelectView setTagButtonStyleWithBlock:^(UIButton *button, NSUInteger index) {
             [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -255,6 +440,46 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
         }];
     }
     return _roomTagSelectView;
+}
+
+- (AutoLayoutTagView *)styleTagSelectView {
+    if (!_styleTagSelectView) {
+        _styleTagSelectView = [[AutoLayoutTagView alloc] init];
+        _styleTagSelectView.backgroundColor = RGB(225, 230, 235);
+        _styleTagSelectView.tagSpace = 10;
+        _styleTagSelectView.delegate = self;
+        _styleTagSelectView.hidden = YES;
+        
+        [_styleTagSelectView setTagButtonStyleWithBlock:^(UIButton *button, NSUInteger index) {
+            [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [button setTitleColor:[UIColor orangeColor] forState:UIControlStateSelected];
+            button.titleLabel.font = [UIFont systemFontOfSize:13];
+            button.backgroundColor = [UIColor clearColor];
+            button.contentEdgeInsets = UIEdgeInsetsMake(6, 18, 6, 18);
+            button.layer.borderWidth = 0;
+        }];
+    }
+    return _styleTagSelectView;
+}
+
+- (AutoLayoutTagView *)typeSelectView {
+    if (!_typeSelectView) {
+        _typeSelectView = [[AutoLayoutTagView alloc] init];
+        _typeSelectView.padding = UIEdgeInsetsMake(0, 0, 0, 0);
+        _typeSelectView.tagSpace = 2;
+        _typeSelectView.delegate = self;
+        
+        [_typeSelectView setTagButtonStyleWithBlock:^(UIButton *button, NSUInteger index) {
+            button.frame = CGRectMake(0, 0, 160, 42);
+            [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [button setTitleColor:[UIColor orangeColor] forState:UIControlStateSelected];
+            button.backgroundColor = [UIColor yellowColor];
+            button.titleLabel.font = [UIFont systemFontOfSize:14];
+            button.layer.borderWidth = 0;
+            button.layer.cornerRadius = 0;
+        }];
+    }
+    return _typeSelectView;
 }
 
 @end
