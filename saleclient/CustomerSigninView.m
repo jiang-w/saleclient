@@ -344,10 +344,10 @@
     
     self.mobile.delegate = self;
     
-    [self addSubview:self.closeButton];
+    [self.innerView addSubview:self.closeButton];
     [self.closeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self).offset(16);
-        make.right.equalTo(self).offset(-16);
+        make.top.equalTo(self.innerView).offset(16);
+        make.right.equalTo(self.innerView).offset(-16);
     }];
 }
 

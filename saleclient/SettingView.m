@@ -38,10 +38,10 @@
         NSString *build_Version = [infoDictionary objectForKey:@"CFBundleVersion"];
         _versionLabel.text = [NSString stringWithFormat:@"当前版本：%@(build %@)", app_Version, build_Version];
         
-        [self addSubview:self.closeButton];
+        [self.innerView addSubview:self.closeButton];
         [self.closeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self).offset(16);
-            make.right.equalTo(self).offset(-16);
+            make.top.equalTo(self.innerView).offset(16);
+            make.right.equalTo(self.innerView).offset(-16);
         }];
     }
     return self;
