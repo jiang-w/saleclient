@@ -25,7 +25,7 @@
     OSNNetworkService *service = [OSNNetworkService sharedInstance];
     NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadUserLogin" andParamterDictionary:@{@"userLoginId":userName,@"password":password}];
     NSMutableDictionary *usrDic = [NSMutableDictionary dictionaryWithDictionary:[dataDic[@"data"] firstObject]];
-    if (usrDic) {
+    if (dataDic && usrDic) {
         OSNUserInfo *info = [[OSNUserInfo alloc] init];
         info.userLoginId = usrDic[@"userLoginId"];
         info.personName = usrDic[@"personName"];

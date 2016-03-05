@@ -22,6 +22,7 @@
 #import "OSNCustomerManager.h"
 #import "DesignerPickerView.h"
 #import "DesignerPickerViewModel.h"
+#import "CustomerBookingVC.h"
 
 @interface CustomerSigninView()
 
@@ -214,6 +215,23 @@
     [parent.navigationController pushViewController:webView animated:NO];
 }
 
+- (IBAction)openBookingView:(id)sender {
+    if (IS_EMPTY_STRING(self.name.text) || IS_EMPTY_STRING(self.mobile.text)) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"姓名和手机号不能为空"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles: nil];
+        [alert show];
+    }
+    else {
+        [self.parentVC lew_dismissPopupView];
+
+        HomeViewController *parent = (HomeViewController *)self.parentVC;
+        CustomerBookingVC *booking = [[CustomerBookingVC alloc] initWithNibName:@"CustomerBookingVC" bundle:nil];
+        booking.customerId = self.customer.customerId;
+        [parent.navigationController pushViewController:booking animated:YES];
+    }
+}
 
 #pragma mark - delegate
 
