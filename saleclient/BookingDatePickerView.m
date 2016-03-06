@@ -23,7 +23,7 @@
     if (self = [super initWithFrame:frame]) {
         _timeIntervalArray = @[@"23:00-01:00", @"01:00-03:00", @"03:00-05:00", @"05:00-07:00", @"07:00-09:00", @"09:00-11:00",
                                @"11:00-13:00", @"13:00-15:00", @"15:00-17:00", @"17:00-19:00", @"19:00-21:00", @"21:00-23:00"];
-        
+
         [self initAndLayoutSubview];
     }
     return self;
@@ -44,6 +44,8 @@
     self.selectedYear = dateComponent.year;
     self.selectedMonth = dateComponent.month;
     self.selectedDay = dateComponent.day;
+    NSInteger selectedTimeRow = (dateComponent.hour + 1) % 24 / 2;
+    [self.pickerView selectRow:selectedTimeRow inComponent:3 animated:NO];
 }
 
 
