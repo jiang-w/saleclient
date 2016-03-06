@@ -7,11 +7,13 @@
 //
 
 #import "CustomerBookingVC.h"
+#import "BookingDatePickerView.h"
 
 @interface CustomerBookingVC () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UITableView *recordListView;
+@property (nonatomic, strong) BookingDatePickerView *datePicker;
 
 @end
 
@@ -22,13 +24,38 @@
     
     self.recordListView.dataSource = self;
     self.recordListView.delegate = self;
+    
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDateLabel:)];
     [self.dateLabel addGestureRecognizer:tapRecognizer];
+    tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapBackgroundView:)];
+    [self.view addGestureRecognizer:tapRecognizer];
+    
+    [self.view addSubview:self.datePicker];
+    [self.datePicker mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.dateLabel.mas_bottom).offset(2);
+        make.left.right.equalTo(self.dateLabel);
+        make.height.mas_offset(200);
+    }];
 }
 
 
 - (IBAction)clickBackButton:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)tapDateLabel:(UITapGestureRecognizer *)recognizer {
+    [self.view endEditing:YES];
+    self.datePicker.hidden = NO;
+    self.dateLabel.text = [NSString stringWithFormat:@"%ld年%ld月%ld日 %@",
+                           self.datePicker.selectedYear,
+                           self.datePicker.selectedMonth,
+                           self.datePicker.selectedDay,
+                           self.datePicker.selectedTime];
+    self.dateLabel.textColor = [UIColor blackColor];
+}
+
+- (void)tapBackgroundView:(UITapGestureRecognizer *)recognizer {
+    self.datePicker.hidden = YES;
 }
 
 
@@ -75,8 +102,15 @@
 }
 
 
-- (void)tapDateLabel:(UITapGestureRecognizer *)recognizer {
-    [self.view endEditing:YES];
+#pragma mark - Property
+
+- (BookingDatePickerView *)datePicker {
+    if (!_datePicker) {
+        _datePicker = [[BookingDatePickerView alloc] init];
+        _datePicker.backgroundColor = RGB(229, 229, 229);
+        _datePicker.hidden = YES;
+    }
+    return _datePicker;
 }
 
 @end

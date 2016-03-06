@@ -129,6 +129,7 @@
 		01ECF34D1C7EE1000012BC40 /* PgyUpdate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01ECF34B1C7EE1000012BC40 /* PgyUpdate.framework */; };
 		01F4A18C1C8A8E73000CB24F /* CustomerBookingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F4A18A1C8A8E73000CB24F /* CustomerBookingVC.m */; settings = {ASSET_TAGS = (); }; };
 		01F4A18D1C8A8E73000CB24F /* CustomerBookingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F4A18B1C8A8E73000CB24F /* CustomerBookingVC.xib */; settings = {ASSET_TAGS = (); }; };
+		01F4A1951C8AC806000CB24F /* BookingDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F4A1941C8AC806000CB24F /* BookingDatePickerView.m */; settings = {ASSET_TAGS = (); }; };
 		01F8A17A1C15EC59000A7EDB /* NavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F8A1791C15EC59000A7EDB /* NavigationBarView.m */; };
 		01F9DDA31C5DF67C006E1F27 /* CustomerAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F9DDA11C5DF67C006E1F27 /* CustomerAddressCell.m */; };
 		01F9DDA41C5DF67C006E1F27 /* CustomerAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F9DDA21C5DF67C006E1F27 /* CustomerAddressCell.xib */; };
@@ -342,6 +343,8 @@
 		01F4A1891C8A8E73000CB24F /* CustomerBookingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerBookingVC.h; sourceTree = "<group>"; };
 		01F4A18A1C8A8E73000CB24F /* CustomerBookingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerBookingVC.m; sourceTree = "<group>"; };
 		01F4A18B1C8A8E73000CB24F /* CustomerBookingVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerBookingVC.xib; sourceTree = "<group>"; };
+		01F4A1931C8AC806000CB24F /* BookingDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookingDatePickerView.h; sourceTree = "<group>"; };
+		01F4A1941C8AC806000CB24F /* BookingDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookingDatePickerView.m; sourceTree = "<group>"; };
 		01F8A1781C15EC59000A7EDB /* NavigationBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBarView.h; sourceTree = "<group>"; };
 		01F8A1791C15EC59000A7EDB /* NavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarView.m; sourceTree = "<group>"; };
 		01F9DDA01C5DF67C006E1F27 /* CustomerAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerAddressCell.h; sourceTree = "<group>"; };
@@ -408,12 +411,14 @@
 				01A6D0861C58CD9C00807F4C /* CustomerAddressManagerVC.h */,
 				01A6D0871C58CD9C00807F4C /* CustomerAddressManagerVC.m */,
 				01A6D0881C58CD9C00807F4C /* CustomerAddressManagerVC.xib */,
-				01F4A1891C8A8E73000CB24F /* CustomerBookingVC.h */,
-				01F4A18A1C8A8E73000CB24F /* CustomerBookingVC.m */,
-				01F4A18B1C8A8E73000CB24F /* CustomerBookingVC.xib */,
 				01F9DDA01C5DF67C006E1F27 /* CustomerAddressCell.h */,
 				01F9DDA11C5DF67C006E1F27 /* CustomerAddressCell.m */,
 				01F9DDA21C5DF67C006E1F27 /* CustomerAddressCell.xib */,
+				01F4A1891C8A8E73000CB24F /* CustomerBookingVC.h */,
+				01F4A18A1C8A8E73000CB24F /* CustomerBookingVC.m */,
+				01F4A18B1C8A8E73000CB24F /* CustomerBookingVC.xib */,
+				01F4A1931C8AC806000CB24F /* BookingDatePickerView.h */,
+				01F4A1941C8AC806000CB24F /* BookingDatePickerView.m */,
 				01303C581C5737730089055E /* AgePickerView.h */,
 				01303C591C5737730089055E /* AgePickerView.m */,
 				0177F1E61C56605B00F5969C /* AddressPickerView.h */,
@@ -915,6 +920,7 @@
 				010578191C1312BA00C8F7CC /* OSNAreaEntity.m in Sources */,
 				01CDB8181C059A4300463F97 /* CaseTagCell.m in Sources */,
 				01564DEB1C149A1E007BBDA2 /* BuildingDetailCell.m in Sources */,
+				01F4A1951C8AC806000CB24F /* BookingDatePickerView.m in Sources */,
 				014E808C1C1807C10065987F /* LewPopupViewAnimationFade.m in Sources */,
 				01E23ABA1C12D46B006D6A9E /* BuildingLeftSider.m in Sources */,
 				014E808E1C1807C10065987F /* LewPopupViewAnimationSpring.m in Sources */,
