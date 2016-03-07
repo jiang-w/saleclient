@@ -8,7 +8,7 @@
 
 #import "BookingDatePickerView.h"
 
-#define NUMBER_OF_YEARS 301
+#define NUMBER_OF_YEARS 3
 
 @interface BookingDatePickerView() <UIPickerViewDelegate, UIPickerViewDataSource>
 

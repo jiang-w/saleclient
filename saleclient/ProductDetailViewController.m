@@ -100,11 +100,11 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
     [self.typeSelectView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.caseListView.mas_top).offset(-4);
         make.left.equalTo(self.view).offset(10);
-        make.width.mas_offset(360);
+        make.width.mas_offset(321);
         make.height.mas_offset(42);
     }];
-    [self.typeSelectView addTagWithTitle:@"空间"];
-    [self.typeSelectView addTagWithTitle:@"风格"];
+    [self.typeSelectView addTagWithTitle:@""];
+    [self.typeSelectView addTagWithTitle:@""];
 }
 
 - (void)loadProductDetailData {
@@ -466,15 +466,20 @@ static NSString * const reuseIdentifier = @"caseDependCellCell";
     if (!_typeSelectView) {
         _typeSelectView = [[AutoLayoutTagView alloc] init];
         _typeSelectView.padding = UIEdgeInsetsMake(0, 0, 0, 0);
-        _typeSelectView.tagSpace = 2;
+        _typeSelectView.tagSpace = 1;
+        _typeSelectView.backgroundColor = RGB(225, 230, 235);
         _typeSelectView.delegate = self;
         
         [_typeSelectView setTagButtonStyleWithBlock:^(UIButton *button, NSUInteger index) {
             button.frame = CGRectMake(0, 0, 160, 42);
-            [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            [button setTitleColor:[UIColor orangeColor] forState:UIControlStateSelected];
-            button.backgroundColor = [UIColor yellowColor];
-            button.titleLabel.font = [UIFont systemFontOfSize:14];
+            if (index == 0) {
+                [button setBackgroundImage:[UIImage imageNamed:@"room1.png"] forState:UIControlStateNormal];
+                [button setBackgroundImage:[UIImage imageNamed:@"room2.png"] forState:UIControlStateSelected];
+            }
+            else {
+                [button setBackgroundImage:[UIImage imageNamed:@"style1.png"] forState:UIControlStateNormal];
+                [button setBackgroundImage:[UIImage imageNamed:@"style2.png"] forState:UIControlStateSelected];
+            }
             button.layer.borderWidth = 0;
             button.layer.cornerRadius = 0;
         }];

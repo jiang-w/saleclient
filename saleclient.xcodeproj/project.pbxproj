@@ -59,7 +59,7 @@
 		015B2D1A1BFEBA5400821100 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 015B2D181BFEBA5400821100 /* LaunchScreen.storyboard */; };
 		015B2D251BFEBBFD00821100 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 015B2D231BFEBBFD00821100 /* SignInViewController.m */; };
 		015B2D261BFEBBFD00821100 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 015B2D241BFEBBFD00821100 /* SignInViewController.xib */; };
-		0166B7761C871DB900CAF1F1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0166B7751C871DB900CAF1F1 /* Reachability.m */; settings = {ASSET_TAGS = (); }; };
+		0166B7761C871DB900CAF1F1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0166B7751C871DB900CAF1F1 /* Reachability.m */; };
 		016E3D7F1C32618C00E23702 /* CustomerDetailMaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 016E3D7E1C32618C00E23702 /* CustomerDetailMaster.m */; };
 		0172D7081C802EBF000BA777 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 0172D7071C802EBF000BA777 /* search.png */; };
 		0177F1E81C56605B00F5969C /* AddressPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0177F1E71C56605B00F5969C /* AddressPickerView.m */; };
@@ -71,6 +71,10 @@
 		017B72171C2CEE390077916B /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 017B72161C2CEE390077916B /* QRCodeViewController.m */; };
 		017FB2C01C1A7C8A00625ED0 /* collect.png in Resources */ = {isa = PBXBuildFile; fileRef = 017FB2BF1C1A7C8A00625ED0 /* collect.png */; };
 		017FB2C21C1A938900625ED0 /* u3d.png in Resources */ = {isa = PBXBuildFile; fileRef = 017FB2C11C1A938900625ED0 /* u3d.png */; };
+		01838F9D1C8D24CF00A11DFC /* room1.png in Resources */ = {isa = PBXBuildFile; fileRef = 01838F991C8D24CF00A11DFC /* room1.png */; };
+		01838F9E1C8D24CF00A11DFC /* room2.png in Resources */ = {isa = PBXBuildFile; fileRef = 01838F9A1C8D24CF00A11DFC /* room2.png */; };
+		01838F9F1C8D24CF00A11DFC /* style1.png in Resources */ = {isa = PBXBuildFile; fileRef = 01838F9B1C8D24CF00A11DFC /* style1.png */; };
+		01838FA01C8D24CF00A11DFC /* style2.png in Resources */ = {isa = PBXBuildFile; fileRef = 01838F9C1C8D24CF00A11DFC /* style2.png */; };
 		0187A0261C01A3C1001091F6 /* CaseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0187A0251C01A3C1001091F6 /* CaseListViewController.m */; };
 		018B09E61BFEC0BB007B69A8 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018B09E41BFEC0BB007B69A8 /* HomeViewController.m */; };
 		018B09E71BFEC0BB007B69A8 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 018B09E51BFEC0BB007B69A8 /* HomeViewController.xib */; };
@@ -127,9 +131,9 @@
 		01E303611C1EEF10001EF801 /* pick_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01E303601C1EEF10001EF801 /* pick_bg@2x.png */; };
 		01ECF34C1C7EE1000012BC40 /* PgySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01ECF34A1C7EE1000012BC40 /* PgySDK.framework */; };
 		01ECF34D1C7EE1000012BC40 /* PgyUpdate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01ECF34B1C7EE1000012BC40 /* PgyUpdate.framework */; };
-		01F4A18C1C8A8E73000CB24F /* CustomerBookingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F4A18A1C8A8E73000CB24F /* CustomerBookingVC.m */; settings = {ASSET_TAGS = (); }; };
-		01F4A18D1C8A8E73000CB24F /* CustomerBookingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F4A18B1C8A8E73000CB24F /* CustomerBookingVC.xib */; settings = {ASSET_TAGS = (); }; };
-		01F4A1951C8AC806000CB24F /* BookingDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F4A1941C8AC806000CB24F /* BookingDatePickerView.m */; settings = {ASSET_TAGS = (); }; };
+		01F4A18C1C8A8E73000CB24F /* CustomerBookingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F4A18A1C8A8E73000CB24F /* CustomerBookingVC.m */; };
+		01F4A18D1C8A8E73000CB24F /* CustomerBookingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F4A18B1C8A8E73000CB24F /* CustomerBookingVC.xib */; };
+		01F4A1951C8AC806000CB24F /* BookingDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F4A1941C8AC806000CB24F /* BookingDatePickerView.m */; };
 		01F8A17A1C15EC59000A7EDB /* NavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F8A1791C15EC59000A7EDB /* NavigationBarView.m */; };
 		01F9DDA31C5DF67C006E1F27 /* CustomerAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F9DDA11C5DF67C006E1F27 /* CustomerAddressCell.m */; };
 		01F9DDA41C5DF67C006E1F27 /* CustomerAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01F9DDA21C5DF67C006E1F27 /* CustomerAddressCell.xib */; };
@@ -241,6 +245,10 @@
 		017B72161C2CEE390077916B /* QRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeViewController.m; sourceTree = "<group>"; };
 		017FB2BF1C1A7C8A00625ED0 /* collect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collect.png; sourceTree = "<group>"; };
 		017FB2C11C1A938900625ED0 /* u3d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = u3d.png; sourceTree = "<group>"; };
+		01838F991C8D24CF00A11DFC /* room1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = room1.png; sourceTree = "<group>"; };
+		01838F9A1C8D24CF00A11DFC /* room2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = room2.png; sourceTree = "<group>"; };
+		01838F9B1C8D24CF00A11DFC /* style1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = style1.png; sourceTree = "<group>"; };
+		01838F9C1C8D24CF00A11DFC /* style2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = style2.png; sourceTree = "<group>"; };
 		0187A0241C01A3C1001091F6 /* CaseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaseListViewController.h; sourceTree = "<group>"; };
 		0187A0251C01A3C1001091F6 /* CaseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaseListViewController.m; sourceTree = "<group>"; };
 		018B09E31BFEC0BB007B69A8 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -372,6 +380,10 @@
 		011375451BFEF27300A9AB9E /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				01838F991C8D24CF00A11DFC /* room1.png */,
+				01838F9A1C8D24CF00A11DFC /* room2.png */,
+				01838F9B1C8D24CF00A11DFC /* style1.png */,
+				01838F9C1C8D24CF00A11DFC /* style2.png */,
 				0172D7071C802EBF000BA777 /* search.png */,
 				01B074691C28323300FDB501 /* setting_ico.png */,
 				019164B31C22F86100BA2CD8 /* diy.png */,
@@ -794,7 +806,9 @@
 				018F894E1C1852E000B03BBD /* exit.png in Resources */,
 				01B754E31C133E73000FA9BE /* BuildingDetailViewController.xib in Resources */,
 				011375531BFEFC5000A9AB9E /* shopping_ico.png in Resources */,
+				01838F9E1C8D24CF00A11DFC /* room2.png in Resources */,
 				0177F1F01C56749600F5969C /* AreaPlist.plist in Resources */,
+				01838F9D1C8D24CF00A11DFC /* room1.png in Resources */,
 				0119301D1C1AA8DB005D730A /* CustomerReceptionRecordViewController.xib in Resources */,
 				011375511BFEFC5000A9AB9E /* historyview_ico.png in Resources */,
 				0113754B1BFEF29500A9AB9E /* welcome_bg.jpg in Resources */,
@@ -803,6 +817,7 @@
 				017FB2C01C1A7C8A00625ED0 /* collect.png in Resources */,
 				017A27831C04A46D00CB577D /* pro_lm1.gif in Resources */,
 				0113755D1BFEFE4D00A9AB9E /* wc_user_ico.png in Resources */,
+				01838F9F1C8D24CF00A11DFC /* style1.png in Resources */,
 				0113755C1BFEFE4D00A9AB9E /* wc_receive_ico.png in Resources */,
 				01B0746A1C28323300FDB501 /* setting_ico.png in Resources */,
 				01DD92261C34E21600BCB289 /* ContentView.html in Resources */,
@@ -816,6 +831,7 @@
 				01B0746F1C28394900FDB501 /* SettingView.xib in Resources */,
 				014E80991C1813BE0065987F /* CustomerSigninView.xib in Resources */,
 				015B2D1A1BFEBA5400821100 /* LaunchScreen.storyboard in Resources */,
+				01838FA01C8D24CF00A11DFC /* style2.png in Resources */,
 				01D776BD1C16870D00F820A1 /* HouseTypeDetailViewController.xib in Resources */,
 				015B2D171BFEBA5400821100 /* Assets.xcassets in Resources */,
 				011375491BFEF29500A9AB9E /* login_bg.jpg in Resources */,
