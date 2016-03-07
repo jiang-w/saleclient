@@ -874,3 +874,57 @@
 			( "20002", "输入参数错误") ;
 			( "30000", "查询列表数据成功")
 			( "30001", "查询列表数据失败")
+52、客户管理-预约量房
+测试链接：http://crm.osnyun.com/rpcmanager/control/ipadCrmReservation?userLoginId=shejs01&accessToken=3NKdCxDmZ5Lb4_PneyB5rO
+                userLoginId【登录账号】【必输参数】
+				accessToken【令牌】	【必输参数】
+				customerId【客户ID】
+				reservationDate【预约日期】
+				reservationTimeId【预约时间段】
+				guideRemark【导购备注】
+说明：
+返回值：略
+			( "10001", "用户不存在") ;
+			( "10002", "用户密码错误") ;
+			( "10003", "用户没有权限") ;
+			( "10009", "用户令牌值错误") ;
+			( "10008", "用户会话过期") ;
+			( "10011", "用户操作权限正常") ;
+			( "20002", "输入参数错误") ;
+			( "30004", "保存数据成功")
+            ( "30005", "保存数据失败")
+
+53、客户管理-预约量房时间段
+测试链接：http://crm.osnyun.com/rpcmanager/control/ipadCrmReservationTimeZone?userLoginId=shejs01&accessToken=3NKdCxDmZ5Lb4_PneyB5rO
+                userLoginId【登录账号】【必输参数】
+				accessToken【令牌】	【必输参数】
+
+说明：
+返回值：略
+			( "10001", "用户不存在") ;
+			( "10002", "用户密码错误") ;
+			( "10003", "用户没有权限") ;
+			( "10009", "用户令牌值错误") ;
+			( "10008", "用户会话过期") ;
+			( "10011", "用户操作权限正常") ;
+			( "20002", "输入参数错误") ;
+			( "30000", "查询实体列表数据成功") ;
+            ( "30001", "查询实体列表数据失败") ;
+
+54、客户管理-预约量房列表
+测试链接：http://crm.osnyun.com/rpcmanager/control/ipadCrmReservationList?userLoginId=shejs01&accessToken=3NKdCxDmZ5Lb4_PneyB5rO&customerId=jsm11212
+                userLoginId【登录账号】【必输参数】
+				accessToken【令牌】	【必输参数】
+				customerId【客户ID】	【必输参数】
+
+说明：
+返回值：略
+			( "10001", "用户不存在") ;
+			( "10002", "用户密码错误") ;
+			( "10003", "用户没有权限") ;
+			( "10009", "用户令牌值错误") ;
+			( "10008", "用户会话过期") ;
+			( "10011", "用户操作权限正常") ;
+			( "20002", "输入参数错误") ;
+			( "30000", "查询实体列表数据成功") ;
+            ( "30001", "查询实体列表数据失败") ;
