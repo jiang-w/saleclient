@@ -266,4 +266,31 @@
     NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadCrmSetDefaultAddress" andParamterDictionary:paramters];
 }
 
+- (NSArray *)getReservationListWithCustomerId:(NSString *)customerId {
+    NSDictionary *paramters = @{@"customerId": customerId};
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadCrmReservationList" andParamterDictionary:paramters];
+    NSArray *dataArr = dataDic[@"data"];
+    return dataArr;
+}
+
+- (NSArray *)getReservationTimeZone {
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadCrmReservationTimeZone" andParamterDictionary:@{}];
+    NSArray *dataArr = dataDic[@"data"];
+    return dataArr;
+}
+
+- (BOOL)addCustomerReservationWithParamters:(NSDictionary *)paramters {
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadCrmReservation" andParamterDictionary:paramters];
+    NSString *status = dataDic[@"status"];
+    if ([status isEqualToString:@"30004"]) {
+        return YES;
+    }
+    else {
+        return NO;
+    }
+}
+
 @end

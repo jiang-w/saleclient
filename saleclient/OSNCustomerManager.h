@@ -46,4 +46,10 @@
 
 - (void)SetDefaultAddressWithId:(NSString *)addressId;
 
+- (NSArray *)getReservationListWithCustomerId:(NSString *)customerId;
+
+- (NSArray *)getReservationTimeZone;
+
+- (BOOL)addCustomerReservationWithParamters:(NSDictionary *)paramters;
+
 @end

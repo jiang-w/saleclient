@@ -99,6 +99,7 @@
 		01AF1F5C1C0402B00033413F /* OSNCaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F5B1C0402B00033413F /* OSNCaseManager.m */; };
 		01AF1F5F1C040D260033413F /* OSNTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F5E1C040D260033413F /* OSNTag.m */; };
 		01AF1F621C040E1B0033413F /* OSNTagGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F611C040E1B0033413F /* OSNTagGroup.m */; };
+		01AF464D1C8DCD950053BDED /* CustomerBookingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF464C1C8DCD950053BDED /* CustomerBookingCell.m */; settings = {ASSET_TAGS = (); }; };
 		01B0746A1C28323300FDB501 /* setting_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = 01B074691C28323300FDB501 /* setting_ico.png */; };
 		01B0746D1C28391C00FDB501 /* SettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B0746C1C28391C00FDB501 /* SettingView.m */; };
 		01B0746F1C28394900FDB501 /* SettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01B0746E1C28394900FDB501 /* SettingView.xib */; };
@@ -294,6 +295,8 @@
 		01AF1F5E1C040D260033413F /* OSNTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNTag.m; sourceTree = "<group>"; };
 		01AF1F601C040E1B0033413F /* OSNTagGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNTagGroup.h; sourceTree = "<group>"; };
 		01AF1F611C040E1B0033413F /* OSNTagGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNTagGroup.m; sourceTree = "<group>"; };
+		01AF464B1C8DCD950053BDED /* CustomerBookingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerBookingCell.h; sourceTree = "<group>"; };
+		01AF464C1C8DCD950053BDED /* CustomerBookingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerBookingCell.m; sourceTree = "<group>"; };
 		01B074691C28323300FDB501 /* setting_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting_ico.png; sourceTree = "<group>"; };
 		01B0746B1C28391C00FDB501 /* SettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingView.h; sourceTree = "<group>"; };
 		01B0746C1C28391C00FDB501 /* SettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingView.m; sourceTree = "<group>"; };
@@ -429,6 +432,8 @@
 				01F4A1891C8A8E73000CB24F /* CustomerBookingVC.h */,
 				01F4A18A1C8A8E73000CB24F /* CustomerBookingVC.m */,
 				01F4A18B1C8A8E73000CB24F /* CustomerBookingVC.xib */,
+				01AF464B1C8DCD950053BDED /* CustomerBookingCell.h */,
+				01AF464C1C8DCD950053BDED /* CustomerBookingCell.m */,
 				01F4A1931C8AC806000CB24F /* BookingDatePickerView.h */,
 				01F4A1941C8AC806000CB24F /* BookingDatePickerView.m */,
 				01303C581C5737730089055E /* AgePickerView.h */,
@@ -941,6 +946,7 @@
 				01E23ABA1C12D46B006D6A9E /* BuildingLeftSider.m in Sources */,
 				014E808E1C1807C10065987F /* LewPopupViewAnimationSpring.m in Sources */,
 				0130A1771C15894800D075FF /* OSNCustomerManager.m in Sources */,
+				01AF464D1C8DCD950053BDED /* CustomerBookingCell.m in Sources */,
 				014060ED1C0FDABB0001804E /* OSNMainNavigation.m in Sources */,
 				01E3035F1C1EE80A001EF801 /* QRCodeScanViewController.m in Sources */,
 				01E23AC31C12DDC5006D6A9E /* OSNBuildingManager.m in Sources */,

@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="dateLabel" destination="KeY-9l-c8s" id="5mb-JD-1n7"/>
                 <outlet property="recordListView" destination="tAV-rG-pHy" id="nOo-j4-KyF"/>
+                <outlet property="remarkText" destination="Y7Y-SA-QBS" id="pdA-xG-2RK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -119,6 +120,9 @@
                                     <integer key="value" value="5"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="clickAddButton:" destination="-1" eventType="touchUpInside" id="9df-SJ-EB7"/>
+                            </connections>
                         </button>
                     </subviews>
                     <animations/>

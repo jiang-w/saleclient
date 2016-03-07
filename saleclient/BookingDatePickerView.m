@@ -7,13 +7,14 @@
 //
 
 #import "BookingDatePickerView.h"
+#import "OSNCustomerManager.h"
 
-#define NUMBER_OF_YEARS 3
+#define NUMBER_OF_YEARS 2
 
 @interface BookingDatePickerView() <UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (nonatomic, strong) UIPickerView *pickerView;
-@property (nonatomic, strong) NSArray *timeIntervalArray;
+@property (nonatomic, strong) NSMutableArray *timeZonelArray;
 
 @end
 
@@ -21,10 +22,8 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        _timeIntervalArray = @[@"23:00-01:00", @"01:00-03:00", @"03:00-05:00", @"05:00-07:00", @"07:00-09:00", @"09:00-11:00",
-                               @"11:00-13:00", @"13:00-15:00", @"15:00-17:00", @"17:00-19:00", @"19:00-21:00", @"21:00-23:00"];
-
         [self initAndLayoutSubview];
+        [self loadReservationTimeZone];
     }
     return self;
 }
@@ -44,8 +43,24 @@
     self.selectedYear = dateComponent.year;
     self.selectedMonth = dateComponent.month;
     self.selectedDay = dateComponent.day;
-    NSInteger selectedTimeRow = (dateComponent.hour + 1) % 24 / 2;
-    [self.pickerView selectRow:selectedTimeRow inComponent:3 animated:NO];
+}
+
+- (void)loadReservationTimeZone {
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        OSNCustomerManager *manager = [[OSNCustomerManager alloc] init];
+        NSArray *data = [manager getReservationTimeZone];
+        if (data) {
+            __weak typeof(self) weakSelf = self;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                for (NSDictionary *item in data) {
+                    NSString *key = item[@"enumId"];
+                    NSString *description = item[@"description"];
+                    [weakSelf.timeZonelArray addObject:@{key: description}];
+                }
+                [weakSelf.pickerView reloadComponent:3];
+            });
+        }
+    });
 }
 
 
@@ -68,7 +83,7 @@
             number = [self daysForMonth:self.selectedMonth andYear:self.selectedYear];
             break;
         case 3:
-            number = self.timeIntervalArray.count;
+            number = self.timeZonelArray.count;
             break;
         default:
             break;
@@ -119,9 +134,11 @@
         case 2:
             pickerLabel.text = [NSString stringWithFormat:@"%ld日", row+1];
             break;
-        case 3:
-            pickerLabel.text = self.timeIntervalArray[row];
+        case 3: {
+            NSDictionary *dic = self.timeZonelArray[row];
+            pickerLabel.text = [[dic allValues] firstObject];
             break;
+        }
         default:
             break;
     }
@@ -140,7 +157,9 @@
             break;
     }
     
-    NSLog(@"%ld年%ld月%ld日 %@", self.selectedYear, self.selectedMonth, self.selectedDay, self.selectedTime);
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didFinishSelectDatePicker:)]) {
+        [self.delegate didFinishSelectDatePicker:self];
+    }
 }
 
 
@@ -187,7 +206,7 @@
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSUInteger unitFlags = NSCalendarUnitYear;
     NSDateComponents *dateComponent = [calendar components:unitFlags fromDate:[NSDate date]];
-    NSInteger sinceYear = dateComponent.year - NUMBER_OF_YEARS / 2;
+    NSInteger sinceYear = dateComponent.year - (NUMBER_OF_YEARS - 1) / 2;
     return sinceYear + row;
 }
 
@@ -195,7 +214,7 @@
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSUInteger unitFlags = NSCalendarUnitYear;
     NSDateComponents *dateComponent = [calendar components:unitFlags fromDate:[NSDate date]];
-    NSInteger sinceYear = dateComponent.year - NUMBER_OF_YEARS / 2;
+    NSInteger sinceYear = dateComponent.year - (NUMBER_OF_YEARS - 1) / 2;
     if (year >= sinceYear) {
         return year - sinceYear;
     }
@@ -237,17 +256,32 @@
 
 - (NSString *)selectedTime {
     NSInteger selectedRow = [self.pickerView selectedRowInComponent:3];
-    return self.timeIntervalArray[selectedRow];
+    NSDictionary *dic = self.timeZonelArray[selectedRow];
+    return [[dic allKeys] firstObject];
 }
 
 - (void)setSelectedTime:(NSString *)selectedTime {
-    for (NSString *item in self.timeIntervalArray) {
-        if ([item isEqualToString:selectedTime]) {
-            NSInteger selectedRow = [self.timeIntervalArray indexOfObject:item];
+    for (NSDictionary *item in self.timeZonelArray) {
+        NSString *key = [[item allKeys] firstObject];
+        if ([key isEqualToString:selectedTime]) {
+            NSInteger selectedRow = [self.timeZonelArray indexOfObject:item];
             [self.pickerView selectRow:selectedRow inComponent:3 animated:NO];
             break;
         }
     }
+}
+
+- (NSString *)description {
+    NSInteger selectedRow = [self.pickerView selectedRowInComponent:3];
+    NSString *timeDescription = [[self.timeZonelArray[selectedRow] allValues] firstObject];
+    return [NSString stringWithFormat:@"%ld年%ld月%ld日 %@", self.selectedYear, self.selectedMonth, self.selectedDay, timeDescription];
+}
+
+- (NSMutableArray *)timeZonelArray {
+    if (!_timeZonelArray) {
+        _timeZonelArray = [NSMutableArray array];
+    }
+    return _timeZonelArray;
 }
 
 @end
