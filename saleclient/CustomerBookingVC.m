@@ -61,7 +61,7 @@ static NSString * const cellReuseIdentifier = @"cellIdentifier";
         NSArray *data = [manager getReservationListWithCustomerId:self.customerId];
 
         if (data) {
-            __weak typeof(self) weakSelf = self;
+            __weak __typeof__(self) weakSelf = self;
             dispatch_async(dispatch_get_main_queue(), ^{
                 [weakSelf.reservationList removeAllObjects];
                 [weakSelf.reservationList addObjectsFromArray:data];

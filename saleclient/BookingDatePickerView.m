@@ -50,7 +50,7 @@
         OSNCustomerManager *manager = [[OSNCustomerManager alloc] init];
         NSArray *data = [manager getReservationTimeZone];
         if (data) {
-            __weak typeof(self) weakSelf = self;
+            __weak __typeof__(self) weakSelf = self;
             dispatch_async(dispatch_get_main_queue(), ^{
                 for (NSDictionary *item in data) {
                     NSString *key = item[@"enumId"];
