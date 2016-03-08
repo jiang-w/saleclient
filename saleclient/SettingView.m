@@ -9,10 +9,12 @@
 #import "SettingView.h"
 #import "OSNUserManager.h"
 #import "AppDelegate.h"
+#import "LewPopupViewController.h"
 #import "UIViewController+LewPopupViewController.h"
 #import <PgySDK/PgyManager.h>
 #import <PgyUpdate/PgyUpdateManager.h>
 #import "OSNNetworkService.h"
+#import "ChangePassword.h"
 
 @interface SettingView()
 
@@ -55,6 +57,12 @@
 - (IBAction)logoutButtonClick:(id)sender {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"确定要退出当前用户吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
     [alert show];
+}
+
+- (IBAction)changePasswordClick:(id)sender {
+    ChangePassword *changePassword = [ChangePassword defaultView];
+    changePassword.parentVC = self.parentVC;
+    [self.parentVC lew_presentPopupView:changePassword animation:[LewPopupViewAnimationFade new] dismissed:nil];
 }
 
 - (IBAction)updateButtonClick:(id)sender {

@@ -27,6 +27,8 @@
 		011375601BFF074100A9AB9E /* ProductListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0113755F1BFF074100A9AB9E /* ProductListViewController.m */; };
 		011375641BFF0DA400A9AB9E /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 011375621BFF0DA400A9AB9E /* MasterViewController.m */; };
 		011375651BFF0DA400A9AB9E /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 011375631BFF0DA400A9AB9E /* MasterViewController.xib */; };
+		011760961C8F079100D648A3 /* ChangePassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 011760941C8F079100D648A3 /* ChangePassword.m */; settings = {ASSET_TAGS = (); }; };
+		011760971C8F079100D648A3 /* ChangePassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = 011760951C8F079100D648A3 /* ChangePassword.xib */; settings = {ASSET_TAGS = (); }; };
 		0119301C1C1AA8DB005D730A /* CustomerReceptionRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0119301A1C1AA8DB005D730A /* CustomerReceptionRecordViewController.m */; };
 		0119301D1C1AA8DB005D730A /* CustomerReceptionRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0119301B1C1AA8DB005D730A /* CustomerReceptionRecordViewController.xib */; };
 		011930201C1ABF8D005D730A /* RecordImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0119301F1C1ABF8D005D730A /* RecordImageCell.m */; };
@@ -167,6 +169,9 @@
 		011375611BFF0DA400A9AB9E /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		011375621BFF0DA400A9AB9E /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		011375631BFF0DA400A9AB9E /* MasterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterViewController.xib; sourceTree = "<group>"; };
+		011760931C8F079100D648A3 /* ChangePassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePassword.h; sourceTree = "<group>"; };
+		011760941C8F079100D648A3 /* ChangePassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePassword.m; sourceTree = "<group>"; };
+		011760951C8F079100D648A3 /* ChangePassword.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePassword.xib; sourceTree = "<group>"; };
 		011930191C1AA8DB005D730A /* CustomerReceptionRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerReceptionRecordViewController.h; sourceTree = "<group>"; };
 		0119301A1C1AA8DB005D730A /* CustomerReceptionRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerReceptionRecordViewController.m; sourceTree = "<group>"; };
 		0119301B1C1AA8DB005D730A /* CustomerReceptionRecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerReceptionRecordViewController.xib; sourceTree = "<group>"; };
@@ -514,6 +519,9 @@
 				01B0746B1C28391C00FDB501 /* SettingView.h */,
 				01B0746C1C28391C00FDB501 /* SettingView.m */,
 				01B0746E1C28394900FDB501 /* SettingView.xib */,
+				011760931C8F079100D648A3 /* ChangePassword.h */,
+				011760941C8F079100D648A3 /* ChangePassword.m */,
+				011760951C8F079100D648A3 /* ChangePassword.xib */,
 				01B277E11C2925950056FF80 /* UIResponder+FirstResponder.h */,
 				01B277E21C2925950056FF80 /* UIResponder+FirstResponder.m */,
 			);
@@ -834,6 +842,7 @@
 				01F4A18D1C8A8E73000CB24F /* CustomerBookingVC.xib in Resources */,
 				011375521BFEFC5000A9AB9E /* qcode_ico.png in Resources */,
 				01B0746F1C28394900FDB501 /* SettingView.xib in Resources */,
+				011760971C8F079100D648A3 /* ChangePassword.xib in Resources */,
 				014E80991C1813BE0065987F /* CustomerSigninView.xib in Resources */,
 				015B2D1A1BFEBA5400821100 /* LaunchScreen.storyboard in Resources */,
 				01838FA01C8D24CF00A11DFC /* style2.png in Resources */,
@@ -932,6 +941,7 @@
 				014664EE1C07056700FD2E96 /* OSNTagPadView.m in Sources */,
 				01A35D461C0AF4BA00341F45 /* CaseImageCell.m in Sources */,
 				011930201C1ABF8D005D730A /* RecordImageCell.m in Sources */,
+				011760961C8F079100D648A3 /* ChangePassword.m in Sources */,
 				0177F1E81C56605B00F5969C /* AddressPickerView.m in Sources */,
 				015B2D0C1BFEBA5400821100 /* main.m in Sources */,
 				01B0746D1C28391C00FDB501 /* SettingView.m in Sources */,
