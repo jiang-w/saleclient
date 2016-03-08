@@ -12,6 +12,6 @@
 
 @property (nonatomic, strong) UILabel *dateLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
-@property (nonatomic, strong) UILabel *receptionLabel;
+@property (nonatomic, strong) UILabel *guideNameLabel;
 
 @end

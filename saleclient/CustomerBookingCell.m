@@ -27,10 +27,10 @@
             make.center.equalTo(self);
         }];
         
-        self.receptionLabel = [[UILabel alloc] init];
-        self.receptionLabel.font = [UIFont systemFontOfSize:13];
-        [self addSubview:self.receptionLabel];
-        [self.receptionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        self.guideNameLabel = [[UILabel alloc] init];
+        self.guideNameLabel.font = [UIFont systemFontOfSize:13];
+        [self addSubview:self.guideNameLabel];
+        [self.guideNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self);
             make.right.equalTo(self).offset(-60);
         }];

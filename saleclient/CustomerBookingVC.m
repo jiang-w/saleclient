@@ -136,8 +136,8 @@ static NSString * const cellReuseIdentifier = @"cellIdentifier";
     }
     NSDictionary *dic = self.reservationList[indexPath.row];
     cell.dateLabel.text = dic[@"reservationDate"];
-    NSString *timeId = dic[@"reservationTimeId"];
-    cell.timeLabel.text = self.timeZoneDic[timeId];
+    cell.timeLabel.text = dic[@"reservationTime"];
+    cell.guideNameLabel.text = dic[@"guideName"];
     return cell;
 }
 

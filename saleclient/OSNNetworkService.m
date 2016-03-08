@@ -61,6 +61,7 @@
                 [defaults setObject:jsonDic[@"returnValue"][@"accessToken"] forKey:@"accessToken"];
                 break;
             case 10002:// 用户密码错误
+                break;
             case 10003:// 用户没有权限
             case 10008:
             case 10009:// 令牌失效
