@@ -123,41 +123,44 @@
         [alert show];
     }
     else {
-        [self updateCustomerInfoFromView];
-        
-        OSNCustomerManager *manage = [[OSNCustomerManager alloc] init];
-        NSMutableDictionary *paramters = [NSMutableDictionary dictionary];
-        paramters[@"customerName"] = self.customer.customerName;
-        paramters[@"mobile"] = self.customer.mobile;
-        paramters[@"genderId"] = !self.customer.genderId ? @"" : self.customer.genderId;
-        paramters[@"qq"] = !self.customer.qq ? @"" : self.customer.qq;
-        paramters[@"email"] = !self.customer.email ? @"" : self.customer.email;
-        paramters[@"customerAge"] = !self.customer.customerAge ? @"" : self.customer.customerAge;
-        paramters[@"notes"] = !self.customer.notes ? @"" : self.customer.notes;
-        paramters[@"customerId"] = !self.customer.customerId ? @"" : self.customer.customerId;
-        paramters[@"recommendCustomerId"] = !self.customer.recommendCustomerId ? @"" : self.customer.recommendCustomerId;
-        paramters[@"recommendName"] = !self.customer.recommendName ? @"" : self.customer.recommendName;
-        paramters[@"recommendMobile"] = !self.customer.recommendMobile ? @"" : self.customer.recommendMobile;
-        paramters[@"typeId"] = !self.customer.typeId ? @"" : self.customer.typeId;
-        paramters[@"partyId"] = !self.customer.designerId ? @"" : self.customer.designerId;
-        
-        [manage updateCustomerWithParamters:paramters];
-        if ([self validateAddressInput]) {
-            self.customer.defaultAddress.name = self.customer.customerName;
-            self.customer.defaultAddress.contactPhone = self.customer.mobile;
-            [manage UpdateCustomerAddress:self.customer.defaultAddress];
-        }
-        
-        if (![self.receptionId isEqualToString:self.customer.customerId]) {
-            NSString *customerId = [manage combineCustomerWithNewCustomerId:self.receptionId andExistCustomerId:self.customer.customerId];
-            self.customer.customerId = customerId;
-        }
-
+        [self saveCustomerInfo];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"保存成功"
                                                        delegate:self
                                               cancelButtonTitle:@"确定"
                                               otherButtonTitles: nil];
         [alert show];
+    }
+}
+
+- (void)saveCustomerInfo {
+    [self updateCustomerInfoFromView];
+    
+    OSNCustomerManager *manage = [[OSNCustomerManager alloc] init];
+    NSMutableDictionary *paramters = [NSMutableDictionary dictionary];
+    paramters[@"customerName"] = self.customer.customerName;
+    paramters[@"mobile"] = self.customer.mobile;
+    paramters[@"genderId"] = !self.customer.genderId ? @"" : self.customer.genderId;
+    paramters[@"qq"] = !self.customer.qq ? @"" : self.customer.qq;
+    paramters[@"email"] = !self.customer.email ? @"" : self.customer.email;
+    paramters[@"customerAge"] = !self.customer.customerAge ? @"" : self.customer.customerAge;
+    paramters[@"notes"] = !self.customer.notes ? @"" : self.customer.notes;
+    paramters[@"customerId"] = !self.customer.customerId ? @"" : self.customer.customerId;
+    paramters[@"recommendCustomerId"] = !self.customer.recommendCustomerId ? @"" : self.customer.recommendCustomerId;
+    paramters[@"recommendName"] = !self.customer.recommendName ? @"" : self.customer.recommendName;
+    paramters[@"recommendMobile"] = !self.customer.recommendMobile ? @"" : self.customer.recommendMobile;
+    paramters[@"typeId"] = !self.customer.typeId ? @"" : self.customer.typeId;
+    paramters[@"partyId"] = !self.customer.designerId ? @"" : self.customer.designerId;
+    
+    [manage updateCustomerWithParamters:paramters];
+    if ([self validateAddressInput]) {
+        self.customer.defaultAddress.name = self.customer.customerName;
+        self.customer.defaultAddress.contactPhone = self.customer.mobile;
+        [manage UpdateCustomerAddress:self.customer.defaultAddress];
+    }
+    
+    if (![self.receptionId isEqualToString:self.customer.customerId]) {
+        NSString *customerId = [manage combineCustomerWithNewCustomerId:self.receptionId andExistCustomerId:self.customer.customerId];
+        self.customer.customerId = customerId;
     }
 }
 
@@ -194,6 +197,7 @@
         [alert show];
     }
     else {
+        [self saveCustomerInfo];
         [self.parentVC lew_dismissPopupView];
         
         HomeViewController *parent = (HomeViewController *)self.parentVC;
@@ -224,6 +228,7 @@
         [alert show];
     }
     else {
+        [self saveCustomerInfo];
         [self.parentVC lew_dismissPopupView];
 
         HomeViewController *parent = (HomeViewController *)self.parentVC;
