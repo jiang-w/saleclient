@@ -115,4 +115,14 @@
     return dataArr;
 }
 
+- (NSString *)changePasswordWithCurrentPassword:(NSString *)currentPassword andNewPassword:(NSString *)newPassword {
+    NSMutableDictionary *paramters = [NSMutableDictionary dictionary];
+    paramters[@"currentPassword"] = currentPassword;
+    paramters[@"newPassword"] = newPassword;
+    OSNNetworkService *service = [OSNNetworkService sharedInstance];
+    NSDictionary *dataDic = [service requestDataWithServiceName:@"ipadEditPassword" andParamterDictionary:paramters];
+    NSString *status = dataDic[@"status"];
+    return status;
+}
+
 @end

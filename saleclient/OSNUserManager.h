@@ -26,4 +26,6 @@
 
 - (NSArray *)getDesignerList;
 
+- (NSString *)changePasswordWithCurrentPassword:(NSString *)currentPassword andNewPassword:(NSString *)newPassword;
+
 @end

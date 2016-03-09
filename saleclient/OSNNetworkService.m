@@ -56,6 +56,8 @@
         NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
         NSString *status = jsonDic[@"returnValue"][@"status"];
         switch ([status integerValue]) {
+            case 10001:// 用户不存在
+                break;
             case 10004:// 用户登录成功
                 dataDic = jsonDic[@"returnValue"];
                 [defaults setObject:jsonDic[@"returnValue"][@"accessToken"] forKey:@"accessToken"];

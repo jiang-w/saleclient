@@ -928,3 +928,25 @@
 			( "20002", "输入参数错误") ;
 			( "30000", "查询实体列表数据成功") ;
             ( "30001", "查询实体列表数据失败") ;
+
+55、修改密码
+测试链接：http://crm.osnyun.com/rpcmanager/control/ipadEditPassword?userLoginId=shejs01&accessToken=3NKdCxDmZ5Lb4_PneyB5rO
+                    &currentPassword={SHA}8d45658edc5ca1b44e5311579efbd83bbda9fced
+                    &newPassword={SHA}8d45658edc5ca1b44e5311579efbd83bbda9fced
+                userLoginId【登录账号】【必输参数】
+				accessToken【令牌】	【必输参数】
+				currentPassword【原密码】	【必输参数】
+				newPassword【新密码】	【必输参数】
+
+说明：
+返回值：略
+			( "10001", "用户不存在") ;
+			( "10002", "用户密码错误") ;
+			( "10003", "用户没有权限") ;
+			( "10009", "用户令牌值错误") ;
+			( "10008", "用户会话过期") ;
+			( "10011", "用户操作权限正常") ;
+			( "20002", "输入参数错误") ;
+			( "40000", "原密码不正确") ;
+            ( "40001", "修改成功") ;
+            ( "40002", "修改失败") ;
