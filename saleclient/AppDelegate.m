@@ -9,11 +9,8 @@
 #import "AppDelegate.h"
 #import "SignInViewController.h"
 #import "HomeViewController.h"
-#import "Reachability.h"
 
 @interface AppDelegate ()
-
-@property (nonatomic, strong) Reachability  *hostReach;
 
 @end
 

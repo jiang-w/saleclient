@@ -11,6 +11,7 @@
 #import "OSNMainNavigation.h"
 #import <PgySDK/PgyManager.h>
 #import <PgyUpdate/PgyUpdateManager.h>
+#import "Reachability.h"
 
 #define PGY_APPKEY @"0708103e8dc001092667e681c9ce600c"
 
@@ -19,6 +20,7 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) OSNMainNavigation *mainNav;
 @property (strong, nonatomic) SignInViewController *signInViewController;
+@property (nonatomic, strong) Reachability  *hostReach;
 
 @end
 

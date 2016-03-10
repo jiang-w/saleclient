@@ -95,6 +95,16 @@
 //    [self.passwordTextBox resignFirstResponder];
     [self.view endEditing:YES];
     
+    AppDelegate *app = [UIApplication sharedApplication].delegate;
+    NetworkStatus status = [app.hostReach currentReachabilityStatus];
+    if (status == NotReachable) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"网络异常"
+                                                        message:@"无法连接到服务器，请检查网络"
+                                                       delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
     NSString *userName = self.userNameTextBox.text;
     NSString *password = self.passwordTextBox.text;
     BOOL isRemember = YES;
