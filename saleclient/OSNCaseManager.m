@@ -48,7 +48,7 @@
         // 添加换砖DIY标签
         OSNTagGroup *group = [[OSNTagGroup alloc] init];
         group.type = @"u3d";
-        group.name = @"换砖";
+        group.name = @"VR全景";
         NSMutableArray *list = [NSMutableArray array];
         OSNTag *allTag = [[OSNTag alloc] init];
         allTag.enumId = @"";
@@ -58,7 +58,7 @@
         OSNTag *tag = [[OSNTag alloc] init];
         tag.enumId = @"Y";
         tag.sequenceId = @"1";
-        tag.name = @"换砖DIY";
+        tag.name = @"VR全景";
         [list addObject:tag];
         group.list = list;
         

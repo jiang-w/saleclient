@@ -7,9 +7,9 @@
 //
 
 /* 基础服务地址 */
-#define BASEURL @"http://121.41.120.221:8080/rpcmanager/control/"
+#define BASEURL @"http://crm.litijia.com/rpcmanager/control/"
 /* CRM */
-#define CRMURL @"http://crm.osnyun.com/workplace/control/"
+#define CRMURL @"http://crm.litijia.com/workplace/control/"
 
 /* 通知 */
 #define RESPONSE_STATUS_NOTIFICATION @"ResponseStatusNotification"

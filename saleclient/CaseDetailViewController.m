@@ -14,6 +14,7 @@
 #import "ProductDetailViewController.h"
 #import "OSNCustomerManager.h"
 #import "NavigationBarView.h"
+#import "OSNWebViewController.h"
 
 @interface CaseDetailViewController ()
 
@@ -162,7 +163,9 @@ static NSString * const cellReuseIdentifier = @"productCellIdentifier";
 }
 
 - (IBAction)u3dButtonClick:(id)sender {
-    
+    OSNWebViewController *webView = [[OSNWebViewController alloc] init];
+    webView.url = @"http://120.27.195.28:6600/lib/krpano/krpano.html?xml=examples/mvtpano/krpano_vr.xml&html5=only&id=id4A62FC4D5A79F03EFBF224F2BAB8D7";
+    [self.navigationController pushViewController:webView animated:YES];
 }
 
 

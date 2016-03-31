@@ -27,8 +27,8 @@
 		011375601BFF074100A9AB9E /* ProductListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0113755F1BFF074100A9AB9E /* ProductListViewController.m */; };
 		011375641BFF0DA400A9AB9E /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 011375621BFF0DA400A9AB9E /* MasterViewController.m */; };
 		011375651BFF0DA400A9AB9E /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 011375631BFF0DA400A9AB9E /* MasterViewController.xib */; };
-		011760961C8F079100D648A3 /* ChangePassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 011760941C8F079100D648A3 /* ChangePassword.m */; settings = {ASSET_TAGS = (); }; };
-		011760971C8F079100D648A3 /* ChangePassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = 011760951C8F079100D648A3 /* ChangePassword.xib */; settings = {ASSET_TAGS = (); }; };
+		011760961C8F079100D648A3 /* ChangePassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 011760941C8F079100D648A3 /* ChangePassword.m */; };
+		011760971C8F079100D648A3 /* ChangePassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = 011760951C8F079100D648A3 /* ChangePassword.xib */; };
 		0119301C1C1AA8DB005D730A /* CustomerReceptionRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0119301A1C1AA8DB005D730A /* CustomerReceptionRecordViewController.m */; };
 		0119301D1C1AA8DB005D730A /* CustomerReceptionRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0119301B1C1AA8DB005D730A /* CustomerReceptionRecordViewController.xib */; };
 		011930201C1ABF8D005D730A /* RecordImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0119301F1C1ABF8D005D730A /* RecordImageCell.m */; };
@@ -101,7 +101,7 @@
 		01AF1F5C1C0402B00033413F /* OSNCaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F5B1C0402B00033413F /* OSNCaseManager.m */; };
 		01AF1F5F1C040D260033413F /* OSNTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F5E1C040D260033413F /* OSNTag.m */; };
 		01AF1F621C040E1B0033413F /* OSNTagGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF1F611C040E1B0033413F /* OSNTagGroup.m */; };
-		01AF464D1C8DCD950053BDED /* CustomerBookingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF464C1C8DCD950053BDED /* CustomerBookingCell.m */; settings = {ASSET_TAGS = (); }; };
+		01AF464D1C8DCD950053BDED /* CustomerBookingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01AF464C1C8DCD950053BDED /* CustomerBookingCell.m */; };
 		01B0746A1C28323300FDB501 /* setting_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = 01B074691C28323300FDB501 /* setting_ico.png */; };
 		01B0746D1C28391C00FDB501 /* SettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B0746C1C28391C00FDB501 /* SettingView.m */; };
 		01B0746F1C28394900FDB501 /* SettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01B0746E1C28394900FDB501 /* SettingView.xib */; };
@@ -1093,7 +1093,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C91545DC02F872E51821B588 /* Pods-saleclient.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-litijia";
 				CODE_SIGN_IDENTITY = "iPhone Developer: 伟 Jiang (85V724K3K4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 伟 Jiang (85V724K3K4)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1115,7 +1115,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 085C548C4109E76C880EC2E0 /* Pods-saleclient.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-litijia";
 				CODE_SIGN_IDENTITY = "iPhone Developer: 伟 Jiang (85V724K3K4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 伟 Jiang (85V724K3K4)";
 				FRAMEWORK_SEARCH_PATHS = (
